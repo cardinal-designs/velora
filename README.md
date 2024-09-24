@@ -1,4 +1,4 @@
-# Base Theme
+# Velora
 
 ### Dependencies
 - [Shopify CLI](https://shopify.dev/docs/themes/tools/cli)
