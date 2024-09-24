@@ -1,0 +1,150 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+<product-form class="product-form">
+  {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+    {% unless product.has_only_default_variant %}
+      <variant-radios class="no-js-hidden mt-20 block" data-section="{{ section.id }}" data-url="{{ product.url }}">
+        {% for option in product.options_with_values %}
+          {% liquid
+            assign downcased_option = option.name | downcase
+
+            assign variants_available_arr = product.variants | map: 'available'
+            assign variants_option1_arr = product.variants | map: 'option1'
+            assign variants_option2_arr = product.variants | map: 'option2'
+            assign variants_option3_arr = product.variants | map: 'option3'
+
+            assign product_form_id = 'product-form-' | append: section.id
+          %}
+
+          <fieldset class="product-form-input js mb-20 block">
+            <legend class="form__label mb-10 text-body">{{ option.name }}</legend>
+            <div class="flex gap-x-10 gap-y-5">
+              {% for value in option.values %}
+                {% liquid
+                  assign option_disabled = true
+
+                  for option1_name in variants_option1_arr
+                    case option.position
+                      when 1
+                        if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                          assign option_disabled = false
+                        endif
+                      when 2
+                        if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                          assign option_disabled = false
+                        endif
+                      when 3
+                        if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                          assign option_disabled = false
+                        endif
+                    endcase
+                  endfor
+                %}
+
+                <div>
+                  <input type="radio"
+                    class="visually-hidden peer"
+                    id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                    name="{{ option.name }}"
+                    value="{{ value | escape }}"
+                    form="{{ product_form_id }}"
+                    {% if option.selected_value == value %}checked{% endif %}
+                  >
+                  {% if downcased_option == 'color' %}
+                    {% assign color_swatch_name = value | handleize | append: '.jpg' %}
+                    {% assign color_swatch_image = images[color_swatch_name] %}
+
+                    <label class="w-25 h-25 block rounded-full cursor-pointer border-1 border-black/10 peer-checked:border-black" style="{% if color_swatch_image != blank %}background-image: url('{{ color_swatch_image | img_url: '50x' }}');{% else %}background-color: {{ value | handleize }};{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                      <div class="visually-hidden">{{ value }}</div>
+                    </label>
+                  {% else %}
+                    <label class="px-15 py-5 text-body border-1 border-black/10 peer-checked:border-black cursor-pointer{% if option_disabled %} opacity-50{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                      {{ value }}
+                    </label>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </fieldset>
+        {% endfor %}
+        <script type="application/json">
+          {{ product.variants | json }}
+        </script>
+      </variant-radios>
+    {% endunless %}
+
+    <noscript class="product-form__noscript-wrapper-{{ section.id }}">
+      <div class="{% if product.has_only_default_variant %} hidden{% endif %}">
+        <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+        <div class="select">
+          <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
+            {% for variant in product.variants %}
+              <option
+                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                {% if variant.available == false %}disabled{% endif %}
+                value="{{ variant.id }}"
+              >
+                {{ variant.title }}
+                {% if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                - {{ variant.price | money | strip_html }}
+              </option>
+            {% endfor %}
+          </select>
+          {% render 'icon' icon: 'caret' %}
+        </div>
+      </div>
+    </noscript>
+    
+    <div class="mt-30 flex gap-10">
+      <div class="product-form-quantity w-100 flex-shrink-0">
+        <label class="form__label visually-hidden" for="Quantity-{{ section.id }}">
+          {{ 'products.product.quantity.label' | t }}
+        </label>
+        <quantity-input class="quantity h-full grid grid-cols-3 border-1 border-black text-center">
+          <button class="quantity-button flex justify-center items-center no-js-hidden" name="minus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+            {% render 'icon' icon: 'minus' %}
+          </button>
+          <input class="quantity-input text-body text-center"
+              type="number"
+              name="quantity"
+              id="Quantity-{{ section.id }}"
+              min="1"
+              value="1"
+              form="{{ product_form_id }}"
+            >
+          <button class="quantity-button flex justify-center items-center no-js-hidden" name="plus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+            {% render 'icon' icon: 'plus' %}
+          </button>
+        </quantity-input>
+      </div>
+      <button
+        type="submit"
+        name="add"
+        class="product-form-submit w-full button"
+        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+      >
+        <span>
+          {% if product.selected_or_first_available_variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+        {% render 'loading-spinner' %}
+      </button>
+    </div>
+
+    {% if block.settings.show_dynamic_checkout %}
+      <div class="mt-20">
+        {{ form | payment_button }}
+      </div>
+    {% endif %}
+
+  {% endform %}
+</product-form>

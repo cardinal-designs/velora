@@ -1,0 +1,50 @@
+<script src="{{ 'mobile-menu.js' | asset_url }}" defer="defer"></script>
+
+<mobile-menu>
+  <div class="w-full h-full fixed top-0 left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-top bg-white -translate-x-full transition-transform aria-unhidden:translate-x-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
+    <div class="p-20 flex justify-between items-center border-b-1 border-black">
+      <h2 class="text-m-h4">Menu</h2>
+      <button class="js-close-menu" aria-label="{{ 'general.search.search' | t }}">
+        {% render 'icon' icon: 'close' %}
+      </button>
+    </div>
+    <div class="px-20 pb-20 flex flex-col">
+      <ul class="" role="list">
+        {% for link in section.settings.menu.links %}
+          <li class="border-b-1 border-black/10">
+            {% if link.links != blank %}
+              <button class="dropdown-button group/button py-20 w-full flex justify-between items-center text-body" href="{{ link.url }}">
+                <span>{{ link.title }}</span>
+                <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+                  {% render 'icon' icon: 'caret' %}
+                </div>
+              </button>
+              <ul class="dropdown pl-10 hidden" role="list">
+                {% for child_link in link.links %}
+                  <li class="pb-5 last:pb-20">
+                    <a class="text-body" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <a class="py-20 block text-body" href="{{ link.url }}">{{ link.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</mobile-menu>
+
+{% schema %}
+  {
+    "name": "Mobile Menu",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ]
+  }
+{% endschema %}

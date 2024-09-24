@@ -1,0 +1,49 @@
+{% comment %}
+    Renders a set of links for paginated results. Must be used within paginate tags.
+
+    Usage:
+    {% paginate results by 2 %}
+      {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+    {% endpaginate %}
+
+    Accepts:
+    - paginate: {Object}
+    - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+{% if paginate.parts.size > 0 %}
+  
+  <div class="mt-30 py-10 md:mt-40">
+    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="flex justify-center items-center gap-20" role="list">
+      {% if paginate.previous %}
+        <a href="{{ paginate.previous.url }}{{ anchor }}" class="" aria-label="{{ 'general.pagination.previous' | t }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none"><path d="M6.50062 1L0.816406 7L6.50062 13" stroke="#49260C"/></svg>
+        </a>
+      {% endif %}
+
+      {% for part in paginate.parts %}
+        <li>
+          {% if part.is_link %}
+            <a href="{{ part.url }}{{ anchor }}" class="text-body opacity-50" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{% if part.title < 10 %}0{% endif %}{{ part.title }}</a>
+          {% else %}
+            {% if part.title == paginate.current_page %}
+              <span class="text-body relative opaciy-50" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                {% if part.title < 10 %}0{% endif %}{{ part.title }}
+              </span>
+            {% else %}
+              <span class="text-body">{% if part.title < 10 %}0{% endif %}{{ part.title }}</span>
+            {% endif %}
+          {% endif %}
+        </li>
+      {% endfor %}
+
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}{{ anchor }}" class="" aria-label="{{ 'general.pagination.next' | t }}" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none"><path d="M0.501336 1L6.18555 7L0.501336 13" stroke="#49260C"/></svg>
+        </a>
+      {% endif %}
+      </ul>
+    </nav>
+  </div>
+{% endif %}

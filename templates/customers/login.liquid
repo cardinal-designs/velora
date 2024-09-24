@@ -1,0 +1,133 @@
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+{% render 'account-header' title: 'Log In' %}
+
+<div class="mt-40 mb-60 md:mt-60">
+  <div class="page-width">
+
+    <div class="max-w-custom mx-auto" id="recover" style="--width: 440px;">
+      <p class="max-w-custom mx-auto mb-30 text-m-body text-center md:text-body" style="--width: 310px;">Enter your email and we will send your login details to the email on file.</p>
+      
+      {% form 'recover_customer_password' %}
+        {% assign recover_success = form.posted_successfully? %}
+        <div class="mb320">
+          <label class="field__label" for="RecoverEmail">Email</label>
+          <input type="email"
+            class="field__input"
+            value=""
+            name="email"
+            id="RecoverEmail"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            {% if form.errors %}
+              aria-invalid="true"
+              aria-describedby="RecoverEmail-email-error"
+              autofocus
+            {% endif %}
+            placeholder="Email"
+          >
+          
+          {% if form.errors %}
+            <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+          {% endif %}
+        </div>
+
+        <button class="mt-30 button button--bright w-full">Send Recovery Email</button>
+
+        <div class="mt-15 text-center">
+          <a class="forgot-password-cancel pb-10 text-body underline" href="#login">Back to Login</a>
+        </div>
+      {% endform %}
+    </div>
+
+    <div class="max-w-custom mx-auto" id="login" style="--width: 440px;">
+      <div class="customer-gate__container">
+
+        {% if recover_success == true %}
+          <p class="mb-20 text-caption">An email will be sent to you shortly to reset.</p>
+        {% endif %}
+
+        {% form 'customer_login', novalidate: 'novalidate' %}
+         
+          <div class="mb-30">  
+            <label class="field__label" for="CustomerEmail">Email</label>      
+            <input
+              type="email"
+              class="field__input"
+              name="customer[email]"
+              id="CustomerEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.email' | t }}"
+            >
+          </div>
+
+          {% if form.password_needed %}
+            <div class="mb-30">         
+              <label class="field__label" for="CustomerPassword">Password</label> 
+              <input
+                type="password"
+                class="field__input"
+                value=""
+                name="customer[password]"
+                id="CustomerPassword"
+                autocomplete="current-password"
+                {% if form.errors contains 'form' %}
+                  aria-invalid="true"
+                {% endif %}
+                placeholder="{{ 'customer.login_page.password' | t }}"
+              >
+
+              {% if form.errors %}
+                <div class="mt-10 text-body-1 text-error">{{ form.errors | default_errors }}</div>
+              {% endif %}
+            </div>
+
+          {% endif %}
+
+          <button class="button button--bright w-full">Log In</button>
+
+          <div class="mt-30 flex flex-col justify-center items-center gap-20 md:mt-15 md:flex-row md:justify-between">
+            <a class="pb-10 text-body underline underline-offset-4" href="{{ routes.account_register_url }}">Create Account</a>
+            <a class="forgot-password pb-10 text-body underline underline-offset-4" href="#recover">Forgot Password?</a>
+          </div>
+          
+        {% endform %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Formatting */
+  #recover,
+  #login {
+    scroll-margin-top: 500px;
+  }
+
+  #recover {
+    display: none;
+  }
+
+  #recover:target {
+    display: block;
+  }
+
+  #recover:target + #login {
+    display: none;
+  }
+
+  #login:target {
+    display: block;
+  }
+
+  #rc_login {
+    display: none !important;
+  }
+</style>

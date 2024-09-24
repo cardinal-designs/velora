@@ -1,0 +1,102 @@
+<script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
+
+<div class="faq mb-60 page-width block gap-40 md:mt-0 md:mb-100 md:flex md:gap-100 lg:gap-150">
+  <div class="faq-navigation -mx-20 px-20 py-10 sticky top-[92px] bg-white border-b-1 border-black md:m-0 md:pt-80 md:px-0 md:pb-0 md:border-0">
+    <div class="flex justify-center gap-30 md:block md:sticky md:top-[120px] md:flex-shrink-0">
+      {% for block in section.blocks %}
+        {% if block.type == 'header' %}
+          <button class="faq-link block text-body opacity-40 transition-opacity hover:opacity-100 md:mb-25" data-section="{{ block.settings.title | handleize }}">
+            {{ block.settings.title }}
+          </button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="max-w-custom w-full" style="--width: 810px;">
+    {% assign is_first_faq = true %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'header' %}
+        <div class="faq-component" data-section="{{ block.settings.title | handleize }}" id="{{ block.settings.title | handleize }}">
+          <div class="pt-40 pb-20 text-m-h4 font-bold uppercase md:pt-80 md:text-h4">{{ block.settings.title }}</div>
+      {% endif %}
+
+      {% if block.type == 'faq_item' %}
+        <dropdown-item {{ block.shopify_attributes }}>
+          <div class="dropdown group border-b-1 border-black/10{% if is_first_faq %} border-t-1{% endif %}">
+            <button class="dropdown-header w-full py-20 flex justify-between items-center gap-20 text-left">
+              <p class="text-body font-bold">{{ block.settings.title }}</p>
+              <div class="w-10 transition-transform ease-in-out group-[.active]:rotate-180">
+                {% render 'icon' icon: 'caret' %}
+              </div>
+            </button>
+            <div class="dropdown-content hidden">
+              <div class="pb-20 text-body-2 [&_p]:mb-10 [&_a]:underline">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        </dropdown-item>
+
+        {% assign is_first_faq = false %}
+
+        {% if section.blocks[forloop.index].type == 'header' %}
+          </div>
+          {% assign is_first_faq = true %}
+        {% endif %}
+      {% endif %}
+
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "header",
+        "name": "Header",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "type": "faq_item",
+        "name": "FAQ Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question"
+          },
+          {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQs"
+      }
+    ]
+  }
+{% endschema %}

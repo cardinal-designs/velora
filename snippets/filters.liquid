@@ -1,0 +1,162 @@
+<script src="{{ 'filters.js' | asset_url }}" defer="defer"></script>
+
+{% liquid
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign total_active_values = 0
+  if collection.url
+    assign results_url = collection.url
+  else 
+    assign terms = collection.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+%}
+
+{% for filter in collection.filters %}
+  {% assign total_active_values = total_active_values | plus: filter.active_values.size %}
+{% endfor %}
+
+<collection-filters class="collection-filters block relative" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
+
+  <div class="flex justify-between items-center gap-40">
+    <div class="flex items-center gap-20 lg:gap-40">
+      <button class="js-open-filters flex items-center gap-10 text-body">
+        Filter
+        <span class="-rotate-90">
+          {% render 'icon' icon: 'caret' %}
+        </span>
+      </button>
+
+      <div class="filters-slideout max-w-full w-full h-full fixed top-0 left-0 overflow-hidden bg-white -translate-x-full transition-transform ease-in-out z-top aria-unhidden:translate-x-0 md:max-w-custom" style="--width: 440px;" aria-hidden="true">
+        <form class="filters-form h-full flex flex-col">
+          {% if is_search %}
+            <input type="hidden" name="q" value="{{ collection.terms | escape }}">
+            <input name="options[prefix]" type="hidden" value="last">
+          {% endif %}
+
+
+          <div class="mx-20 py-20 flex justify-between items-center gap-10 border-b-1 border-black">
+            <h2 class="js-open-filters text-m-h4 font-bold md:text-h4">Filters</h2>
+            <button class="js-close-filters text-body">{% render 'icon' icon: 'close' %}</button>
+          </div>
+
+          <div class="h-full flex flex-col overflow-y-scroll md:pb-0 md:overflow-y-auto">
+
+            <div class="w-full h-full px-20 flex flex-col overflow-y-scroll" id="filter-dropdowns">
+
+            <div id="active-filters-slideout">
+              {% if total_active_values > 0 %}
+                <div class="my-10 flex gap-10">
+                  {% for filter in collection.filters %}
+                    {% for value in filter.active_values %}
+                      <button class="remove-filter px-10 py-5 flex flex-wrap items-center gap-5 text-body border-1 border-black" data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                        {{ value.label | escape }}
+                        <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                          {% render 'icon' icon: 'close' %}
+                        </div>
+                      </button>
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+              {% for filter in collection.filters %}
+              
+                {% assign downcase_filter = filter.label | downcase %}
+                <div class="dropdown border-b-1 border-black">
+                  <button class="group/button peer filter-dropdown dropdown-header w-full py-10 flex justify-between items-center gap-10 text-body{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
+                    <span class="filter-label">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
+                    <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+                      {% render 'icon' icon: 'caret' %}
+                    </span>
+                  </button>
+                  <div class="filter-dropdown__content dropdown-content hidden peer-[.active]:block">
+                    <div class="filter-dropdown__content-container pb-10 flex flex-col gap-10" id="collection-filter-{{ filter.param_name | escape }}">
+                      {% for value in filter.values %}
+                        <div class="relative flex items-center cursor-pointer">
+                          <input type="checkbox"
+                            class="filter-button peer visually-hidden"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            data-filter="{{ value.param_name }}-{{ value.value }}"
+                            id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                            {% if value.active %}checked{% endif %}
+                          >
+                          <div class="h-15 w-15 border-1 border-black transition-colors peer-checked:bg-black"></div>
+                          <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="pl-10 text-body cursor-pointer{% if value.count == 0 and value.active == false %} opacity-50{% endif %}">
+                            {{ value.label | escape }}
+                          </label>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              
+              {% endfor %}
+            </div>
+
+            <div class="px-20 pb-20 grid grid-cols-2 gap-20 bg-white">
+              <button class="js-close-filters button w-full">Apply</button>
+              <button class="js-clear-all-filters button w-full">Clear</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+    <form class="sort-form relative">
+      <div class="dropdown">
+        <button class="dropdown-header dropdown-header-sort group/button peer py-20 flex justify-between items-center gap-10 text-body">
+          Sort 
+          <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+            {% render 'icon' icon: 'caret' %}
+          </span>
+        </button>
+        <div class="dropdown-content min-w-[215px] absolute right-0 bg-white z-30 hidden peer-[.active]:block">
+          <div class="p-20 flex flex-col gap-10">
+            {% for option in collection.sort_options %}
+              {% liquid
+                assign is_active = false
+                if option.value == collection.sort_by
+                  assign is_active = true
+                endif
+              %}
+              <div class="flex items-center gap-10 cursor-pointer relative">
+                <input type="radio"
+                  class="sort-button peer visually-hidden"
+                  name="sort_by"
+                  value="{{ option.value }}"
+                  id="Sort-{{ forloop.index }}"
+                  {% if is_active %}checked{% endif %}
+                >
+                <div class="h-15 w-15 border-1 border-black transition-colors peer-checked:bg-black"></div>
+                <label for="Sort-{{ forloop.index }}" class="text-body font-medium cursor-pointer">
+                  {{ option.name }}
+                </label>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="active-filters">
+    {% if total_active_values > 0 %}
+      <div class="mb-20 flex gap-10">
+        {% for filter in collection.filters %}
+          {% for value in filter.active_values %}
+            <button class="remove-filter px-10 py-5 flex flex-wrap items-center gap-5 text-body border-1 border-black" data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+              {{ value.label | escape }}
+              <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                {% render 'icon' icon: 'close' %}
+              </div>
+            </button>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</collection-filters>

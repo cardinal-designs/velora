@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "form": {
+      "type": "main-contact",
+      "settings": {
+        "title": "Contact Us",
+        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "form"
+  ]
+}

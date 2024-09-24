@@ -1,0 +1,51 @@
+{% comment %}
+    Renders a product card
+
+    Accepts:
+    - product_card_product: {Object} Product Liquid object
+
+    Usage:
+    {% render 'product-card', product_card_product: product %}
+{% endcomment %}
+
+{% liquid 
+  assign split_product_title = product_card_product.title | split: "-"
+%}
+
+<div class="group/card block relative">
+  <div class="group/image block relative aspect-square overflow-hidden">
+    {% if product_card_product.featured_image != blank %}
+      {{ product_card_product.featured_image | image_url: width: 700 | image_tag: width: product_card_product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover realtive' }}
+      {% if product_card_product.images[1] != blank %}
+        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity group-hover/image:opacity-100' }}
+      {% endif %}
+    {% else %}
+      <div class="w-full h-full bg-brown"> </div>
+    {% endif %}
+
+    <div class="top-0 left-0 absolute w-full h-full border-30 border-blue" class="absolute w-full h-full"> </div>
+
+    <a href="{{ product_card_product.url }}"> </a>
+  </div>
+
+  <div class="mt-[22px]">
+    <div class="flex flex-row justify-between items-center">
+      <div class="flex flex-col justify-start items-start">
+        <a href="{{ product_card_product.url }}" class="text-caption leading-[30px]">
+          {{ split_product_title[0] }}
+        </a>
+        {% if split_product_title[1] != blank  %}
+          <a href="{{ product_card_product.url }}" class="text-h7">
+            {{ split_product_title[1] }}
+          </a>
+        {% endif %}
+      </div>
+      <p class="price flex items-center gap-5 text-body">
+        {{ product_card_product.price | money }}
+        {% if product_card_product.compare_at_price > product_card_product.price %}
+          <span class="line-through opacity-50">{{ product_card_product.compare_at_price | money }}</span>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</div>

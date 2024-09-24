@@ -1,0 +1,87 @@
+<div class="page-width my-60 md:my-80">
+  <div class="max-w-custom w-full mx-auto" style="--width: 800px;">
+    <div class="mb-40 text-center">
+      <h1 class="text-m-h3 font-header md:text-h3">{{ section.settings.title }}</h1>
+      {% if section.settings.text != blank %}
+        <div class="rte max-w-custom w-full mt-10 mx-auto text-m-body text-center md:text-body" style="--width: 345px;">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+    {% form 'contact', id: 'ContactForm' %}
+
+      <div class="mb-30 grid gap-30 md:grid-cols-2 md:gap-20">
+
+        <div>
+          <label class="field__label" for="ContactForm-name">Name</label>
+          <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
+        </div>
+
+        <div>
+          <label class="field__label" for="ContactForm-email">Email</label>
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+          >
+        </div>
+      </div>
+
+      <div class="mb-30">
+        <label class="field__label" for="ContactForm-phone">Phone Number</label>
+        <input type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
+      </div>
+
+      <div class="mb-30">
+        <label class="form__label field__label" for="ContactForm-body">Message</label>
+        <textarea
+          rows="7"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+        >
+          {{- form.body -}}
+        </textarea>
+
+        {% if form.posted_successfully? %}
+          <div class="mt-10 text-body" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+        {% elsif form.errors %}
+          <div class="mt-10 text-body text-error">{{ form.errors | default_errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="max-w-custom w-full mx-auto" style="--width: 440px;">
+        <button type="submit" class="button w-full">Submit</button>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Contact Us"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ]
+}
+{% endschema %}

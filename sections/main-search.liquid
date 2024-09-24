@@ -1,0 +1,101 @@
+{% if search.performed %}
+  <div class="page-width">
+    <div class="mb-20 py-30 px-20 bg-cream md:p-40">
+      <h1 class="mb-30 text-m-h4 font-bold text-center md:text-h4">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
+      
+      {% if search.results.size == 0 %}
+        <p class="max-w-custom w-full mx-auto mb-30 text-body text-center" style="--width: 375px;">There are no results. Please check your spelling or try a broader search. Try shopping by brand.</p>
+      {% endif %}
+      
+      <div class="max-w-custom w-full mx-auto" style="--width: 275px;">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
+          <input type="hidden" name="type" value="product">
+          <input type="hidden" name="options[prefix]" value="last">
+          <div class="flex justify-between border-b-1 border-black">
+            <input class="w-full pb-5 text-body bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+            <button type="submit" class="flex items-center">
+              {% render 'icon' icon: 'search' %}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    {% unless search.results.size == 0 %}
+      <div class="border-t-1 border-black">
+        {% render 'filters' collection: search, is_search: true %}
+      </div>
+    {% endunless %}
+
+    <div id="product-grid">
+      {% paginate search.results by 16 %}
+        {% if search.results.size == 0 %}
+          <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
+            <div class="loading-overlay"></div>
+            <div class="text-center">
+              <p class="mb-20 text-body">No products found.</p>
+              <a href="{{ routes.search_url }}" class="button">Clear Filters</a>
+            </div>
+          </div>
+        {% else %}
+          <div class="collection mb-50">
+            <div class="loading-overlay"></div>
+
+            <ul data-id="{{ section.id }}" class="grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40 md:grid-cols-3 lg:grid-cols-4">
+              {% for product in search.results %}
+                <li class="product-grid__item" data-fade-in-up>
+                  {% render 'product-card' product_card_product: product, add_spacing: true %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            {% if paginate.pages > 1 %}
+              {% render 'pagination', paginate: paginate, anchor: '' %}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    </div>
+  </div>
+{% else %}
+  <div class="page-width mb-20 md:mb-40">
+    <div class="pt-80 pb-120 px-20 md:py-100 md:px-40">
+      <div class="max-w-custom w-full mx-auto" style="--width: 375px;">
+        <h1 class="mb-50 text-m-h4 font-bold text-center md:text-h4">Search</h1>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
+          <input type="hidden" name="type" value="product">
+          <input type="hidden" name="options[prefix]" value="last">
+          <div class="flex justify-between border-b-1 border-black">
+            <input class="w-full pb-5 text-body bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+            <div class="flex items-center">
+              {% render 'icon' icon: 'search' %}
+            </div>
+          </div>
+          <button type="submit" class="button button--black w-full mt-30 md:mt-40" aria-label="{{ 'general.search.search' | t }}">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "text",
+        "id": "collection_title",
+        "label": "Recommended Products Title",
+        "default": "You Might Like"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Recommended Products Collection"
+      }
+    ]
+  }
+{% endschema %}

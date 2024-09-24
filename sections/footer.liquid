@@ -1,0 +1,138 @@
+<footer class="footer pt-60 border-t-1 border-black md:pt-80">
+  <div class="page-width">
+    <div class="md:flex md:justify-between">
+
+      <div class="flex flex-col gap-40 md:flex-row md:gap-60 lg:gap-100">
+        {% if section.settings.logo != blank %}
+          <a href="{{ routes.root_url }}" class="w-[115px] block" aria-label="Header Logo Link">
+            {{ section.settings.logo | image_url: width: 200 | image_tag: width: section.settings.logo.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
+          </a>
+        {% endif %}
+
+        <div class="grid grid-cols-2 gap-x-20 gap-y-40 md:flex md:gap-100">
+          {% for link in section.settings.menu.links %}
+            <div>
+              <h2 class="mb-20 text-body font-bold">{{ link.title }}</h2>
+              <ul class="flex flex-col gap-5 md:gap-15">
+                {% for child_link in link.links %}
+                  <li>
+                    <a href="{{ child_link.url }}" class="text-body underline-offset-2 hover:underline{% if child_link.active %} active{% endif %}">
+                      {{ child_link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+
+      <div class="mt-50 mb-25 flex justify-end row-start-2 md:row-start-auto md:m-0">
+        <div class="max-w-full w-full md:max-w-custom" style="--width: 375px;">
+          {% if section.settings.newsletter_title != blank %}
+            <p class="mb-20 text-body font-bold">{{ section.settings.newsletter_title }}</p>
+          {% endif %}
+          {% if section.settings.newsletter_text != blank %}
+            <p class="mb-30 text-body">{{ section.settings.newsletter_text }}</p>
+          {% endif %}
+
+          {% form 'customer', id: 'ContactFooter', class: '' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="flex">
+              <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
+                {{ 'newsletter.label' | t }}
+              </label>
+              <input
+                class="w-full h-auto px-15 text-body border-1 border-black placeholder:text-black/20"
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="ContactFooter-error"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="ContactFooter-success"
+                {% endif %}
+                placeholder="Enter Email"
+                required
+              >
+              <button type="submit" class="button" name="commit" aria-label="Submit">
+                Submit
+              </button>
+            </div>
+            {% if form.errors %}
+              <p class="newsletter-form__message form__message text-body-2" id="ContactFooter-error">{{ form.errors.messages['email'] }}</p>
+            {% endif %}
+            {% if form.posted_successfully? %}
+              <p class="newsletter-form__message newsletter-form__message--success form__message text-body-2" id="ContactFooter-success" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
+            {% endif %}
+          {% endform %}
+
+          <div class="mt-30">
+            {% render 'social' %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-60 pb-20 px-10 text-center md:mt-100 md:flex md:justify-between md:items-center md:gap-40">
+      <div class="flex items-center gap-x-20 gap-y-5 flex-wrap justify-center md:gap-40 md:flex-nowrap md:justify-start">
+        <p class="w-full text-m-body md:w-auto md:text-body">&copy; Cardinal {{ 'now' | date: "%Y" }}</p>
+        <a href="/pages/terms-conditions" class="text-m-body hover:underline md:text-body">Terms & Conditions</a>
+        <a href="/pages/privacy-policy" class="text-m-body hover:underline md:text-body">Privacy Policy</a>
+      </div>
+      <button href="js-open-credits" class="text-m-body hover:underline md:text-body">Site Credits</button>
+    </div>
+  </div>
+
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "Sign Up"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter Text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ]
+}
+{% endschema %}

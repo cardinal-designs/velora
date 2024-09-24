@@ -1,0 +1,74 @@
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+<div class="page-width mt-30 mb-60 md:mt-60 md:mb-100">
+  <div class="mb-10 text-center md:mb-30">
+    <h1 class="text-m-h2 font-bold md:text-h2">Cart</h1>
+  </div>
+
+  <cart-items id="main-cart-items" class="max-w-custom mx-auto group{% if cart == empty %} is-empty{% endif %} block" style="--width: 900px;">
+
+    <div class="mt-40 hidden group-[.is-empty]:block text-center">
+      <p class="mb-20 text-body">{{ 'sections.cart.empty' | t }}</p>
+      <a href="{{ settings.shop_all_link }}" class="button">Continue Shopping</a>
+    </div>
+
+    <div class="block border-t-1 border-black group-[.is-empty]:hidden">
+      <form
+        action="{{ routes.cart_url }}"
+        class="cart__contents critical-hidden"
+        method="post"
+        id="cart">
+        <div
+          class="cart__items"
+          data-id="{{ section.id }}">
+          <div class="js-contents-main">
+            {% if cart != empty %}
+              {% for item in cart.items %}
+                <div class="border-b-1 border-black">
+                  {% render 'cart-item' item: item, idx: forloop.index, is_cart: true %}
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </form>
+
+      <div class="mt-10 block justify-end gap-40 md:flex">
+        <div class="w-full block justify-end gap-40 md:flex">
+        
+          <div class="max-w-full w-full mt-20 md:max-w-custom" style="--width: 440px;">
+
+            <div class="flex justify-between items-center gap-20">
+              <p class="text-m-h5 md:text-h5">Total</p>
+              <p class="text-m-h5 md:text-h5">{{ cart.total_price | money }}</p>
+            </div>
+
+            <div class="mt-15">
+              <noscript>
+                <button type="submit" class="cart__update-button w-full button button--secondary" form="cart">
+                  {{ 'sections.cart.update' | t }}
+                </button>
+              </noscript>
+
+              <button type="submit" id="checkout" class="cart__checkout-button w-full button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                Checkout
+              </button>
+
+              <p class="mt-10 text-body text-center">Shipping & taxes calculated at checkout.</p>
+            </div>
+
+          <div id="cart-errors"></div>
+        </div>
+      </div>
+    </div>
+  </cart-items>
+</div>
+
+{% schema %}
+  {
+    "name": "Cart",
+    "settings": [
+
+    ]
+  }
+{% endschema %}

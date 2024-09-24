@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: antialiased;
+      scrollbar-gutter: stable;
+      @apply font-oracle;
+    }
+  
+    body {
+      scrollbar-width: thin;
+      scrollbar-gutter: stable;
+      @apply bg-[var(--background)] text-[var(--text)];
+    }
+  
+    html,
+    body {
+        scroll-padding-top: calc(var(--main-nav-height) + var(--announcement-bar-height)); /* set to the height of your header */
+    }
+    
+    .no-js:not(html) {
+      display: none !important;
+    }
+  
+    .page-width {
+      @apply w-full max-w-1440 mx-auto px-10 md:px-30 lg:px-60;
+    }
+  
+    .page-width-fluid {
+      @apply w-full mx-auto px-20 md:px-30;
+    }
+
+    hr {
+        @apply border-brown-light;
+    }
+
+    .h-inherit {
+      height: inherit;
+    }
+
+    .text-h1,
+    .text-h2,
+    .text-h3,
+    .text-h4,
+    .text-h5,
+    .text-h6,
+    .text-h7 {
+        @apply font-arizona-flare
+    }
+
+    .text-body,
+    .text-body-1,
+    .text-body-2,
+    .text-body-3 {
+        @apply font-oracle;
+    }
+
+    .text-caption,
+    .text-caption-1,
+    .text-caption-2,
+    .text-caption-3,
+    .text-caption-4 {
+        @apply font-pangram uppercase font-semibold;
+    }
+  }
+
+  @layer components {
+    .button {
+        @apply font-oracle text-body-2 leading-[30px]
+        px-20 py-[4px]
+        rounded-[5px]
+        border
+        bg-[var(--button)] border-[var(--button)] text-[var(--button\_text)]
+        md:hover:bg-[var(--button\_text)] md:hover:text-[var(--button)] md:hover:border-[var(--button)];
+    }
+
+    .button--outline {
+        @apply border
+        bg-[var(--button\_text)] border-[var(--button)] text-[var(--button)]
+        md:hover:bg-[var(--button)] md:hover:text-[var(--button\_text)] md:hover:border-[var(--button\_text)];
+    }
+
+    .button--large {
+        @apply w-full max-w-[381px] py-[16px] rounded-[10px]
+    }
+
+    .text-link {
+        @apply relative overflow-x-clip
+        before:absolute before:content-[""] before:w-full before:h-[1px] before:bg-brown before:left-0 before:top-full
+        after:absolute after:content-[""] after:w-full after:h-[2.5px] after:bg-blue after:left-0 after:top-full after:-translate-x-full after:transition-transform
+        hover:after:translate-x-0
+    }
+
+    .bullet-link {
+        @apply relative
+        after:absolute after:content-[""] after:rounded-full after:w-[7px] after:h-[7px] after:bg-brown after:left-0 after:top-half after:-translate-x-half after:-translate-y-half after:opacity-0 after:transition-opacity
+        hover:after:opacity-100
+    }
+
+    .svg-link {
+        @apply [&_svg_circle]:fill-transparent [&:hover_svg_circle]:fill-brown [&_svg_circle]:transition-[fill]
+    }
+
+  }
+
+  @layer utilities {
+    .inset {
+      @apply absolute top-0 right-0 bottom-0 left-0;
+    }
+  
+    .rte {
+      @apply [&_ul]:pl-15 [&_strong]:font-medium [&_ul]:list-disc [&_a]:underline [&_p]:mb-20 [&_p:last-child]:mb-0;
+    }
+  
+    .visually-hidden {
+      clip: rect(0 0 0 0);
+      @apply absolute overflow-hidden w-px h-px -m-px;
+    }
+  
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .skip-to-content-link:focus {
+      @apply z-top overflow-auto w-auto h-auto;
+      clip: rect(0 0 0 0);
+    }
+  
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number'] {
+      -webkit-appearance: none;
+      margin: 0;
+      -moz-appearance: textfield !important;
+    }
+  }
+  

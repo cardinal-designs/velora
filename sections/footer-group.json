@@ -1,0 +1,18 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "logo": "shopify:\/\/shop_images\/cardinal-logo.svg",
+        "menu": "footer",
+        "newsletter_title": "Sign Up",
+        "newsletter_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

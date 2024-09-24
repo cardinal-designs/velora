@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "page_header_KUti4x": {
+      "type": "page-header",
+      "settings": {
+        "title": ""
+      }
+    },
+    "main": {
+      "type": "main-faq",
+      "blocks": {
+        "header_qbLBpq": {
+          "type": "header",
+          "settings": {
+            "title": "Products"
+          }
+        },
+        "faq_item_qAed64": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_HtLdpX": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_rBX9eF": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "header_EbAj6B": {
+          "type": "header",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "faq_item_j8KLhA": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_mfbFg6": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_jBFBJU": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": ""
+          }
+        },
+        "header_yzNY7X": {
+          "type": "header",
+          "settings": {
+            "title": "Returns"
+          }
+        },
+        "faq_item_wC39gw": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_QcwCHb": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_rTadrx": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "header_qbLBpq",
+        "faq_item_qAed64",
+        "faq_item_HtLdpX",
+        "faq_item_rBX9eF",
+        "header_EbAj6B",
+        "faq_item_j8KLhA",
+        "faq_item_mfbFg6",
+        "faq_item_jBFBJU",
+        "header_yzNY7X",
+        "faq_item_wC39gw",
+        "faq_item_QcwCHb",
+        "faq_item_rTadrx"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "page_header_KUti4x",
+    "main"
+  ]
+}

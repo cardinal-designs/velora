@@ -1,0 +1,58 @@
+{
+  "current": {
+    "social_twitter_link": "https:\/\/twitter.com\/shopify",
+    "social_facebook_link": "https:\/\/facebook.com\/shopify",
+    "social_pinterest_link": "https:\/\/pinterest.com\/shopify",
+    "social_instagram_link": "http:\/\/instagram.com\/shopify",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "Free shipping over $100",
+          "link": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "538678ad-e47e-4c77-816c-a4e84399e585": {
+            "type": "mega_menu",
+            "settings": {
+              "title": "Home"
+            }
+          }
+        },
+        "block_order": [
+          "538678ad-e47e-4c77-816c-a4e84399e585"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Vector.png",
+          "menu": "main-menu"
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "newsletter_title": "Newsletter",
+          "newsletter_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+      },
+      "mobile-menu": {
+        "type": "mobile-menu",
+        "settings": {
+          "menu": "main-menu"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
+  "presets": {
+  }
+}

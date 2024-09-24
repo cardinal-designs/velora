@@ -1,0 +1,57 @@
+{% render 'account-header' title: 'Activate Account' %}
+
+<div class="mt-40 mb-60 md:mt-60">
+  <div class="page-width">
+
+    <div class="max-w-custom mx-auto" style="--width: 440px;">
+      <p class="max-w-custom mx-auto mb-30 text-m-body text-center md:text-body" style="--width: 320px;">{{ 'customer.activate_account.subtext' | t }}</p>
+
+      {% form 'activate_customer_password' %}
+
+        <div class="mb-20">    
+          <label class="field__label" for="password">
+            {{ 'customer.activate_account.password' | t }}
+          </label> 
+          <input
+            class="field__input"
+            type="password"
+            name="customer[password]"
+            id="password"
+            autocomplete="new-password"
+            placeholder="{{ 'customer.activate_account.password' | t }}"
+            {% if form.errors contains 'password' %}
+              aria-invalid="true"
+              aria-describedby="password-error"
+            {% endif %}
+          >
+        </div>
+
+        <div class="mb-20"> 
+          <label class="field__label" for="password_confirmation">
+            {{ 'customer.activate_account.password_confirm' | t }}
+          </label>    
+          <input
+          class="field__input"
+            type="password"
+            name="customer[password_confirmation]"
+            id="password_confirmation"
+            autocomplete="new-password"
+            placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+            {% if form.errors contains 'password' %}
+              aria-invalid="true"
+              aria-describedby="password_confirmation-error"
+            {% endif %}
+          >
+
+          {% if form.errors %}
+            <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+          {% endif %}
+        </div>
+
+        <button class="mb-20 button w-full block">Submit</button>
+        <button class="pb-10 text-sh5 font-subheader font-bold uppercase underline underline-offset-4" name="decline">Cancel</button>
+
+      {% endform %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+{% render 'account-header' title: 'Orders' %}
+
+<div class="page-width">
+  <div class="pb-80 flex flex-col justify-between gap-20 md:pt-80 md:pb-100 md:flex-row md:gap-0">
+    <div class="w-full border-b-1 border-black/10 md:border-b-0 md:max-w-custom" style="--width: 300px;">
+      <button class="mobile-button group w-full py-20 flex justify-center items-center gap-10 text-body md:hidden md:text-btn">
+        <span class="text">Addresses</span>
+        <span class="transition-transform ease-in-out group-[.active]:rotate-180">
+          {% render 'icon' icon: 'caret' %}
+        </span>
+      </button>
+      <div class="mobile-dropdown hidden md:block">
+        <div class="flex flex-col items-center gap-20 md:items-start">
+          <a href="{{ routes.account_url }}" class="block account-navigation-button text-body whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity text-left md:p-0" data-tab="addresses">Addresses</a>
+          <button class="account-navigation-button text-body whitespace-nowrap hover:opacity-100 transition-opacity text-left" data-tab="orders">Orders</button>
+          <a href="{{ routes.account_logout_url }}" class="pb-15 block text-body whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity md:p-0">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="{{ routes.account_url }}" class="py-20 flex items-center gap-10 border-b-1 border-black/10 md:hidden">
+      <div class="rotate-90">{% render 'icon' icon: 'caret' %}</div>
+      <div class="text-body font-bold">{{ 'customer.order.title' | t: name: order.name }}</div>
+    </a>
+
+    <div class="w-full">
+
+      <div class="w-full md:grid md:grid-cols-[1fr_260px] md:gap-80">
+        <div class="">
+          <h2 class="mb-20 text-body font-bold">{{ 'customer.order.title' | t: name: order.name }}</h2>
+
+          {% assign order_date = order.created_at | time_tag: format: "date_at_time" %}
+          <p class="mb-20 text-body-">{{ 'customer.order.date_html' | t: date: order_date }}</p>
+
+          {% if order.cancelled %}
+            {% assign cancelled_at = order.cancelled_at | time_tag: format: "date_at_time" %}
+            <div class="mb-20">
+              <p class="text-body-">{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
+              <p class="mt-10 text-m-body">{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
+            </div>
+          {% endif %}
+    
+          <div class="">
+            <div class="py-20 border-t-1 border-black/10">
+              {% for line_item in order.line_items %}
+                <div class="flex gap-10 last:pb-0 md:gap-20">
+                  <div class="w-[60px] relative flex-shrink-0">
+                    {{ line_item.image | image_url: width: 200 | image_tag: preload: true, width: section.settings.image.width, sizes: '200', widths: '200, 300', class: 'aspect-product object-cover' }}
+                  </div>
+                  <div class="w-full">
+                    <div class="flex justify-between gap-20">
+                      <p class="mb-5 text-body-">{{ line_item.product.title }}</p>
+                      <p class="mb-5 text-body-">{{ line_item.price | money }}</p>
+                    </div>
+                    <div class="text-body opacity-50">
+                      {% if line_item.product.has_only_default_variant == false %}
+                        {% for option in line_item.options_with_values %}
+                          <p class="">
+                            {{ option.name }}:
+                            {{ option.value }}
+                          </p>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                    <p class="mt-15 text-body">Qty: {{ line_item.quantity }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="border-t-1 border-black/10">
+              {% if order.cart_level_discount_applications != blank %}
+                {% for discount_application in order.cart_level_discount_applications %}
+                  <div class="py-20 flex justify-between border-b-1 border-black/10">
+                    <p class="text-body-">{{- discount_application.title -}}</p>
+                    <p class="text-body-">-{{ discount_application.total_allocated_amount | money }}</p>
+                  </div>
+                {% endfor %}
+              {% endif %}
+              {% for shipping_method in order.shipping_methods %}
+                <div class="py-20 flex justify-between border-b-1 border-black/10">
+                  <p class="text-body-">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</p>
+                  <p class="text-body-">{{ shipping_method.price | money }}</p>
+                </div>
+              {% endfor %}
+              {% for tax_line in order.tax_lines %}
+                <div class="py-20 flex justify-between border-b-1 border-black/10">
+                  <p class="text-body-">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</p>
+                  <p class="text-body-">{{ tax_line.price | money }}</p>
+                </div>
+              {% endfor %}
+              <div class="py-20 flex justify-between border-b-1 border-black/10">
+                <p class="text-body-">Total</p>
+                <p class="text-body-">{{ order.total_price | money_with_currency }}</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="{{ routes.account_url }}" class="mt-20 hidden text-body font-bold underline underline-offset-4 md:block">Return to Account</a>
+        </div>
+
+        <div class="mt-30 md:mt-0">
+          <div class="order-detail__billing">
+            <h2 class="mb-10 text-body font-bold md:mb-20 md:pb-20 md:border-b-1 md:border-black/10">Billing Address</h2>
+            <div class="text-body-">
+              {{ order.billing_address | format_address }}
+            </div>
+          </div>
+          <div class="mt-30 order-detail__shipping">
+            <h2 class="mb-10 text-body font-bold md:mb-20 md:pb-20 md:border-b-1 md:border-black/10">Shipping Address</h2>
+            <div class="text-body-">
+              {{ order.shipping_address | format_address }}
+            </div>
+          </div>
+
+          <div class="mt-30 pb-20 border-b-1 border-black/10 md:pt-20 md:pb-0 md:border-t-1 md:border-b-0">
+            <p class="mb-20 text-body font-bold">Payment Status: {{ order.financial_status_label }}</p>
+            <p class="text-body font-bold">Fufillment Status: {{ order.fulfillment_status_label }}</p>
+          </div>
+  
+          <a href="{{ routes.account_url }}" class="mt-20 block text-body font-bold underline md:hidden">Return to Account</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

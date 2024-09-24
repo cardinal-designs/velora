@@ -1,0 +1,24 @@
+{% comment %}
+    Renders an article card for a given blog.
+
+    Accepts:
+    - blog: {Object} Blog object
+    - article: {Object} Article object
+
+    Usage:
+    {% render 'article-card' blog: blog, article: article %}
+{% endcomment %}
+
+<div class="article-card">
+  <a href="{{ article.url }}">
+    <div class="w-full pb-half relative overflow-hidden">
+      {{ article.image | image_url: width: article.image.width | image_tag: class: 'w-full h-full inset object-fit', sizes: '600px', widths: '180, 360, 540, 720' }}
+    </div>
+  </a>
+  <div class="pt-15">
+    <p class="text-body">{{ article.published_at | time_tag: format: 'date' }}</p>
+    <a href="{{ article.url }}">
+      <h3 class="text-m-h5 md:text-h5">{{ article.title }}</h3>
+    </a>
+  </div>
+</div>

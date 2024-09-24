@@ -1,0 +1,56 @@
+{% liquid
+  for filter in collection.filters
+    assign total_active_values = total_active_values | plus: filter.active_values.size
+  endfor
+%}
+
+<div class="page-width">
+  <div class="py-10 border-b-1 border-black">
+    <p class="text-body opacity-60">
+      <a href="{{ settings.shop_all_link }}">Shop</a> > 
+      <span>{{ collection.title }}</span>
+    </p>
+    <h1 class="mt-20 text-m-h2 font-bold md:mt-60 md:text-h2">{{ collection.title }}</h1>
+  </div>
+
+  {% render 'filters' %}
+
+  <div id="product-grid">
+    {% paginate collection.products by 2 %}
+      {% if collection.products.size == 0 %}
+        <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
+          <div class="loading-overlay"></div>
+          <div class="text-center">
+            <p class="mb-20 text-body">No products found.</p>
+            <a href="{{ collection.url }}" class="button">Clear Filters</a>
+          </div>
+        </div>
+      {% else %}
+        <div class="collection mb-50">
+          <div class="loading-overlay"></div>
+
+          <ul data-id="{{ section.id }}" class="grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40 md:grid-cols-3 lg:grid-cols-4">
+            {% for product in collection.products %}
+              <li class="product-grid-item" data-fade-in-up>
+                {% render 'product-card' product_card_product: product %}
+              </li>
+            {% endfor %}
+          </ul>
+
+          {% if paginate.pages > 1 %}
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+
+  ]
+}
+{% endschema %}

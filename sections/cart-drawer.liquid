@@ -1,0 +1,87 @@
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+
+<cart-drawer>
+  <div class="cart-drawer max-w-custom w-full h-[100dvh] fixed top-0 right-0 bg-white z-top translate-x-full transition-transform ease-in-out aria-unhidden:translate-x-0" style="--width: 440px;" id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
+    <form id="cart-drawer__form" action="{{ routes.cart_url }}" method="post" class="h-full">
+
+      <div id="cart-drawer__inner" class="h-full flex flex-col" data-id="{{ section.id }}">
+        <div class="sticky top-0 p-20 text-center border-b-1 border-black">
+
+          <div class="flex justify-between items-center">
+            <h2 class="text-m-h4 md:text-h4">Cart</h2>
+            <button type="button" class="js-close-cart" aria-label="Close cart drawer">
+              {% render 'icon' icon: 'close' %}
+            </button>
+          </div>
+
+          <div id="cart-drawer__shipping-bar">
+            {% if settings.enable_shipping_bar %}
+              {% assign threshold = settings.shipping_threshold | times: 1.0 %}
+              {% assign threshold_in_cents = threshold | times: 100.0 %}
+              {% assign remaining_amount = threshold_in_cents | minus: cart.total_price %}
+              {% assign percentage = cart.total_price | divided_by: threshold %}
+
+              {% if percentage > 100 %}
+                {% assign percentage = 100 %}
+              {% endif %}
+
+              <div class="pt-10">
+                {% if cart.total_price < threshold_in_cents %}
+                  <p class="text-body">Only {{ remaining_amount | money_without_trailing_zeros }} away from free shipping!</p>
+                {% else %}
+                  <p class="text-body">You have free shipping!</p>
+                {% endif %}
+                <div class="grid grid-cols-[45px_1fr_45px] items-center">
+                  <p class="text-m-body">$0</p>
+                  <div class="h-[6px] bg-black/10 relative">
+                    <div class="absolute top-0 left-0 bottom-0 bg-black" style="width: {{ percentage }}%;"></div>
+                  </div>
+                  <p class="text-m-body">${{ settings.shipping_threshold }}</p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if cart.items.size == 0 %}
+          <div class="w-full p-20 h-full flex flex-col justify-center text-center">
+            <p class="mb-30 text-sh1 ">Your cart is empty.</p>
+            <a href="{{ settings.shop_all_link }}" class="button w-full">Shop All</a>
+          </div>
+        {% else %}
+          <div id="cart-drawer-items" class="w-full h-full px-20 flex flex-col overflow-y-scroll">
+            {% for item in cart.items %}
+              <div class="{% unless forloop.last %}border-b-1 border-black{% endunless %}">
+                {% render 'cart-item' item: item, idx: forloop.index %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="w-full p-20 sticky bottom-0 bg-white border-t-1 border-black">
+          <div class="mb-15 flex justify-between items-center gap-20" id="cart-drawer-subtotal">
+            <p class="text-body">Subtotal</p>
+            <p class="text-body">{{ cart.total_price | money }}</p>
+          </div>
+          <button type="submit" class="w-full button" name="checkout" form="cart">Checkout</button>
+          <p class="mt-10 text-body text-center">Shipping & taxes calculated at checkout.</p>
+        </div>
+
+        <div id="cart-drawer-loading" class="hidden inset bg-white/40">
+          <div class="h-full w-full flex justify-center items-center">
+            {% render 'loading-spinner' %}
+          </div>
+        </div>
+      </div>
+    </form> 
+  </div>
+</cart-drawer>
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": [
+    
+  ]
+}
+{% endschema %}

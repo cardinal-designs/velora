@@ -1,0 +1,15 @@
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+{% render 'account-header' title: 'My Account' %}
+
+<div class="page-width">
+  <div class="adresses-page__container" data-customer-addresses>
+    {% render 'addresses' %}
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  }
+</script>

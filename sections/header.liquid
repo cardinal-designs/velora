@@ -1,0 +1,227 @@
+<header class="header bg-white border-b-1 border-black">
+  <div class="page-width">
+
+    <div class="grid grid-cols-thirds items-center gap-20">
+
+      <!-- Navigation -->
+      {% if section.settings.menu != blank %}
+        <nav class="flex">
+          <ul class="hidden items-center gap-30 md:flex" role="list">
+            {% for link in section.settings.menu.links %}
+              {% assign downcased_link_title = link.title | downcase | strip %}
+              {% assign mega_menu_names = '' %}
+
+              {% for block in section.blocks %}
+                {% if block.type == 'mega_menu' %}
+                  {% assign trim_mega_menu_name = block.settings.title | strip %}
+                  {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
+                {% endif %}
+              {% endfor %}
+
+              {% assign mega_menu_names = mega_menu_names | downcase | split: ',' | compact %}
+              
+              {% unless mega_menu_names contains downcased_link_title %}
+                <li class="group/nav">
+                  {% if link.links != blank %}
+                    <div class="peer flex items-center gap-10 py-20 text-body cursor-pointer relative">
+                      <span {% if link.child_active %} class="text-body"{% endif %}>{{ link.title | escape }}</span>
+                      <div class="transition-transform ease-in-out group-hover/nav:rotate-180">
+                        {% render 'icon' icon: 'caret' %}
+                      </div>
+                    </div>
+                    <ul class="min-w-[200px] pt-20 pr-20 pb-30 pl-30 flex flex-col gap-15 absolute top-full translate-x-[-30px] opacity-0 invisible bg-white group-hover/nav:opacity-100 group-hover/nav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
+                      {% for childlink in link.links %}
+                        <li>
+                          <a href="{{ childlink.url }}" class="text-body relative"{% if childlink.current %} aria-current="page"{% endif %}>
+                            {{ childlink.title | escape }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <a href="{{ link.url }}" class="py-20 block text-body relative"{% if link.current %} aria-current="page"{% endif %}>
+                      {{ link.title | escape }}
+                    </a>
+                  {% endif %}
+                </li>
+              {% else %}
+                <li class="group/nav">
+                  <a href="{{ link.url }}" class="py-20 flex items-center gap-10 text-body relative"{% if link.current %} aria-current="page"{% endif %}>
+                    {{ link.title | escape }}
+                    <div class="transition-transform origin-center ease-in-out group-hover/nav:rotate-180">
+                      {% render 'icon' icon: 'caret' %}
+                    </div>
+                  </a>
+
+                  {% for block in section.blocks %}
+                    {% assign trim_mega_menu_name = block.settings.title | strip %}
+                    {% assign downcased_mega_menu_name = trim_mega_menu_name | downcase %}
+                    {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
+                    
+                    {% if downcased_mega_menu_name == downcased_link_title %}
+                      <div class="w-full pt-60 pb-80 absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 bg-white border-b-1 border-black transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
+                        <div class="page-width">
+                          <div class="flex gap-100">
+                            {% for child_link in link.links %}
+                              <div class="">
+                                <h2 class="mb-25 text-body font-bold">{{ child_link.title }}</h2>
+                                <ul class="flex flex-col gap-15">
+                                  {% for grandchild_link in child_link.links %}
+                                    <li>
+                                      <a href="{{ grandchild_link.url }}" class="block text-body">{{ grandchild_link.title }}</a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </li>
+                {% endunless %}
+            {% endfor %}
+          </ul>
+
+          <button class="js-open-menu md:hidden">
+            {% render 'icon' icon: 'hamburger' %}
+          </button>
+        </nav>
+      {% endif %}
+
+      <!-- Logo -->
+      {% if section.settings.logo != blank %}
+        <a href="{{ routes.root_url }}" class="w-[115px] py-20 block md:py-0" aria-label="Header Logo Link">
+          {{ section.settings.logo | image_url: width: 200 | image_tag: width: section.settings.logo.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
+        </a>
+      {% else %}
+        <a href="{{ routes.root_url }}" class="py-10 text-m-h4 font-bold md:p-0 md:text-h4">{{ shop.name }}</a>
+      {% endif %}
+
+      <!-- Icons -->
+      <div class="flex justify-end items-center gap-30">
+        {% if shop.customer_accounts_enabled %}
+          <button class="hidden md:block">
+            {% render 'icon' icon: 'search' %}
+            <span class="visually-hidden">Search</span>
+          </button>
+        {% endif %}
+
+        {% if shop.customer_accounts_enabled %}
+          <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="hidden md:block">
+            {% render 'icon' icon: 'account' %}
+            <span class="visually-hidden">Account</span>
+          </a>
+        {% endif %}
+
+        {% if template != 'cart' %}
+          <button class="js-open-cart relative" id="cart-icon-bubble" aria-label="Open Cart Drawer" data-id="{{ section.id }}">
+            {% render 'icon' icon: 'cart' %}
+            <span class="visually-hidden">Cart</span>
+            {% if cart != empty %}
+              <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] right-[-6px] flex justify-center items-center text-[10px] bg-black text-white">
+                {{ cart.item_count }}
+              </div>
+            {% endif %}
+          </button>
+        {% else %}
+          <a href="{{ routes.cart_url }}" class="relative" id="cart-icon-bubble" data-id="{{ section.id }}">
+            {% render 'icon' icon: 'cart' %}
+            <span class="visually-hidden">Cart</span>
+            {% if cart != empty %}
+              <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] right-[-6px] flex justify-center items-center text-[10px] bg-black text-white">
+                {{ cart.item_count }}
+              </div>
+            {% endif %}
+          </a>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+</header>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append: 'x' %}
+      "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {{ potential_action_target | json }},
+      "query-input": "required name=search_term_string"
+    },
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu",
+      "name": "Mega Menu",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Config"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Menu Item",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

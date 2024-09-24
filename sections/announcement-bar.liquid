@@ -1,0 +1,27 @@
+<div class="py-5 text-center bg-black text-white">
+  <div class="page-width">
+    <p class="text-m-body md:text-body">{{ section.settings.text }}</p>
+  </div>
+  {% if section.settings.link != blank %}
+    <a href="{{ section.settings.link }}" class="inset"></a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "default": "Welcome to our store",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ]
+}
+{% endschema %}
