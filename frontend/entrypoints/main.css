@@ -141,5 +141,13 @@
       margin: 0;
       -moz-appearance: textfield !important;
     }
+
+    .swatch {
+        @apply outline outline-1 outline-transparent outline-offset-0 transition-["outline"]
+    }
+    .active-swatch {
+        @apply relative
+        outline outline-1 outline-brown outline-offset-4
+    }
   }
   

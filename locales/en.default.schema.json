@@ -1984,5 +1984,12 @@
         "name": "Video"
       }
     }
+  },
+  "locales": {
+    "products": {
+      "general": {
+        "color_swatch_trigger": "Color"
+      }
+    }
   }
 }

@@ -98,6 +98,9 @@
     "collection_title": "Your collection's name"
   },
   "products": {
+    "general": {
+      "color_swatch_trigger": "Finish",
+    },
     "product": {
       "add_to_cart": "Add to Cart",
       "description": "Description",
