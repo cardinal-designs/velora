@@ -446,8 +446,8 @@ MicroModal.init({
 });
 
 function setCSSVariables() {
-  const mainNav = document.querySelector("[id*=__header]")
-  const announcementBar = document.querySelector("[id*=__announcement]")
+  const mainNav = document.querySelector("[id*='__header']")
+  const announcementBar = document.querySelector("[id*='__announcement']")
   const footer = document.querySelector("footer")
 
   if(mainNav) {

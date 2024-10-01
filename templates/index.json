@@ -2,10 +2,41 @@
   "sections": {
     "16587824044cd3c400": {
       "type": "hero",
+      "blocks": {
+        "split_NenVnd": {
+          "type": "split",
+          "settings": {
+            "image": "shopify://shop_images/86a8d0aac2373e9293e34b4061d145ee.jpg",
+            "image_right": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png",
+            "content_position": "center",
+            "cursor_text": "",
+            "text_color": "#F1ECE3",
+            "title": "",
+            "heading": "Crafted for\ncharacter",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections"
+          }
+        },
+        "full_fQ3hHp": {
+          "type": "full",
+          "settings": {
+            "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png",
+            "content_position": "center",
+            "cursor_text": "",
+            "text_color": "#F1ECE3",
+            "title": "",
+            "heading": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "split_NenVnd",
+        "full_fQ3hHp"
+      ],
       "settings": {
-        "title": "Hero Lorem Ipsum",
-        "button_label": "Shop Now",
-        "button_link": ""
+        "text": "Original fixtures, straight from our workshop to your home."
       }
     }
   },

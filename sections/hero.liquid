@@ -1,16 +1,91 @@
-<div class="h-[600px] flex justify-center items-center relative">
-  {% if section.settings.image != blank %}
-    {{ section.settings.image | image_url: width: 2000 | image_tag: preload: true, width: section.settings.image.width, class: 'w-full h-full inset object-cover', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
-    {% if section.settings.mobile_image != blank %}
-      {{ section.settings.mobile_image | image_url: width: 2000 | image_tag: preload: true, width: section.settings.mobile_image.width, class: 'w-full h-full inset object-cover block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
-    {% endif %}
-  {% endif %}
-  <div class="page-width">
-    <div class="max-w-custom mx-auto text-center" style="--width: 600px">
-      <h2 class="mb-30 text-m-h1 font-bold md:text-arizona-80">{{ section.settings.title }}</h2>
-      <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_label }}</a>
+<div class="">
+  <div class="swiper w-full h-full" data-swiper="hero">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign slide = block.settings %}
+        {% if slide.image == blank %}{% continue %}{% endif %}
+        <div class="swiper-slide w-full h-full screen-height-with-nav flex justify-center items-center relative" style="--text: {{ slide.text_color }};">
+
+          {% if block.type == "full" %}
+            {% if slide.image != blank %}
+              {{ slide.image | image_url: width: 2000 | image_tag: preload: true, width: slide.image.width, class: 'w-full h-full inset object-cover object-center', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+              {% if slide.mobile_image != blank %}
+                {{ slide.mobile_image | image_url: width: 2000 | image_tag: preload: true, width: slide.mobile_image.width, class: 'w-full h-full inset object-cover object-center block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+              {% endif %}
+            {% elsif slide.video != blank %}
+              {{ slide.video | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center', image_size: '1000x'  }}
+              {% if slide.mobile_video != blank %}
+                {{ slide.mobile_video | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center block md:hidden', image_size: '1000x'  }}
+              {% endif %}
+            {% endif %}
+          {% else %}
+            <div class="grid grid-rows-2 lg:grid-rows-none lg:grid-cols-2 inset">
+              <div class="relative w-full h-full">
+                {% if slide.image != blank %}
+                  {{ slide.image | image_url: width: 2000 | image_tag: preload: true, width: slide.image.width, class: 'w-full h-full inset object-cover object-center', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                  {% if slide.mobile_image != blank %}
+                    {{ slide.mobile_image | image_url: width: 2000 | image_tag: preload: true, width: slide.mobile_image.width, class: 'w-full h-full inset object-cover object-center block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                  {% endif %}
+                {% elsif slide.video != blank %}
+                  {{ slide.video | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center', image_size: '1000x'  }}
+                  {% if slide.mobile_video != blank %}
+                    {{ slide.mobile_video | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center block md:hidden', image_size: '1000x'  }}
+                  {% endif %}
+                {% endif %}
+              </div>
+
+              <div class="relative w-full h-full">
+                {% if slide.image_right != blank %}
+                  {{ slide.image_right | image_url: width: 2000 | image_tag: preload: true, width: slide.image_right.width, class: 'w-full h-full inset object-cover object-center', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                  {% if slide.mobile_image_right != blank %}
+                    {{ slide.mobile_image_right | image_url: width: 2000 | image_tag: preload: true, width: slide.mobile_image_right.width, class: 'w-full h-full inset object-cover object-center block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                  {% endif %}
+                {% elsif slide.video_right != blank %}
+                  {{ slide.video_right | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center', image_size: '1000x'  }}
+                  {% if slide.mobile_video_right != blank %}
+                    {{ slide.mobile_video_right | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center block md:hidden', image_size: '1000x'  }}
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+            <div class="page-width relative z-[1] h-full text-[var(--text)]">
+              <div class="max-w-custom mx-auto text-center w-full h-full flex flex-col gap-20 content-{{ slide.content_position }} pt-100" style="--width: 600px">
+                {% if slide.title != blank %}
+                  <h2 class="font-founders md:text-h5">{{ slide.title }}</h2>
+                {% endif %}
+                {% if slide.heading != blank %}
+                  <div class="flex flex-col justify-center items-center">
+                    <h1 class="row-[2/3] text-arizona-60 lg:text-arizona-80">
+                      {{ slide.heading | newline_to_br }}
+                    </h1>
+                  </div>
+                {% endif %}
+                {% if slide.button_label != blank and slide.button_link != blank %}
+                  <div class="flex flex-col justify-end items-center">
+                    <a href="/" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+                      {{ slide.button_label }}
+                      <span>{% render 'link-arrow' %}</span>
+                    </a>
+                  </div>
+                {% elsif slide.button_link!= blank %}
+                  <a href="{{ slide.button_link }}" class="absolute top-0 left-0 w-full h-full"> </a>
+                {% endif %}
+              </div>
+            </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
+
+  {% if section.settings.text != blank %}
+    <div class="bg-cream text-brown text-oracle-18 p-[27px]">
+      <div class="page-width text-center">
+        {{ section.settings.text }}
+      </div>
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
@@ -18,41 +93,321 @@
     "name": "Hero",
     "settings": [
       {
-        "type": "header",
-        "content": "Image"
+        "type": "inline_richtext",
+        "id": "text",
+        "label": "Text"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Full width image",
+        "type": "full",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Media"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "paragraph",
+            "content": "or"
+          },
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          },
+          {
+            "type": "header",
+            "content": "Mobile (optional)"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Image"
+          },
+          {
+            "type": "paragraph",
+            "content": "or"
+          },
+          {
+            "type": "video",
+            "id": "mobile_video",
+            "label": "Video"
+          },
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+              {
+                "value": "left_top",
+                "label": "Left Top"
+              },
+              {
+                "value": "center_top",
+                "label": "Center Top"
+              },
+              {
+                "value": "right_top",
+                "label": "Right Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "left_bottom",
+                "label": "Left Bottom"
+              },
+              {
+                "value": "center_bottom",
+                "label": "Center Bottom"
+              },
+              {
+                "value": "right_bottom",
+                "label": "Right Bottom"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "text",
+            "id": "cursor_text",
+            "label": "Custom cursor text",
+            "info": "Leave blank for default cursor"
+          },
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+              {
+                "value": "#2B1D0A",
+                "label": "Dark"
+              },
+              {
+                "value": "#F1ECE3",
+                "label": "Light"
+              }
+            ],
+            "default": "#F1ECE3"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Subhead"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link",
+            "info": "Leave Label field blank to make entire slide clickable"
+          }
+        ]
       },
       {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "image_picker",
-        "id": "mobile_image",
-        "label": "Mobile Image"
-      },
-      {
-        "type": "header",
-        "content": "Content"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title"
-      },
-      {
-        "type": "header",
-        "content": "Button"
-      },
-      {
-        "type": "text",
-        "id": "button_label",
-        "label": "Button Label"
-      },
-      {
-        "type": "url",
-        "id": "button_link",
-        "label": "Button Link"
+        "name": "Split width images",
+        "type": "split",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Media left"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "paragraph",
+            "content": "or"
+          },
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          },
+          {
+            "type": "paragraph",
+            "content": "Mobile (optional)"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Image"
+          },
+          {
+            "type": "paragraph",
+            "content": "or"
+          },
+          {
+            "type": "video",
+            "id": "mobile_video",
+            "label": "Video"
+          },
+          {
+            "type": "header",
+            "content": "Media right"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_right",
+            "label": "Image"
+          },
+          {
+            "type": "paragraph",
+            "content": "or"
+          },
+          {
+            "type": "video",
+            "id": "video_right",
+            "label": "Video"
+          },
+          {
+            "type": "paragraph",
+            "content": "Mobile (optional)"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image_right",
+            "label": "Image"
+          },
+          {
+            "type": "paragraph",
+            "content": "or"
+          },
+          {
+            "type": "video",
+            "id": "mobile_video_right",
+            "label": "Video"
+          },
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+              {
+                "value": "left_top",
+                "label": "Left Top"
+              },
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "right_top",
+                "label": "Right Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "left_bottom",
+                "label": "Left Bottom"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              },
+              {
+                "value": "right_bottom",
+                "label": "Right Bottom"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "text",
+            "id": "cursor_text",
+            "label": "Custom cursor text",
+            "info": "Leave blank for default cursor"
+          },
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+              {
+                "value": "#2B1D0A",
+                "label": "Dark"
+              },
+              {
+                "value": "#F1ECE3",
+                "label": "Light"
+              }
+            ],
+            "default": "#F1ECE3"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Subhead"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link",
+            "info": "Leave Label field blank to make entire slide clickable"
+          }
+        ]
       }
     ],
     "presets": [

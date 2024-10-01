@@ -18,7 +18,7 @@
   
     html,
     body {
-        scroll-padding-top: calc(var(--main-nav-height) + var(--announcement-bar-height)); /* set to the height of your header */
+        scroll-padding-top: calc(var(--nav-height) + var(--announcement-bar-height)); /* set to the height of your header */
     }
     
     .no-js:not(html) {
@@ -160,6 +160,46 @@
     .below-nav {
       @apply aria-hidden:top-0 aria-unhidden:top-[calc(0px_+_var(--nav-height)_+_var(--announcement-bar-height))]
     }
+
+    .screen-height-with-nav {
+      @apply min-h-[max(calc(100vh_-_var(--nav-height)_-_var(--announcement-bar-height)),500px)]
+    }
+
+    .content-left_top {
+      @apply justify-start items-start text-left
+    }
+
+    .content-right_top {
+      @apply justify-start items-end text-right
+    }
+
+    .content-center_top {
+      @apply justify-start items-center text-center
+    }
+
+    .content-left {
+      @apply justify-center items-start text-left
+    }
+
+    .content-center {
+      @apply justify-center items-center text-center
+    }
+
+    .content-right {
+      @apply justify-center items-end text-right
+    }
+
+    .content-left_bottom {
+      @apply justify-end items-start text-left
+    }
+
+    .content-right_bottom {
+      @apply justify-end items-end text-right
+    }
+
+    .content-center_bottom {
+      @apply justify-end items-center text-center
+    }
   }
   
 
@@ -171,11 +211,7 @@
   }
 
   header {
-    @apply bg-cream text-brown border-b border-brown transition-["border-color"]
-  }
-
-  [menu-drawer-open] header {
-    @apply border-transparent
+    @apply bg-cream text-brown border-b border-transparent lg:border-brown transition-all
   }
 
   header .mega-menu {
@@ -186,8 +222,53 @@
     @apply h-full py-5 flex flex-col justify-center items-center
   }
 
+  .headroom {
+    will-change: transform;
+    transition: transform 200ms linear;
+  }
+
+  /* headroom showing */
+  .headroom--pinned {
+  }
+
+  /* headroom hidden */
+  .headroom--unpinned {
+  }
+
+  header.overlay-header {
+    @apply mx-25 lg:mx-0 lg:px-25
+  }
+
+  header:not(.overlay-header) {
+    @apply px-25
+  }
+
+  .headroom--top header.overlay-header {
+    @apply bg-transparent text-cream border-transparent top-[var(--announcement-bar-height)] translate-y-0
+  }
+
+  [menu-drawer-open] .headroom--top header.overlay-header {
+    @apply bg-cream text-brown px-[17px] lg:px-[25px]
+  }
+
+  .headroom--not-top {
+    @apply -translate-y-[var(--announcement-bar-height)]
+  }
+
+  .headroom--not-top header.overlay-header {
+    @apply px-[17px] bg-cream
+  }
+
+  .headroom--not-top + #shopify-section-mobile-menu mobile-menu #mobile-menu {
+    @apply aria-unhidden:top-[calc(0px_+_var(--nav-height))]
+  }
+
   .js-open-menu + .js-close-menu {
     @apply hidden lg:!hidden;
+  }
+
+  [menu-drawer-open] header {
+    @apply border-transparent px-[17px] lg:px-[25px]
   }
 
   [menu-drawer-open] .js-open-menu {
@@ -196,4 +277,9 @@
 
   [menu-drawer-open] .js-open-menu + .js-close-menu  {
     @apply block;
+  }
+  
+
+  body.template-index main > .shopify-section:first-child > div:first-child {
+    @apply pt-[calc(var(--main-nav-height)_+_var(--announcement-bar-height))]
   }

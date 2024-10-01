@@ -8,7 +8,15 @@ module.exports = {
     './frontend/**/*.{js,ts,jsx,tsx}'
 	],
   safelist: [
-
+    '.content-left_top',
+    'content-right_top',
+    '.content-center_top',
+    '.content-left',
+    'content-right',
+    '.content-center',
+    '.content-left_bottom',
+    'content-right_bottom',
+    '.content-center_bottom',
   ],
   theme: {
     extend: {
@@ -42,17 +50,17 @@ module.exports = {
       fontSize: {
         // Headings
         //h1
-        'arizona-80': ['80px', { lineHeight: '1', letterSpacing: '0', }],
+        'arizona-80': ['80px', { lineHeight: '1', letterSpacing: '-0.03em', }],
         //h2
-        'arizona-71': ['71px', { lineHeight: '1.2', letterSpacing: '0', }],
+        'arizona-71': ['71px', { lineHeight: '1.2', letterSpacing: '-0.03em', }],
         //h3
-        'arizona-60': ['60px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'arizona-60': ['60px', { lineHeight: '1.1', letterSpacing: '-0.0237em', }],
         //h4
-        'arizona-48': ['48px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'arizona-48': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em', }],
         //h5
-        'arizona-36': ['36px', { lineHeight: '1.2', letterSpacing: '0', }],
+        'arizona-36': ['36px', { lineHeight: '1.2', letterSpacing: '-0.015em', }],
         //h6
-        'arizona-26': ['26px', { lineHeight: '1.2', letterSpacing: '0', }],
+        'arizona-26': ['26px', { lineHeight: '1.2', letterSpacing: '-0.01em', }],
         //'h7'
         'arizona-20': ['20px', { lineHeight: '1.1', letterSpacing: '0', }],
         //custom

@@ -1,10 +1,60 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
-    "sections": {
-      "16587824044cd3c400": {
-        "type": "styleguide"
+  "sections": {
+    "16587824044cd3c400": {
+      "type": "styleguide",
+      "settings": {
       }
     },
-    "order": [
-      "16587824044cd3c400"
-    ]
-  }
+    "hero_m46yL9": {
+      "type": "hero",
+      "blocks": {
+        "split_NenVnd": {
+          "type": "split",
+          "settings": {
+            "image": "shopify://shop_images/86a8d0aac2373e9293e34b4061d145ee.jpg",
+            "image_right": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png",
+            "content_position": "center",
+            "cursor_text": "",
+            "text_color": "#F1ECE3",
+            "title": "",
+            "heading": "Crafted for\ncharacter",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections"
+          }
+        },
+        "full_fQ3hHp": {
+          "type": "full",
+          "settings": {
+            "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png",
+            "content_position": "center",
+            "cursor_text": "",
+            "text_color": "#F1ECE3",
+            "title": "",
+            "heading": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "split_NenVnd",
+        "full_fQ3hHp"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "16587824044cd3c400",
+    "hero_m46yL9"
+  ]
+}

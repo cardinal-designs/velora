@@ -1,4 +1,4 @@
-<header class="header px-[25px]">
+<header class="header {% if template.name == 'index' %}overlay-header{% endif %}">
   <div class="w-full max-w-[1672px] mx-auto lg:px-[44px]">
 
     <div class="grid grid-cols-thirds items-center gap-20">
@@ -115,7 +115,7 @@
       {% endif %}
 
       <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="max-w-[80px] lg:max-w-[115px] mx-auto w-full block pt-5 pb-[8px]" aria-label="Header Logo Link">
+      <a href="{{ routes.root_url }}" class="max-w-[80px] lg:max-w-[115px] mx-auto w-full block pt-5 pb-[8px] *:w-full *:h-auto" aria-label="Header Logo Link">
       {% if settings.logo_svg != blank %}
           {{ settings.logo_svg }}
         {% elsif settings.logo_image != blank %}
