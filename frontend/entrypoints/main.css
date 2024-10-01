@@ -53,9 +53,9 @@
     }
 
     .text-oracle-18,
-    .text-oracle-18,
-    .text-oracle-18-2,
-    .text-oracle-18-3,
+    .text-oracle-16,
+    .text-oracle-14,
+    .text-oracle-12,
     .text-oracle-custom {
         @apply font-oracle;
     }
@@ -76,7 +76,7 @@
 
   @layer components {
     .button {
-        @apply font-oracle text-oracle-18-2 leading-[30px]
+        @apply font-oracle text-oracle-16 leading-[30px]
         px-20 py-[4px]
         rounded-[5px]
         border
@@ -156,6 +156,10 @@
         @apply relative
         outline outline-1 outline-brown outline-offset-4
     }
+
+    .below-nav {
+      @apply aria-hidden:top-0 aria-unhidden:top-[calc(0px_+_var(--nav-height)_+_var(--announcement-bar-height))]
+    }
   }
   
 
@@ -163,11 +167,15 @@
 
   header nav li,
   header nav a {
-    @apply text-oracle-18-2 leading-[30px] whitespace-nowrap
+    @apply text-oracle-16 leading-[30px] whitespace-nowrap
   }
 
   header {
-    @apply bg-cream text-brown border-b border-brown
+    @apply bg-cream text-brown border-b border-brown transition-["border-color"]
+  }
+
+  [menu-drawer-open] header {
+    @apply border-transparent
   }
 
   header .mega-menu {
@@ -176,4 +184,16 @@
 
   .header .group\/nav {
     @apply h-full py-5 flex flex-col justify-center items-center
+  }
+
+  .js-open-menu + .js-close-menu {
+    @apply hidden lg:!hidden;
+  }
+
+  [menu-drawer-open] .js-open-menu {
+    @apply hidden;
+  }
+
+  [menu-drawer-open] .js-open-menu + .js-close-menu  {
+    @apply block;
   }

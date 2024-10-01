@@ -1,5 +1,5 @@
-<header class="header">
-  <div class="page-width">
+<header class="header px-[25px]">
+  <div class="w-full max-w-[1672px] mx-auto lg:px-[44px]">
 
     <div class="grid grid-cols-thirds items-center gap-20">
 
@@ -102,14 +102,20 @@
             {% endfor %}
           </ul>
 
-          <button class="js-open-menu md:hidden">
-            {% render 'icon' icon: 'hamburger' %}
-          </button>
+          <div class="text-oracle-16 flex flex-col justify-center items-start">
+            <button class="js-open-menu md:hidden">
+              Menu
+              {% comment %} {% render 'icon' icon: 'hamburger' %} {% endcomment %}
+            </button>
+            <button class="js-close-menu" aria-label="close menu">
+              {% render 'icon' icon: 'close' %}
+            </button>
+          </div>
         </nav>
       {% endif %}
 
       <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="w-[115px] block pt-5 pb-[8px]" aria-label="Header Logo Link">
+      <a href="{{ routes.root_url }}" class="max-w-[80px] lg:max-w-[115px] mx-auto w-full block pt-5 pb-[8px]" aria-label="Header Logo Link">
       {% if settings.logo_svg != blank %}
           {{ settings.logo_svg }}
         {% elsif settings.logo_image != blank %}
@@ -120,25 +126,25 @@
       </a>
 
       <!-- Icons -->
-      <div class="flex justify-end items-center gap-30">
+      <div class="flex justify-end items-center gap-30 text-oracle-16">
         {% if shop.customer_accounts_enabled %}
           <button class="hidden md:block">
-            {% render 'icon' icon: 'search' %}
-            <span class="visually-hidden">Search</span>
+            {% comment %} {% render 'icon' icon: 'search' %} {% endcomment %}
+            <span class="">Search</span>
           </button>
         {% endif %}
 
         {% if shop.customer_accounts_enabled %}
           <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="hidden md:block">
-            {% render 'icon' icon: 'account' %}
-            <span class="visually-hidden">Account</span>
+            {% comment %} {% render 'icon' icon: 'account' %} {% endcomment %}
+            <span class="">Account</span>
           </a>
         {% endif %}
 
         {% if template != 'cart' %}
           <button class="js-open-cart relative" id="cart-icon-bubble" aria-label="Open Cart Drawer" data-id="{{ section.id }}">
-            {% render 'icon' icon: 'cart' %}
-            <span class="visually-hidden">Cart</span>
+            {% comment %} {% render 'icon' icon: 'cart' %} {% endcomment %}
+            <span class="">Cart</span>
             {% if cart != empty %}
               <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] right-[-6px] flex justify-center items-center text-[10px] bg-black text-white">
                 {{ cart.item_count }}

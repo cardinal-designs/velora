@@ -17,9 +17,9 @@
 
   <div class="flex flex-col justify-start items-start gap-10">
       <p class="text-oracle-18">P / Body ABC Oracle Plus Variable Book 18px</p>
-      <p class="text-oracle-18-2">P2 / Body ABC Oracle Plus Variable Book 16px</p>
-      <p class="text-oracle-18-3">P3 / Body ABC Oracle Plus Variable Book 14px</p>
-      <p class="text-oracle-18-4">P4 / Body ABC Oracle Plus Variable Book 12px</p>
+      <p class="text-oracle-16">P2 / Body ABC Oracle Plus Variable Book 16px</p>
+      <p class="text-oracle-14">P3 / Body ABC Oracle Plus Variable Book 14px</p>
+      <p class="text-oracle-12">P4 / Body ABC Oracle Plus Variable Book 12px</p>
   </div>
 
   <div class="w-full h-[32px]"> </div>
@@ -66,38 +66,38 @@
       <button class="button button--outline">Reject</button>
   </div>
 
-  <div class="flex flex-row justify-start items-start gap-30 my-20">
+  <div class="flex flex-col lg:flex-row justify-start items-start gap-30 my-20">
       <button class="button button--large">Start Custom Inquiry</button>
       <button class="button button--large button--outline">Start Custom Inquiry</button>
   </div>
 
-  <div class="flex flex-row justify-start items-start gap-30 my-20">
+  <div class="flex flex-col lg:flex-row justify-start items-start gap-30 my-20">
       <a href="/" class="text-link text-pangram-20-3 leading-[30px]">Shop Best Sellers</a>
       <a href="/" class="text-link text-pangram-20-3 leading-[30px]">Shop Best Sellers</a>
   </div>
 
   <div class="flex flex-row justify-start items-start gap-30 my-20">
-      <a href="/" class="bullet-link text-oracle-18-2 leading-[30px] px-[13px]">Shop</a>
-      <a href="/" class="bullet-link text-oracle-18-2 leading-[30px] px-[13px]">Cart (1)</a>
+      <a href="/" class="bullet-link text-oracle-16 leading-[30px] px-[13px]">Shop</a>
+      <a href="/" class="bullet-link text-oracle-16 leading-[30px] px-[13px]">Cart (1)</a>
   </div>
 
-  <div class="flex flex-row justify-start items-start gap-30 my-20">
+  <div class="flex flex-col lg:flex-row justify-start items-start gap-30 my-20">
       <div class="bg-blue py-30 px-[46px]">
-          <a href="/" class="svg-link text-oracle-18-2 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+          <a href="/" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
               Shop Now
               <span>{% render 'link-arrow' %}</span>
           </a>
       </div>
 
       <div class="bg-blue py-30 px-[46px]">
-          <a href="/" class="svg-link text-oracle-18-2 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+          <a href="/" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
               Shop Now
               <span>{% render 'link-arrow' %}</span>
           </a>
       </div>
   </div>
 
-  <div class="flex flex-row justify-start items-start gap-30 my-20">
+  <div class="flex flex-col lg:flex-row justify-start items-start gap-30 my-20">
       {% for product in collections['all'].products, limit: 2 %}
 
           {% render "product-card", product_card_product: product %}

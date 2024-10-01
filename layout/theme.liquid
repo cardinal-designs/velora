@@ -46,15 +46,18 @@
     --background: #F1ECE3;
     --text: #2B1D0A;
     --button: #2B1D0A;
-    --button_text: #F1ECE3;"
+    --button_text: #F1ECE3;
+    --nav-height: 0px; 
+    --announcement-bar-height: 0px; 
+    --footer-height: 0px;"
     >
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    <div class="page-overlay fixed top-0 right-0 bottom-0 left-0 bg-black/20 z-50 invisible opacity-0 transition-visibility"></div>
+    <div class="page-overlay fixed below-nav right-0 bottom-0 left-0 bg-black/20 z-50 invisible opacity-0 transition-visibility"></div>
 
-    <div class="sticky top-0 z-30">
+    <div class="sticky top-0 z-[35]">
       {% sections 'header-group' %}
     </div>
 

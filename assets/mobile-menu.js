@@ -30,6 +30,7 @@ var MobileMenu = class extends HTMLElement {
     });
 
     document.body.classList.add('overflow-hidden');
+    document.body.setAttribute("menu-drawer-open", true)
   }
 
   close() {
@@ -39,6 +40,7 @@ var MobileMenu = class extends HTMLElement {
     this.overlay.classList.add('invisible', 'opacity-0');
 
     document.body.classList.remove('overflow-hidden');
+    document.body.removeAttribute("menu-drawer-open")
   }
 
   handleButtonClick(event) {

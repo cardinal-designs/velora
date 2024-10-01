@@ -1,37 +1,76 @@
 <script src="{{ 'mobile-menu.js' | asset_url }}" defer="defer"></script>
 
 <mobile-menu>
-  <div class="w-full h-full fixed top-0 left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-top bg-white -translate-x-full transition-transform aria-unhidden:translate-x-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
-    <div class="p-20 flex justify-between items-center border-b-1 border-black">
+  <div class="w-full h-full fixed below-nav left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-30 bg-transparent -translate-y-full transition-transform aria-unhidden:translate-y-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
+    {% comment %} <div class="p-20 flex justify-between items-center border-b-1 border-black">
       <h2 class="text-m-h4">Menu</h2>
       <button class="js-close-menu" aria-label="{{ 'general.search.search' | t }}">
         {% render 'icon' icon: 'close' %}
       </button>
-    </div>
-    <div class="px-20 pb-20 flex flex-col">
-      <ul class="" role="list">
+    </div> {% endcomment %}
+    <div class="pt-20 px-20 pb-30 flex flex-col bg-cream text-brown rounded-b-[10px] mx-25">
+      <ul class="text-arizona-26 flex flex-col justify-start items-start gap-20 [&_li]:w-full" role="list">
         {% for link in section.settings.menu.links %}
-          <li class="border-b-1 border-black/10">
+          <li>
             {% if link.links != blank %}
-              <button class="dropdown-button group/button py-20 w-full flex justify-between items-center text-oracle-18" href="{{ link.url }}">
+              <button class="dropdown-button group/button w-full flex flex-row justify-between items-center" href="{{ link.url }}">
                 <span>{{ link.title }}</span>
                 <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
-                  {% render 'icon' icon: 'caret' %}
+                  <span class="[&_svg]:rotate-90">{% render 'link-arrow' | color: 'currentColor' %}</span>
                 </div>
               </button>
-              <ul class="dropdown pl-10 hidden" role="list">
-                {% for child_link in link.links %}
-                  <li class="pb-5 last:pb-20">
-                    <a class="text-oracle-18" href="{{ child_link.url }}">{{ child_link.title }}</a>
-                  </li>
-                {% endfor %}
+              <ul class="dropdown hidden text-oracle-14 leading-[30px]" role="list">
+                <li class="pt-[13px] grid grid-cols-2 grid-flow-row-dense w-full gap-[23px]">
+                  {% for child_link in link.links %}
+                    {% if child_link.links != blank %}
+                      <ul class="flex flex-col [&:hover_li]:opacity-50 gap-5">
+                        {% for grandchild_link in child_link.links %}
+                          <li class="">
+                            <a href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <li class="pb-5 last:pb-20">
+                        <a class="" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </li>
               </ul>
             {% else %}
-              <a class="py-20 block text-oracle-18" href="{{ link.url }}">{{ link.title }}</a>
+              <a class="block" href="{{ link.url }}">{{ link.title }}</a>
             {% endif %}
           </li>
         {% endfor %}
+        {% if shop.customer_accounts_enabled %}
+          <li>
+            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="">
+              <span class="">Account</span>
+            </a>
+          </li>
+        {% endif %}
       </ul>
+      {% if section.settings.secondary_menu != blank %}
+        <div class="pt-20 grid grid-cols-2 grid-flow-row-dense w-full gap-[23px] text-oracle-14 leading-[30px]">
+        {% for link in section.settings.secondary_menu.links %}
+          <div class="{% if link.title == "Social" or link.title == "social" %}basis-full w-full lg:basis-auto lg:w-auto{% else %}{% endif %} flex-1">
+            {% comment %} <h5 class="text-arizona-26 mb-10">{{ link.title }}</h5> {% endcomment %}
+             {% if link.links != blank %}
+              <ul class="flex gap-5 flex-col">
+                {% for child_link in link.links %}
+                  <li>
+                    <a href="{{ child_link.url }}" {% if child_link.type == 'http_link' %} target="_blank" {% endif %} class="underline-offset-2 hover:underline{% if child_link.active %} active{% endif %}">
+                        <span>{{ child_link.title }}</span>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </mobile-menu>
@@ -43,7 +82,12 @@
       {
         "type": "link_list",
         "id": "menu",
-        "label": "Menu"
+        "label": "Main menu"
+      },
+      {
+        "type": "link_list",
+        "id": "secondary_menu",
+        "label": "Secondary menu"
       }
     ]
   }

@@ -445,6 +445,25 @@ MicroModal.init({
   awaitCloseAnimation: true
 });
 
+function setCSSVariables() {
+  const mainNav = document.querySelector("[id*=__header]")
+  const announcementBar = document.querySelector("[id*=__announcement]")
+  const footer = document.querySelector("footer")
+
+  if(mainNav) {
+    document.body.style.setProperty(`--nav-height`, `${mainNav.offsetHeight}px`)
+  }
+  if(announcementBar) {
+      document.body.style.setProperty(`--announcement-bar-height`, `${announcementBar.offsetHeight}px`)
+  }
+  if(footer) {
+      document.body.style.setProperty(`--footer-height`, `${footer.offsetHeight + parseInt(window.getComputedStyle(footer).marginTop)}px`)
+  }
+}
+
+document.addEventListener("DOMContentLoaded", setCSSVariables())
+document.addEventListener("resize", setCSSVariables())
+
 /*================ Components ================*/
 var QuantityInput = class extends HTMLElement {
   constructor() {
