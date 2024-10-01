@@ -69,14 +69,14 @@
           >
 
           {% if form.errors %}
-            <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+            <div class="mt-10 text-oracle-18-2 text-error">{{ form.errors | default_errors }}</div>
           {% endif %}
         </div>
 
         <button class="button w-full">Submit</button>
 
         <div class="mt-15 text-center">
-          <p class="text-body">Have an account? <a class="underline" href="{{ routes.account_login_url }}">Log In</a></p>
+          <p class="text-oracle-18">Have an account? <a class="underline" href="{{ routes.account_login_url }}">Log In</a></p>
         </div>
       {% endform %}
     </div>

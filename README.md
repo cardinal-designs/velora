@@ -1,4 +1,4 @@
-# Base Theme
+# Velora Theme | 2024
 
 ### Dependencies
 - [Shopify CLI](https://shopify.dev/docs/themes/tools/cli)
@@ -31,4 +31,10 @@ This will run both `shopify theme dev` and `vite:dev` to start the shopify serve
 Deploy theme store as new theme. Accepts all `shopify theme push` commands and does _not_ allow pushing to live. 
 ```
 $ npm run deploy -- --store illuminate-vintage 
+```
+
+To view the styleguide, navigate to any page url and add the view param set to style-guide
+
+```
+/pages/about?view=style-guide
 ```

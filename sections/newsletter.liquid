@@ -1,7 +1,7 @@
 <div class="newsletter page-width my-60 md:my-100">
   <div class="max-w-custom w-full mx-auto text-center" style="--width: 440px;">
-    <h2 class="text-m-h3 font-bold md:text-h3">{{ section.settings.title }}</h2>
-    <p class="mt-20 text-body">{{ section.settings.text }}</p>
+    <h2 class="text-m-h3 font-bold md:text-arizona-60">{{ section.settings.title }}</h2>
+    <p class="mt-20 text-oracle-18">{{ section.settings.text }}</p>
   </div>
   <div class="max-w-custom w-full mx-auto" style="--width: 600px;">
     {% form 'customer', class: 'newsletter-form mt-30' %}
@@ -33,10 +33,10 @@
         <button type="submit" class="button flex-shrink-0" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">Submit</button>
       </div>
       {% if form.errors %}
-        <p class="mt-15 text-body text-error" id="Newsletter-error--{{ section.id }}">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+        <p class="mt-15 text-oracle-18 text-error" id="Newsletter-error--{{ section.id }}">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
       {% endif %}
       {% if form.posted_successfully? %}
-        <p class="mt-15 text-body" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
+        <p class="mt-15 text-oracle-18" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
       {% endif %}
     {% endform %}
   </div>

@@ -5,7 +5,7 @@
     <div class="flex justify-center gap-30 md:block md:sticky md:top-[120px] md:flex-shrink-0">
       {% for block in section.blocks %}
         {% if block.type == 'header' %}
-          <button class="faq-link block text-body opacity-40 transition-opacity hover:opacity-100 md:mb-25" data-section="{{ block.settings.title | handleize }}">
+          <button class="faq-link block text-oracle-18 opacity-40 transition-opacity hover:opacity-100 md:mb-25" data-section="{{ block.settings.title | handleize }}">
             {{ block.settings.title }}
           </button>
         {% endif %}
@@ -19,20 +19,20 @@
     {% for block in section.blocks %}
       {% if block.type == 'header' %}
         <div class="faq-component" data-section="{{ block.settings.title | handleize }}" id="{{ block.settings.title | handleize }}">
-          <div class="pt-40 pb-20 text-m-h4 font-bold uppercase md:pt-80 md:text-h4">{{ block.settings.title }}</div>
+          <div class="pt-40 pb-20 text-m-h4 font-bold uppercase md:pt-80 md:text-arizona-48">{{ block.settings.title }}</div>
       {% endif %}
 
       {% if block.type == 'faq_item' %}
         <dropdown-item {{ block.shopify_attributes }}>
           <div class="dropdown group border-b-1 border-black/10{% if is_first_faq %} border-t-1{% endif %}">
             <button class="dropdown-header w-full py-20 flex justify-between items-center gap-20 text-left">
-              <p class="text-body font-bold">{{ block.settings.title }}</p>
+              <p class="text-oracle-18 font-bold">{{ block.settings.title }}</p>
               <div class="w-10 transition-transform ease-in-out group-[.active]:rotate-180">
                 {% render 'icon' icon: 'caret' %}
               </div>
             </button>
             <div class="dropdown-content hidden">
-              <div class="pb-20 text-body-2 [&_p]:mb-10 [&_a]:underline">{{ block.settings.answer }}</div>
+              <div class="pb-20 text-oracle-18-2 [&_p]:mb-10 [&_a]:underline">{{ block.settings.answer }}</div>
             </div>
           </div>
         </dropdown-item>

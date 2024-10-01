@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "type": "header",
   "name": "Header Group",
@@ -15,7 +24,9 @@
         "mega_menu_3BRjWk": {
           "type": "mega_menu",
           "settings": {
-            "title": "Home"
+            "title": "Shop",
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.08_PM.png",
+            "text": "Bespoke lighting for every space"
           }
         }
       },
@@ -23,8 +34,7 @@
         "mega_menu_3BRjWk"
       ],
       "settings": {
-        "logo": "shopify:\/\/shop_images\/cardinal-logo.svg",
-        "menu": "main-menu"
+        "menu": "dev-main-nav"
       }
     }
   },

@@ -1,0 +1,117 @@
+<div class="page-width">
+
+  <p class="text-pangram-20-2 text-brown-light">Type styles</p>
+  <hr class="my-30">
+
+  <div class="flex flex-col justify-start items-start gap-10">
+      <h1 class="text-arizona-80">H1 / ABC Arizona Flare Regular 80px</h1>
+      <h2 class="text-arizona-71">H2 / ABC Arizona Flare Regular 72px</h2>
+      <h3 class="text-arizona-60">H3 / ABC Arizona Flare Regular 60px</h3>
+      <h4 class="text-arizona-48">H4 / ABC Arizona Flare Regular 48px</h4>
+      <h5 class="text-arizona-36">H5 / ABC Arizona Flare Regular 36px</h5>
+      <h6 class="text-arizona-26">H6 / ABC Arizona Flare Regular 26px</h6>
+      <p class="text-arizona-20">H7 / ABC Arizona Flare Regular 20px</p>
+  </div>
+
+  <div class="w-full h-[32px]"> </div>
+
+  <div class="flex flex-col justify-start items-start gap-10">
+      <p class="text-oracle-18">P / Body ABC Oracle Plus Variable Book 18px</p>
+      <p class="text-oracle-18-2">P2 / Body ABC Oracle Plus Variable Book 16px</p>
+      <p class="text-oracle-18-3">P3 / Body ABC Oracle Plus Variable Book 14px</p>
+      <p class="text-oracle-18-4">P4 / Body ABC Oracle Plus Variable Book 12px</p>
+  </div>
+
+  <div class="w-full h-[32px]"> </div>
+
+  <div class="flex flex-col justify-start items-start gap-15">
+      <p class="text-pangram-20">caption 1 / PP Pangram Sans semibold 20px</p>
+      <p class="text-pangram-20-2">caption 2 / PP Pangram Sans semibold 18px</p>
+      <p class="text-pangram-20-3">caption 3 / PP Pangram Sans semibold 14px</p>
+      <p class="text-pangram-20-4">caption 4 / PP Pangram Sans semibold 12px</p>
+  </div>
+
+  <div class="w-full h-70"> </div>
+
+  <p class="text-pangram-20-2 text-brown-light">Color Palette</p>
+  <hr class="my-30">
+
+  <div class=" flex flex-row justify-start items-start gap-30">
+      <div class="flex flex-col justify-center items-center gap-[14px]">
+          <div class="w-[74px] h-[74px] bg-cream border border-brown rounded-full"> </div>
+          <p class="text-pangram-20-2">F1ECE3</p>
+          <p class="text-pangram-20-2">Cream</p>
+      </div>
+
+      <div class="flex flex-col justify-center items-center gap-[14px]">
+          <div class="w-[74px] h-[74px] bg-brown border border-brown rounded-full"> </div>
+          <p class="text-pangram-20-2">2B1D0A</p>
+          <p class="text-pangram-20-2">Brown</p>
+      </div>
+
+      <div class="flex flex-col justify-center items-center gap-[14px]">
+          <div class="w-[74px] h-[74px] bg-blue border border-blue rounded-full"> </div>
+          <p class="text-pangram-20-2">95A3B7</p>
+          <p class="text-pangram-20-2">Blue</p>
+      </div>
+  </div>
+
+  <div class="w-full h-70"> </div>
+
+  <p class="text-pangram-20-2 text-brown-light">Hover states</p>
+  <hr class="my-30">
+
+  <div class="flex flex-row justify-start items-start gap-30 my-20">
+      <button class="button">Accept</button>
+      <button class="button button--outline">Reject</button>
+  </div>
+
+  <div class="flex flex-row justify-start items-start gap-30 my-20">
+      <button class="button button--large">Start Custom Inquiry</button>
+      <button class="button button--large button--outline">Start Custom Inquiry</button>
+  </div>
+
+  <div class="flex flex-row justify-start items-start gap-30 my-20">
+      <a href="/" class="text-link text-pangram-20-3 leading-[30px]">Shop Best Sellers</a>
+      <a href="/" class="text-link text-pangram-20-3 leading-[30px]">Shop Best Sellers</a>
+  </div>
+
+  <div class="flex flex-row justify-start items-start gap-30 my-20">
+      <a href="/" class="bullet-link text-oracle-18-2 leading-[30px] px-[13px]">Shop</a>
+      <a href="/" class="bullet-link text-oracle-18-2 leading-[30px] px-[13px]">Cart (1)</a>
+  </div>
+
+  <div class="flex flex-row justify-start items-start gap-30 my-20">
+      <div class="bg-blue py-30 px-[46px]">
+          <a href="/" class="svg-link text-oracle-18-2 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+              Shop Now
+              <span>{% render 'link-arrow' %}</span>
+          </a>
+      </div>
+
+      <div class="bg-blue py-30 px-[46px]">
+          <a href="/" class="svg-link text-oracle-18-2 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+              Shop Now
+              <span>{% render 'link-arrow' %}</span>
+          </a>
+      </div>
+  </div>
+
+  <div class="flex flex-row justify-start items-start gap-30 my-20">
+      {% for product in collections['all'].products, limit: 2 %}
+
+          {% render "product-card", product_card_product: product %}
+      {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Styleguide",
+    "presets": [
+      {
+        "name": "Styleguide"
+      }
+    ]
+  }
+{% endschema %}

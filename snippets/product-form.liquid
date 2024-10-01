@@ -21,7 +21,7 @@
           %}
 
           <fieldset class="product-form-input js mb-20 block">
-            <legend class="form__label mb-10 text-body">{{ option.name }}</legend>
+            <legend class="form__label mb-10 text-oracle-18">{{ option.name }}</legend>
             <div class="flex gap-x-10 gap-y-5">
               {% for value in option.values %}
                 {% liquid
@@ -62,7 +62,7 @@
                       <div class="visually-hidden">{{ value }}</div>
                     </label>
                   {% else %}
-                    <label class="px-15 py-5 text-body border-1 border-black/10 peer-checked:border-black cursor-pointer{% if option_disabled %} opacity-50{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                    <label class="px-15 py-5 text-oracle-18 border-1 border-black/10 peer-checked:border-black cursor-pointer{% if option_disabled %} opacity-50{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                       {{ value }}
                     </label>
                   {% endif %}
@@ -109,7 +109,7 @@
             <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
             {% render 'icon' icon: 'minus' %}
           </button>
-          <input class="quantity-input text-body text-center"
+          <input class="quantity-input text-oracle-18 text-center"
               type="number"
               name="quantity"
               id="Quantity-{{ section.id }}"

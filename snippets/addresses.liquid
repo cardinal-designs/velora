@@ -3,17 +3,17 @@
 
     <ul class="grid grid-cols-1 gap-40 md:grid-cols-2" role="list">
       {% for address in customer.addresses %}
-        <li class="[&>p]:text-m-body md:[&>p]:text-body" data-address>
+        <li class="[&>p]:text-m-body md:[&>p]:text-oracle-18" data-address>
           {% if address == customer.default_address %}
-            <p class="mb-5 text-m-body md:text-body">{{ 'customer.addresses.default' | t }}</p>
+            <p class="mb-5 text-m-body md:text-oracle-18">{{ 'customer.addresses.default' | t }}</p>
           {% else %}
             {% assign position = paginate.current_page | times: forloop.index %}
-            <p class="mb-5 text-m-body md:text-body">Address {{ position }}</p>
+            <p class="mb-5 text-m-body md:text-oracle-18">Address {{ position }}</p>
           {% endif %}
           {{ address | format_address }}
           <div class="mt-20 md:mt-30 flex gap-20">
             <button
-              class="text-body underline underline-offset-4"
+              class="text-oracle-18 underline underline-offset-4"
               type="button"
               id="EditFormButton_{{ address.id }}"
               aria-label="Edit {{ forloop.index }}"
@@ -24,7 +24,7 @@
               Edit
             </button>
             <button
-              class="text-body underline underline-offset-4"
+              class="text-oracle-18 underline underline-offset-4"
               type="button"
               aria-label="Remove {{ forloop.index }}"
               data-target="{{ address.url }}"
@@ -36,7 +36,7 @@
       {% endfor %}
 
       {% if customer.addresses.size == 0 %}
-        <p class="text-m-body md:text-body">No addresses found.</p>
+        <p class="text-m-body md:text-oracle-18">No addresses found.</p>
       {% endif %}
 
       <li>
@@ -87,7 +87,7 @@
             data-micromodal-close>
             {% render 'icon' icon: 'close' %}
           </button>
-          <h2 class="mb-40 text-m-h4 font-bold md:text-h4 text-center">Add a New Address</h2>
+          <h2 class="mb-40 text-m-h4 font-bold md:text-arizona-48 text-center">Add a New Address</h2>
           {% form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' %}
             <div class="block grid-cols-2 gap-20 md:grid">
               <div class="mb-30">
@@ -217,14 +217,14 @@
             </div>
             <div class="mb-30 flex items-center gap-10">
               {{ form.set_as_default_checkbox }}
-              <label class="block text-m-body md:text-body" for="address_default_address_new">
+              <label class="block text-m-body md:text-oracle-18" for="address_default_address_new">
                 {{ 'customer.addresses.set_default' | t }}
               </label>
             </div>
             <div class="text-center">
               <button class="mb-30 button">Add Address</button>
               <button
-                class="mx-auto pb-5 block text-body underline underline-offset-4"
+                class="mx-auto pb-5 block text-oracle-18 underline underline-offset-4"
                 type="reset"
                 aria-label="Close modal"
                 data-micromodal-close>Cancel</button>
@@ -265,7 +265,7 @@
                 data-micromodal-close>
                 {% render 'icon' icon: 'close' %}
               </button>
-              <h2 class="mb-40 text-m-h4 font-bold md:text-h4 text-center">Edit Address</h2>
+              <h2 class="mb-40 text-m-h4 font-bold md:text-arizona-48 text-center">Edit Address</h2>
               {% form 'customer_address', address %}
                 <div class="block grid-cols-2 gap-20 md:grid">
                   <div class="mb-30">
@@ -392,14 +392,14 @@
                 </div>
                 <div class="mb-30 flex items-center gap-10">
                   {{ form.set_as_default_checkbox }}
-                  <label class="block text-m-body md:text-body" for="address_default_address_{{ form.id }}">
+                  <label class="block text-m-body md:text-oracle-18" for="address_default_address_{{ form.id }}">
                     {{ 'customer.addresses.set_default' | t }}
                   </label>
                 </div>
                 <div class="text-center">
                   <button class="mb-30 button">Update Address</button>
                   <button
-                    class="mx-auto pb-5 block text-body underline underline-offset-4"
+                    class="mx-auto pb-5 block text-oracle-18 underline underline-offset-4"
                     type="reset"
                     aria-label="Close modal"
                     data-micromodal-close>Cancel</button>

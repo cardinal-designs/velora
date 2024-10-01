@@ -1,10 +1,10 @@
 {% if search.performed %}
   <div class="page-width">
     <div class="mb-20 py-30 px-20 bg-cream md:p-40">
-      <h1 class="mb-30 text-m-h4 font-bold text-center md:text-h4">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
+      <h1 class="mb-30 text-m-h4 font-bold text-center md:text-arizona-48">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
       
       {% if search.results.size == 0 %}
-        <p class="max-w-custom w-full mx-auto mb-30 text-body text-center" style="--width: 375px;">There are no results. Please check your spelling or try a broader search. Try shopping by brand.</p>
+        <p class="max-w-custom w-full mx-auto mb-30 text-oracle-18 text-center" style="--width: 375px;">There are no results. Please check your spelling or try a broader search. Try shopping by brand.</p>
       {% endif %}
       
       <div class="max-w-custom w-full mx-auto" style="--width: 275px;">
@@ -12,7 +12,7 @@
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
           <div class="flex justify-between border-b-1 border-black">
-            <input class="w-full pb-5 text-body bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+            <input class="w-full pb-5 text-oracle-18 bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
             <button type="submit" class="flex items-center">
               {% render 'icon' icon: 'search' %}
             </button>
@@ -34,7 +34,7 @@
           <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
             <div class="loading-overlay"></div>
             <div class="text-center">
-              <p class="mb-20 text-body">No products found.</p>
+              <p class="mb-20 text-oracle-18">No products found.</p>
               <a href="{{ routes.search_url }}" class="button">Clear Filters</a>
             </div>
           </div>
@@ -62,12 +62,12 @@
   <div class="page-width mb-20 md:mb-40">
     <div class="pt-80 pb-120 px-20 md:py-100 md:px-40">
       <div class="max-w-custom w-full mx-auto" style="--width: 375px;">
-        <h1 class="mb-50 text-m-h4 font-bold text-center md:text-h4">Search</h1>
+        <h1 class="mb-50 text-m-h4 font-bold text-center md:text-arizona-48">Search</h1>
         <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
           <div class="flex justify-between border-b-1 border-black">
-            <input class="w-full pb-5 text-body bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+            <input class="w-full pb-5 text-oracle-18 bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
             <div class="flex items-center">
               {% render 'icon' icon: 'search' %}
             </div>

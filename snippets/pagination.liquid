@@ -25,14 +25,14 @@
       {% for part in paginate.parts %}
         <li>
           {% if part.is_link %}
-            <a href="{{ part.url }}{{ anchor }}" class="text-body opacity-50" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{% if part.title < 10 %}0{% endif %}{{ part.title }}</a>
+            <a href="{{ part.url }}{{ anchor }}" class="text-oracle-18 opacity-50" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{% if part.title < 10 %}0{% endif %}{{ part.title }}</a>
           {% else %}
             {% if part.title == paginate.current_page %}
-              <span class="text-body relative opaciy-50" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+              <span class="text-oracle-18 relative opaciy-50" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
                 {% if part.title < 10 %}0{% endif %}{{ part.title }}
               </span>
             {% else %}
-              <span class="text-body">{% if part.title < 10 %}0{% endif %}{{ part.title }}</span>
+              <span class="text-oracle-18">{% if part.title < 10 %}0{% endif %}{{ part.title }}</span>
             {% endif %}
           {% endif %}
         </li>

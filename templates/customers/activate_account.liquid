@@ -4,7 +4,7 @@
   <div class="page-width">
 
     <div class="max-w-custom mx-auto" style="--width: 440px;">
-      <p class="max-w-custom mx-auto mb-30 text-m-body text-center md:text-body" style="--width: 320px;">{{ 'customer.activate_account.subtext' | t }}</p>
+      <p class="max-w-custom mx-auto mb-30 text-m-body text-center md:text-oracle-18" style="--width: 320px;">{{ 'customer.activate_account.subtext' | t }}</p>
 
       {% form 'activate_customer_password' %}
 
@@ -44,7 +44,7 @@
           >
 
           {% if form.errors %}
-            <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+            <div class="mt-10 text-oracle-18-2 text-error">{{ form.errors | default_errors }}</div>
           {% endif %}
         </div>
 

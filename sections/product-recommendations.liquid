@@ -2,7 +2,7 @@
   <div class="page-width">
     <product-recommendations class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
       {% if recommendations.performed and recommendations.products_count > 0 %}
-        <h2 class="mb-30 text-m-h3 font-bold md:text-h3">{{ section.settings.title | escape }}</h2>
+        <h2 class="mb-30 text-m-h3 font-bold md:text-arizona-60">{{ section.settings.title | escape }}</h2>
         <div class="recommendation-slider swiper overflow-visible md:overflow-hidden" role="list">
           <div class="swiper-wrapper">
             {% for recommendation in recommendations.products %}

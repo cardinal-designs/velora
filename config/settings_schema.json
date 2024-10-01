@@ -11,7 +11,30 @@
     "name": "Global",
     "settings": [
       {
-        "type": "image_picker",
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "html",
+        "id": "logo_svg",
+        "label": "SVG"
+      },
+      {
+       "type": "image_picker",
+       "id": "logo_image",
+       "label": "PNG"
+      },
+      {
+        "type": "header",
+        "content": "Secondary Logo"
+      },
+      {
+        "type": "html",
+        "id": "secondary_logo",
+        "label": "SVG"
+      },
+      {
+        "type": "url",
         "id": "shop_all_link",
         "label": "Shop All Link"
       }
@@ -21,7 +44,7 @@
     "name": "Cart",
     "settings": [
       {
-        "type": "image_picker",
+        "type": "checkbox",
         "id": "enable_shipping_bar",
         "label": "Enable Shipping Bar"
       }

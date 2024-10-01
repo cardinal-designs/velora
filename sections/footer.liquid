@@ -1,94 +1,153 @@
-<footer class="footer pt-60 border-t-1 border-black md:pt-80">
-  <div class="page-width">
-    <div class="md:flex md:justify-between">
+<footer class="footer bg-brown text-cream p-[26px] lg:p-[35px]">
+  <div class="border-cream border-2 rounded-[10px] p-[25px] lg:p-[37px]">
+    <div class="">
+      <div class="grid grid-cols-12 gap-10">
 
-      <div class="flex flex-col gap-40 md:flex-row md:gap-60 lg:gap-100">
-        {% if section.settings.logo != blank %}
-          <a href="{{ routes.root_url }}" class="w-[115px] block" aria-label="Header Logo Link">
-            {{ section.settings.logo | image_url: width: 200 | image_tag: width: section.settings.logo.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
-          </a>
-        {% endif %}
+        <div class="col-span-full flex flex-row justify-center lg:justify-between items-start lg:mb-30">
+          <div class="">
+            <a href="{{ routes.root_url }}" class="w-[122px] lg:w-[200px] block pt-5 pb-[8px] [&_svg]:w-full [&_svg]:h-auto" aria-label="Header Logo Link">
+              {% if settings.logo_svg != blank %}
+                  {{ settings.logo_svg }}
+                {% elsif settings.logo_image != blank %}
+                  {{ settings.logo_image | image_url: width: 200 | image_tag: width: settings.logo_image.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
+                {% else %}
+                  {{ shop.name }}
+                {% endif %}
+              </a>
+          </div>
 
-        <div class="grid grid-cols-2 gap-x-20 gap-y-40 md:flex md:gap-100">
-          {% for link in section.settings.menu.links %}
-            <div>
-              <h2 class="mb-20 text-body font-bold">{{ link.title }}</h2>
-              <ul class="flex flex-col gap-5 md:gap-15">
-                {% for child_link in link.links %}
-                  <li>
-                    <a href="{{ child_link.url }}" class="text-body underline-offset-2 hover:underline{% if child_link.active %} active{% endif %}">
-                      {{ child_link.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
+          <div class="hidden lg:block">
+            {% if settings.secondary_logo != blank %}
+              {{ settings.secondary_logo }}
+            {% endif %}
+          </div>
         </div>
 
-      </div>
-
-      <div class="mt-50 mb-25 flex justify-end row-start-2 md:row-start-auto md:m-0">
-        <div class="max-w-full w-full md:max-w-custom" style="--width: 375px;">
-          {% if section.settings.newsletter_title != blank %}
-            <p class="mb-20 text-body font-bold">{{ section.settings.newsletter_title }}</p>
-          {% endif %}
-          {% if section.settings.newsletter_text != blank %}
-            <p class="mb-30 text-body">{{ section.settings.newsletter_text }}</p>
-          {% endif %}
-
-          {% form 'customer', id: 'ContactFooter', class: '' %}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            <div class="flex">
-              <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
-                {{ 'newsletter.label' | t }}
-              </label>
-              <input
-                class="w-full h-auto px-15 text-body border-1 border-black placeholder:text-black/20"
-                id="NewsletterForm--{{ section.id }}"
-                type="email"
-                name="contact[email]"
-                value="{{ form.email }}"
-                aria-required="true"
-                autocorrect="off"
-                autocapitalize="off"
-                autocomplete="email"
-                {% if form.errors %}
-                  autofocus
-                  aria-invalid="true"
-                  aria-describedby="ContactFooter-error"
-                {% elsif form.posted_successfully? %}
-                  aria-describedby="ContactFooter-success"
-                {% endif %}
-                placeholder="Enter Email"
-                required
-              >
-              <button type="submit" class="button" name="commit" aria-label="Submit">
-                Submit
-              </button>
+        <div class="col-span-full col-start-1 lg:col-span-4 lg:col-start-3">
+          <div class="mt-40 mb-50 lg:m-0 flex justify-end row-start-2 lg:row-start-auto lg:m-0">
+            <div class="max-w-full w-full lg:max-w-custom" style="--width: 375px;">
+              {% if section.settings.newsletter_title != blank %}
+                <p class="mb-10 font-arizona-flare text-[28px] lg:text-[42px] leading-[30px] lg:leading-normal" >{{ section.settings.newsletter_title }}</p>
+              {% endif %}
+              {% if section.settings.newsletter_text != blank %}
+                <p class="mb-30 text-oracle-14">{{ section.settings.newsletter_text }}</p>
+              {% endif %}
+  
+              {% if section.settings.klaviyo_form_embed != blank %}
+                {{ section.settings.klaviyo_form_embed }}
+              {% else %}
+                {% form 'customer', id: 'ContactFooter', class: '' %}
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <div class="flex border-b border-cream">
+                    <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
+                      {{ 'newsletter.label' | t }}
+                    </label>
+                    <input
+                      class="w-full h-auto pb-[14px] text-oracle-14 bg-transparent text-cream placeholder:text-cream lg:placeholder:text-cream/50"
+                      id="NewsletterForm--{{ section.id }}"
+                      type="email"
+                      name="contact[email]"
+                      value="{{ form.email }}"
+                      aria-required="true"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      autocomplete="email"
+                      {% if form.errors %}
+                        autofocus
+                        aria-invalid="true"
+                        aria-describedby="ContactFooter-error"
+                      {% elsif form.posted_successfully? %}
+                        aria-describedby="ContactFooter-success"
+                      {% endif %}
+                      placeholder="Enter Email"
+                      required
+                    >
+                    <button type="submit" class="pb-10" name="commit" aria-label="Submit">
+                      <span class="invisible h-0 w-0 opacity-0 block" >Submit</span>
+                      <span>{% render 'link-arrow' %}</span>
+                    </button>
+                  </div>
+                  {% if form.errors %}
+                    <p class="newsletter-form__message form__message text-oracle-18-2" id="ContactFooter-error">{{ form.errors.messages['email'] }}</p>
+                  {% endif %}
+                  {% if form.posted_successfully? %}
+                    <p class="newsletter-form__message newsletter-form__message--success form__message text-oracle-18-2" id="ContactFooter-success" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
+                  {% endif %}
+                {% endform %}
+              {% endif %}
             </div>
-            {% if form.errors %}
-              <p class="newsletter-form__message form__message text-body-2" id="ContactFooter-error">{{ form.errors.messages['email'] }}</p>
-            {% endif %}
-            {% if form.posted_successfully? %}
-              <p class="newsletter-form__message newsletter-form__message--success form__message text-body-2" id="ContactFooter-success" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
-            {% endif %}
-          {% endform %}
+          </div>
+        </div>
 
-          <div class="mt-30">
-            {% render 'social' %}
+        <div class="col-span-full lg:col-span-5">
+          <div class="flex flex-row justify-start items-start flex-wrap gap-10">
+            {% if section.settings.contact != blank %}
+              <div class="flex-1">
+                <h5 class="text-arizona-26 mb-10">Contact</h5>
+                <p class="pl-15 text-oracle-16 lg:leading-[30px]">{{ section.settings.contact | newline_to_br }}</p>
+              </div>
+            {% endif %}
+            {% if section.settings.menu %}
+              {% for link in section.settings.menu.links %}
+                <div class="{% if link.title == "Social" or link.title == "social" %}basis-full w-full lg:basis-auto lg:w-auto{% else %}{% endif %} flex-1">
+                  <h5 class="text-arizona-26 mb-10">{{ link.title }}</h5>
+                  <ul class="flex {% if link.title == "Social" or link.title == "social" %}gap-x-[16px] flex-row lg:flex-col{% else %}pl-15 flex-col{% endif %}">
+                    {% for child_link in link.links %}
+                      <li>
+                        <a href="{{ child_link.url }}" {% if child_link.type == 'http_link' %} target="_blank" {% endif %} class="text-oracle-16 leading-[30px] underline-offset-2 hover:underline{% if child_link.active %} active{% endif %}">
+                          {% if link.title == "Social" or link.title == "social" %}
+                            <span class="invisible w-0 h-0 block lg:inline lg:visible lg:w-auto lg:h-auto">{{ child_link.title }}</span>
+                            <span class="block lg:hidden w-20 h-20 [&_svg]:w-full [&_svg]:h-full">
+                              {% case child_link.title %}
+                                {% when 'Instagram' %}
+                                  {% render 'icon' icon: 'instagram' %}
+                                {% when 'Facebook' %}
+                                  {% render 'icon' icon: 'facebook' %}
+                                {% when 'Twitter' %}
+                                  {% render 'icon' icon: 'twitter' %}
+                                {% when 'Youtube' %}
+                                  {% render 'icon' icon: 'youtube' %}
+                                {% when 'Pinterest' %}
+                                  {% render 'icon' icon: 'pinterest' %}
+                                {% when 'Tumblr' %}
+                                  {% render 'icon' icon: 'tumblr' %}
+                                {% when 'Snapchat' %}
+                                  {% render 'icon' icon: 'snapchat' %}
+                                {% when 'Vimeo' %}
+                                  {% render 'icon' icon: 'vimeo' %}
+                              {% endcase %}
+                            </span>
+                          {% else %}
+                            <span>{{ child_link.title }}</span>
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endfor %}
+            {% endif %}
+
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="mt-60 pb-20 px-10 text-center md:mt-100 md:flex md:justify-between md:items-center md:gap-40">
-      <div class="flex items-center gap-x-20 gap-y-5 flex-wrap justify-center md:gap-40 md:flex-nowrap md:justify-start">
-        <p class="w-full text-m-body md:w-auto md:text-body">&copy; Cardinal {{ 'now' | date: "%Y" }}</p>
-        <a href="/pages/terms-conditions" class="text-m-body hover:underline md:text-body">Terms & Conditions</a>
-        <a href="/pages/privacy-policy" class="text-m-body hover:underline md:text-body">Privacy Policy</a>
+      <div class="col-span-full pt-[64px]">
+        <div class="flex flex-row justify-between items-end gap-20 font-pangram uppercase text-[8px] lg:text-pangram-custom" style="--size: 10px;">
+          <p class="text-center lg:text-left">&copy; {{ shop.name }} {{ 'now' | date: "%Y" }}. <br class="block lg:hidden"> All rights reserved.</p>
+
+          <div class="block lg:hidden">
+            {% if settings.secondary_logo != blank %}
+              {{ settings.secondary_logo }}
+            {% endif %}
+          </div>
+
+          <p class="text-center lg:text-right"><span class="block lg:hidden">Brand & Web</span> Made by Nice people</p>
+          {% comment %} <a href="/pages/terms-conditions" class="text-m-body hover:underline md:text-oracle-18">Terms & Conditions</a>
+          <a href="/pages/privacy-policy" class="text-m-body hover:underline md:text-oracle-18">Privacy Policy</a> {% endcomment %}
+        </div>
+        <button href="js-open-credits" class="hidden hover:underline text-pangram-12">Site Credits</button>
       </div>
-      <button href="js-open-credits" class="text-m-body hover:underline md:text-body">Site Credits</button>
     </div>
   </div>
 
@@ -103,35 +162,47 @@
       "content": "Logo"
     },
     {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "header",
-      "content": "Menu"
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Menu",
-      "default": "footer"
+      "type": "paragraph",
+      "content": "Upload logo in Theme settings"
     },
     {
       "type": "header",
       "content": "Newsletter"
     },
     {
-      "type": "textarea",
+      "type": "inline_richtext",
       "id": "newsletter_title",
       "label": "Newsletter Title",
-      "default": "Sign Up"
+      "default": "Stay in the loop"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "newsletter_text",
+      "label": "Newsletter Text",
+      "default": "Sign up to receive news on limited collection and events, as well as 10% off your first order"
+    },
+    {
+      "type": "liquid",
+      "id": "klaviyo_form_embed",
+      "label": "Klaviyo form embed"
+    },
+    {
+      "type": "header",
+      "content": "Contact"
     },
     {
       "type": "textarea",
-      "id": "newsletter_text",
-      "label": "Newsletter Text",
-      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "id": "contact",
+      "label": "Contact info"
+    },
+    {
+      "type": "header",
+      "content": "Links"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
     }
   ]
 }

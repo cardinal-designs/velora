@@ -8,7 +8,7 @@
         <div class="sticky top-0 p-20 text-center border-b-1 border-black">
 
           <div class="flex justify-between items-center">
-            <h2 class="text-m-h4 md:text-h4">Cart</h2>
+            <h2 class="text-m-h4 md:text-arizona-48">Cart</h2>
             <button type="button" class="js-close-cart" aria-label="Close cart drawer">
               {% render 'icon' icon: 'close' %}
             </button>
@@ -27,9 +27,9 @@
 
               <div class="pt-10">
                 {% if cart.total_price < threshold_in_cents %}
-                  <p class="text-body">Only {{ remaining_amount | money_without_trailing_zeros }} away from free shipping!</p>
+                  <p class="text-oracle-18">Only {{ remaining_amount | money_without_trailing_zeros }} away from free shipping!</p>
                 {% else %}
-                  <p class="text-body">You have free shipping!</p>
+                  <p class="text-oracle-18">You have free shipping!</p>
                 {% endif %}
                 <div class="grid grid-cols-[45px_1fr_45px] items-center">
                   <p class="text-m-body">$0</p>
@@ -60,11 +60,11 @@
 
         <div class="w-full p-20 sticky bottom-0 bg-white border-t-1 border-black">
           <div class="mb-15 flex justify-between items-center gap-20" id="cart-drawer-subtotal">
-            <p class="text-body">Subtotal</p>
-            <p class="text-body">{{ cart.total_price | money }}</p>
+            <p class="text-oracle-18">Subtotal</p>
+            <p class="text-oracle-18">{{ cart.total_price | money }}</p>
           </div>
           <button type="submit" class="w-full button" name="checkout" form="cart">Checkout</button>
-          <p class="mt-10 text-body text-center">Shipping & taxes calculated at checkout.</p>
+          <p class="mt-10 text-oracle-18 text-center">Shipping & taxes calculated at checkout.</p>
         </div>
 
         <div id="cart-drawer-loading" class="hidden inset bg-white/40">

@@ -2,13 +2,13 @@
 
 <div class="page-width mt-30 mb-60 md:mt-60 md:mb-100">
   <div class="mb-10 text-center md:mb-30">
-    <h1 class="text-m-h2 font-bold md:text-h2">Cart</h1>
+    <h1 class="text-m-h2 font-bold md:text-arizona-71">Cart</h1>
   </div>
 
   <cart-items id="main-cart-items" class="max-w-custom mx-auto group{% if cart == empty %} is-empty{% endif %} block" style="--width: 900px;">
 
     <div class="mt-40 hidden group-[.is-empty]:block text-center">
-      <p class="mb-20 text-body">{{ 'sections.cart.empty' | t }}</p>
+      <p class="mb-20 text-oracle-18">{{ 'sections.cart.empty' | t }}</p>
       <a href="{{ settings.shop_all_link }}" class="button">Continue Shopping</a>
     </div>
 
@@ -39,8 +39,8 @@
           <div class="max-w-full w-full mt-20 md:max-w-custom" style="--width: 440px;">
 
             <div class="flex justify-between items-center gap-20">
-              <p class="text-m-h5 md:text-h5">Total</p>
-              <p class="text-m-h5 md:text-h5">{{ cart.total_price | money }}</p>
+              <p class="text-m-h5 md:text-arizona-36">Total</p>
+              <p class="text-m-h5 md:text-arizona-36">{{ cart.total_price | money }}</p>
             </div>
 
             <div class="mt-15">
@@ -54,7 +54,7 @@
                 Checkout
               </button>
 
-              <p class="mt-10 text-body text-center">Shipping & taxes calculated at checkout.</p>
+              <p class="mt-10 text-oracle-18 text-center">Shipping & taxes calculated at checkout.</p>
             </div>
 
           <div id="cart-errors"></div>

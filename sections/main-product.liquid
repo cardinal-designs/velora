@@ -23,11 +23,11 @@
     <div id="ProductInfo-{{ section.id }}" class="pt-20 md:pt-30 md:pl-40">
       {% assign product_form_id = 'product-form-' | append: section.id %}
 
-      <h1 class="mb-10 text-m-h3 font-bold md:text-h3">
+      <h1 class="mb-10 text-m-h3 font-bold md:text-arizona-60">
         {{ product.title | escape }}
       </h1>
 
-      <p class="price mb-30 flex items-center gap-5 text-body">
+      <p class="price mb-30 flex items-center gap-5 text-oracle-18">
         {{ product.price | money }}
         {% if product.compare_at_price > product.price %}
           <span class="strike-through opacity-50">{{ product.compare_at_price | money }}</span>
@@ -35,7 +35,7 @@
       </p>
 
       {% if product.description != blank %}
-        <div class="rte text-body">
+        <div class="rte text-oracle-18">
           {{ product.description }}
         </div>
       {% endif %}

@@ -19,7 +19,7 @@
 
   <div class="flex justify-between items-center gap-40">
     <div class="flex items-center gap-20 lg:gap-40">
-      <button class="js-open-filters flex items-center gap-10 text-body">
+      <button class="js-open-filters flex items-center gap-10 text-oracle-18">
         Filter
         <span class="-rotate-90">
           {% render 'icon' icon: 'caret' %}
@@ -35,8 +35,8 @@
 
 
           <div class="mx-20 py-20 flex justify-between items-center gap-10 border-b-1 border-black">
-            <h2 class="js-open-filters text-m-h4 font-bold md:text-h4">Filters</h2>
-            <button class="js-close-filters text-body">{% render 'icon' icon: 'close' %}</button>
+            <h2 class="js-open-filters text-m-h4 font-bold md:text-arizona-48">Filters</h2>
+            <button class="js-close-filters text-oracle-18">{% render 'icon' icon: 'close' %}</button>
           </div>
 
           <div class="h-full flex flex-col overflow-y-scroll md:pb-0 md:overflow-y-auto">
@@ -48,7 +48,7 @@
                 <div class="my-10 flex gap-10">
                   {% for filter in collection.filters %}
                     {% for value in filter.active_values %}
-                      <button class="remove-filter px-10 py-5 flex flex-wrap items-center gap-5 text-body border-1 border-black" data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                      <button class="remove-filter px-10 py-5 flex flex-wrap items-center gap-5 text-oracle-18 border-1 border-black" data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
                         {{ value.label | escape }}
                         <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
                           {% render 'icon' icon: 'close' %}
@@ -64,7 +64,7 @@
               
                 {% assign downcase_filter = filter.label | downcase %}
                 <div class="dropdown border-b-1 border-black">
-                  <button class="group/button peer filter-dropdown dropdown-header w-full py-10 flex justify-between items-center gap-10 text-body{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
+                  <button class="group/button peer filter-dropdown dropdown-header w-full py-10 flex justify-between items-center gap-10 text-oracle-18{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
                     <span class="filter-label">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
                     <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
                       {% render 'icon' icon: 'caret' %}
@@ -83,7 +83,7 @@
                             {% if value.active %}checked{% endif %}
                           >
                           <div class="h-15 w-15 border-1 border-black transition-colors peer-checked:bg-black"></div>
-                          <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="pl-10 text-body cursor-pointer{% if value.count == 0 and value.active == false %} opacity-50{% endif %}">
+                          <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="pl-10 text-oracle-18 cursor-pointer{% if value.count == 0 and value.active == false %} opacity-50{% endif %}">
                             {{ value.label | escape }}
                           </label>
                         </div>
@@ -107,7 +107,7 @@
     </div>
     <form class="sort-form relative">
       <div class="dropdown">
-        <button class="dropdown-header dropdown-header-sort group/button peer py-20 flex justify-between items-center gap-10 text-body">
+        <button class="dropdown-header dropdown-header-sort group/button peer py-20 flex justify-between items-center gap-10 text-oracle-18">
           Sort 
           <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
             {% render 'icon' icon: 'caret' %}
@@ -131,7 +131,7 @@
                   {% if is_active %}checked{% endif %}
                 >
                 <div class="h-15 w-15 border-1 border-black transition-colors peer-checked:bg-black"></div>
-                <label for="Sort-{{ forloop.index }}" class="text-body font-medium cursor-pointer">
+                <label for="Sort-{{ forloop.index }}" class="text-oracle-18 font-medium cursor-pointer">
                   {{ option.name }}
                 </label>
               </div>
@@ -148,7 +148,7 @@
       <div class="mb-20 flex gap-10">
         {% for filter in collection.filters %}
           {% for value in filter.active_values %}
-            <button class="remove-filter px-10 py-5 flex flex-wrap items-center gap-5 text-body border-1 border-black" data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+            <button class="remove-filter px-10 py-5 flex flex-wrap items-center gap-5 text-oracle-18 border-1 border-black" data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
               {{ value.label | escape }}
               <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
                 {% render 'icon' icon: 'close' %}

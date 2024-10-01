@@ -1,11 +1,11 @@
-<header class="header bg-white border-b-1 border-black">
+<header class="header">
   <div class="page-width">
 
     <div class="grid grid-cols-thirds items-center gap-20">
 
       <!-- Navigation -->
       {% if section.settings.menu != blank %}
-        <nav class="flex">
+        <nav class="flex h-full">
           <ul class="hidden items-center gap-30 md:flex" role="list">
             {% for link in section.settings.menu.links %}
               {% assign downcased_link_title = link.title | downcase | strip %}
@@ -23,8 +23,8 @@
               {% unless mega_menu_names contains downcased_link_title %}
                 <li class="group/nav">
                   {% if link.links != blank %}
-                    <div class="peer flex items-center gap-10 py-20 text-body cursor-pointer relative">
-                      <span {% if link.child_active %} class="text-body"{% endif %}>{{ link.title | escape }}</span>
+                    <div class="peer flex items-center gap-10 cursor-pointer relative">
+                      <span {% if link.child_active %} class=""{% endif %}>{{ link.title | escape }}</span>
                       <div class="transition-transform ease-in-out group-hover/nav:rotate-180">
                         {% render 'icon' icon: 'caret' %}
                       </div>
@@ -32,21 +32,21 @@
                     <ul class="min-w-[200px] pt-20 pr-20 pb-30 pl-30 flex flex-col gap-15 absolute top-full translate-x-[-30px] opacity-0 invisible bg-white group-hover/nav:opacity-100 group-hover/nav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
                       {% for childlink in link.links %}
                         <li>
-                          <a href="{{ childlink.url }}" class="text-body relative"{% if childlink.current %} aria-current="page"{% endif %}>
+                          <a href="{{ childlink.url }}" class="relative"{% if childlink.current %} aria-current="page"{% endif %}>
                             {{ childlink.title | escape }}
                           </a>
                         </li>
                       {% endfor %}
                     </ul>
                   {% else %}
-                    <a href="{{ link.url }}" class="py-20 block text-body relative"{% if link.current %} aria-current="page"{% endif %}>
+                    <a href="{{ link.url }}" class="block relative"{% if link.current %} aria-current="page"{% endif %}>
                       {{ link.title | escape }}
                     </a>
                   {% endif %}
                 </li>
               {% else %}
                 <li class="group/nav">
-                  <a href="{{ link.url }}" class="py-20 flex items-center gap-10 text-body relative"{% if link.current %} aria-current="page"{% endif %}>
+                  <a href="{{ link.url }}" class="flex items-center gap-10 relative"{% if link.current %} aria-current="page"{% endif %}>
                     {{ link.title | escape }}
                     <div class="transition-transform origin-center ease-in-out group-hover/nav:rotate-180">
                       {% render 'icon' icon: 'caret' %}
@@ -59,22 +59,40 @@
                     {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
                     
                     {% if downcased_mega_menu_name == downcased_link_title %}
-                      <div class="w-full pt-60 pb-80 absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 bg-white border-b-1 border-black transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
-                        <div class="page-width">
-                          <div class="flex gap-100">
-                            {% for child_link in link.links %}
-                              <div class="">
-                                <h2 class="mb-25 text-body font-bold">{{ child_link.title }}</h2>
-                                <ul class="flex flex-col gap-15">
-                                  {% for grandchild_link in child_link.links %}
-                                    <li>
-                                      <a href="{{ grandchild_link.url }}" class="block text-body">{{ grandchild_link.title }}</a>
-                                    </li>
-                                  {% endfor %}
-                                </ul>
-                              </div>
-                            {% endfor %}
+                      <div class="group-megamenu mega-menu w-[calc(100%-56px)] p-[36px] absolute top-full left-[28px] invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
+                        <div class="grid grid-cols-12 gap-20">
+                          <div class="{% if block.settings.image != blank %}col-span-6{% else %}col-span-full{% endif %} flex flex-row">
+                            {% assign halfway = link.links.size | divided_by: 2 %}
+                            <div class="grid grid-cols-2 grid-flow-row-dense w-full gap-[22px] group-megamenuCol [&:hover_div]:opacity-50">
+                              {% for child_link in link.links %}
+                                <div class="hover:!opacity-100 transition-opacity">
+                                  <h2 class="text-arizona-26">{{ child_link.title }}</h2>
+                                  <ul class="flex flex-col ml-40 [&:hover_li]:opacity-50">
+                                    {% for grandchild_link in child_link.links %}
+                                      <li class="hover:!opacity-100 transition-opacity">
+                                        <a href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              {% endfor %}
+                            </div>
                           </div>
+
+                          {% if block.settings.image != blank %}
+                            <div class="col-span-6">
+                              <div class="w-full h-full rounded-[10px] overflow-hidden relative">
+                                {{ block.settings.image | image_url: width: 1400 | image_tag: class: 'w-full h-full object-cover object-center relative' }}
+                                
+                                {% if block.settings.text != blank %}
+                                  <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+                                    <div class="bg-brown opacity-10 absolute top-0 left-0 w-full h-full"> </div>
+                                    <h4 class="relative text-arizona-48 text-center text-cream whitespace-normal">{{ block.settings.text }}</h4>
+                                  </div>
+                                {% endif %}
+                              </div>
+                            </div>
+                          {% endif %}
                         </div>
                       </div>
                     {% endif %}
@@ -91,13 +109,15 @@
       {% endif %}
 
       <!-- Logo -->
-      {% if section.settings.logo != blank %}
-        <a href="{{ routes.root_url }}" class="w-[115px] py-20 block md:py-0" aria-label="Header Logo Link">
-          {{ section.settings.logo | image_url: width: 200 | image_tag: width: section.settings.logo.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
-        </a>
-      {% else %}
-        <a href="{{ routes.root_url }}" class="py-10 text-m-h4 font-bold md:p-0 md:text-h4">{{ shop.name }}</a>
-      {% endif %}
+      <a href="{{ routes.root_url }}" class="w-[115px] block pt-5 pb-[8px]" aria-label="Header Logo Link">
+      {% if settings.logo_svg != blank %}
+          {{ settings.logo_svg }}
+        {% elsif settings.logo_image != blank %}
+          {{ settings.logo_image | image_url: width: 200 | image_tag: width: settings.logo_image.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
+        {% else %}
+          {{ shop.name }}
+        {% endif %}
+      </a>
 
       <!-- Icons -->
       <div class="flex justify-end items-center gap-30">
@@ -189,9 +209,8 @@
       "content": "Logo"
     },
     {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
+      "type": "paragraph",
+      "content": "Upload logo in Theme Settings"
     },
     {
       "type": "header",
@@ -219,6 +238,20 @@
           "id": "title",
           "label": "Menu Item",
           "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "paragraph",
+          "content": "Right side menu feature"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading"
         }
       ]
     }

@@ -31,16 +31,16 @@
   <div class="mt-[22px]">
     <div class="flex flex-row justify-between items-center">
       <div class="flex flex-col justify-start items-start">
-        <a href="{{ product_card_product.url }}" class="text-caption leading-[30px]">
+        <a href="{{ product_card_product.url }}" class="text-pangram-20 leading-[30px]">
           {{ split_product_title[0] }}
         </a>
         {% if split_product_title[1] != blank  %}
-          <a href="{{ product_card_product.url }}" class="text-h7">
+          <a href="{{ product_card_product.url }}" class="text-arizona-20">
             {{ split_product_title[1] }}
           </a>
         {% endif %}
       </div>
-      <p class="price flex items-center gap-5 text-body">
+      <p class="price flex items-center gap-5 text-oracle-18">
         {{ product_card_product.price | money }}
         {% if product_card_product.compare_at_price > product_card_product.price %}
           <span class="line-through opacity-50">{{ product_card_product.compare_at_price | money }}</span>

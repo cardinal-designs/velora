@@ -1,9 +1,9 @@
 <div class="page-width my-60 md:my-80">
   <div class="max-w-custom w-full mx-auto" style="--width: 800px;">
     <div class="mb-40 text-center">
-      <h1 class="text-m-h3 font-header md:text-h3">{{ section.settings.title }}</h1>
+      <h1 class="text-m-h3 font-header md:text-arizona-60">{{ section.settings.title }}</h1>
       {% if section.settings.text != blank %}
-        <div class="rte max-w-custom w-full mt-10 mx-auto text-m-body text-center md:text-body" style="--width: 345px;">{{ section.settings.text }}</div>
+        <div class="rte max-w-custom w-full mt-10 mx-auto text-m-body text-center md:text-oracle-18" style="--width: 345px;">{{ section.settings.text }}</div>
       {% endif %}
     </div>
     {% form 'contact', id: 'ContactForm' %}
@@ -54,9 +54,9 @@
         </textarea>
 
         {% if form.posted_successfully? %}
-          <div class="mt-10 text-body" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+          <div class="mt-10 text-oracle-18" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
         {% elsif form.errors %}
-          <div class="mt-10 text-body text-error">{{ form.errors | default_errors }}</div>
+          <div class="mt-10 text-oracle-18 text-error">{{ form.errors | default_errors }}</div>
         {% endif %}
       </div>
 

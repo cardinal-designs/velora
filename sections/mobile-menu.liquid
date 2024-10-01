@@ -13,7 +13,7 @@
         {% for link in section.settings.menu.links %}
           <li class="border-b-1 border-black/10">
             {% if link.links != blank %}
-              <button class="dropdown-button group/button py-20 w-full flex justify-between items-center text-body" href="{{ link.url }}">
+              <button class="dropdown-button group/button py-20 w-full flex justify-between items-center text-oracle-18" href="{{ link.url }}">
                 <span>{{ link.title }}</span>
                 <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
                   {% render 'icon' icon: 'caret' %}
@@ -22,12 +22,12 @@
               <ul class="dropdown pl-10 hidden" role="list">
                 {% for child_link in link.links %}
                   <li class="pb-5 last:pb-20">
-                    <a class="text-body" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                    <a class="text-oracle-18" href="{{ child_link.url }}">{{ child_link.title }}</a>
                   </li>
                 {% endfor %}
               </ul>
             {% else %}
-              <a class="py-20 block text-body" href="{{ link.url }}">{{ link.title }}</a>
+              <a class="py-20 block text-oracle-18" href="{{ link.url }}">{{ link.title }}</a>
             {% endif %}
           </li>
         {% endfor %}

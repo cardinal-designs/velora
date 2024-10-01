@@ -41,35 +41,42 @@
       height: inherit;
     }
 
-    .text-h1,
-    .text-h2,
-    .text-h3,
-    .text-h4,
-    .text-h5,
-    .text-h6,
-    .text-h7 {
+    .text-arizona-80,
+    .text-arizona-71,
+    .text-arizona-60,
+    .text-arizona-48,
+    .text-arizona-36,
+    .text-arizona-26,
+    .text-arizona-20,
+    .text-arizona-custom {
         @apply font-arizona-flare
     }
 
-    .text-body,
-    .text-body-1,
-    .text-body-2,
-    .text-body-3 {
+    .text-oracle-18,
+    .text-oracle-18,
+    .text-oracle-18-2,
+    .text-oracle-18-3,
+    .text-oracle-custom {
         @apply font-oracle;
     }
 
-    .text-caption,
-    .text-caption-1,
-    .text-caption-2,
-    .text-caption-3,
-    .text-caption-4 {
+    .text-pangram-20,
+    .text-pangram-20-1,
+    .text-pangram-20-2,
+    .text-pangram-20-3,
+    .text-pangram-20-4,
+    .text-pangram-custom {
         @apply font-pangram uppercase font-semibold;
+    }
+
+    .font-pangram {
+      @apply uppercase font-semibold;
     }
   }
 
   @layer components {
     .button {
-        @apply font-oracle text-body-2 leading-[30px]
+        @apply font-oracle text-oracle-18-2 leading-[30px]
         px-20 py-[4px]
         rounded-[5px]
         border
@@ -151,3 +158,22 @@
     }
   }
   
+
+  /* HEADER */
+
+  header nav li,
+  header nav a {
+    @apply text-oracle-18-2 leading-[30px] whitespace-nowrap
+  }
+
+  header {
+    @apply bg-cream text-brown border-b border-brown
+  }
+
+  header .mega-menu {
+    @apply bg-cream text-brown
+  }
+
+  .header .group\/nav {
+    @apply h-full py-5 flex flex-col justify-center items-center
+  }

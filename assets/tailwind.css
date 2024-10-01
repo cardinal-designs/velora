@@ -25,16 +25,16 @@
 @layer components {
   /* Button */
   .button {
-    @apply px-40 py-15 inline-block text-body font-bold text-center bg-black text-white transition-colors;
+    @apply px-40 py-15 inline-block text-oracle-18 font-bold text-center bg-black text-white transition-colors;
   }
 
   /* Form Elements */
   .field__label {
-    @apply mb-5 block text-body;
+    @apply mb-5 block text-oracle-18;
   }
 
   .field__input {
-    @apply w-full py-10 px-15 text-body text-black border-1 border-black bg-none resize-none placeholder:text-black/20;
+    @apply w-full py-10 px-15 text-oracle-18 text-black border-1 border-black bg-none resize-none placeholder:text-black/20;
   }
 
   .field__select {
@@ -42,7 +42,7 @@
   }
 
   .select__select {
-    @apply w-full p-10 text-body bg-transparent appearance-none;
+    @apply w-full p-10 text-oracle-18 bg-transparent appearance-none;
   }
 
   .field__select svg {
