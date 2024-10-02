@@ -115,7 +115,7 @@
     }
 
     .svg-link {
-        @apply [&_svg_circle]:fill-transparent [&:hover_svg_circle]:fill-brown [&_svg_circle]:transition-[fill]
+        @apply flex-nowrap whitespace-nowrap [&_svg_circle]:fill-transparent [&:hover_svg_circle]:fill-brown [&_svg_circle]:transition-[fill]
     }
 
   }

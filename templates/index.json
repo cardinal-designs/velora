@@ -70,11 +70,41 @@
         "button_label": "Shop Best Sellers",
         "button_link": "shopify://collections/bestsellers"
       }
+    },
+    "collection_feature_bwXBGq": {
+      "type": "collection-feature",
+      "blocks": {
+        "block_98kf7W": {
+          "type": "block",
+          "settings": {
+            "color": "dark",
+            "heading": "pendant-lights",
+            "title": "Pendants",
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.53.37_PM.png"
+          }
+        },
+        "block_DzCN46": {
+          "type": "block",
+          "settings": {
+            "color": "dark",
+            "heading": "wall-sconces",
+            "title": "Sconces",
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.33_PM.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_98kf7W",
+        "block_DzCN46"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "16587824044cd3c400",
     "big_text_xqLtEP",
-    "product_carousel_3UA6Pd"
+    "product_carousel_3UA6Pd",
+    "collection_feature_bwXBGq"
   ]
 }

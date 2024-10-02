@@ -1,0 +1,100 @@
+<div class="flex flex-col lg:flex-row flex-wrap">
+    {% for block in section.blocks %}
+        {% if block.settings.heading == blank or block.settings.heading.title == blank %}
+            {% continue %}
+        {% endif %}
+
+        <div class="relative w-full h-auto flex-1 overflow-hidden bg-[var(--background)] text-[var(--text)] aspect-square lg:aspect-[0.84/1]" style="{% render "color-variables", color: block.settings.color %}">
+            {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset' }}
+            {% elsif block.settings.heading.featured_image != blank %}
+                {{ block.settings.heading.featured_image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset' }}
+            {% endif %}
+
+            <div class="bg-brown opacity-10 absolute top-0 left-0 w-full h-full {% if block.settings.overlay == false %}hidden{% endif %}"> </div>
+
+            <div class="w-full h-full relative px-[min(65px,3.75vw)] py-[min(60px,3.5vw)] flex flex-col justify-end items-start">
+                <div class="flex flex-row justify-between items-center gap-20 w-full">
+                    <h2 style="--size: 40px;" class="text-arizona-custom lg:text-arizona-80">
+                        {% if block.settings.title != blank %}
+                            {{ block.settings.title }}
+                        {% else %}
+                            {{ block.settings.heading.title }}
+                        {% endif %}
+                    </h2>
+
+                    <a href="/" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+                        Shop Now
+                        <span>{% render 'link-arrow' %}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+    {
+        "name": "Collection feature",
+        "settings": [],
+        "max_blocks": 4,
+        "blocks": [
+            {
+                "type": "block",
+                "name": "Block",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "color",
+                        "label": "Section colors",
+                        "options": [
+                            {
+                                "label": "Light",
+                                "value": "light"
+                            },
+                            {
+                                "label": "Dark",
+                                "value": "dark"
+                            }
+                        ],
+                        "default": "dark"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "overlay",
+                        "label": "Show overlay",
+                        "default": true
+                    },
+                    {
+                        "type": "collection",
+                        "id": "heading",
+                        "label": "Collection"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Content overrides"
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": "Optional"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Collection feature"
+            }
+        ]
+    }
+{% endschema %}
