@@ -1,5 +1,10 @@
 import 'vite/modulepreload-polyfill'
 import Headroom from "headroom.js"
+import Alpine from 'alpinejs'
+ 
+window.Alpine = Alpine
+ 
+Alpine.start()
 
 // set up header
 let headroom = new Headroom(document.querySelector("[data-headroom]"), {

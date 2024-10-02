@@ -21,6 +21,7 @@
     "vite-plugin-shopify": "^3.0.1"
   },
   "dependencies": {
+    "alpinejs": "^3.14.1",
     "headroom.js": "^0.12.0"
   }
 }

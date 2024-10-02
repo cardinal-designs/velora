@@ -78,6 +78,7 @@
           "type": "block",
           "settings": {
             "color": "dark",
+            "overlay": true,
             "heading": "pendant-lights",
             "title": "Pendants",
             "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.53.37_PM.png"
@@ -87,6 +88,7 @@
           "type": "block",
           "settings": {
             "color": "dark",
+            "overlay": true,
             "heading": "wall-sconces",
             "title": "Sconces",
             "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.33_PM.png"
@@ -99,12 +101,79 @@
       ],
       "settings": {
       }
+    },
+    "dropdowns_TeGxJ7": {
+      "type": "dropdowns",
+      "blocks": {
+        "dropdown_8h8A3U": {
+          "type": "dropdown",
+          "settings": {
+            "heading": "Kitchen",
+            "text": "Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus.",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/kitchen",
+            "image": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png"
+          }
+        },
+        "dropdown_B7eMLF": {
+          "type": "dropdown",
+          "settings": {
+            "heading": "Bathroom",
+            "text": "Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus.",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/bathroom",
+            "image": "shopify://shop_images/1fd71331080818210d88fb1dcc0a40bd.png"
+          }
+        },
+        "dropdown_D7m7bn": {
+          "type": "dropdown",
+          "settings": {
+            "heading": "Living Room",
+            "text": "Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus.",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/living-room",
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.53.37_PM.png"
+          }
+        },
+        "dropdown_3mawEF": {
+          "type": "dropdown",
+          "settings": {
+            "heading": "Bedroom",
+            "text": "Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus.",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/bedroom",
+            "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png"
+          }
+        },
+        "dropdown_AzWPEk": {
+          "type": "dropdown",
+          "settings": {
+            "heading": "Dining Room",
+            "text": "Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus.",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/dining-room",
+            "image": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_8h8A3U",
+        "dropdown_B7eMLF",
+        "dropdown_D7m7bn",
+        "dropdown_3mawEF",
+        "dropdown_AzWPEk"
+      ],
+      "settings": {
+        "color": "light",
+        "heading": "find a fixture that feels right at home"
+      }
     }
   },
   "order": [
     "16587824044cd3c400",
     "big_text_xqLtEP",
     "product_carousel_3UA6Pd",
-    "collection_feature_bwXBGq"
+    "collection_feature_bwXBGq",
+    "dropdowns_TeGxJ7"
   ]
 }

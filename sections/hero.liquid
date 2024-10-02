@@ -64,12 +64,12 @@
                 {% endif %}
                 {% if slide.button_label != blank and slide.button_link != blank %}
                   <div class="flex flex-col justify-end items-center">
-                    <a href="/" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+                    <a href="{{ slide.button_link }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
                       {{ slide.button_label }}
                       <span>{% render 'link-arrow' %}</span>
                     </a>
                   </div>
-                {% elsif slide.button_link!= blank %}
+                {% elsif slide.button_link != blank %}
                   <a href="{{ slide.button_link }}" class="absolute top-0 left-0 w-full h-full"> </a>
                 {% endif %}
               </div>

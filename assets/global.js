@@ -654,7 +654,7 @@ var DropdownItem = class extends HTMLElement {
   constructor() {
     super();
 
-    this.parent = this.querySelector('.dropdown');
+    this.parent = this.querySelector('.dropdown') || this;
     this.header = this.querySelector('.dropdown-header');
     this.content = this.querySelector('.dropdown-content');
 
