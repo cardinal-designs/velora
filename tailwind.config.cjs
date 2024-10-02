@@ -101,6 +101,8 @@ module.exports = {
       maxWidth: {
         'custom': 'var(--width)',
         '1440': '1440px',
+        '1490': '1490px',
+        '1610': '1610px',
       },
       screens: {
         sm: '480px',

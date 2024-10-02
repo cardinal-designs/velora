@@ -1,0 +1,92 @@
+<div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px]" style="{% render "color-variables", color: section.settings.color %}">
+    <div class="page-width flex flex-col lg:grid grid-cols-12 gap-x-10 gap-y-40 lg:py-20 relative">
+        <div class="lg:col-span-9 pr-50 lg:pr-0">
+            <h4 class="text-arizona-26 lg:text-arizona-48">
+                {{ section.settings.heading }}
+            </h4>
+        </div>
+
+        <div class="lg:col-span-3 lg:relative lg:py-20 flex flex-col justify-center items-end">
+            {% if section.settings.small_text != blank %}
+                <div class="absolute right-[14px] lg:right-0 w-auto h-auto top-10 lg:top-0 vertical-text-mobile">
+                    <p class="text-pangram-14 whitespace-pre">{{ section.settings.small_text }}</p>
+                </div>
+            {% endif %}
+            {% if section.settings.image != blank %}
+                <div class="rounded-10 overflow-hidden w-full h-auto">
+                    {{ section.settings.image | image_width: width: 800 | image_tag: class: "w-full h-full object-cover" }}
+                </div>
+            {% endif %}
+            {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                <div class="flex flex-col justify-center lg:justify-end items-center w-full">
+                  <a href="{{ section.settings.button_link }}" class="button button--outline button--large w-full">
+                    {{ section.settings.button_label }}
+                  </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Big Text",
+    "settings": [
+        {
+            "type": "select",
+            "id": "color",
+            "label": "Section colors",
+            "options": [
+                {
+                    "label": "Light",
+                    "value": "light"
+                },
+                {
+                    "label": "Dark",
+                    "value": "dark"
+                }
+            ],
+            "default": "dark"
+        },
+        {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Text"
+        },
+        {
+            "type": "header",
+            "content": "Optional"
+        },
+        {
+            "type": "text",
+            "id": "small_text",
+            "label": "Small text"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link",
+            "info": "Leave Label field blank to make entire slide clickable"
+          }
+    ],
+    "presets": [
+        {
+            "name": "Big text"
+        }
+    ]
+}
+{% endschema %}

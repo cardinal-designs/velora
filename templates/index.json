@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "16587824044cd3c400": {
@@ -38,9 +47,34 @@
       "settings": {
         "text": "Original fixtures, straight from our workshop to your home."
       }
+    },
+    "big_text_xqLtEP": {
+      "type": "big-text",
+      "settings": {
+        "color": "dark",
+        "heading": "We believe extraordinary details are what add bespoke character to a home. Our fixtures are the antidote to mass-production—and you can customize any piece to better suit your space and style.",
+        "small_text": "originals              only",
+        "button_label": "Start Custom Inquiry",
+        "button_link": "/"
+      }
+    },
+    "product_carousel_3UA6Pd": {
+      "type": "product-carousel",
+      "settings": {
+        "color": "dark",
+        "title": "add an artisanal touch  to your space",
+        "collection": "bestsellers",
+        "products": [
+
+        ],
+        "button_label": "Shop Best Sellers",
+        "button_link": "shopify://collections/bestsellers"
+      }
     }
   },
   "order": [
-    "16587824044cd3c400"
+    "16587824044cd3c400",
+    "big_text_xqLtEP",
+    "product_carousel_3UA6Pd"
   ]
 }

@@ -1,0 +1,113 @@
+{% liquid
+    if section.settings.collection != blank
+        assign carousel_products = section.settings.collection.products
+    elsif section.settings.product != blank
+        assign carousel_products = section.settings.products
+    endif
+%}
+
+
+<div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px]" style="{% render "color-variables", color: section.settings.color %}">
+    <div class="page-width flex flex-col lg:flex-row justify-center lg:justify-between items-start flex-wrap gap-y-[13px] lg:gap-y-[37px]">
+        
+        <h6 class="text-pangram-14 leading-[30px]">{{ section.settings.title }}</h6>
+
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+            <div class="mt-50 lg:mt-0 order-last lg:order-none self-center">
+                <a href="{{ section.settings.button_link }}" class="text-link text-pangram-14 leading-[30px]">
+                {{ section.settings.button_label }}
+                </a>
+            </div>
+        {% elsif section.settings.collection != blank %}
+        <div class="mt-50 lg:mt-0 order-last lg:order-none self-center">
+            <a href="{{ section.settings.collection.url }}" class="text-link text-pangram-14 leading-[30px]">
+                Shop {{ section.settings.collection.title }}
+            </a>
+        </div>
+        {% endif %}
+
+        {% if carousel_products != blank %}
+        <div class="no-scrollbar overflow-page-width">
+            <div class="w-fit flex flex-row justify-start items-start gap-[20px]">
+                {% for p in carousel_products %}
+                    {% if p.title == blank%}
+                        {% continue %}
+                    {% endif %}
+                    <div class="flex-1 w-[min(340px,_86vw)] lg:w-[min(600px,_35vw)]">
+                    {% render "product-card", product_card_product: p %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+         {% endif %}
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "Product Carousel",
+        "settings": [
+            {
+                "type": "select",
+                "id": "color",
+                "label": "Section colors",
+                "options": [
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Dark",
+                        "value": "dark"
+                    }
+                ],
+                "default": "dark"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading"
+            },
+            {
+                "type": "header",
+                "content": "Populate with a collection"
+            },
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "Collection"
+            },
+            {
+                "type": "header",
+                "content": "Populate with product list"
+            },
+            {
+                "type": "product_list",
+                "id": "products",
+                "label": "Products"
+            },
+            {
+                "type": "header",
+                "content": "Button"
+            },
+            {
+                "type": "paragraph",
+                "content": "When using a collection, you can leave these fields blank to pupulate the button with the collection title and url"
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "label": "Button Label"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button Link"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Product Carousel"
+            }
+        ]
+    }
+{% endschema %}

@@ -26,11 +26,18 @@
     }
   
     .page-width {
-      @apply w-full max-w-1440 mx-auto px-10 md:px-30 lg:px-60;
+      @apply w-full max-w-1610 mx-auto px-[26px] md:px-30 lg:px-60;
     }
   
     .page-width-fluid {
       @apply w-full mx-auto px-20 md:px-30;
+    }
+
+    .overflow-page-width {
+      @apply 
+      w-[calc(100%_+_52px)] mx-[-26px] *:px-[26px]
+      md:w-[calc(100%_+_60px)] md:-mx-30 md:*:px-30
+      lg:w-[calc(100%_+_120px)] lg:-mx-60 lg:*:px-60 overflow-x-auto
     }
 
     hr {
@@ -61,10 +68,10 @@
     }
 
     .text-pangram-20,
-    .text-pangram-20-1,
-    .text-pangram-20-2,
-    .text-pangram-20-3,
-    .text-pangram-20-4,
+    .text-pangram-20,
+    .text-pangram-18,
+    .text-pangram-14,
+    .text-pangram-12,
     .text-pangram-custom {
         @apply font-pangram uppercase font-semibold;
     }
@@ -76,7 +83,7 @@
 
   @layer components {
     .button {
-        @apply font-oracle text-oracle-16 leading-[30px]
+        @apply font-oracle text-oracle-16 leading-[30px] text-center
         px-20 py-[4px]
         rounded-[5px]
         border
@@ -95,15 +102,15 @@
     }
 
     .text-link {
-        @apply relative overflow-x-clip
-        before:absolute before:content-[""] before:w-full before:h-[1px] before:bg-brown before:left-0 before:top-full
-        after:absolute after:content-[""] after:w-full after:h-[2.5px] after:bg-blue after:left-0 after:top-full after:-translate-x-full after:transition-transform
+        @apply relative overflow-x-clip block
+        before:absolute before:content-[""] before:w-full before:h-[2px] before:bg-[var(--text)] before:left-0 before:top-full
+        after:absolute after:content-[""] after:w-full after:h-[2px] after:bg-blue after:left-0 after:top-full after:-translate-x-full after:transition-transform
         hover:after:translate-x-0
     }
 
     .bullet-link {
         @apply relative
-        after:absolute after:content-[""] after:rounded-full after:w-[7px] after:h-[7px] after:bg-brown after:left-0 after:top-half after:-translate-x-half after:-translate-y-half after:opacity-0 after:transition-opacity
+        after:absolute after:content-[""] after:rounded-full after:w-[7px] after:h-[7px] after:bg-[var(--text)] after:left-0 after:top-half after:-translate-x-half after:-translate-y-half after:opacity-0 after:transition-opacity
         hover:after:opacity-100
     }
 
@@ -199,6 +206,25 @@
 
     .content-center_bottom {
       @apply justify-end items-center text-center
+    }
+
+    .vertical-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    @media screen and (min-width: 1024px) {
+      .vertical-text-desktop {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+    }
+
+    @media screen and (max-width: 1023px) {
+      .vertical-text-mobile {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
     }
   }
   
