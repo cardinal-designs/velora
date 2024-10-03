@@ -46,7 +46,7 @@
                                         {% endif %}
 
                                         {% if block.settings.image != blank %}
-                                            <div class="block md:hidden w-full h-auto aspect-[0.93/1] rounded-[10px] overflow-hidden relative mt-10 mb-30">
+                                            <div class="block lg:hidden w-full h-auto aspect-[0.93/1] rounded-[10px] overflow-hidden relative mt-10 mb-30">
                                                 {% if block.settings.image != blank %}
                                                     {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset'  }}
                                                 {% endif %}

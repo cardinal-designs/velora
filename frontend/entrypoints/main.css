@@ -49,7 +49,7 @@
     }
 
     .text-arizona-80,
-    .text-arizona-71,
+    .text-arizona-72,
     .text-arizona-60,
     .text-arizona-48,
     .text-arizona-36,
@@ -98,7 +98,7 @@
     }
 
     .button--large {
-        @apply w-full max-w-[381px] py-[16px] rounded-[10px]
+        @apply w-full max-w-[381px] py-[12px] lg:py-[16px] rounded-[10px]
     }
 
     .text-link {

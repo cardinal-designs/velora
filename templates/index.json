@@ -102,6 +102,34 @@
       "settings": {
       }
     },
+    "image_text_HGij4c": {
+      "type": "image-text",
+      "blocks": {
+        "image_bqfCRn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1f2aa66cbef6b76c117e69fddd3908e8.jpg"
+          }
+        },
+        "text_KJqGJJ": {
+          "type": "text",
+          "settings": {
+            "title": "details make",
+            "title_r": "the difference",
+            "heading": "Inspired by the timeless character  of heirlooms— with distinct, modern flair.",
+            "button_label": "Our Origin",
+            "button_link": "shopify://pages/about"
+          }
+        }
+      },
+      "block_order": [
+        "image_bqfCRn",
+        "text_KJqGJJ"
+      ],
+      "settings": {
+        "color": "light"
+      }
+    },
     "dropdowns_TeGxJ7": {
       "type": "dropdowns",
       "blocks": {
@@ -174,6 +202,7 @@
     "big_text_xqLtEP",
     "product_carousel_3UA6Pd",
     "collection_feature_bwXBGq",
+    "image_text_HGij4c",
     "dropdowns_TeGxJ7"
   ]
 }
