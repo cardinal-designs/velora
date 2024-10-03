@@ -1,6 +1,7 @@
 import 'vite/modulepreload-polyfill'
 import Headroom from "headroom.js"
 import Alpine from 'alpinejs'
+import swiperInit from '@/global/swiper'
  
 window.Alpine = Alpine
  
@@ -15,3 +16,5 @@ let headroom = new Headroom(document.querySelector("[data-headroom]"), {
     }
 })
 headroom.init()
+
+swiperInit()
