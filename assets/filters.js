@@ -2,7 +2,7 @@ class collectionFilters extends HTMLElement {
   constructor() {
     super();
 
-    console.log(location.pathname, location.href, window.location.pathname)
+    // console.log(location.pathname, location.href, window.location.pathname)
     
     this.grid = document.querySelector('#product-grid');
     this.form = document.querySelector('.filters-form');
@@ -30,7 +30,9 @@ class collectionFilters extends HTMLElement {
 
     // Handle Form Change
     this.form.addEventListener('change', event => {
-      this.handleFilterClick(event.target);
+      console.log("change")
+      this.reloadSections();
+      // this.handleFilterClick(event.target);
     });
 
     // Handle Sort form 
@@ -45,7 +47,6 @@ class collectionFilters extends HTMLElement {
       const button = event.target.closest('.remove-filter');
       if (button) {
         event.preventDefault();
-        console.log(button.dataset.filter)
         this.removeSelectedFilter(button.dataset.filter);
       }
     });
@@ -121,9 +122,14 @@ class collectionFilters extends HTMLElement {
   }
 
   removeSelectedFilter(filter) {
-    document.querySelector(`.filter-button[data-filter="${filter}"]:checked`).checked = false;
+    return
+    this.querySelector(`input[data-filter="${filter}"]`).checked = false;
 
-    this.reloadSections();
+    console.log(this.querySelector(`input[data-filter="${filter}"]`).checked)
+
+    this.form.dispatchEvent(new Event('change'))
+
+    // this.reloadSections();
   }
 
   handleSortClick(target) {
@@ -131,7 +137,7 @@ class collectionFilters extends HTMLElement {
     this.sortBy = sort;
 
     this.sortForm.querySelector('.dropdown').classList.remove('active');
-    this.querySelector('.dropdown-header-sort').classList.remove('active');
+    // this.querySelector('.dropdown-header-sort').classList.remove('active');
     
     this.reloadSections();
   }

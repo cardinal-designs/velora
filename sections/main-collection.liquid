@@ -4,24 +4,24 @@
   endfor
 %}
 
-<div class="page-width">
-  <div class="py-10 border-b-1 border-black">
+<div x-data="{ largeView: true, mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }" class="page-width">
+  <div class="py-10 visually-hidden">
     <p class="text-oracle-18 opacity-60">
       <a href="{{ settings.shop_all_link }}">Shop</a> > 
       <span>{{ collection.title }}</span>
     </p>
-    <h1 class="mt-20 text-m-h2 font-bold md:mt-60 md:text-arizona-72">{{ collection.title }}</h1>
+    {% comment %} <h1 class="mt-20 text-m-h2 font-bold md:mt-60 md:text-arizona-72">{{ collection.title }}</h1> {% endcomment %}
   </div>
 
-  {% render 'filters' %}
+  {% render 'filters', main_filters: section.settings.main_filters %}
 
   <div id="product-grid">
-    {% paginate collection.products by 2 %}
+    {% paginate collection.products by 50 %}
       {% if collection.products.size == 0 %}
         <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
           <div class="loading-overlay"></div>
           <div class="text-center">
-            <p class="mb-20 text-oracle-18">No products found.</p>
+            <p class="mb-20">No products found.</p>
             <a href="{{ collection.url }}" class="button">Clear Filters</a>
           </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="collection mb-50">
           <div class="loading-overlay"></div>
 
-          <ul data-id="{{ section.id }}" class="grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40 md:grid-cols-3 lg:grid-cols-4">
+          <ul data-id="{{ section.id }}" class="grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40" :class="largeView ? 'lg:grid-cols-2' : 'lg:grid-cols-4'">
             {% for product in collection.products %}
               <li class="product-grid-item" data-fade-in-up>
                 {% render 'product-card' product_card_product: product %}
@@ -50,7 +50,20 @@
 {
   "name": "Collection",
   "settings": [
-
+    {
+      "type": "header",
+      "content": "Top of page filters"
+    },
+    {
+      "type": "paragraph",
+      "content": "All available filter options will be displayed in filter slide-out menu. Only filters entered here will display at the top fo the Collection page. If left blank, no filters will display at the top of the page."
+    },
+    {
+      "type": "text",
+      "id": "main_filters",
+      "label": "Main filters",
+      "info": "Displayed at top of page. Separate values with a single comma."
+    }
   ]
 }
 {% endschema %}

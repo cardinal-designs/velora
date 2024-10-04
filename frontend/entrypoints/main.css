@@ -114,6 +114,11 @@
         hover:after:opacity-100
     }
 
+    nav [aria-current="page"] {
+        @apply relative
+        after:absolute after:content-[""] after:rounded-full after:w-[7px] after:h-[7px] after:bg-[var(--text)] after:-left-10 after:top-half after:-translate-x-half after:-translate-y-half after:opacity-100
+    }
+
     .svg-link {
         @apply flex-nowrap whitespace-nowrap [&_svg_circle]:fill-transparent [&:hover_svg_circle]:fill-[var(--text)] [&:hover_svg_path]:fill-[var(--background)] [&_svg_circle]:transition-[fill]
     }
@@ -304,8 +309,11 @@
   [menu-drawer-open] .js-open-menu + .js-close-menu  {
     @apply block;
   }
-  
 
-  body.template-index main > .shopify-section:first-child > div:first-child {
-    @apply pt-[calc(var(--main-nav-height)_+_var(--announcement-bar-height))]
+  body:not(.template-index) main > .shopify-section:first-child > div:first-child {
+    @apply md:pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
   }
+
+  /* body.template-index main > .shopify-section:first-child > div:first-child {
+    @apply pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
+  } */
