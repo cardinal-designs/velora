@@ -13,9 +13,27 @@
   "sections": {
     "announcement": {
       "type": "announcement-bar",
+      "blocks": {
+        "block_Ndb4ez": {
+          "type": "block",
+          "settings": {
+            "heading": "Proudly Designed & Assembled in the USA",
+            "link": ""
+          }
+        },
+        "block_qh7zNH": {
+          "type": "block",
+          "settings": {
+            "heading": "free shipping on orders over $35",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_Ndb4ez",
+        "block_qh7zNH"
+      ],
       "settings": {
-        "text": "Welcome to our store",
-        "link": ""
       }
     },
     "header": {
