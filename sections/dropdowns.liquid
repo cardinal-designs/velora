@@ -33,17 +33,19 @@
 
                             <div class="accordion-content hidden group-[.active]/accordion:block">
                                 <div class="grid grid-cols-[22px,1fr] lg:grid-cols-[max(150px,18vw),_1fr] gap-x-50 lg:pt-30 lg:pb-50">
-                                    <div class="col-start-2 flex flex-col justify-start items-start gap-5 max-w-[240px] lg:max-w-full">
-                                        <p class="text-oracle-14 lg:text-oracle-18">
-                                            {{ block.settings.text }}
-                                        </p>
+                                    <div class="col-start-2 flex flex-col justify-start items-start gap-5 max-w-[240px] md:max-w-full md:flex-row">
+                                       <div class="flex flex-col justify-start items-start gap-5">
+                                            <p class="text-oracle-14 lg:text-oracle-18">
+                                                {{ block.settings.text }}
+                                            </p>
 
-                                        {% if block.settings.button_label != blank and block.settings.button_link != blank %}
-                                            <a href="{{ block.settings.button_link }}" class="svg-link text-oracle-14 lg:text-oracle-16 leading-[30px] lg:hidden flex flex-row justify-start items-center gap-[9px]">
-                                                {{ block.settings.button_label }}
-                                                <span>{% render 'link-arrow' %}</span>
-                                            </a>
-                                        {% endif %}
+                                            {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                                                <a href="{{ block.settings.button_link }}" class="svg-link text-oracle-14 lg:text-oracle-16 leading-[30px] lg:hidden flex flex-row justify-start items-center gap-[9px]">
+                                                    {{ block.settings.button_label }}
+                                                    <span>{% render 'link-arrow' %}</span>
+                                                </a>
+                                            {% endif %}
+                                        </div>
 
                                         {% if block.settings.image != blank %}
                                             <div class="block lg:hidden w-full h-auto aspect-[0.93/1] rounded-[10px] overflow-hidden relative mt-10 mb-30">
