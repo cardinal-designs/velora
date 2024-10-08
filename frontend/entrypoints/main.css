@@ -162,8 +162,9 @@
     }
 
     .swatch {
-        @apply outline outline-1 outline-transparent outline-offset-0 transition-["outline"]
+        @apply outline outline-1 outline-transparent outline-offset-0 transition-["outline"] w-[17px] lg:w-[23px] h-auto aspect-square rounded-full
     }
+
     .active-swatch {
         @apply relative
         outline outline-1 outline-brown outline-offset-4

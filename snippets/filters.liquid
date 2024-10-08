@@ -17,7 +17,7 @@
   {% assign total_active_values = total_active_values | plus: filter.active_values.size %}
 {% endfor %}
 
-<collection-filters class="collection-filters block relative text-pangram-14" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
+<collection-filters class="collection-filters block relative" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
 
   <div class="flex flex-row justify-between items-stretch">
     <div :class="mainFilter == 'All' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 only:hidden border-b border-brown/40 [&.active]:border-brown transition-colors">
@@ -25,6 +25,21 @@
         <span>All</span>
       </button>
     </div>
+
+    {% for block in blocks %}
+      {% assign get_filter = collection.filters | where: 'label', block.settings.heading %}
+      {% comment %} {% assign downcase_filter_label = filter.label | downcase %} {% endcomment %}
+      {% if get_filter.first != blank%}
+        {% assign filter = get_filter.first %}
+        <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
+          <button @click.prevent="mainFilter = '{{ filter.label }}'" :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="text-arizona-48 font-normal relative">
+            <span style="--size: 18px;" class="text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
+            <span>{{ filter.label }}</span>
+          </button>
+        </div>
+      {% endif %}
+    {% endfor %}
+
     {% for filter in collection.filters %}
       {% assign downcase_filter_label = filter.label | downcase %}
       {% if downcase_main_filters contains downcase_filter_label %}
@@ -37,11 +52,42 @@
       {% endif %}
     {% endfor %}
   </div>
-  <div class="flex justify-between items-center gap-4 relative border-b border-brown/40 mb-70">
-    {% comment %} filter {% endcomment %}
-    <div class="flex items-center gap-20">
 
-      <div class="flex flec-col justify-start">
+  
+  <div class="flex flex-wrap justify-between items-center gap-4 relative border-b border-brown/40 mb-70">
+
+    <div x-show="mainFilter == 'All'" class="flex flex-col-reverse gap-y-[28px] gap-x-40 lg:grid grid-cols-12 w-full py-[54px]">
+      <div style="--size: 24px" class="col-span-7 text-arizona-custom lg:text-arizona-48 flex flex-col justify-center items-start">
+        <p>{{ section_settings.heading}}</p>
+      </div>
+
+      <div class="col-span-5">
+        {% if section_settings.image != blank %}
+          <div class="rounded-[10px] w-full h-auto overflow-hidden">{{ section_settings.image | image_url: width: 600 | image_tag: class: "w-full h-full object-cover" }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% for block in blocks %}
+      {% if block.settings.title != blank %}
+        <div x-show="mainFilter == '{{ block.settings.heading }}'" class="flex flex-col-reverse gap-y-[28px] gap-x-40 lg:grid grid-cols-12 w-full py-[54px]">
+          <div style="--size: 24px" class="col-span-7 text-arizona-custom lg:text-arizona-48 flex flex-col justify-center items-start">
+            <p>{{ block.settings.title }}</p>
+          </div>
+    
+          <div class="col-span-5">
+            {% if block.settings.image != blank %}
+              <div class="rounded-[10px] w-full h-auto overflow-hidden">{{ block.settings.image | image_url: width: 600 | image_tag: class: "w-full h-full object-cover" }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    {% comment %} filter {% endcomment %}
+    <div class="text-pangram-14  flex items-center gap-20">
+
+      <div class="flex flex-col justify-start">
         {% for filter in collection.filters %}
           <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="hidden [&.active]:block">
             <div class="flex flex-row justify-start items-center gap-20">
@@ -49,8 +95,8 @@
                 <div class="relative flex items-center cursor-pointer *:uppercase">
                   <button 
                     @click="
-                    {{ filter.label | handle }} = '{{ value.label }}';
-                     $nextTick(() => { $refs.filterForm.dispatchEvent(new Event('change')) })" :class="{{ filter.label | handle }} == '{{ value.label }}' ? 'active' : '' " class="[&.active]:underline cursor-pointer{% if value.count == 0 and value.active == false %} opacity-50{% endif %}">
+                    {{ filter.label | handle }} == '{{  value.label }}' ? {{ filter.label | handle }} = '' : {{ filter.label | handle }} = '{{ value.label }}' ;
+                     $nextTick(() => { $refs.filterForm.dispatchEvent(new Event('change')) })" :class="{{ filter.label | handle }} == '{{ value.label }}' ? 'active' : '' " class="[&.active]:underline cursor-pointer">
                     {{ value.label | escape }}
                   </button>
                 </div>
@@ -59,7 +105,7 @@
           </div>
         {% endfor %}
       </div>
-      <button class="js-open-filters flex items-center gap-10 uppercase hidden">
+      <button class="js-open-filters flex items-center gap-10 uppercase !hidden">
         Filter
         <span class="-rotate-90">
           {% render 'icon' icon: 'caret' %}
@@ -161,7 +207,7 @@
     </div>
 
     {% comment %} sort {% endcomment %}
-    <form class="sort-form">
+    <form class="text-pangram-14 sort-form">
       <div class="dropdown">
         <button class="dropdown-header dropdown-header-sort group/button peer py-20 flex justify-between items-center gap-10 uppercase">
           Order By 

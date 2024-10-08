@@ -11,8 +11,39 @@
   "sections": {
     "product-grid": {
       "type": "main-collection",
+      "blocks": {
+        "block_zVk8i4": {
+          "type": "block",
+          "settings": {
+            "heading": "Room",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
+            "image": "shopify://shop_images/15a0538f82a68428c2eff2048c615ed4.png"
+          }
+        },
+        "block_7hGQVB": {
+          "type": "block",
+          "settings": {
+            "heading": "Fixture",
+            "title": ""
+          }
+        },
+        "block_VpwqiP": {
+          "type": "block",
+          "settings": {
+            "heading": "Style",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_zVk8i4",
+        "block_7hGQVB",
+        "block_VpwqiP"
+      ],
       "settings": {
-        "main_filters": "Room,Fixture,Style"
+        "main_filters": "Room,Fixture,Style",
+        "heading": "Artisanal, bespoke, and detailed to perfection, our fixtures add meaning to your space, elevating simple functionality into something that lights up your favorite parts of living.",
+        "image": "shopify://shop_images/86a8d0aac2373e9293e34b4061d145ee.jpg"
       }
     }
   },

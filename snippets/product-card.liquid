@@ -81,7 +81,7 @@
     
                 <a
                   href="{{ variant.url | within: collection }}"
-                  class="w-[17px] lg:w-[23px] h-auto aspect-square rounded-full swatch {% if variant == product_card_product.selected_or_first_available_variant or variant.selected %}active-swatch{% endif %}"
+                  class="swatch group-[.smallView]/grid:w-[17px] {% if variant == product_card_product.selected_or_first_available_variant or variant.selected %}active-swatch{% endif %}"
                   aria-label="{{ product_card_product.title }} - {{ value }}"
                   style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}">
                 </a>

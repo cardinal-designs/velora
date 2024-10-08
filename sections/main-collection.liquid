@@ -13,7 +13,7 @@
     {% comment %} <h1 class="mt-20 text-m-h2 font-bold md:mt-60 md:text-arizona-72">{{ collection.title }}</h1> {% endcomment %}
   </div>
 
-  {% render 'filters', main_filters: section.settings.main_filters %}
+  {% render 'filters', main_filters: section.settings.main_filter, section_settings: section.settings, blocks: section.blocks %}
 
   <div id="product-grid">
     {% paginate collection.products by 50 %}
@@ -29,7 +29,7 @@
         <div class="collection mb-50">
           <div class="loading-overlay"></div>
 
-          <ul data-id="{{ section.id }}" class="grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40" :class="largeView ? 'lg:grid-cols-2' : 'lg:grid-cols-4'">
+          <ul data-id="{{ section.id }}" class="group/grid grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40" :class="largeView ? 'largeView lg:grid-cols-2' : 'smallView lg:grid-cols-4'">
             {% for product in collection.products %}
               <li class="product-grid-item" data-fade-in-up>
                 {% render 'product-card' product_card_product: product %}
@@ -63,6 +63,52 @@
       "id": "main_filters",
       "label": "Main filters",
       "info": "Displayed at top of page. Separate values with a single comma."
+    },
+    {
+      "type": "header",
+      "content": "Page header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add filter groups as blocks"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Filter info",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Displayed at top of page. Separate values with a single comma."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Filter group",
+          "info": "Must match an existing filter label. Example: 'Room', 'Fixture', 'Style' "
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
     }
   ]
 }
