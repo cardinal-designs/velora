@@ -64,7 +64,7 @@ module.exports = {
         //'h7'
         'arizona-20': ['20px', { lineHeight: '1.1', letterSpacing: '0', }],
         //custom
-        'arizona-custom': ['var(--size)'],
+        'arizona-custom': ['var(--size)', { lineHeight: '1'}],
          // Mobile Headings
 
         // Body
@@ -73,7 +73,7 @@ module.exports = {
         'oracle-16': ['16px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-14': ['14px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-12': ['12px', { lineHeight: '1.1', letterSpacing: '0', }],
-        'oracle-custom': ['var(--size)'],
+        'oracle-custom': ['var(--size)', { lineHeight: '1'}],
         // Mobile Body
         
         // Captions
@@ -81,7 +81,7 @@ module.exports = {
         'pangram-16': ['16px', { lineHeight: '1', letterSpacing: '.1em', }],
         'pangram-14': ['14px', { lineHeight: '1', letterSpacing: '0.1em', }],
         'pangram-12': ['12px', { lineHeight: '1', letterSpacing: '.1em', }],
-        'pangram-custom': ['var(--size)'],
+        'pangram-custom': ['var(--size)', { lineHeight: '1'}],
       },
       gridTemplateColumns: {
         thirds: '1fr auto 1fr',

@@ -17,45 +17,47 @@
   {% assign total_active_values = total_active_values | plus: filter.active_values.size %}
 {% endfor %}
 
-<collection-filters class="collection-filters block relative" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
+<collection-filters class="collection-filters flex flex-col relative" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
 
-  <div class="flex flex-row justify-between items-stretch">
-    <div :class="mainFilter == 'All' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 only:hidden border-b border-brown/40 [&.active]:border-brown transition-colors">
-      <button @click.prevent="mainFilter = 'All'" class="text-arizona-48 font-normal relative">
-        <span>All</span>
-      </button>
+  <div class="no-scrollbar overflow-x-auto">
+    {% comment %} top level filter items {% endcomment %}
+    <div class="min-w-fit w-full flex flex-row justify-between items-stretch">
+      <div :class="mainFilter == 'All' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 only:hidden border-b border-brown/40 [&.active]:border-brown transition-colors">
+        <button @click.prevent="mainFilter = 'All'" class="text-arizona-20 lg:text-arizona-48 font-normal relative">
+          <span>All</span>
+        </button>
+      </div>
+
+      {% for block in blocks %}
+        {% assign get_filter = collection.filters | where: 'label', block.settings.heading %}
+        {% comment %} {% assign downcase_filter_label = filter.label | downcase %} {% endcomment %}
+        {% if get_filter.first != blank%}
+          {% assign filter = get_filter.first %}
+          <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
+            <button @click.prevent="mainFilter = '{{ filter.label }}'" :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="text-arizona-20 lg:text-arizona-48 font-normal relative">
+              <span style="--size: 18px;" class="text-[8px] leading-normal font-pangram lg:text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
+              <span>{{ filter.label }}</span>
+            </button>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% for filter in collection.filters %}
+        {% assign downcase_filter_label = filter.label | downcase %}
+        {% if downcase_main_filters contains downcase_filter_label %}
+          <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
+            <button @click.prevent="mainFilter = '{{ filter.label }}'" :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="text-arizona-48 font-normal relative">
+              <span style="--size: 18px;" class="text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
+              <span>{{ filter.label }}</span>
+            </button>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
-
-    {% for block in blocks %}
-      {% assign get_filter = collection.filters | where: 'label', block.settings.heading %}
-      {% comment %} {% assign downcase_filter_label = filter.label | downcase %} {% endcomment %}
-      {% if get_filter.first != blank%}
-        {% assign filter = get_filter.first %}
-        <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
-          <button @click.prevent="mainFilter = '{{ filter.label }}'" :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="text-arizona-48 font-normal relative">
-            <span style="--size: 18px;" class="text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
-            <span>{{ filter.label }}</span>
-          </button>
-        </div>
-      {% endif %}
-    {% endfor %}
-
-    {% for filter in collection.filters %}
-      {% assign downcase_filter_label = filter.label | downcase %}
-      {% if downcase_main_filters contains downcase_filter_label %}
-        <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
-          <button @click.prevent="mainFilter = '{{ filter.label }}'" :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="text-arizona-48 font-normal relative">
-            <span style="--size: 18px;" class="text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
-            <span>{{ filter.label }}</span>
-          </button>
-        </div>
-      {% endif %}
-    {% endfor %}
   </div>
 
-  
-  <div class="flex flex-wrap justify-between items-center gap-4 relative border-b border-brown/40 mb-70">
-
+  {% comment %} filter info {% endcomment %}
+  <div class="-order-1 lg:order-none">
     <div x-show="mainFilter == 'All'" class="flex flex-col-reverse gap-y-[28px] gap-x-40 lg:grid grid-cols-12 w-full py-[54px]">
       <div style="--size: 24px" class="col-span-7 text-arizona-custom lg:text-arizona-48 flex flex-col justify-center items-start">
         <p>{{ section_settings.heading}}</p>
@@ -63,11 +65,10 @@
 
       <div class="col-span-5">
         {% if section_settings.image != blank %}
-          <div class="rounded-[10px] w-full h-auto overflow-hidden">{{ section_settings.image | image_url: width: 600 | image_tag: class: "w-full h-full object-cover" }}</div>
+          <div class="rounded-[10px] w-full h-auto overflow-hidden aspect-[1.45/1]">{{ section_settings.image | image_url: width: 600 | image_tag: class: "w-full h-full object-cover" }}</div>
         {% endif %}
       </div>
     </div>
-
     {% for block in blocks %}
       {% if block.settings.title != blank %}
         <div x-show="mainFilter == '{{ block.settings.heading }}'" class="flex flex-col-reverse gap-y-[28px] gap-x-40 lg:grid grid-cols-12 w-full py-[54px]">
@@ -77,34 +78,55 @@
     
           <div class="col-span-5">
             {% if block.settings.image != blank %}
-              <div class="rounded-[10px] w-full h-auto overflow-hidden">{{ block.settings.image | image_url: width: 600 | image_tag: class: "w-full h-full object-cover" }}</div>
+              <div class="rounded-[10px] w-full h-auto overflow-hidden aspect-[1.45/1]">{{ block.settings.image | image_url: width: 600 | image_tag: class: "w-full h-full object-cover" }}</div>
             {% endif %}
           </div>
         </div>
       {% endif %}
     {% endfor %}
 
-    {% comment %} filter {% endcomment %}
-    <div class="text-pangram-14  flex items-center gap-20">
+  </div>
 
-      <div class="flex flex-col justify-start">
+  
+  <div style="--size: 10px;" x-data="{ sortOpen: false, toggleSort() { this.sortOpen = ! this.sortOpen } }" class=" text-pangram-custom lg:text-pangram-14 grid grid-cols-[1fr,auto] lg:flex flex-wrap justify-between items-center gap-y-[16px] lg:gap-y-0 gap-x-[16px] relative lg:border-b border-brown/40 mb-[28px] lg:mb-70">
+    {% comment %} filters {% endcomment %}
+    <div class="flex items-center gap-[16px] lg:gap-20">
+      <div class="flex flex-col justify-start w-full lg:w-auto">
         {% for filter in collection.filters %}
-          <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="hidden [&.active]:block">
-            <div class="flex flex-row justify-start items-center gap-20">
-              {% for value in filter.values %}
-                <div class="relative flex items-center cursor-pointer *:uppercase">
-                  <button 
-                    @click="
-                    {{ filter.label | handle }} == '{{  value.label }}' ? {{ filter.label | handle }} = '' : {{ filter.label | handle }} = '{{ value.label }}' ;
-                     $nextTick(() => { $refs.filterForm.dispatchEvent(new Event('change')) })" :class="{{ filter.label | handle }} == '{{ value.label }}' ? 'active' : '' " class="[&.active]:underline cursor-pointer">
-                    {{ value.label | escape }}
-                  </button>
+          <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="hidden [&.active]:block mt-[16px] lg:mt-0">
+
+            <div class="no-scrollbar overflow-x-auto lg:border-transparent p-0
+              border border-brown rounded-[10px] lg:rounded-none px-20 py-10 lg:p-0"
+              x-data="{ open: false, toggle() { this.open = ! this.open } }"
+            >
+              <button @click.prevent="toggle()" class="flex flex-row justify-between items-center gap-10 w-full lg:hidden">
+                <span x-show="{{ filter.label | handle }} != '' " x-text="{{ filter.label | handle }}" class="text-oracle-14"></span>
+                <span x-show="{{ filter.label | handle }} == '' " class="text-oracle-14">{{ filter.label }}</span>
+                <span :class="open ? '[&_svg]:rotate-180' : '' " class="transition-transform">
+                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.75 6.75L0.203367 -9.72255e-08L9.29663 -8.92184e-07L4.75 6.75Z" fill="#2B1D0A"/>
+                  </svg>
+                </span>
+              </button>
+              <div x-show="open" x-transition class="lg:!block">
+                <div class="w-fit flex flex-col lg:flex-row justify-start items-start lg:items-center gap-10 lg:gap-20 pt-10 lg:pt-0">
+                {% for value in filter.values %}
+                  <div class="relative flex items-center cursor-pointer lg:*:uppercase">
+                    <button 
+                      @click="
+                      {{ filter.label | handle }} == '{{  value.label }}' ? {{ filter.label | handle }} = '' : {{ filter.label | handle }} = '{{ value.label }}' ;
+                      $nextTick(() => { $refs.filterForm.dispatchEvent(new Event('change')) })" :class="{{ filter.label | handle }} == '{{ value.label }}' ? 'active' : '' " class="[&.active]:underline cursor-pointer">
+                      {{ value.label | escape }}
+                    </button>
+                  </div>
+                {% endfor %}
                 </div>
-              {% endfor %}
+              </div>
             </div>
           </div>
         {% endfor %}
       </div>
+
       <button class="js-open-filters flex items-center gap-10 uppercase !hidden">
         Filter
         <span class="-rotate-90">
@@ -113,7 +135,7 @@
       </button>
 
       <div class="filters-slideout max-w-full w-full h-full fixed top-0 left-0 overflow-hidden bg-cream -translate-x-full transition-transform ease-in-out z-top aria-unhidden:translate-x-0 md:max-w-custom" style="--width: 440px;" aria-hidden="true">
-        <form x-ref="filterForm" class="filters-form h-full flex flex-col">
+        <form x-ref="filterForm" class="filters-form h-full flex flex-col w-full">
           {% if is_search %}
             <input type="hidden" name="q" value="{{ collection.terms | escape }}">
             <input name="options[prefix]" type="hidden" value="last">
@@ -159,9 +181,8 @@
             </div>
 
               {% for filter in collection.filters %}
-              
                 {% assign downcase_filter = filter.label | downcase %}
-                <div class="dropdown border-b-1 border-black">
+                <div class="dropdown border-b-1 border-brown">
                   <button class="group/button peer filter-dropdown dropdown-header w-full py-10 flex justify-between items-center gap-10{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
                     <span class="filter-label">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
                     <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
@@ -191,7 +212,6 @@
                     </div>
                   </div>
                 </div>
-              
               {% endfor %}
             </div>
 
@@ -206,46 +226,63 @@
 
     </div>
 
-    {% comment %} sort {% endcomment %}
-    <form class="text-pangram-14 sort-form">
-      <div class="dropdown">
-        <button class="dropdown-header dropdown-header-sort group/button peer py-20 flex justify-between items-center gap-10 uppercase">
-          Order By 
-          <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
-            <span class="[&_svg]:rotate-90">{% render 'link-arrow' | color: 'currentColor' %}</span>
-          </div>
-        </button>
-        <div class="dropdown-content absolute top-full left-0 right-0 w-full z-30 hidden peer-[.active]:block">
-          <div class="grid grid-cols-[auto,1fr] gap-x-100 py-20">
-            <div class="flex flex-row justify-start items-start gap-15">
-              <p>thumbnail:</p>
-              <button @click.prevent="toggleView(true)" :class="largeView ? 'underline' : '' " class="underline-offset-2 uppercase">Large</button>
-              <button @click.prevent="toggleView(false)" :class="!largeView ? 'underline' : '' " class="underline-offset-2 uppercase">Small</button>
-            </div>
-            
-            <div class="no-scrollbar overflow-x-auto">
-              <div class="w-fit flex flex-row justify-end items-ends gap-10">
-                {% for option in collection.sort_options %}
-                  {% liquid
-                    assign is_active = false
-                    if option.value == collection.sort_by
-                      assign is_active = true
-                    endif
-                  %}
-                  <div class="flex items-center gap-10 cursor-pointer relative">
-                    <input type="radio"
-                      class="sort-button peer visually-hidden"
-                      name="sort_by"
-                      value="{{ option.value }}"
-                      id="Sort-{{ forloop.index }}"
-                      {% if is_active %}checked{% endif %}
-                    >
-                    <label for="Sort-{{ forloop.index }}" class="cursor-pointer peer-checked:underline whitespace-nowrap">
-                      {{ option.name }}
-                    </label>
-                  </div>
-                {% endfor %}
+    <button @click.prevent="toggleSort()" :class="sortOpen ? 'active' : '' " class="col-start-2 row-span-2 self-start mt-[16px] lg:mt-0 group/button lg:py-20 flex justify-between items-center gap-10 uppercase whitespace-nowrap">
+      Order By 
+      <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+        <span class="block w-[15px] lg:w-20 [&_svg]:w-full [&_svg]:rotate-90">{% render 'link-arrow' | color: 'currentColor' %}</span>
+      </div>
+    </button>
 
+    {% comment %} sort {% endcomment %}
+    <form class="sort-form w-full">
+      <div class="flex flex-row-reverse items-start justify-start gap-x-20 lg:block w-full">
+        <div x-show="sortOpen" x-transition class="w-full">
+          <div class="relative lg:absolute lg:top-full left-0 right-0 w-full z-30">
+            <div class="flex flex-col-reverse gap-y-10 lg:gap-y-0 lg:grid grid-cols-[auto,1fr] gap-x-100 lg:py-20">
+              {% comment %} thumbnails selector {% endcomment %}
+              <div class="flex flex-row justify-center lg:justify-start items-start gap-15 pb-[16px] lg:pb-0">
+                <p>thumbnail:</p>
+                <button @click.prevent="toggleView(true)" :class="largeView ? 'underline' : '' " class="underline-offset-2 uppercase">Large</button>
+                <button @click.prevent="toggleView(false)" :class="!largeView ? 'underline' : '' " class="underline-offset-2 uppercase">Small</button>
+              </div>
+              
+              <div class="no-scrollbar overflow-x-auto lg:border-transparent p-0
+                border border-brown rounded-[10px] lg:rounded-none px-20 py-10 lg:p-0 "
+                x-data="{ open: false, toggle() { this.open = ! this.open } }"
+              >
+                <button @click.prevent="toggle()" class="flex flex-row justify-between items-center gap-10 w-full lg:hidden">
+                  <span x-text="orderBy" class="text-oracle-14"></span>
+                  <span :class="open ? '[&_svg]:rotate-180' : '' " class="transition-transform">
+                    <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.75 6.75L0.203367 -9.72255e-08L9.29663 -8.92184e-07L4.75 6.75Z" fill="#2B1D0A"/>
+                    </svg>
+                  </span>
+                </button>
+                <div x-show="open" x-transition class="lg:!block">
+                  <div class="w-fit flex flex-col lg:flex-row justify-end items-ends gap-10 pt-10 lg:pt-0">
+                    {% for option in collection.sort_options %}
+                      {% liquid
+                        assign is_active = false
+                        if option.value == collection.sort_by
+                          assign is_active = true
+                        endif
+                      %}
+                      <div class="flex items-center gap-10 cursor-pointer relative">
+                        <input type="radio"
+                          class="sort-button peer visually-hidden"
+                          name="sort_by"
+                          value="{{ option.value }}"
+                          id="Sort-{{ forloop.index }}"
+                          {% if is_active %}checked{% endif %}
+                        >
+                        <label @click="orderBy = '{{ option.name }}'" for="Sort-{{ forloop.index }}" class="cursor-pointer peer-checked:underline whitespace-nowrap">
+                          {{ option.name }}
+                        </label>
+                      </div>
+                    {% endfor %}
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>

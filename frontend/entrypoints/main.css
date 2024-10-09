@@ -312,7 +312,7 @@
   }
 
   body:not(.template-index) main > .shopify-section:first-child > div:first-child {
-    @apply md:pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
+    @apply pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
   }
 
   /* body.template-index main > .shopify-section:first-child > div:first-child {

@@ -2,9 +2,12 @@
   for filter in collection.filters
     assign total_active_values = total_active_values | plus: filter.active_values.size
   endfor
+
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign sort_by_name = collection.sort_options | where: 'value', sort_by | first
 %}
 
-<div x-data="{ largeView: true, mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }" class="page-width">
+<div x-data="{ largeView: true, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }" class="page-width">
   <div class="py-10 visually-hidden">
     <p class="text-oracle-18 opacity-60">
       <a href="{{ settings.shop_all_link }}">Shop</a> > 
@@ -29,7 +32,7 @@
         <div class="collection mb-50">
           <div class="loading-overlay"></div>
 
-          <ul data-id="{{ section.id }}" class="group/grid grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40" :class="largeView ? 'largeView lg:grid-cols-2' : 'smallView lg:grid-cols-4'">
+          <ul data-id="{{ section.id }}" class="group/grid grid grid-flow-row-dense md:gap-y-40 gap-y-70 gap-x-20 lg:gap-x-[43px] lg:gap-y-80 [&.smallView]:lg:gap-x-35 [&.smallView]:lg:gap-y-65" :class="largeView ? 'largeView grid-cols-1 lg:grid-cols-2' : 'smallView grid-cols-2 lg:grid-cols-4'">
             {% for product in collection.products %}
               <li class="product-grid-item" data-fade-in-up>
                 {% render 'product-card' product_card_product: product %}

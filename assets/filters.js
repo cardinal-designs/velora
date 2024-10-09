@@ -136,7 +136,7 @@ class collectionFilters extends HTMLElement {
     const sort = target.value;
     this.sortBy = sort;
 
-    this.sortForm.querySelector('.dropdown').classList.remove('active');
+    // this.sortForm.querySelector('.dropdown').classList.remove('active');
     // this.querySelector('.dropdown-header-sort').classList.remove('active');
     
     this.reloadSections();
