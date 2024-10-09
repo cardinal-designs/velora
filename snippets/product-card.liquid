@@ -29,24 +29,24 @@
   </div>
 
   <div class="mt-[22px]">
-    <div class="flex flex-row justify-between items-center">
-      <div class="flex flex-col justify-start items-start">
+    <div class="flex flex-col justify-start items-start">
+      <div class="flex flex-row justify-between items-center gap-10 w-full">
         <a href="{{ product_card_product.url }}" class="text-pangram-16 lg:text-pangram-20 leading-[30px]">
           {{ split_product_title[0] }}
         </a>
-        {% if split_product_title[1] != blank  %}
-          <a href="{{ product_card_product.url }}" class="text-arizona-18 lg:text-arizona-20">
-            {{ split_product_title[1] }}
-          </a>
-        {% endif %}
+        <p class="price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
+          {% if product_card_product.price_varies %}<span>from</span>{% endif %}
+          {{ product_card_product.price | money_without_trailing_zeros }}
+          {% if product_card_product.compare_at_price > product_card_product.price %}
+            <span class="line-through opacity-50">{{ product_card_product.compare_at_price | money_without_trailing_zeros }}</span>
+          {% endif %}
+        </p>
       </div>
-      <p class="price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
-        {% if product_card_product.price_varies %}<span>from</span>{% endif %}
-        {{ product_card_product.price | money_without_trailing_zeros }}
-        {% if product_card_product.compare_at_price > product_card_product.price %}
-          <span class="line-through opacity-50">{{ product_card_product.compare_at_price | money_without_trailing_zeros }}</span>
-        {% endif %}
-      </p>
+      {% if split_product_title[1] != blank  %}
+        <a href="{{ product_card_product.url }}" class="text-arizona-18 lg:text-arizona-20">
+          {{ split_product_title[1] }}
+        </a>
+      {% endif %}
     </div>
 
     <div class="mt-[22px]">
@@ -66,7 +66,7 @@
         {%- if is_color -%}
           {%- assign option_index = forloop.index0 -%}
           {%- assign values = '' -%}
-          <div class="flex flex-row justify-start items-center flex-wrap gap-[18px]">
+          <div class="flex flex-row justify-start items-center flex-wrap gap-[18px] group-[.smallView]/grid:gap-[13px]">
             {%- for variant in product_card_product.variants -%}
               {%- assign value = variant.options[option_index] %}
               {%- unless values contains value -%}

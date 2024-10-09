@@ -26,7 +26,7 @@
     }
   
     .page-width {
-      @apply w-full max-w-1610 mx-auto px-[26px] md:px-30 lg:px-60;
+      @apply w-full max-w-1610 mx-auto px-25 md:px-30 lg:px-60;
     }
   
     .page-width-fluid {
@@ -48,31 +48,15 @@
       height: inherit;
     }
 
-    .text-arizona-80,
-    .text-arizona-72,
-    .text-arizona-60,
-    .text-arizona-48,
-    .text-arizona-36,
-    .text-arizona-26,
-    .text-arizona-20,
-    .text-arizona-custom {
+    [class*='text-arizona-'] {
         @apply font-arizona-flare
     }
 
-    .text-oracle-18,
-    .text-oracle-16,
-    .text-oracle-14,
-    .text-oracle-12,
-    .text-oracle-custom {
+    [class*='text-oracle-'] {
         @apply font-oracle;
     }
 
-    .text-pangram-20,
-    .text-pangram-20,
-    .text-pangram-18,
-    .text-pangram-14,
-    .text-pangram-12,
-    .text-pangram-custom {
+    [class*='text-pangram-'] {
         @apply font-pangram uppercase font-semibold;
     }
 

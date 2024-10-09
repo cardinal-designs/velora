@@ -63,6 +63,7 @@ module.exports = {
         'arizona-26': ['26px', { lineHeight: '1.2', letterSpacing: '-0.01em', }],
         //'h7'
         'arizona-20': ['20px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'arizona-18': ['18px', { lineHeight: '1.1', letterSpacing: '0', }],
         //custom
         'arizona-custom': ['var(--size)', { lineHeight: '1'}],
          // Mobile Headings
@@ -78,6 +79,7 @@ module.exports = {
         
         // Captions
         'pangram-20': ['20px', { lineHeight: '1.1', letterSpacing: '.1em', }],
+        'pangram-18': ['16px', { lineHeight: '1', letterSpacing: '.1em', }],
         'pangram-16': ['16px', { lineHeight: '1', letterSpacing: '.1em', }],
         'pangram-14': ['14px', { lineHeight: '1', letterSpacing: '0.1em', }],
         'pangram-12': ['12px', { lineHeight: '1', letterSpacing: '.1em', }],
