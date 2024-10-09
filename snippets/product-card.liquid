@@ -34,7 +34,7 @@
         <a href="{{ product_card_product.url }}" class="text-pangram-16 lg:text-pangram-20 leading-[30px]">
           {{ split_product_title[0] }}
         </a>
-        <p class="price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
+        <p class="lg:opacity-0 lg:group-hover/card:opacity-100 transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
           {% if product_card_product.price_varies %}<span>from</span>{% endif %}
           {{ product_card_product.price | money_without_trailing_zeros }}
           {% if product_card_product.compare_at_price > product_card_product.price %}

@@ -17,13 +17,13 @@
   {% assign total_active_values = total_active_values | plus: filter.active_values.size %}
 {% endfor %}
 
-<collection-filters class="collection-filters flex flex-col relative" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
+<collection-filters class="collection-filters flex flex-col relative lg:pt-10" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
 
   <div class="no-scrollbar overflow-x-auto">
     {% comment %} top level filter items {% endcomment %}
     <div class="min-w-fit w-full flex flex-row justify-between items-stretch">
-      <div :class="mainFilter == 'All' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-10 lg:py-30 only:hidden border-b border-brown/40 [&.active]:border-brown transition-colors">
-        <button @click.prevent="mainFilter = 'All'" class="text-arizona-20 lg:text-arizona-48 font-normal relative">
+      <div :class="mainFilter == 'All' ? 'active' : '' " class="group/filter flex-1 w-full flex flex-col justify-center items-center py-10 lg:py-30 only:hidden border-b border-brown/40 [&.active]:border-brown transition-colors">
+        <button @click.prevent="mainFilter = 'All'" class="text-arizona-20 lg:text-arizona-48 font-normal relative  opacity-40 group-[.active]/filter:opacity-100 transition-opacity">
           <span>All</span>
         </button>
       </div>
@@ -33,8 +33,8 @@
         {% comment %} {% assign downcase_filter_label = filter.label | downcase %} {% endcomment %}
         {% if get_filter.first != blank%}
           {% assign filter = get_filter.first %}
-          <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-10 lg:py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
-            <button @click.prevent="mainFilter = '{{ filter.label }}'" :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="text-arizona-20 lg:text-arizona-48 font-normal relative">
+          <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="group/filter flex-1 w-full flex flex-col justify-center items-center py-10 lg:py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
+            <button @click.prevent="mainFilter = '{{ filter.label }}'" class="text-arizona-20 lg:text-arizona-48 font-normal relative opacity-40 group-[.active]/filter:opacity-100 transition-opacity">
               <span style="--size: 18px;" class="text-[8px] leading-normal font-pangram lg:text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
               <span>{{ filter.label }}</span>
             </button>
@@ -42,7 +42,7 @@
         {% endif %}
       {% endfor %}
 
-      {% for filter in collection.filters %}
+      {% comment %} {% for filter in collection.filters %}
         {% assign downcase_filter_label = filter.label | downcase %}
         {% if downcase_main_filters contains downcase_filter_label %}
           <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="flex-1 w-full flex flex-col justify-center items-center py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
@@ -52,7 +52,7 @@
             </button>
           </div>
         {% endif %}
-      {% endfor %}
+      {% endfor %} {% endcomment %}
     </div>
   </div>
 
