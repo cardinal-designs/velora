@@ -6,6 +6,9 @@
   {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
+    {%- assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase -%}
+    {%- assign swatch_file_extension = 'png' -%}
+    
     {% unless product.has_only_default_variant %}
       <variant-radios class="no-js-hidden mt-20 block" data-section="{{ section.id }}" data-url="{{ product.url }}">
         {% for option in product.options_with_values %}
@@ -18,14 +21,24 @@
             assign variants_option3_arr = product.variants | map: 'option3'
 
             assign product_form_id = 'product-form-' | append: section.id
+
+            assign option_name = option.name | downcase
+            assign is_color = false
+            if option_name contains swatch_trigger
+              assign is_color = true
+            elsif swatch_trigger == 'color' and option_name contains 'colour'
+              assign is_color = true
+            endif
           %}
 
           <fieldset class="product-form-input js mb-20 block">
             <legend class="form__label mb-10 text-oracle-18">{{ option.name }}</legend>
-            <div class="flex gap-x-10 gap-y-5">
+            <div class="flex flex-row justify-start items-center flex-wrap gap-[18px] group-[.smallView]/grid:gap-[13px]">
               {% for value in option.values %}
                 {% liquid
                   assign option_disabled = true
+                   assign option_index = forloop.index0
+                  assign values = ''
 
                   for option1_name in variants_option1_arr
                     case option.position
@@ -54,11 +67,19 @@
                     form="{{ product_form_id }}"
                     {% if option.selected_value == value %}checked{% endif %}
                   >
-                  {% if downcased_option == 'color' %}
-                    {% assign color_swatch_name = value | handleize | append: '.jpg' %}
-                    {% assign color_swatch_image = images[color_swatch_name] %}
+                  {% if is_color %}
+                    {% liquid
+                       assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+                       assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+                        assign color_swatch_fallback = value | split: ' ' | last | handle
+                        assign color_count = color_count | plus: 1
+                      %}
 
-                    <label class="w-25 h-25 block rounded-full cursor-pointer border-1 border-black/10 peer-checked:border-black" style="{% if color_swatch_image != blank %}background-image: url('{{ color_swatch_image | img_url: '50x' }}');{% else %}background-color: {{ value | handleize }};{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                    <label 
+                      aria-label="{{ product.title }} - {{ value }}"
+                      class="swatch group-[.smallView]/grid:w-[17px] {% if variant == product.selected_or_first_available_variant or variant.selected %}active-swatch{% endif %}"                     
+                      style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% else %}background-color: {{ value | handleize }};{% endif %}" 
+                      for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                       <div class="visually-hidden">{{ value }}</div>
                     </label>
                   {% else %}
