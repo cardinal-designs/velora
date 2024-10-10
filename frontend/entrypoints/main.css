@@ -151,7 +151,7 @@
 
     .active-swatch {
         @apply relative
-        outline outline-1 outline-brown outline-offset-4
+        outline outline-1 outline-[var(--text)] outline-offset-4
     }
 
     .below-nav {
