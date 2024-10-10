@@ -7,6 +7,47 @@
   assign sort_by_name = collection.sort_options | where: 'value', sort_by | first
 %}
 
+{% capture collection_feature %}
+<div class="col-span-full">
+    <div class="bg-[var(--background)] text-[var(--text)] flex flex-col justify-start items-center lg:grid grid-cols-12 gap-0 rounded-[10px] overflow-hidden" style="{% render "color-variables", color: section.settings.feature_color %}">
+  
+        <div class="w-full h-full lg:col-span-5 p-[max(30px,2.5vw)] flex flex-col justify-between items-center gap-y-40">
+
+          {% if section.settings.feature_title != blank%}
+            <h6 class="text-pangram-14 leading-[30px] text-center">
+              {{ section.settings.feature_title }}
+          </h6>
+          {% endif %}
+
+          {% if section.settings.feature_heading != blank %}
+              <div style="--size: 40px" class="text-arizona-custom md:text-arizona-48 text-center">
+                  {{ section.settings.feature_heading }}
+              </div>
+          {% endif %}
+
+          {% if section.settings.feature_text != blank %}
+            <div class="text-oracle-18 text-left indent-8">
+                {{ section.settings.feature_text }}
+            </div>
+        {% endif %}
+        </div>
+        <div class="w-full h-full lg:col-span-7">
+            <div class="w-full h-full aspect-square overflow-hidden relative flex flex-col justify-end items-center lg:items-end text-right py-20 px-30 md:p-[max(30px,2.5vw)]">
+                {% if section.settings.feature_image != blank %}
+                    {{ section.settings.feature_image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset'  }}
+                {% endif %}
+
+                {%- if section.settings.feature_button_label != blank and section.settings.feature_button_link != blank -%}
+                  <a href="{{ section.settings.feature_button_link }}" class="relative button button--large whitespace-nowrap mt-[28px] block w-full lg:mt-0 lg:inline-block lg:align-super lg:w-[80%]">
+                  {{ section.settings.feature_button_label }}
+                  </a>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endcapture %}
+
 <div x-data="{ largeView: true, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }" class="page-width">
   <div class="py-10 visually-hidden">
     <p class="text-oracle-18 opacity-60">
@@ -19,7 +60,7 @@
   {% render 'filters', main_filters: section.settings.main_filter, section_settings: section.settings, blocks: section.blocks %}
 
   <div id="product-grid">
-    {% paginate collection.products by 50 %}
+    {% paginate collection.products by 12 %}
       {% if collection.products.size == 0 %}
         <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
           <div class="loading-overlay"></div>
@@ -29,6 +70,7 @@
           </div>
         </div>
       {% else %}
+      {% assign feature_placement = paginate.page_size | divided_by: 3 | times: 2 %}
         <div class="collection mb-50">
           <div class="loading-overlay"></div>
 
@@ -37,6 +79,10 @@
               <li class="product-grid-item" data-fade-in-up>
                 {% render 'product-card' product_card_product: product, section_id: section.id %}
               </li>
+
+              {% if collection_feature != blank and forloop.index == feature_placement %}
+                {{ collection_feature }}
+              {% endif %}
             {% endfor %}
           </ul>
 
@@ -55,20 +101,6 @@
   "settings": [
     {
       "type": "header",
-      "content": "Top of page filters"
-    },
-    {
-      "type": "paragraph",
-      "content": "All available filter options will be displayed in filter slide-out menu. Only filters entered here will display at the top fo the Collection page. If left blank, no filters will display at the top of the page."
-    },
-    {
-      "type": "text",
-      "id": "main_filters",
-      "label": "Main filters",
-      "info": "Displayed at top of page. Separate values with a single comma."
-    },
-    {
-      "type": "header",
       "content": "Page header"
     },
     {
@@ -84,6 +116,60 @@
     {
       "type": "paragraph",
       "content": "Add filter groups as blocks"
+    },
+    {
+      "type": "header",
+      "content": "Feature block"
+    },
+    {
+      "type": "select",
+      "id": "feature_color",
+      "label": "Section colors",
+      "options": [
+          {
+              "label": "Light",
+              "value": "light"
+          },
+          {
+              "label": "Dark",
+              "value": "dark"
+          }
+      ],
+      "default": "dark"
+    },
+    {
+      "type": "text",
+      "id": "feature_title",
+      "label": "Subhead"
+    },
+    {
+        "type": "inline_richtext",
+        "id": "feature_heading",
+        "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "feature_text",
+      "label": "Text"
+  },
+    {
+        "type": "header",
+        "content": "Button"
+    },
+    {
+        "type": "text",
+        "id": "feature_button_label",
+        "label": "Button Label"
+    },
+    {
+        "type": "url",
+        "id": "feature_button_link",
+        "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image",
+      "label": "Image"
     }
   ],
   "blocks": [

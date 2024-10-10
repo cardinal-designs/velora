@@ -553,28 +553,33 @@ var VariantSelects = class extends HTMLElement {
 
   renderProductInfo() {
     if(this.closest('[data-product-card]')){
-      // console.log(this.currentVariant)
-      // fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=product-card-content`)
-      // .then((response) => response.text())
-      // .then((responseText) => {
-      //   const html = new DOMParser().parseFromString(responseText, 'text/html')
-      //   const productCard = this.closest("[data-product-card]")
 
-      //   const contentToReplace = [
-      //     {
-      //       selector: '[data-image]'
-      //     }
-      //     // {
-      //     //   selector: '[data-price]'
-      //     // }
-      //   ]
+      let fetchUrl = new URL(`${this.dataset.url}`, window.shopUrl);
+      let fetchParams = new URLSearchParams(fetchUrl.search);
+      fetchParams.append('variant', `${this.currentVariant.id}`);
+      fetchParams.append('section_id', `product-card-content`);
 
-      //   contentToReplace.forEach( c => {
-      //     console.log(html.querySelector(c.selector))
-      //     productCard.querySelector(c.selector).innerHTML = html.querySelector(c.selector).innerHTML
-      //   })
+      fetch(`${fetchUrl.href}${fetchUrl.search == '' ? '?' : ''}${fetchParams.toString()}`)
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html')
+        const productCard = this.closest("[data-product-card]")
 
-      // });
+        const contentToReplace = [
+          {
+            selector: '[data-image]'
+          }
+          // {
+          //   selector: '[data-price]'
+          // }
+        ]
+
+        contentToReplace.forEach( c => {
+          if(!html.querySelector(c.selector)) return
+          productCard.querySelector(c.selector).innerHTML = html.querySelector(c.selector).innerHTML
+        })
+
+      });
     } else {
       fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
       .then((response) => response.text())
@@ -648,7 +653,6 @@ var VariantSelects = class extends HTMLElement {
   setInputAvailability(listOfOptions, listOfAvailableOptions) {
     listOfOptions.forEach((input) => {
       if (listOfAvailableOptions.includes(input.getAttribute('value'))) {
-        console.log(input)
         input.nextElementSibling.classList.remove('opacity-50');
       } else {
         input.nextElementSibling.classList.add('opacity-50');

@@ -71,7 +71,7 @@
         px-20 py-[4px]
         rounded-[5px]
         border
-        bg-[var(--button)] border-[var(--button)] text-[var(--button\_text)]
+        bg-[var(--button)] border-[var(--button\_text)] text-[var(--button\_text)]
         md:hover:bg-[var(--button\_text)] md:hover:text-[var(--button)] md:hover:border-[var(--button)];
     }
 
