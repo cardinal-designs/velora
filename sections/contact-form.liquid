@@ -1,0 +1,123 @@
+<div class="bg-[var(--background)] text-[var(--text)]" style="{% render "color-variables", color: section.settings.color %}">
+    <div class="flex flex-col-reverse md:grid md:grid-cols-2">
+        <div class="flex justify-center items-center">
+            <div class="max-w-custom w-full px-25 pt-40 pb-50 md:px-30 md:py-40 lg:p-60" style="--width: 745px;">
+                <div class="mb-30 md:mb-70 lg:pl-25">
+                    {% if section.settings.heading != blank %}
+                        <h2 class="text-arizona-custom lg:text-arizona-48" style="--size: 40px;">{{ section.settings.heading }}</h2>
+                    {% endif %}
+                    {% if section.settings.text != blank %}
+                        <div class="rte max-w-custom w-full mt-25 ml-auto pl-15 text-oracle-14 whitespace-pre-wrap [&_p]:mb-10 lg:text-oracle-18 xl:mt-[45px]" style="--width: 515px;">{{ section.settings.text }}</div>
+                    {% endif %}
+                </div>
+                {% form 'contact', id: 'ContactForm' %}
+                    <div class="mb-20 grid gap-20 md:grid-cols-2">
+                        <div>
+                            <label class="field__label visually-hidden" for="ContactForm-name">Name</label>
+                            <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Full Name*">
+                        </div>
+              
+                        <div>
+                            <label class="field__label visually-hidden" for="ContactForm-email">Email</label>
+                            <input
+                            autocomplete="email"
+                            type="email"
+                            id="ContactForm-email"
+                            class="field__input"
+                            name="contact[email]"
+                            spellcheck="false"
+                            autocapitalize="off"
+                            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                            aria-required="true"
+                            {% if form.errors contains 'email' %}
+                                aria-invalid="true"
+                                aria-describedby="ContactForm-email-error"
+                            {% endif %}
+                            placeholder="Email*"
+                            >
+                        </div>
+                    </div>
+              
+                    <div class="mb-20 md:mb-40">
+                        <label class="form__label field__label visually-hidden" for="ContactForm-body">Message</label>
+                        <textarea
+                            id="ContactForm-body"
+                            class="text-area field__input h-[220px] xxl:h-[300px]"
+                            name="contact[{{ 'templates.contact.form.comment' | t }}]"
+                            placeholder="Message*"
+                        >
+                            {{- form.body -}}
+                        </textarea>
+                
+                        {% if form.posted_successfully? %}
+                            <div class="mt-10 text-oracle-16" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+                        {% elsif form.errors %}
+                            <div class="mt-10 text-oracle-16 text-error">{{ form.errors | default_errors }}</div>
+                        {% endif %}
+                    </div>
+              
+                    <div class="max-w-custom w-full mx-auto" style="--width: 560px;">
+                        <button type="submit" class="button w-full py-15">Submit</button>
+                    </div>
+                {% endform %}
+                {% if section.settings.disclaimer != blank %}
+                    <p class="mt-20 text-oracle-12 text-center md:text-oracle-14">{{ section.settings.disclaimer }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="">
+            {% if section.settings.image != blank %}
+                {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'size-full object-cover' }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Contact Form",
+        "settings": [
+            {
+                "type": "select",
+                "id": "color",
+                "label": "Section colors",
+                "options": [
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Dark",
+                        "value": "dark"
+                    }
+                ],
+                "default": "light"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "text",
+                "label": "Text"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "disclaimer",
+                "label": "Disclaimer"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Contact Form"
+            }
+        ]
+    }
+{% endschema %}

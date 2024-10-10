@@ -19,8 +19,6 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "text": "Free shipping over $100",
-          "link": ""
         }
       },
       "header": {
