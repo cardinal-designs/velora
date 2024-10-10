@@ -302,3 +302,11 @@
   /* body.template-index main > .shopify-section:first-child > div:first-child {
     @apply pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
   } */
+
+  /* --- PRODUCT CARD --- */
+  .group\/card fieldset legend,
+  .group\/card .product-form-quantity,
+  .group\/card button[type="submit"],
+  .group\/card fieldset:not([data-option-name='Finish'])  {
+    @apply visually-hidden
+  }

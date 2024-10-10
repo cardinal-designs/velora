@@ -10,7 +10,7 @@
     {%- assign swatch_file_extension = 'png' -%}
     
     {% unless product.has_only_default_variant %}
-      <variant-radios class="no-js-hidden mt-20 block" data-section="{{ section.id }}" data-url="{{ product.url }}">
+      <variant-radios class="no-js-hidden mt-20 block" data-section="{{ section.id }}" data-url="{{ product.url }}" data-update-url="{{ update_url | default: false }}">
         {% for option in product.options_with_values %}
           {% liquid
             assign downcased_option = option.name | downcase
@@ -19,8 +19,6 @@
             assign variants_option1_arr = product.variants | map: 'option1'
             assign variants_option2_arr = product.variants | map: 'option2'
             assign variants_option3_arr = product.variants | map: 'option3'
-
-            assign product_form_id = 'product-form-' | append: section.id
 
             assign option_name = option.name | downcase
             assign is_color = false
@@ -31,7 +29,7 @@
             endif
           %}
 
-          <fieldset class="product-form-input js mb-20 block">
+          <fieldset class="product-form-input js mb-20 block" data-option-name="{{ option.name }}">
             <legend class="form__label mb-10 text-oracle-18">{{ option.name }}</legend>
             <div class="flex flex-row justify-start items-center flex-wrap gap-[18px] group-[.smallView]/grid:gap-[13px]">
               {% for value in option.values %}
@@ -61,11 +59,11 @@
                 <div>
                   <input type="radio"
                     class="visually-hidden peer"
-                    id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                    id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
                     name="{{ option.name }}"
                     value="{{ value | escape }}"
                     form="{{ product_form_id }}"
-                    {% if option.selected_value == value %}checked{% endif %}
+                    {% if option.selected_value == value or value.selected %}checked{% endif %}
                   >
                   {% if is_color %}
                     {% liquid
@@ -77,9 +75,9 @@
 
                     <label 
                       aria-label="{{ product.title }} - {{ value }}"
-                      class="swatch group-[.smallView]/grid:w-[17px] {% if variant == product.selected_or_first_available_variant or variant.selected %}active-swatch{% endif %}"                     
+                      class="swatch group-[.smallView]/grid:w-[17px] peer-checked:active-swatch"                     
                       style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% else %}background-color: {{ value | handleize }};{% endif %}" 
-                      for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                      for="{{ product_form_id}}-{{ option.position }}-{{ forloop.index0 }}">
                       <div class="visually-hidden">{{ value }}</div>
                     </label>
                   {% else %}
@@ -119,7 +117,7 @@
         </div>
       </div>
     </noscript>
-    
+
     <div class="mt-30 flex gap-10">
       <div class="product-form-quantity w-100 flex-shrink-0">
         <label class="form__label visually-hidden" for="Quantity-{{ section.id }}">

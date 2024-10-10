@@ -1,0 +1,30 @@
+<div data-image>
+    {{ product.selected_variant }}
+{% if product.selected_variant %}
+    {% if product.selected_variant.featured_image != blank %}
+        {{ product.selected_variant.featured_image | image_url: width: 700 | image_tag: width: product.selected_variant.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative' }}
+    {% else %}
+        {{ product.featured_image | image_url: width: 700 | image_tag: width: product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative' }}
+    {% endif %}
+    {% if product.images[1] != blank %}
+        {{ product.images[1] | image_url: width: 700 | image_tag: width: product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity group-hover/image:opacity-100' }}
+    {% endif %}
+{% else %}
+    {% if product.featured_image != blank %}
+        {{ product.featured_image | image_url: width: 700 | image_tag: width: product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative' }}
+        {% if product.images[1] != blank %}
+        {{ product.images[1] | image_url: width: 700 | image_tag: width: product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity group-hover/image:opacity-100' }}
+        {% endif %}
+    {% else %}
+        <div class="w-full h-full bg-brown"> </div>
+    {% endif %}
+{% endif %}
+</div>
+
+<p data-price class="lg:opacity-0 lg:group-hover/card:opacity-100 transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
+    {% if product.price_varies %}<span>from</span>{% endif %}
+    {{ product.price | money_without_trailing_zeros }}
+    {% if product.compare_at_price > product.price %}
+        <span class="line-through opacity-50">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+    {% endif %}
+</p>

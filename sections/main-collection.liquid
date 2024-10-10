@@ -32,10 +32,10 @@
         <div class="collection mb-50">
           <div class="loading-overlay"></div>
 
-          <ul data-id="{{ section.id }}" class="group/grid grid grid-flow-row-dense md:gap-y-40 gap-y-70 gap-x-20 lg:gap-x-[43px] lg:gap-y-80 [&.smallView]:lg:gap-x-35 [&.smallView]:lg:gap-y-65" :class="largeView ? 'largeView grid-cols-1 lg:grid-cols-2' : 'smallView grid-cols-2 lg:grid-cols-4'">
+          <ul data-id="{{ section.id }}" class="group/grid grid grid-flow-row-dense md:gap-y-40 gap-y-70 gap-x-20 lg:gap-x-[43px] lg:gap-y-80 [&.smallView]:lg:gap-x-35 [&.smallView]:lg:gap-y-65" :class="largeView ? 'largeView grid-cols-1 md:grid-cols-2' : 'smallView grid-cols-2 lg:grid-cols-4'">
             {% for product in collection.products %}
               <li class="product-grid-item" data-fade-in-up>
-                {% render 'product-card' product_card_product: product %}
+                {% render 'product-card' product_card_product: product, section_id: section.id %}
               </li>
             {% endfor %}
           </ul>

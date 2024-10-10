@@ -523,7 +523,6 @@ var VariantSelects = class extends HTMLElement {
   }
 
   updateMedia() {
-    
   }
 
   updateURL() {
@@ -553,7 +552,31 @@ var VariantSelects = class extends HTMLElement {
   }
 
   renderProductInfo() {
-    fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+    if(this.closest('[data-product-card]')){
+      // console.log(this.currentVariant)
+      // fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=product-card-content`)
+      // .then((response) => response.text())
+      // .then((responseText) => {
+      //   const html = new DOMParser().parseFromString(responseText, 'text/html')
+      //   const productCard = this.closest("[data-product-card]")
+
+      //   const contentToReplace = [
+      //     {
+      //       selector: '[data-image]'
+      //     }
+      //     // {
+      //     //   selector: '[data-price]'
+      //     // }
+      //   ]
+
+      //   contentToReplace.forEach( c => {
+      //     console.log(html.querySelector(c.selector))
+      //     productCard.querySelector(c.selector).innerHTML = html.querySelector(c.selector).innerHTML
+      //   })
+
+      // });
+    } else {
+      fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
       .then((response) => response.text())
       .then((responseText) => {
         const id = `price-${this.dataset.section}`;
@@ -568,6 +591,7 @@ var VariantSelects = class extends HTMLElement {
         if (price) price.classList.remove('visibility-hidden');
         this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
       });
+    }
   }
 
   toggleAddButton(disable = true, text, modifyClass = true) {
