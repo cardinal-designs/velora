@@ -1,0 +1,79 @@
+<div class="page-width mt-50 mb-70 md:my-90 lg:my-[130px]">
+    <div class="md:grid md:grid-cols-[0.65fr_0.35fr] md:gap-40 lg:grid-cols-[0.7fr_0.3fr] xl:gap-80">
+        <div class="md:pl-30 xl:pl-50">
+            {% if section.settings.text != blank %}
+                <p class="mb-30 text-arizona-custom leading-[1.1] md:m-0 lg:text-arizona-36 xl:text-arizona-48" style="--size: 24px;">{{ section.settings.text }}</p>
+            {% endif %}
+        </div>
+        <div class="w-half ml-auto md:w-auto md:m-0 md:pt-80 lg:pt-150 xxl:pt-100">
+            {% if section.settings.small_image != blank %}
+                <div class="pb-[107%] overflow-hidden relative z-20">
+                    {{ section.settings.small_image | image_url: width: 500 | image_tag: class: 'size-full inset object-cover' }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mt-[-28%] md:mt-[-6%] md:p-0 md:grid md:grid-cols-2 md:items-center md:gap-40 lg:gap-80 lg:mt-[-3.5%] xl:mt-[-1%] xxl:mt-[-6%] xxl:gap-[160px]">
+        <div class="w-[60%] pl-20 md:w-auto md:p-0">
+            <div class="pb-[122%] overflow-hidden relative">
+                {% if section.settings.large_image != blank %}
+                    {{ section.settings.large_image | image_url: width: 500 | image_tag: class: 'size-full inset object-cover' }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="max-w-[500px] w-full mx-auto pt-[34px] md:max-w-full md:pt-60 md:pl-20 xl:pt-40">
+            {% if section.settings.floating_text_1 != blank %}
+                <p class="text-arizona-custom lg:text-arizona-60 xl:text-arizona-72 xxl:text-arizona-80" style="--size: 40px;">{{ section.settings.floating_text_1 }}</p>
+            {% endif %}
+            {% if section.settings.floating_text_2 != blank %}
+                <p class="pr-30 text-arizona-custom text-right md:mt-20 md:p-0 lg:text-arizona-60 xl:mt-30 xl:text-arizona-72 xxl:text-arizona-80" style="--size: 40px;">{{ section.settings.floating_text_2 }}</p>
+            {% endif %}
+            {% if section.settings.floating_text_3 != blank %}
+                <p class="mt-20 pl-30 text-arizona-custom md:mt-90 md:pl-40 lg:text-arizona-60 xl:mt-[140px] xl:pl-60 xl:text-arizona-72 xxl:text-arizona-80" style="--size: 40px;">{{ section.settings.floating_text_3 }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Floating Text & Images",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "small_image",
+                "label": "Small Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "large_image",
+                "label": "Large Image"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "text",
+                "label": "Text"
+            },
+            {
+                "type": "text",
+                "id": "floating_text_1",
+                "label": "Floating Text 1"
+            },
+            {
+                "type": "text",
+                "id": "floating_text_2",
+                "label": "Floating Text 2"
+            },
+            {
+                "type": "text",
+                "id": "floating_text_3",
+                "label": "Floating Text 3"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Floating Text & Images"
+            }
+        ]
+    }
+{% endschema %}

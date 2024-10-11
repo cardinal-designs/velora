@@ -114,6 +114,17 @@
         @apply flex-nowrap whitespace-nowrap [&_svg_circle]:fill-transparent [&:hover_svg_circle]:fill-[var(--text)] [&:hover_svg_path]:fill-[var(--background)] [&_svg_circle]:transition-[fill]
     }
 
+    .field__label {
+        @apply mb-5 block text-oracle-18;
+    }
+  
+    .field__input {
+        @apply w-full py-[18px] px-20 rounded-[10px] text-oracle-14 bg-transparent text-brown border-[1px] border-brown bg-none resize-none placeholder:text-brown md:py-20 md:px-30 md:text-oracle-16;
+    }
+  
+    .field__select {
+        @apply relative border-1 border-brown;
+    }
   }
 
   @layer utilities {

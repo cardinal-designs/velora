@@ -34,11 +34,11 @@
   }
 
   .field__input {
-    @apply w-full py-10 px-15 text-oracle-18 text-black border-1 border-black bg-none resize-none placeholder:text-black/20;
+    @apply w-full py-20 px-30 text-oracle-16 text-brown border-1 border-brown bg-none resize-none placeholder:text-brown;
   }
 
   .field__select {
-    @apply relative border-1 border-black;
+    @apply relative border-1 border-brown;
   }
 
   .select__select {

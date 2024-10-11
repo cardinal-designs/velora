@@ -1,0 +1,45 @@
+<div class="page-width my-70 md:mt-[140px] md:mb-[130px]">
+    <div class="max-w-custom w-full mx-auto md:pl-30" style="--width: 1270px;">
+        {% if section.settings.heading != blank %}
+            <h2 class="text-pangram-12 leading-8 whitespace-pre text-center mb-30 md:mb-[77px] md:text-pangram-14 md:leading-none">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.text_1 != blank %}
+            <div class="max-w-custom w-full pr-30" style="--width: 730px;">
+                <p class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_1 }}</p>
+            </div>
+        {% endif %}
+        {% if section.settings.text_2 != blank %}
+            <div class="max-w-custom w-full ml-auto mt-30 pl-50 md:mt-60" style="--width: 743px;">
+                <p class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_2 }}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Offset Text",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "text_1",
+                "label": "Text 1"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "text_2",
+                "label": "Text 2"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Offset Text"
+            }
+        ]
+    }
+{% endschema %}
