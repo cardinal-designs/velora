@@ -1,5 +1,14 @@
-<div class="page-width my-70 md:mt-[140px] md:mb-[130px]">
-    <div class="max-w-custom w-full mx-auto md:pl-30" style="--width: 1270px;">
+<div class="page-width my-70 relative md:mb-[130px]{% if section.settings.optional_image != blank %} md:mt-[190px]{% else %} md:mt-[140px]{% endif %}">
+    
+    {% if section.settings.optional_image != blank %}
+        <div class="h-[175px] w-[165px] mb-60 ml-auto relative overflow-hidden md:m-0 md:absolute md:-top-100 md:right-50 lg:h-[355px] lg:w-[330px]">
+            {% if section.settings.optional_image != blank %}
+                {{ section.settings.optional_image | image_url: width: 450 | image_tag: class: 'inset size-full object-cover' }}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="max-w-custom w-full mx-auto relative md:pl-30" style="--width: 1270px;">
         {% if section.settings.heading != blank %}
             <h2 class="text-pangram-12 leading-8 whitespace-pre text-center mb-30 md:mb-[77px] md:text-pangram-14 md:leading-none">{{ section.settings.heading }}</h2>
         {% endif %}
@@ -34,6 +43,11 @@
                 "type": "inline_richtext",
                 "id": "text_2",
                 "label": "Text 2"
+            },
+            {
+                "type": "image_picker",
+                "id": "optional_image",
+                "label": "Optional Image"
             }
         ],
         "presets": [

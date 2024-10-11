@@ -9,19 +9,68 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "page_hero_Ahyk8b": {
+      "type": "page-hero",
       "settings": {
+        "image": "shopify://shop_images/Screenshot_2024-08-05_at_8.52.26_AM_2.jpg",
+        "mobile_image": "shopify://shop_images/Screenshot_2024-08-05_at_8.52.26_AM_2_1.jpg",
+        "title": "Crafted with care. Rooted in the Montrose district of Houston, Texas."
       }
     },
     "big_text_i34Kpb": {
       "type": "big-text",
       "settings": {
         "color": "light",
-        "heading": "Founded by a team of expert designers and craftspeople, lighting isn’t just a business— but a passion that’s grown over years of experience.\nVelora is home to lighting with character, bringing a unique touch to every space.",
+        "heading": "Founded by a team of expert designers and craftspeople, lighting isn't just a business—but a passion that's grown over years of experience.\nVelora is home to lighting with character, bringing a unique touch to every space.",
         "small_text": "",
         "button_label": "",
         "button_link": ""
+      }
+    },
+    "alternating_blocks_NhBTW3": {
+      "type": "alternating-blocks",
+      "blocks": {
+        "block_qj8MPW": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_2628678_5a11ece5-bf50-4466-81b5-da2d89950188.jpg",
+            "title": "Individually Designed",
+            "text": "Our tight-knit group of artisans seeks inspiration from antiques and vintage fixtures to create new and modern original designs."
+          }
+        },
+        "block_V4LzCm": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_008.jpg",
+            "title": "Curated & Custom",
+            "text": "We offer a streamlined curation of pieces to simplify the shopping process, and offer the capability to customize any piece."
+          }
+        },
+        "block_pQMAmJ": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/DTS_Another_Planet_Daniel_Faro_Photos_ID3933_1.jpg",
+            "title": "Sustainable Sophistication",
+            "text": "We are committed to sustainability,  and use eco-friendly materials and energy-efficient lighting options in every piece."
+          }
+        }
+      },
+      "block_order": [
+        "block_qj8MPW",
+        "block_V4LzCm",
+        "block_pQMAmJ"
+      ],
+      "settings": {
+        "color": "light"
+      }
+    },
+    "offset_text_qppLaa": {
+      "type": "offset-text",
+      "settings": {
+        "heading": "original               origins",
+        "text_1": "Our founder and lead designer, Kyle Bostic began building light fixtures and buying antiques for trade shows—and decided to sell his unique selection of pieces online, too.",
+        "text_2": "As online sales grew, so did his passion for custom original lighting. What began as a hobby grew into our small team, turning passion into pieces that feel personal.",
+        "optional_image": "shopify://shop_images/Stocksy_comp_watermarked_3152021.jpg"
       }
     },
     "collection_feature_EAHxDr": {
@@ -70,8 +119,10 @@
     }
   },
   "order": [
-    "main",
+    "page_hero_Ahyk8b",
     "big_text_i34Kpb",
+    "alternating_blocks_NhBTW3",
+    "offset_text_qppLaa",
     "collection_feature_EAHxDr",
     "product_carousel_bMDhQ9"
   ]
