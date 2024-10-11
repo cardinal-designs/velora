@@ -494,6 +494,7 @@ var VariantSelects = class extends HTMLElement {
   }
 
   onVariantChange() {
+    console.log(event)
     this.updateOptions();
     this.updateMasterId();
     this.toggleAddButton(true, '', false);
@@ -607,7 +608,6 @@ var VariantSelects = class extends HTMLElement {
 
     if (!addButton) return;
 
-
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
       if (text) addButtonText.innerHTML = text;
@@ -673,6 +673,10 @@ var VariantRadios = class extends VariantSelects {
     this.options = fieldsets.map((fieldset) => {
       return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
     });
+
+    fieldsets.forEach( (f, index) => {
+      f.querySelector("legend span:nth-of-type(2)").textContent = this.options[index]
+    })
   }
 }
 

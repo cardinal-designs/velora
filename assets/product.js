@@ -1,12 +1,12 @@
 // Main product slider
-const productSlider = new Swiper('.product-slider', {
-  slidesPerView: 1,
-  loop: false,
-  spaceBetween: 20,
-  pagination: {
-    el: '.product-slider-pagination'
-  }
-});
+// const productSlider = new Swiper('.product-slider', {
+//   slidesPerView: 1,
+//   loop: false,
+//   spaceBetween: 20,
+//   pagination: {
+//     el: '.product-slider-pagination'
+//   }
+// });
 
 customElements.define('product-form', class ProductForm extends HTMLElement {
   constructor() {

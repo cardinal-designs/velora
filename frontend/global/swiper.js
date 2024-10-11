@@ -18,6 +18,14 @@ function swiperInit() {
           if(s.classList.contains("swiper-initialized")) return
           swiper = new Swiper(s, options)
           break;
+        case 'product-media':
+          options = {
+              slidesPerView: 1,
+              spaceBetween: 0,
+          }
+          if(s.classList.contains("swiper-initialized")) return
+          swiper = new Swiper(s, options)
+          break;
         case 'press':
             options = {
                 slidesPerView: 1,

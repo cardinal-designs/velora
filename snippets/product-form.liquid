@@ -1,5 +1,7 @@
 {% liquid
   assign current_variant = product.selected_or_first_available_variant
+  assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
+  assign swatch_file_extension = 'png'
 %}
 
 <product-form class="product-form">
@@ -10,7 +12,7 @@
     {%- assign swatch_file_extension = 'png' -%}
     
     {% unless product.has_only_default_variant %}
-      <variant-radios class="no-js-hidden mt-20 block" data-section="{{ section.id }}" data-url="{{ product.url }}" data-update-url="{{ update_url | default: false }}">
+      <variant-radios class="no-js-hidden {% unless container == 'product-card' %}grid grid-cols-2 {% endunless %}" data-section="{{ section.id }}" data-url="{{ product.url }}" data-update-url="{{ update_url | default: false }}">
         {% for option in product.options_with_values %}
           {% liquid
             assign downcased_option = option.name | downcase
@@ -29,67 +31,178 @@
             endif
           %}
 
-          <fieldset class="product-form-input js mb-20 block" data-option-name="{{ option.name }}">
-            <legend class="form__label mb-10 text-oracle-18">{{ option.name }}</legend>
-            <div class="flex flex-row justify-start items-center flex-wrap gap-[18px] group-[.smallView]/grid:gap-[13px]">
-              {% for value in option.values %}
-                {% liquid
-                  assign option_disabled = true
-                   assign option_index = forloop.index0
-                  assign values = ''
+          <div class="
+            {% unless container == 'product-card' %} col-span-2 border-t border-brown pt-[max(25px,1.7vw)] pb-[max(30px,2vw)]
+            [&:nth-last-of-type(2)]:col-span-1 [&:nth-last-of-type(2)]:border-r [&:nth-last-of-type(2)]:border-b [&:nth-last-of-type(2)]:pr-[max(30px,2vw)]
+            {% endunless %}
+            ">
+            {% if is_color %}
+                <fieldset class="product-form-input js block" data-option-name="{{ option.name }}">
+                  <div class="flex flex-col justify-start items-start gap-20">
+                    <legend class="form__label flex flex-row justify-start items-center gap-20">
+                      <span>{{ option.name }}</span>
+                      <span data-selected-option class="text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
+                    </legend>
+                    <div class="flex flex-row justify-start items-center flex-wrap gap-[18px] group-[.smallView]/grid:gap-[13px]">
+                      {% for value in option.values %}
+                        {% liquid
+                          assign option_disabled = true
+                          assign option_index = forloop.index0
+                          assign values = ''
 
-                  for option1_name in variants_option1_arr
-                    case option.position
-                      when 1
-                        if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
-                          assign option_disabled = false
-                        endif
-                      when 2
-                        if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
-                          assign option_disabled = false
-                        endif
-                      when 3
-                        if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
-                          assign option_disabled = false
-                        endif
-                    endcase
-                  endfor
-                %}
+                          for option1_name in variants_option1_arr
+                            case option.position
+                              when 1
+                                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                  assign option_disabled = false
+                                endif
+                              when 2
+                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                  assign option_disabled = false
+                                endif
+                              when 3
+                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                  assign option_disabled = false
+                                endif
+                            endcase
+                          endfor
+                        %}
 
-                <div>
-                  <input type="radio"
-                    class="visually-hidden peer"
-                    id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
-                    name="{{ option.name }}"
-                    value="{{ value | escape }}"
-                    form="{{ product_form_id }}"
-                    {% if option.selected_value == value or value.selected %}checked{% endif %}
-                  >
-                  {% if is_color %}
-                    {% liquid
-                       assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
-                       assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
-                        assign color_swatch_fallback = value | split: ' ' | last | handle
-                        assign color_count = color_count | plus: 1
-                      %}
+                        <div>
+                          <input type="radio"
+                            class="visually-hidden peer"
+                            id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
+                            name="{{ option.name }}"
+                            value="{{ value | escape }}"
+                            form="{{ product_form_id }}"
+                            {% if option.selected_value == value or value.selected %}checked{% endif %}
+                          >
+                          {% if is_color %}
+                            {% liquid
+                              assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+                              assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+                                assign color_swatch_fallback = value | split: ' ' | last | handle
+                                assign color_count = color_count | plus: 1
+                              %}
 
-                    <label 
-                      aria-label="{{ product.title }} - {{ value }}"
-                      class="swatch group-[.smallView]/grid:w-[17px] peer-checked:active-swatch"                     
-                      style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% else %}background-color: {{ value | handleize }};{% endif %}" 
-                      for="{{ product_form_id}}-{{ option.position }}-{{ forloop.index0 }}">
-                      <div class="visually-hidden">{{ value }}</div>
-                    </label>
-                  {% else %}
-                    <label class="px-15 py-5 text-oracle-18 border-1 border-black/10 peer-checked:border-black cursor-pointer{% if option_disabled %} opacity-50{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                      {{ value }}
-                    </label>
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </div>
-          </fieldset>
+                            <label 
+                              aria-label="{{ product.title }} - {{ value }}"
+                              class="swatch group-[.smallView]/grid:w-[17px] peer-checked:active-swatch"                     
+                              style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% else %}background-color: {{ value | handleize }};{% endif %}" 
+                              for="{{ product_form_id}}-{{ option.position }}-{{ forloop.index0 }}">
+                              <div class="visually-hidden">{{ value }}</div>
+                            </label>
+                          {% else %}
+                            <label 
+                              class="px-15 py-5 text-oracle-18 border-1 border-black/10 peer-checked:border-black cursor-pointer{% if option_disabled %} opacity-50{% endif %}" 
+                              for="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}">
+                              {{ value }}
+                            </label>
+                          {% endif %}
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </fieldset>
+            {% else %}
+                <fieldset class="product-form-input js block" data-option-name="{{ option.name }}" x-data="{ optionValue: '{{ option.selected_value }}'}">
+                  <div class="flex flex-row justify-start items-center gap-10">
+                    <legend class="form__label flex flex-row justify-start items-center gap-20 mb-0">
+                      <span>{{ option.name }}</span>
+                      <span data-selected-option class="!hidden text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
+                    </legend>
+                    <div class="no-scrollbar overflow-x-visible overflow-y-visible p-0 relative
+                      border border-brown rounded-[10px] px-20 py-10 w-full"
+                      x-data="{ open: false, toggle() { this.open = ! this.open } }"
+                      @click.outside="open = false"
+                    >
+                      <button @click.prevent="toggle()" class="flex flex-row justify-between items-center gap-10 w-full">
+                        <span x-text="optionValue" class="text-oracle-14"></span>
+                        <span :class="open ? '[&_svg]:rotate-180' : '' " class="transition-transform">
+                          <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.75 6.75L0.203367 -9.72255e-08L9.29663 -8.92184e-07L4.75 6.75Z" fill="#2B1D0A"/>
+                          </svg>
+                        </span>
+                      </button>
+                      <div x-show="open" x-transition class="absolute top-[-1px] left-[-1px] w-[calc(100%_+_2px)] h-fit px-20 py-10 border border-brown rounded-[10px] bg-[var(--background)]">
+                        <div class="w-fit flex flex-col justify-end items-ends gap-10 pt-10">
+                          {% for value in option.values %}
+                            {% liquid
+                              assign option_disabled = true
+
+                              for option1_name in variants_option1_arr
+                                case option.position
+                                  when 1
+                                    if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                      assign option_disabled = false
+                                    endif
+                                  when 2
+                                    if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                      assign option_disabled = false
+                                    endif
+                                  when 3
+                                    if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                      assign option_disabled = false
+                                    endif
+                                endcase
+                              endfor
+                            %}
+
+                            <div>
+                              <input type="radio"
+                                class="visually-hidden peer"
+                                id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                name="{{ option.name }}"
+                                value="{{ value | escape }}"
+                                form="{{ product_form_id }}"
+                                {% if option.selected_value == value or value.selected %}checked{% endif %}
+                              >
+                              <label 
+                                @click="
+                                  optionValue = '{{ value }}'
+                                 $nextTick(() => { open = false })
+                                "
+                                class="py-5 text-oracle-16 border-b border-transparent peer-checked:border-brown cursor-pointer{% if option_disabled %} opacity-50{% endif %}" 
+                                for="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                {{ value }}
+                              </label>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+            {% endif %}
+          </div>
         {% endfor %}
+
+        <div class="product-form-quantity flex-shrink-0 flex flex-col justify-center items-start pl-[max(30px,2vw)] w-full border-t border-brown border-b">
+          <div class="flex flex-row justify-start items-center gap-10">
+            <label for="Quantity-{{ section.id }}" class="form__label flex flex-row justify-start items-center gap-20 mb-0 whitespace-nowrap">
+              <span>{{ 'products.product.quantity.label' | t }}</span>
+            </label>
+            <quantity-input class="quantity h-full grid grid-cols-3 text-center">
+              <button class="quantity-button flex justify-center items-center no-js-hidden" name="minus" type="button">
+                <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                {% render 'icon' icon: 'minus' %}
+              </button>
+              <input class="quantity-input text-oracle-16 bg-[var(--background)] text-center"
+                  type="number"
+                  name="quantity"
+                  id="Quantity-{{ section.id }}"
+                  min="1"
+                  value="1"
+                  form="{{ product_form_id }}"
+                >
+              <button class="quantity-button flex justify-center items-center no-js-hidden" name="plus" type="button">
+                <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                {% render 'icon' icon: 'plus' %}
+              </button>
+            </quantity-input>
+          </div>
+        </div>
+
         <script type="application/json">
           {{ product.variants | json }}
         </script>
@@ -119,29 +232,6 @@
     </noscript>
 
     <div class="mt-30 flex gap-10">
-      <div class="product-form-quantity w-100 flex-shrink-0">
-        <label class="form__label visually-hidden" for="Quantity-{{ section.id }}">
-          {{ 'products.product.quantity.label' | t }}
-        </label>
-        <quantity-input class="quantity h-full grid grid-cols-3 border-1 border-black text-center">
-          <button class="quantity-button flex justify-center items-center no-js-hidden" name="minus" type="button">
-            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
-            {% render 'icon' icon: 'minus' %}
-          </button>
-          <input class="quantity-input text-oracle-18 text-center"
-              type="number"
-              name="quantity"
-              id="Quantity-{{ section.id }}"
-              min="1"
-              value="1"
-              form="{{ product_form_id }}"
-            >
-          <button class="quantity-button flex justify-center items-center no-js-hidden" name="plus" type="button">
-            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
-            {% render 'icon' icon: 'plus' %}
-          </button>
-        </quantity-input>
-      </div>
       <button
         type="submit"
         name="add"
