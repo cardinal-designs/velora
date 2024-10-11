@@ -54,11 +54,25 @@
       ],
       "settings": {
       }
+    },
+    "product_carousel_bMDhQ9": {
+      "type": "product-carousel",
+      "settings": {
+        "color": "dark",
+        "title": "Designed to be Different",
+        "collection": "bestsellers",
+        "products": [
+
+        ],
+        "button_label": "",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "main",
     "big_text_i34Kpb",
-    "collection_feature_EAHxDr"
+    "collection_feature_EAHxDr",
+    "product_carousel_bMDhQ9"
   ]
 }
