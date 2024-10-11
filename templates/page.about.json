@@ -13,9 +13,52 @@
       "type": "main-page",
       "settings": {
       }
+    },
+    "big_text_i34Kpb": {
+      "type": "big-text",
+      "settings": {
+        "color": "light",
+        "heading": "Founded by a team of expert designers and craftspeople, lighting isn’t just a business— but a passion that’s grown over years of experience.\nVelora is home to lighting with character, bringing a unique touch to every space.",
+        "small_text": "",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "collection_feature_EAHxDr": {
+      "type": "collection-feature",
+      "blocks": {
+        "block_DfFLYp": {
+          "type": "block",
+          "settings": {
+            "color": "dark",
+            "overlay": true,
+            "heading": "bestsellers",
+            "title": "Custom",
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_4.45.49_PM.png"
+          }
+        },
+        "block_h9yRYD": {
+          "type": "block",
+          "settings": {
+            "color": "dark",
+            "overlay": true,
+            "heading": "bestsellers",
+            "title": "Best Sellers",
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_DfFLYp",
+        "block_h9yRYD"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "big_text_i34Kpb",
+    "collection_feature_EAHxDr"
   ]
 }
