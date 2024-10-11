@@ -26,7 +26,7 @@
                     <div class="peer flex items-center gap-10 cursor-pointer relative">
                       <span {% if link.child_active %} class=""{% endif %}>{{ link.title | escape }}</span>
                       <div class="transition-transform ease-in-out group-hover/nav:rotate-180">
-                        {% render 'icon' icon: 'caret' %}
+                        {% comment %} {% render 'icon' icon: 'caret' %} {% endcomment %}
                       </div>
                     </div>
                     <ul class="min-w-[200px] pt-20 pr-20 pb-30 pl-30 flex flex-col gap-15 absolute top-full translate-x-[-30px] opacity-0 invisible bg-white group-hover/nav:opacity-100 group-hover/nav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
@@ -49,7 +49,7 @@
                   <a href="{{ link.url }}" class="flex items-center gap-10 relative"{% if link.current %} aria-current="page"{% endif %}>
                     {{ link.title | escape }}
                     <div class="transition-transform origin-center ease-in-out group-hover/nav:rotate-180">
-                      {% render 'icon' icon: 'caret' %}
+                      {% comment %} {% render 'icon' icon: 'caret' %} {% endcomment %}
                     </div>
                   </a>
 

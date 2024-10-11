@@ -74,16 +74,16 @@ module.exports = {
         'oracle-16': ['16px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-14': ['14px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-12': ['12px', { lineHeight: '1.1', letterSpacing: '0', }],
-        'oracle-custom': ['var(--size)', { lineHeight: '1'}],
+        'oracle-custom': ['var(--size)', { lineHeight: '1.1'}],
         // Mobile Body
         
         // Captions
-        'pangram-20': ['20px', { lineHeight: '1.1', letterSpacing: '.1em', }],
-        'pangram-18': ['16px', { lineHeight: '1', letterSpacing: '.1em', }],
-        'pangram-16': ['16px', { lineHeight: '1', letterSpacing: '.1em', }],
-        'pangram-14': ['14px', { lineHeight: '1', letterSpacing: '0.1em', }],
-        'pangram-12': ['12px', { lineHeight: '1', letterSpacing: '.1em', }],
-        'pangram-custom': ['var(--size)', { lineHeight: '1'}],
+        'pangram-20': ['20px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-18': ['16px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-16': ['16px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-14': ['14px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-12': ['12px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-custom': ['var(--size)', { lineHeight: '1.1'}],
       },
       gridTemplateColumns: {
         thirds: '1fr auto 1fr',
