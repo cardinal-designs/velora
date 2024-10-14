@@ -1,0 +1,68 @@
+<div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px]" style="{% render "color-variables", color: section.settings.color %}">
+    <div class="page-width">
+        <div class="flex flex-col gap-50">
+            {% if section.settings.heading != blank %}
+                <h4 style="--size: 42px;" class="text-arizona-custom lg:text-arizona-48 text-center">
+                    {{ section.settings.heading }}
+                </h4>
+            {% endif %}
+
+            {% if section.blocks != blank %}
+                <div class="flex flex-col lg:flex-row justify-center flex-wrap gap-y-70 items-center text-center gap-x-[max(100px,17vw)]">
+                    {% for block in section.blocks %}
+                        <div class="wysiwyg text-center flex-1">
+                            {{ block.settings.heading }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Text Columns",
+        "settings": [
+            {
+                "type": "select",
+                "id": "color",
+                "label": "Section colors",
+                "options": [
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Dark",
+                        "value": "dark"
+                    }
+                ],
+                "default": "dark"
+            },
+            {
+                "type": "textarea",
+                "id": "heading",
+                "label": "Text"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Column",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "heading",
+                        "label": "Text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Text Columns"
+            }
+        ]
+    }
+{% endschema %}
