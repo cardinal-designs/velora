@@ -1,14 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "form": {
       "type": "main-contact",
+      "disabled": true,
       "settings": {
         "title": "Contact Us",
-        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.<\/p>"
+        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>"
+      }
+    },
+    "contact_form_qqYqXw": {
+      "type": "contact-form",
+      "settings": {
+        "color": "light",
+        "heading": "Start Your Custom Inquiry",
+        "text": "<p>Process lorem customization timeline and expectations how to contact ipsum lorem dolor sit amet melior </p>",
+        "disclaimer": "This site is protected by hCaptcha and the hCaptcha Privacy Policy and Terms of Service apply.",
+        "image": "shopify://shop_images/dbe7725e0c8d6790d4c0f38c19019d0b.jpg"
       }
     }
   },
   "order": [
-    "form"
+    "form",
+    "contact_form_qqYqXw"
   ]
 }
