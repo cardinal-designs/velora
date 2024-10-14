@@ -1,17 +1,19 @@
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 <cart-drawer>
-  <div class="cart-drawer max-w-custom w-full h-[100dvh] fixed top-0 right-0 bg-white z-top translate-x-full transition-transform ease-in-out aria-unhidden:translate-x-0" style="--width: 440px;" id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
+  <div  style="--width: max(863px,60vw); {% render "color-variables", color: 'dark' %}" 
+    class="cart-drawer max-w-custom w-full h-[100dvh] fixed top-0 right-0 text-[var(--text)] bg-[var(--background)] z-top translate-x-full transition-transform ease-in-out aria-unhidden:translate-x-0" id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
     <form id="cart-drawer__form" action="{{ routes.cart_url }}" method="post" class="h-full">
 
       <div id="cart-drawer__inner" class="h-full flex flex-col" data-id="{{ section.id }}">
-        <div class="sticky top-0 p-20 text-center border-b-1 border-black">
+        <div class="sticky top-0 p-20 px-25 lg:px-[max(58px,4vw)] text-center">
 
-          <div class="flex justify-between items-center">
-            <h2 class="text-m-h4 md:text-arizona-48">Cart</h2>
-            <button type="button" class="js-close-cart" aria-label="Close cart drawer">
+          <div class="flex flex-col justify-start items-end">
+            <button type="button" class="js-close-cart text-right w-[22px] lg:w-40 h-auto aspect-square [&_svg]:w-full [&_svg]:h-auto" aria-label="Close cart drawer">
               {% render 'icon' icon: 'close' %}
             </button>
+
+            <h2 class="w-full text-center lg:text-left text-arizona-36 md:text-arizona-48 {% if cart.items.size == 0 %}hidden{% endif %}">Cart</h2>
           </div>
 
           <div id="cart-drawer__shipping-bar">
@@ -44,27 +46,30 @@
         </div>
 
         {% if cart.items.size == 0 %}
-          <div class="w-full p-20 h-full flex flex-col justify-center text-center">
-            <p class="mb-30 text-sh1 ">Your cart is empty.</p>
-            <a href="{{ settings.shop_all_link }}" class="button w-full">Shop All</a>
+          <div data-cart-items class="w-full p-20 pb-[47px] h-full flex flex-col justify-center text-center items-center [&_+_[data-cart-footer]]:hidden">
+            <p class="mb-[26px] text-arizona-36 lg:text-arizona-48 ">Your cart is empty</p>
+            <a href="{{ settings.shop_all_link }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+              Find Your Fit
+              <span>{% render 'link-arrow' %}</span>
+            </a>
           </div>
         {% else %}
-          <div id="cart-drawer-items" class="w-full h-full px-20 flex flex-col overflow-y-scroll">
+          <div id="cart-drawer-items" class="w-full h-full px-25 lg:px-[max(58px,4vw)] flex flex-col overflow-y-scroll [&>div]:border-b [&>div]:border-[var(--text)] [&>div:first-of-type]:border-t">
             {% for item in cart.items %}
-              <div class="{% unless forloop.last %}border-b-1 border-black{% endunless %}">
+              <div class="px-[7px]">
                 {% render 'cart-item' item: item, idx: forloop.index %}
               </div>
             {% endfor %}
           </div>
         {% endif %}
 
-        <div class="w-full p-20 sticky bottom-0 bg-white border-t-1 border-black">
-          <div class="mb-15 flex justify-between items-center gap-20" id="cart-drawer-subtotal">
-            <p class="text-oracle-18">Subtotal</p>
-            <p class="text-oracle-18">{{ cart.total_price | money }}</p>
+        <div data-cart-footer class="w-full p-20 sticky bottom-0 flex flex-col justify-start items-center">
+          <div class="px-25 lg:px-[max(58px,4vw)] mb-15 flex justify-between items-center gap-20 w-full" id="cart-drawer-subtotal">
+            <p class="text-pangram-10 lg:text-pangram-12">Subtotal</p>
+            <p class="text-pangram-12">{{ cart.total_price | money_without_trailing_zeros }}</p>
           </div>
-          <button type="submit" class="w-full button" name="checkout" form="cart">Checkout</button>
-          <p class="mt-10 text-oracle-18 text-center">Shipping & taxes calculated at checkout.</p>
+          <button type="submit" class="w-full button button--large max-w-[max(574px,40vw)] mx-auto" name="checkout" form="cart">Checkout</button>
+          <p class="mt-[23px] text-oracle-14 text-center">Shipping & taxes calculated at checkout.</p>
         </div>
 
         <div id="cart-drawer-loading" class="hidden inset bg-white/40">

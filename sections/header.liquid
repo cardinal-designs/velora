@@ -146,7 +146,7 @@
             {% comment %} {% render 'icon' icon: 'cart' %} {% endcomment %}
             <span class="">Cart</span>
             {% if cart != empty %}
-              <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] right-[-6px] flex justify-center items-center text-[10px] bg-black text-white">
+              <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] left-full flex justify-center items-center text-[10px] bg-[var(--text)] text-[var(--background)]">
                 {{ cart.item_count }}
               </div>
             {% endif %}
@@ -156,7 +156,7 @@
             {% render 'icon' icon: 'cart' %}
             <span class="visually-hidden">Cart</span>
             {% if cart != empty %}
-              <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] right-[-6px] flex justify-center items-center text-[10px] bg-black text-white">
+              <div class="h-15 w-15 p-px rounded-full absolute top-[-2px] left-full flex justify-center items-center text-[10px] bg-[var(--text)] text-[var(--background)]">
                 {{ cart.item_count }}
               </div>
             {% endif %}

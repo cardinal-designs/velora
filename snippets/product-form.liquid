@@ -185,7 +185,7 @@
             <quantity-input class="quantity h-full grid grid-cols-3 text-center w-full max-w-[58px] lg:max-w-[66px]">
               <button class="quantity-button flex justify-center items-center no-js-hidden" name="minus" type="button">
                 <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
-                {% render 'icon' icon: 'minus' %}
+                {% comment %} {% render 'icon' icon: 'minus' %} {% endcomment %}-
               </button>
               <input class="quantity-input text-oracle-16 bg-[var(--background)] text-center"
                   type="number"
@@ -197,7 +197,7 @@
                 >
               <button class="quantity-button flex justify-center items-center no-js-hidden" name="plus" type="button">
                 <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
-                {% render 'icon' icon: 'plus' %}
+                {% comment %} {% render 'icon' icon: 'plus' %} {% endcomment %}+
               </button>
             </quantity-input>
           </div>

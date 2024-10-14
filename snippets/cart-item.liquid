@@ -1,95 +1,109 @@
-<div class="cart-item py-20">
-  <div class="flex gap-10 relative">
-    <a href="{{ item.product.url }}" class="h-80 w-80 block relative overflow-hidden flex-shrink-0">
-      {% if item.image %}
-        {{ item.image | image_url: width: block.settings.image.width | image_tag: class: 'h-full w-full inset object-cover', sizes: '100px', widths: '60, 70, 80, 90, 100' }}
-      {% endif %}
-    </a>
+{% liquid 
+  assign split_product_title = item.title | split: "-"
+%}
 
-    <div class="w-full">
-      <div class="flex justify-between items-center gap-20">
-        <a href="{{ item.product.url }}">
-          <div class="mb-5 text-arizona-26">{{ item.product.title | escape }}</div>
+<div class="cart-item flex flex-row justify-start items-stretch gap-20 py-20">
+  <a href="{{ item.product.url }}" class="h-[133px] lg:h-[177px] w-auto aspect-square block relative overflow-hidden flex-shrink-0">
+    {% if item.image %}
+      {{ item.image | image_url: width: block.settings.image.width | image_tag: class: 'h-full w-full inset object-cover', sizes: '100px', widths: '60, 70, 80, 90, 100' }}
+    {% endif %}
+  </a>
+
+  <div class="h-auto flex flex-col justify-between items-start w-full py-[14px] lg:py-20">
+    <div class="w-full flex flex-row justify-between items-start gap-20">
+      <div class="flex flex-col justify-start gap-10">
+        <a href="{{ item.product.url }}" class="text-pangram-14 lg:text-pangram-20 leading-[30px]">
+            {{ split_product_title[0] }}
         </a>
-        <p class="price flex gap-5 flex-wrap text-oracle-18">
-          {{ item.final_price | money }}
-          {% if item.original_price > item.final_price %}
-            <span class="opacity-50">{{ item.original_price | money }}</span>
+        {% if split_product_title[1] != blank  %}
+          <a href="{{ item.product.url }}" class="text-arizona-14 lg:text-arizona-20">
+            {{ split_product_title[1] }}
+          </a>
+        {% endif %}
+
+        {% if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil %}
+          <div class="cart-item__variant text-oracle-12 lg:text-oracle-14">
+            {% if item.product.has_only_default_variant == false %}
+              {% for option in item.options_with_values %}
+                  {{ option.value }}{% unless forloop.last %}/{% endunless %}
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          {% if item.properties.size != 0 %}
+            <div class="cart-item__variant text-oracle-12 lg:text-oracle-14">
+              {% for property in item.properties %}
+                {% assign property_first_char = property.first | slice: 0 %}
+                {% if property.last != blank and property_first_char != '_' %}
+                  <p class="text-oracle-18">
+                    {{ property.first }}:
+                    {% if property.last contains '/uploads/' %}
+                      <a href="{{ property.last }}" target="_blank">
+                        {{ property.last | split: '/' | last }}
+                      </a>
+                    {% else %}
+                      {{ property.last }}
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% endfor %}
+              </div>
           {% endif %}
-        </p>
+        {% endif %}
+      </div>
+      <p class="price gap-5 flex-wrap text-pangram-12 hidden lg:flex">
+        {{ item.final_price | money_without_trailing_zeros }}
+        {% if item.original_price > item.final_price %}
+          <span class="opacity-50">{{ item.original_price | money_without_trailing_zeros }}</span>
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="w-full mt-10 flex justify-between items-center gap-20">
+      <div class="flex flex-row justify-start items-center gap-25">
+        <label for="Quantity-{{ section.id }}" class="form__label flex flex-row justify-start items-center gap-20 mb-0 whitespace-nowrap">
+          <span>{{ 'products.product.quantity.label' | t }}</span>
+        </label>
+        <quantity-input class="quantity h-full grid grid-cols-3 text-center w-full max-w-[58px] lg:max-w-[66px]">
+          <button class="flex justify-center items-center [&>svg]:w-[8px] no-js-hidden" name="minus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+            {% render 'icon' icon: 'minus' %}
+          </button>
+          <input
+            class="w-auto flex justify-center items-center appearance-none text-oracle-18 text-center bg-transparent"
+            type="number"
+            name="updates[]"
+            value="{{ item.quantity }}"
+            min="0"
+            aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+            id="Quantity-{{ item.index | plus: 1 }}"
+            data-index="{{ item.index | plus: 1 }}"
+          >
+          <button class="flex justify-center items-center [&>svg]:w-[8px] no-js-hidden" name="plus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+            {% render 'icon' icon: 'plus' %}
+          </button>
+        </quantity-input>
       </div>
 
-      {% if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil %}
-        <div class="cart-item__variant">
-          {% if item.product.has_only_default_variant == false %}
-            {% for option in item.options_with_values %}
-              <p class="text-oracle-18">
-                {{ option.name }}:
-                {{ option.value }}
-              </p>
-            {% endfor %}
-          {% endif %}
-
-          {% for property in item.properties %}
-            {% assign property_first_char = property.first | slice: 0 %}
-            {% if property.last != blank and property_first_char != '_' %}
-              <p class="text-oracle-18">
-                {{ property.first }}:
-                {% if property.last contains '/uploads/' %}
-                  <a href="{{ property.last }}" target="_blank">
-                    {{ property.last | split: '/' | last }}
-                  </a>
-                {% else %}
-                  {{ property.last }}
-                {% endif %}
-              </p>
-            {% endif %}
-          {% endfor %}
-
-          <div class="mt-10 flex justify-between items-center gap-20">
-            <quantity-input class="w-70 h-30 flex justify-around flex-shrink-0 border-1 border-black text-center">
-              <button class="w-1/3 flex justify-center items-center text-black [&>svg]:w-[8px] no-js-hidden" name="minus" type="button">
-                <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
-                {% render 'icon' icon: 'minus' %}
-              </button>
-              <input
-                class="w-1/3 flex justify-center items-center appearance-none text-oracle-18 text-center bg-transparent"
-                type="number"
-                name="updates[]"
-                value="{{ item.quantity }}"
-                min="0"
-                aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
-                id="Quantity-{{ item.index | plus: 1 }}"
-                data-index="{{ item.index | plus: 1 }}"
-              >
-              <button class="w-1/3 flex justify-center items-center text-black [&>svg]:w-[8px] no-js-hidden" name="plus" type="button">
-                <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
-                {% render 'icon' icon: 'plus' %}
-              </button>
-            </quantity-input>
-
-            {% if is_cart %}
-              <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                <a
-                  href="{{ item.url_to_remove }}"
-                  class="text-oracle-18 underline"
-                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                  Remove
-                </a>
-              </cart-remove-button>
-            {% else %}
-              <cart-drawer-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                <a
-                  href="{{ item.url_to_remove }}"
-                  class="text-oracle-18 underline"
-                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                  Remove
-                </a>
-              </cart-drawer-remove-button>
-            {% endif %}
-
-          </div>
-        </div>
+      {% if is_cart %}
+        <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+          <a
+            href="{{ item.url_to_remove }}"
+            class="text-oracle-12 lg:text-oracle-14 underline"
+            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+            Remove
+          </a>
+        </cart-remove-button>
+      {% else %}
+        <cart-drawer-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+          <a
+            href="{{ item.url_to_remove }}"
+            class="text-oracle-12 lg:text-oracle-14 underline"
+            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+            Remove
+          </a>
+        </cart-drawer-remove-button>
       {% endif %}
 
     </div>
