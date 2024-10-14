@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "16587824044cd3c400": {
@@ -108,7 +108,9 @@
         "image_bqfCRn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/1f2aa66cbef6b76c117e69fddd3908e8.jpg"
+            "image": "shopify://shop_images/1f2aa66cbef6b76c117e69fddd3908e8.jpg",
+            "button_label": "",
+            "button_link": ""
           }
         },
         "text_KJqGJJ": {
@@ -117,8 +119,10 @@
             "title": "details make",
             "title_r": "the difference",
             "heading": "Inspired by the timeless character  of heirlooms— with distinct, modern flair.",
+            "text": "",
             "button_label": "Our Origin",
-            "button_link": "shopify://pages/about"
+            "button_link": "shopify://pages/about",
+            "inline_button": true
           }
         }
       },
@@ -127,7 +131,9 @@
         "text_KJqGJJ"
       ],
       "settings": {
-        "color": "light"
+        "color": "light",
+        "layout": "a",
+        "layout_mobile": "a"
       }
     },
     "press_dq8gBV": {
@@ -251,6 +257,60 @@
         "color": "light",
         "heading": "find a fixture that feels right at home"
       }
+    },
+    "image_marquee_QYK9i3": {
+      "type": "image-marquee",
+      "blocks": {
+        "image_rBdUzH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_3995985.jpg"
+          }
+        },
+        "image_MCthUx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-2-1366x1366.jpg"
+          }
+        },
+        "image_TcNY7R": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MAISON-NICOLE-PUBLI-MILK-40-scaled-750x750.jpg"
+          }
+        },
+        "image_jTVcVX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-14-1366x1366_9576575b-d11c-41cc-9691-37917a9b856f.jpg"
+          }
+        },
+        "image_mUVNXf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_5058029.jpg"
+          }
+        },
+        "image_yzTdY8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_6273265.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_rBdUzH",
+        "image_MCthUx",
+        "image_TcNY7R",
+        "image_jTVcVX",
+        "image_mUVNXf",
+        "image_yzTdY8"
+      ],
+      "settings": {
+        "heading": "Artisanal down to every last detail",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
@@ -260,6 +320,7 @@
     "collection_feature_bwXBGq",
     "image_text_HGij4c",
     "press_dq8gBV",
-    "dropdowns_TeGxJ7"
+    "dropdowns_TeGxJ7",
+    "image_marquee_QYK9i3"
   ]
 }

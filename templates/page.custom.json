@@ -34,9 +34,7 @@
         "image_bw3WN6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png",
-            "button_label": "",
-            "button_link": ""
+            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png"
           }
         },
         "text_UG8wmg": {
@@ -45,10 +43,8 @@
             "title": "FIND YOUR FIT",
             "title_r": "",
             "heading": "Talk To An Expert",
-            "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their  design vision.",
             "button_label": "Start Custom Inquiry",
-            "button_link": "shopify://pages/custom",
-            "inline_button": true
+            "button_link": "shopify://pages/custom"
           }
         }
       },
@@ -58,9 +54,7 @@
       ],
       "settings": {
         "color": "dark",
-        "layout": "b",
-        "layout_mobile": "b",
-        "image": "shopify://shop_images/3d9b32a4ddcf4e3f4f94e145aff6c390.jpg"
+        "layout": "b"
       }
     },
     "faq_zUUXCU": {

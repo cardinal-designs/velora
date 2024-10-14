@@ -1,0 +1,95 @@
+{% capture marquee_contents %}
+    <div class="w-[985px] h-[293px] pr-60 flex-shrink-0 whitespace-nowrap animate-marquee-slow relative md:w-[2100px] md:h-[640px]">
+        {% for block in section.blocks %}
+            {% assign classes = 'w-[193px] h-[137px] left-[35px] top-0 md:w-[422px] md:h-[300px] md:left-[75px]' %}
+            {% case forloop.index %}
+                {% when 2 %}
+                    {% assign classes = 'w-[139px] h-[180px] left-0 bottom-0 md:w-[303px] md:h-[390px]' %}
+                {% when 3 %}
+                    {% assign classes = 'w-[130px] h-[130px] left-[267px] bottom-15 md:w-[290px] md:h-[290px]' %}
+                {% when 4 %}
+                    {% assign classes = 'w-[165px] h-[203px] left-[430px] top-0 z-20 md:w-[360px] md:h-[445px] md:left-[940px]' %}
+                {% when 5 %}
+                    {% assign classes = 'w-[207px] h-[164px] left-[563px] bottom-[7px] md:w-[450px] md:h-[360px] md:left-[1230px] md:bottom-15' %}
+                {% when 6 %}
+                    {% assign classes = 'w-[130px] h-[130px] right-50 top-20 md:w-[290px] md:h-[290px] md:right-100 md:top-[45px]' %}
+            {% endcase %}
+            <div class="{{ classes }} absolute overflow-hidden" {{ block.shopify_attributes }}>
+                {% if block.settings.image != blank %}
+                    {{ block.settings.image | image_url: width: 550 | image_tag: class: 'inset size-full object-cover' }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endcapture %}
+
+<div class="mb-[45px] md:mt-20 md:mb-[85px]">
+    <div class="overflow-hidden">
+        <div class="page-width mb-30 flex justify-between items-center gap-40 md:mb-80">
+            {% if section.settings.heading != blank %}
+                <h2 class="text-arizona-40 md:text-arizona-48 lg:text-arizona-60 xl:text-arizona-80">{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.button_label != blank %}
+                <a href="{{ section.settings.button_link }}" class="pb-5 text-pangram-14 uppercase tracking-widest border-b-1 border-current flex-shrink-0 hidden md:inline-block">{{ section.settings.button_label }}</a>
+            {% endif %}
+        </div>
+        <div class="overflow-scroll">
+            <div class="flex justify-center items-center flex-shrink-0 overflow-x-hidden"> 
+                {{ marquee_contents }}
+                {{ marquee_contents }}
+                {{ marquee_contents }}
+            </div>
+        </div>
+        {% if section.settings.button_label != blank %}
+            <div class="page-width mt-[35px] pb-5 text-center">
+                <a href="{{ section.settings.button_link }}" class="pb-5 text-pangram-14 uppercase tracking-widest border-b-1 border-current flex-shrink-0 md:hidden">{{ section.settings.button_label }}</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Image Marquee",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "header",
+                "content": "Button"
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "label": "Button Label"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button Link"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image",
+                "limit": 6,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Image Marquee"
+            }
+        ]
+    }
+{% endschema %}
