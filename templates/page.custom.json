@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "floating-text-images": {
@@ -26,6 +26,47 @@
         "heading": "Detailed                difference",
         "text_1": "We offer a wide range of customization options for our fixtures, including adjustments to dimensions, finishes, and the number of sockets. Additionally, if you have a specific idea in mind, we are happy to work with you to create a bespoke fixture that meets your needs, as long as it falls within our production capabilities.",
         "text_2": "Minor customizations typically do not affect the production timeline or cost. Moreover, we provide complimentary photos of a completed prototype for your approval upon request. This service is usually completed within 48 hours."
+      }
+    },
+    "image_text_JPXG8x": {
+      "type": "image-text",
+      "blocks": {
+        "image_bw3WN6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "text_UG8wmg": {
+          "type": "text",
+          "settings": {
+            "title": "FIND YOUR FIT",
+            "title_r": "",
+            "heading": "Talk To An Expert",
+            "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their  design vision.",
+            "button_label": "Start Custom Inquiry",
+            "button_link": "shopify://pages/custom",
+            "inline_button": true
+          }
+        }
+      },
+      "block_order": [
+        "image_bw3WN6",
+        "text_UG8wmg"
+      ],
+      "settings": {
+        "color": "dark",
+        "layout": "b",
+        "layout_mobile": "a",
+        "image": "shopify://shop_images/3d9b32a4ddcf4e3f4f94e145aff6c390.jpg"
+      }
+    },
+    "main_faq_q8Cc3B": {
+      "type": "main-faq",
+      "settings": {
+        "title": ""
       }
     },
     "numbered_text_blocks_wM9t8w": {
@@ -79,6 +120,8 @@
   "order": [
     "floating-text-images",
     "offset_text_cqKUha",
+    "image_text_JPXG8x",
+    "main_faq_q8Cc3B",
     "numbered_text_blocks_wM9t8w",
     "contact_form_YfQrzt"
   ]
