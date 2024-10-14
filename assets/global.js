@@ -493,8 +493,10 @@ var VariantSelects = class extends HTMLElement {
     this.addEventListener('change', this.onVariantChange);
   }
 
-  onVariantChange() {
-    console.log(event)
+  onVariantChange(event) {
+
+    if(event.srcElement.name == 'quantity') return
+
     this.updateOptions();
     this.updateMasterId();
     this.toggleAddButton(true, '', false);
@@ -524,6 +526,15 @@ var VariantSelects = class extends HTMLElement {
   }
 
   updateMedia() {
+    // if(this.getAttribute("data-section") == 'product-bar') return
+    const slider = this.closest(".product").querySelector(".product-slider")
+    if(!slider) return
+    const newVariantImage = slider.querySelector(`[data-image-variants*="${this.currentVariant.id}"]`)
+    
+    if(newVariantImage) {
+      const slideToIndex = newVariantImage.getAttribute("data-swiper-slide-index") || newVariantImage.getAttribute("data-media-index")
+      slider.swiper.slideTo(slideToIndex)
+    }
   }
 
   updateURL() {
@@ -747,3 +758,29 @@ class ProductRecommendations extends HTMLElement {
 }
 
 customElements.define('product-recommendations', ProductRecommendations);
+
+class TextMarquee extends HTMLElement {
+  constructor() {
+    super();
+
+    this.still = this.querySelector('.still');
+    this.marquee = this.querySelector('.marquee');
+
+    this.width = this.still.offsetWidth;
+
+    this.handleMarquee(this.width);
+    window.addEventListener('resize', this.handleMarquee.bind(this));
+  }
+
+  handleMarquee() {
+    if (this.width >= window.innerWidth) {
+      this.still.classList.add('hidden');
+      this.marquee.classList.remove('hidden');
+    } else {
+      this.still.classList.remove('hidden');
+      this.marquee.classList.add('hidden');
+    }
+  }
+}
+
+customElements.define('text-marquee', TextMarquee);

@@ -22,6 +22,15 @@ function swiperInit() {
           options = {
               slidesPerView: 1,
               spaceBetween: 0,
+              navigation: {
+                nextEl: `.swiper-button-next-${s.dataset.sectionId}`,
+                prevEl: `.swiper-button-prev-${s.dataset.sectionId}`,
+              },
+              on: {
+                slideChange: function() {
+                    s.querySelector(`[data-active-slide="${s.dataset.sectionId}"]`).innerText = ( swiper.realIndex + 1 )
+                }
+              }
           }
           if(s.classList.contains("swiper-initialized")) return
           swiper = new Swiper(s, options)

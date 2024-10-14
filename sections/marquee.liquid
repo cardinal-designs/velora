@@ -1,0 +1,89 @@
+{% capture blocks %}
+  {% for block in section.blocks %}
+    <div class="w-fit h-fit flex justify-center items-center gap-[18px] relative flex-shrink-0">
+    <div class="rounded-full border border-brown text-oracle-18 w-auto h-[36px] aspect-square flex flex-col justify-center items-center text-center">{{ forloop.index }}</div>
+      <div class="whitespace-nowrap">{{ block.settings.heading }}</div>
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+<div class="bg-[var(--background)] text-[var(--text)] text-pangram-16" style="{% render "color-variables", color: section.settings.color %}">
+    <text-marquee>
+        <div class="press-marquee py-[14px] overflow-hidden">
+            <div class="still w-fit mx-auto flex justify-center items-center gap-[18vw]">
+                {{ blocks }}
+            </div>
+            <div class="marquee hidden">
+                <div class="flex justify-center items-center gap-[18vw] shrink-0 overflow-x-hidden"> 
+                    <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
+                    {{ blocks }}
+                    </div>
+                    <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
+                    {{ blocks }}
+                    </div>
+                    <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
+                    {{ blocks }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </text-marquee>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Press Marquee",
+    "settings": [
+        {
+            "type": "select",
+            "id": "color",
+            "label": "Section colors",
+            "options": [
+                {
+                    "label": "Light",
+                    "value": "light"
+                },
+                {
+                    "label": "Dark",
+                    "value": "dark"
+                },
+                {
+                    "label": "Accent",
+                    "value": "accent"
+                }
+            ],
+            "default": "accent"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "heading",
+            "label": "Heading"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Marquee",
+        "blocks": [
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

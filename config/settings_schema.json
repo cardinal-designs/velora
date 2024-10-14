@@ -37,6 +37,21 @@
         "type": "url",
         "id": "shop_all_link",
         "label": "Shop All Link"
+      },
+      {
+        "type": "header",
+        "content": "Custom Inquiry Link"
+      },
+      {
+        "type": "text",
+        "id": "custom_inquiry_label",
+        "label": "Label",
+        "default": "Custom Inquiry"
+      },
+      {
+          "type": "url",
+          "id": "custom_inquiry_link",
+          "label": "Link"
       }
     ]
   },

@@ -67,7 +67,7 @@
 
   @layer components {
     .button {
-        @apply font-oracle text-oracle-16 leading-[30px] text-center
+        @apply font-oracle text-oracle-16 leading-[30px] text-center indent-0
         px-20 py-[4px]
         rounded-[5px]
         border
@@ -333,5 +333,64 @@
   /* FORM */
 
   .form__label {
-    @apply text-pangram-12 font-pangram *:inline-block *:leading-[1.1]
+    @apply text-pangram-10 lg:text-pangram-12 font-pangram *:inline-block *:leading-[1.1]
+  }
+
+  /* PDP */
+
+  .product lb-product-card {
+    @apply block w-full
+  }
+
+  .product .lb-upsell-ppa-card-cont .lb-spc-border,
+  .product .lb-upsell-addon-popup-card .lb-shared-variants-select, 
+  .product .lb-upsell-product-page-card .lb-shared-variants-select, 
+  .product lb-tq-page-upsell .lb-shared-variants-select,
+  .product .lb-upsell-product-page-card .lb-spc-details-btn, 
+  .product .lb-upsell-product-page-card .lb-spc-qty-cont
+   {
+    @apply !border-[var(--text)]
+  }
+
+  .product .lb-upsell-ppa-card-cont .lb-spc-cont,
+  .product .lb-upsell-product-page-card .lb-shared-variants-select {
+    @apply !bg-[var(--background)]
+  }
+
+  .product .lb-upsell-ppa-card-cont .lb-spc-cont {
+    @apply w-full !max-w-none py-[24px] px-[28px]
+  }
+
+  .product .lb-upsell-ppa-card-cont .lb-spc-cont .lb-spc-details-cont {
+    @apply flex flex-col gap-10
+  }
+
+  .product .lb-upsell-product-page-card .lb-spc-details-name {
+    @apply text-pangram-12 lg:text-pangram-14 font-pangram uppercase
+  }
+
+  .product .lb-upsell-product-page-card .lb-spc-details-price-wrap {
+    @apply text-pangram-10 lg:text-pangram-12 font-pangram uppercase
+  }
+
+  .product .lb-spc-border-radius {
+    @apply rounded-none
+  }
+
+  .product .lb-upsell-product-page-card .lb-spc-details-btn {
+    @apply text-oracle-16 font-oracle
+  }
+
+  .product .lb-shared-variants-select {
+    @apply !w-full !text-oracle-16 !font-oracle
+  }
+
+  .product .lb-spc-details-btm {
+    @apply gap-10
+  }
+
+  /* ---- SWIPER ---- */
+  [data-swiper-pagination] .swiper-button-prev,
+  [data-swiper-pagination] .swiper-button-next {
+    @apply after:content-none relative top-0 w-fit h-fit mt-0 text-[currentColor] fill-[currentColor] right-0 left-0
   }

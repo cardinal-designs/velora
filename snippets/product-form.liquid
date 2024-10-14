@@ -12,7 +12,7 @@
     {%- assign swatch_file_extension = 'png' -%}
     
     {% unless product.has_only_default_variant %}
-      <variant-radios class="no-js-hidden {% unless container == 'product-card' %}grid grid-cols-2 {% endunless %}" data-section="{{ section.id }}" data-url="{{ product.url }}" data-update-url="{{ update_url | default: false }}">
+      <variant-radios class="no-js-hidden {% unless container == 'product-card' %}lg:grid grid-cols-12 {% endunless %}" data-section="{{ section.id }}" data-url="{{ product.url }}" data-update-url="{{ update_url | default: false }}">
         {% for option in product.options_with_values %}
           {% liquid
             assign downcased_option = option.name | downcase
@@ -32,8 +32,8 @@
           %}
 
           <div class="
-            {% unless container == 'product-card' %} col-span-2 border-t border-brown pt-[max(25px,1.7vw)] pb-[max(30px,2vw)]
-            [&:nth-last-of-type(2)]:col-span-1 [&:nth-last-of-type(2)]:border-r [&:nth-last-of-type(2)]:border-b [&:nth-last-of-type(2)]:pr-[max(30px,2vw)]
+            {% unless container == 'product-card' %} col-span-12 border-t border-brown py-[17px] lg:pt-[max(25px,1.7vw)] lg:pb-[max(30px,2vw)]
+            [&:nth-last-of-type(2)]:col-span-8 [&:nth-last-of-type(2)]:lg:border-r [&:nth-last-of-type(2)]:lg:border-b [&:nth-last-of-type(2)]:lg:pr-[min(30px,2vw)]
             {% endunless %}
             ">
             {% if is_color %}
@@ -41,7 +41,7 @@
                   <div class="flex flex-col justify-start items-start gap-20">
                     <legend class="form__label flex flex-row justify-start items-center gap-20">
                       <span>{{ option.name }}</span>
-                      <span data-selected-option class="text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
+                      <span data-selected-option class="text-oracle-14 lg:text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
                     </legend>
                     <div class="flex flex-row justify-start items-center flex-wrap gap-[18px] group-[.smallView]/grid:gap-[13px]">
                       {% for value in option.values %}
@@ -109,14 +109,14 @@
                   <div class="flex flex-row justify-start items-center gap-10">
                     <legend class="form__label flex flex-row justify-start items-center gap-20 mb-0">
                       <span>{{ option.name }}</span>
-                      <span data-selected-option class="!hidden text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
+                      <span data-selected-option class="!hidden text-oracle-14 lg:text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
                     </legend>
                     <div class="no-scrollbar overflow-x-visible overflow-y-visible p-0 relative
-                      border border-brown rounded-[10px] px-20 py-10 w-full"
+                      border border-brown rounded-[10px] px-20 py-10 w-full max-w-[54vw]"
                       x-data="{ open: false, toggle() { this.open = ! this.open } }"
                       @click.outside="open = false"
                     >
-                      <button @click.prevent="toggle()" class="flex flex-row justify-between items-center gap-10 w-full">
+                      <button @click.prevent="toggle()" class="flex flex-row justify-between items-center gap-10 w-full text-left ">
                         <span x-text="optionValue" class="text-oracle-14"></span>
                         <span :class="open ? '[&_svg]:rotate-180' : '' " class="transition-transform">
                           <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,12 +177,12 @@
           </div>
         {% endfor %}
 
-        <div class="product-form-quantity flex-shrink-0 flex flex-col justify-center items-start pl-[max(30px,2vw)] w-full border-t border-brown border-b">
+        <div class="col-span-4 product-form-quantity flex-shrink-0 flex flex-col justify-center items-start lg:pl-[min(30px,2vw)] w-full border-t border-brown border-b py-[17px] lg:pt-[max(25px,1.7vw)] lg:pb-[max(30px,2vw)]">
           <div class="flex flex-row justify-start items-center gap-10">
             <label for="Quantity-{{ section.id }}" class="form__label flex flex-row justify-start items-center gap-20 mb-0 whitespace-nowrap">
               <span>{{ 'products.product.quantity.label' | t }}</span>
             </label>
-            <quantity-input class="quantity h-full grid grid-cols-3 text-center">
+            <quantity-input class="quantity h-full grid grid-cols-3 text-center w-full max-w-[58px] lg:max-w-[66px]">
               <button class="quantity-button flex justify-center items-center no-js-hidden" name="minus" type="button">
                 <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
                 {% render 'icon' icon: 'minus' %}
@@ -231,11 +231,17 @@
       </div>
     </noscript>
 
-    <div class="mt-30 flex gap-10">
+    <div class="mt-30 flex flex-col gap-10">
+      {% if show_custom_inquiry == true and settings.custom_inquiry_link != blank and settings.custom_inquiry_label != blank  %}
+        <a href="{{ settings.custom_inquiry_link }}" class="button button--outline button--large max-w-none">
+          {{ settings.custom_inquiry_label }}
+        </a>
+      {% endif %}
+
       <button
         type="submit"
         name="add"
-        class="product-form-submit w-full button"
+        class="product-form-submit w-full button button--large max-w-none"
         {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
       >
         <span>

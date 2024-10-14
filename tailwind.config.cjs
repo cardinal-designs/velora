@@ -57,6 +57,7 @@ module.exports = {
         'arizona-60': ['60px', { lineHeight: '1.1', letterSpacing: '-0.0237em', }],
         //h4
         'arizona-48': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em', }],
+        'arizona-40': ['40px', { lineHeight: '1.1', letterSpacing: '-0.02em', }],
         //h5
         'arizona-36': ['36px', { lineHeight: '1.2', letterSpacing: '-0.015em', }],
         //h6
@@ -73,7 +74,9 @@ module.exports = {
         'oracle-18': ['18px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-16': ['16px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-14': ['14px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'oracle-13': ['13px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-12': ['12px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'oracle-10': ['10px', { lineHeight: '1.1', letterSpacing: '0', }],
         'oracle-custom': ['var(--size)', { lineHeight: '1.1'}],
         // Mobile Body
         
@@ -83,6 +86,7 @@ module.exports = {
         'pangram-16': ['16px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
         'pangram-14': ['14px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
         'pangram-12': ['12px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-10': ['10px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
         'pangram-custom': ['var(--size)', { lineHeight: '1.1'}],
       },
       gridTemplateColumns: {
