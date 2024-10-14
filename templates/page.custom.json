@@ -63,10 +63,47 @@
         "image": "shopify://shop_images/3d9b32a4ddcf4e3f4f94e145aff6c390.jpg"
       }
     },
-    "main_faq_q8Cc3B": {
-      "type": "main-faq",
+    "faq_zUUXCU": {
+      "type": "faq",
+      "blocks": {
+        "faq_XNDywF": {
+          "type": "faq",
+          "settings": {
+            "heading": "Is there a minimum order quantity?",
+            "text": "Lorem ipsum"
+          }
+        },
+        "faq_DxBptz": {
+          "type": "faq",
+          "settings": {
+            "heading": "How do I place an order?",
+            "text": "Lorem ipsum"
+          }
+        },
+        "faq_BiEt6Y": {
+          "type": "faq",
+          "settings": {
+            "heading": "How do I get in touch with questions?",
+            "text": "Lorem ipsum"
+          }
+        },
+        "faq_RAkkDy": {
+          "type": "faq",
+          "settings": {
+            "heading": "What shipping options are available?",
+            "text": "Lorem ipsum"
+          }
+        }
+      },
+      "block_order": [
+        "faq_XNDywF",
+        "faq_DxBptz",
+        "faq_BiEt6Y",
+        "faq_RAkkDy"
+      ],
       "settings": {
-        "title": ""
+        "color": "light",
+        "heading": "frequently asked questions"
       }
     },
     "numbered_text_blocks_wM9t8w": {
@@ -121,7 +158,7 @@
     "floating-text-images",
     "offset_text_cqKUha",
     "image_text_JPXG8x",
-    "main_faq_q8Cc3B",
+    "faq_zUUXCU",
     "numbered_text_blocks_wM9t8w",
     "contact_form_YfQrzt"
   ]
