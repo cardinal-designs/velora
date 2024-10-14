@@ -394,3 +394,50 @@
   [data-swiper-pagination] .swiper-button-next {
     @apply after:content-none relative top-0 w-fit h-fit mt-0 text-[currentColor] fill-[currentColor] right-0 left-0
   }
+
+  /* --- RICHTEXT / WYSIWYG --- */
+
+  .wysiwyg > * + * {
+    @apply mt-10
+  }
+
+  .wysiwyg > * + a {
+    @apply mt-[18px]
+  }
+
+  .wysiwyg h1 {
+    @apply text-arizona-72 lg:text-arizona-80 font-arizona-flare
+  }
+
+  .wysiwyg h2 {
+    @apply text-arizona-60 lg:text-arizona-72 font-arizona-flare
+  }
+
+  .wysiwyg h3 {
+    @apply text-arizona-48 lg:text-arizona-60 font-arizona-flare
+  }
+
+  .wysiwyg h4 {
+    @apply text-arizona-36 lg:text-arizona-48 font-arizona-flare
+  }
+
+  .wysiwyg h4 {
+    @apply text-arizona-26 lg:text-arizona-36 font-arizona-flare
+  }
+
+  .wysiwyg h5 {
+    @apply text-pangram-18 lg:text-pangram-20 font-pangram
+  }
+
+  .wysiwyg h6 {
+    @apply text-pangram-14 lg:text-pangram-18 font-pangram
+  }
+
+  .wysiwyg p {
+    @apply text-oracle-18 font-oracle
+  }
+
+  .wysiwyg a,
+  .wysiwyg p a {
+    @apply underline
+  }

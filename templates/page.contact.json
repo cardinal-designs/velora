@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "form": {
       "type": "main-contact",
@@ -26,10 +26,43 @@
         "disclaimer": "This site is protected by hCaptcha and the hCaptcha Privacy Policy and Terms of Service apply.",
         "image": "shopify://shop_images/dbe7725e0c8d6790d4c0f38c19019d0b.jpg"
       }
+    },
+    "text_columns_RPD6KP": {
+      "type": "text-columns",
+      "blocks": {
+        "column_Nnc7Hz": {
+          "type": "column",
+          "settings": {
+            "heading": "<h5>Customizations</h5><p>Talk to our team of experts about customizing any of our pieces</p><p><a href=\"mailto:customize@velora.com\" title=\"mailto:customize@velora.com\">customize@velora.com</a></p>"
+          }
+        },
+        "column_zzp4QN": {
+          "type": "column",
+          "settings": {
+            "heading": "<h5>partnerships</h5><p>For brands, influencers, and ambassadors</p><p><a href=\"mailto:parters@velora.com\" title=\"mailto:parters@velora.com\">parters@velora.com</a></p>"
+          }
+        },
+        "column_AKVcKj": {
+          "type": "column",
+          "settings": {
+            "heading": "<h5>industry</h5><p>For designers, wholesale, trade professionals</p><p><a href=\"mailto:industry@velora.com\" title=\"mailto:industry@velora.com\">industry@velora.com</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_Nnc7Hz",
+        "column_zzp4QN",
+        "column_AKVcKj"
+      ],
+      "settings": {
+        "color": "light",
+        "heading": "Reach Out Directly"
+      }
     }
   },
   "order": [
     "form",
-    "contact_form_qqYqXw"
+    "contact_form_qqYqXw",
+    "text_columns_RPD6KP"
   ]
 }
