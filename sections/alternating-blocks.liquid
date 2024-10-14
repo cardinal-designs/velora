@@ -1,0 +1,84 @@
+<div class="bg-[var(--background)] text-[var(--text)]" style="{% render "color-variables", color: section.settings.color %}">
+    {% for block in section.blocks %}
+        {% assign mod = forloop.index | modulo: 2 %}
+        <div class="flex border-b-1{% if mod == 0 %} md:flex-row-reverse{% endif %}{% if forloop.first %} border-t-1{% endif %}" style="border-color: var(--text)" {{ block.shopify_attributes }}>
+            <div class="w-1/2 hidden md:block">
+                <div class="w-full pb-[107%] relative overflow-hidden">
+                    {% if block.settings.image != blank %}
+                        {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full object-cover inset'  }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="pt-40 pb-50 px-30 md:pt-50 md:w-1/2 md:px-40 lg:py-100">
+                <div class="h-full flex flex-col justify-between items-center gap-15 md:gap-40 lg:gap-60">
+                    <div class="size-[36px] flex justify-center items-center rounded-full border-1 border-current text-oracle-18 md:mb-30">{{ forloop.index }}</div>
+                    {% if block.settings.title != blank %}
+                        <h2 class="mb-20 text-arizona-36 text-center lg:text-arizona-48 xl:text-arizona-60">{{ block.settings.title }}</h2>
+                    {% endif %}
+                    {% if block.settings.image != blank %}
+                        <div class="max-w-custom w-full md:hidden" style="--width: 265px;">
+                            <div class="pb-[107%] relative overflow-hidden rounded-[10px]">
+                                {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full object-cover inset'  }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if block.settings.text != blank %}
+                        <p class="max-w-custom w-full pt-20 px-15 text-oracle-14 indent-30 md:p-0 lg:text-oracle-16 xl:text-oracle-18" style="--width: 380px;">{{ block.settings.text }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+    {
+        "name": "Alternating Blocks",
+        "settings": [
+            {
+                "type": "select",
+                "id": "color",
+                "label": "Section colors",
+                "options": [
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Dark",
+                        "value": "dark"
+                    }
+                ],
+                "default": "light"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "block",
+                "name": "Block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "inline_richtext",
+                        "id": "text",
+                        "label": "Text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Alternating Blocks"
+            }
+        ]
+    }
+{% endschema %}

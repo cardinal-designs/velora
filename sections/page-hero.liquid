@@ -1,0 +1,52 @@
+<div>
+    <div class="px-25 py-20 bg-brown md:px-40 md:py-30">
+        <div class="pb-[175%] relative overflow-hidden rounded-[10px] md:pb-[53%]">
+            {% if section.settings.image != blank %}
+                {{ section.settings.image | image_url: width: 2000 | image_tag: preload: true, width: section.settings.image.width, class: 'w-full h-full inset object-cover object-center', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                {% if section.settings.mobile_image != blank %}
+                    {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: preload: true, width: slide.mobile_image.width, class: 'w-full h-full inset object-cover object-center block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                {% endif %}
+            {% endif %}
+
+            <div class="inset p-10 flex justify-center items-center z-20 md:p-40">
+                <p class="max-w-custom w-full mx-auto text-arizona-custom leading-none tracking-[-3px] text-center text-cream md:text-arizona-60 lg:text-arizona-72 xl:text-arizona-80" style="--width: 825px; --size: 50px">{{ section.settings.title }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .headroom--top .header {
+        background-color: #2B1D0A;
+        color: #F1ECE3;
+        border-color: #F1ECE3;
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Page Hero",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "mobile_image",
+                "label": "Mobile Image"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Page Hero"
+            }
+        ]
+    }
+{% endschema %}
