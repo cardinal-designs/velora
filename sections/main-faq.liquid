@@ -1,67 +1,102 @@
-<script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
+<div class="bg-[var(--background)] text-[var(--text)]" style="{% render "color-variables", color: section.settings.color %}">
+  <script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
+  <div class="page-width py-60 lg:py-[86px]">
+    <div class="flex flex-col justify-start items-start lg:grid grid-cols-2 gap-20">
+      {% if section.settings.title != blank %}
+        <h1 class="text-arizona-48 flex-1 col-start-1">{{ section.settings.title }}</h1>
+      {% endif %}
 
-<div class="faq mb-60 page-width block gap-40 md:mt-0 md:mb-100 md:flex md:gap-100 lg:gap-150">
-  <div class="faq-navigation -mx-20 px-20 py-10 sticky top-[92px] bg-white border-b-1 border-black md:m-0 md:pt-80 md:px-0 md:pb-0 md:border-0">
-    <div class="flex justify-center gap-30 md:block md:sticky md:top-[120px] md:flex-shrink-0">
+      {% if section.settings.text != blank %}
+        <div class="wysiwyg flex-1 indent-8 col-start-2 row-span-2">{{ section.settings.text }}</div>
+      {% endif %}
+
+      <div class="faq-navigation col-start-1">
+        <div class="flex flex-col justify-center gap-10">
+          {% for block in section.blocks %}
+            {% if block.type == 'header' %}
+              <button class="faq-link svg-link text-pangram-14 flex flex-row justify-start items-center gap-[9px]" data-section="{{ block.settings.title | handleize }}">
+                {{ block.settings.title }}
+                <span class="rotate-90">{% render 'link-arrow' %}</span>
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div x-data="{ open: 1, toggle(index){ this.open == index ? this.open = 0 : this.open = index } }" class="w-full mt-80">
+      {% assign is_first_faq = true %}
+
       {% for block in section.blocks %}
         {% if block.type == 'header' %}
-          <button class="faq-link block text-oracle-18 opacity-40 transition-opacity hover:opacity-100 md:mb-25" data-section="{{ block.settings.title | handleize }}">
-            {{ block.settings.title }}
-          </button>
+          <div class="faq-component [&+.group\/accordion]:border-t" data-section="{{ block.settings.title | handleize }}" id="{{ block.settings.title | handleize }}">
+            <h6 class="text-pangram-12 lg:text-pangram-14 leading-[30px] pb-[6px] lg:pb-35 mt-45 lg:mt-75">{{ block.settings.title }}</h6>
+          </div>
         {% endif %}
-      {% endfor %}
-    </div>
-  </div>
 
-  <div class="max-w-custom w-full" style="--width: 810px;">
-    {% assign is_first_faq = true %}
-
-    {% for block in section.blocks %}
-      {% if block.type == 'header' %}
-        <div class="faq-component" data-section="{{ block.settings.title | handleize }}" id="{{ block.settings.title | handleize }}">
-          <div class="pt-40 pb-20 text-m-h4 font-bold uppercase md:pt-80 md:text-arizona-48">{{ block.settings.title }}</div>
-      {% endif %}
-
-      {% if block.type == 'faq_item' %}
-        <dropdown-item {{ block.shopify_attributes }}>
-          <div class="dropdown group border-b-1 border-black/10{% if is_first_faq %} border-t-1{% endif %}">
-            <button class="dropdown-header w-full py-20 flex justify-between items-center gap-20 text-left">
-              <p class="text-oracle-18 font-bold">{{ block.settings.title }}</p>
-              <div class="w-10 transition-transform ease-in-out group-[.active]:rotate-180">
-                {% render 'icon' icon: 'caret' %}
-              </div>
+        {% if block.type == 'faq_item' %}
+          <div class="group/accordion border-b border-[var(--text)] first-of-type:border-t py-10 lg:py-[24px]" :class="open == {{ forloop.index }} ? 'active' : '' " >
+            <button @click="toggle({{ forloop.index }})" class="accordion-header w-full grid grid-cols-12 gap-x-10 lg:gap-x-[max(50px,3.5vw)] items-center">
+                <div class="col-span-2 lg:col-span-3">
+                    <div class="w-[22px] lg:w-[44px] [&_svg]:w-full">
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line vector-effect="non-scaling-stroke" y1="23.5" x2="44" y2="23.5" stroke="currentColor"/>
+                            <line vector-effect="non-scaling-stroke" class="origin-center transition-all opacity-100 group-[.active]/accordion:rotate-90 group-[.active]/accordion:opacity-0" x1="20.5" y1="2.18557e-08" x2="20.5" y2="44" stroke="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+                    
+                <div class="col-span-9 flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:items-center flex-wrap text-left w-full gap-10">
+                    <h4 class="text-oracle-18">{{ block.settings.heading }}</h4>
+                </div>
             </button>
-            <div class="dropdown-content hidden">
-              <div class="pb-20 text-oracle-16 [&_p]:mb-10 [&_a]:underline">{{ block.settings.answer }}</div>
+
+            <div x-show="open == {{ forloop.index }}" x-transition class="accordion-content hidden group-[.active]/accordion:block">
+                <div class="grid grid-cols-12 gap-x-10 lg:gap-x-[max(50px,3.5vw)] pt-[22px] lg:pt-[23px]">
+                    <div class="col-start-3 col-span-10 lg:col-start-4 lg:col-span-9 flex flex-col justify-start items-start gap-5">
+                        <div class="text-oracle-14 lg:text-oracle-18 [&_p:first-of-type]:indent-8 lg:max-w-[75%] pb-15 lg:pb-10">
+                            {{ block.settings.text }}
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
-        </dropdown-item>
-
-        {% assign is_first_faq = false %}
-
-        {% if section.blocks[forloop.index].type == 'header' %}
-          </div>
-          {% assign is_first_faq = true %}
         {% endif %}
-      {% endif %}
 
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
 {% schema %}
   {
-    "name": "FAQs",
+    "name": "FAQs with Nav",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
+        "type": "select",
+        "id": "color",
+        "label": "Section colors",
+        "options": [
+            {
+                "label": "Light",
+                "value": "light"
+            },
+            {
+                "label": "Dark",
+                "value": "dark"
+            }
+        ],
+        "default": "light"
       },
       {
         "type": "text",
         "id": "title",
         "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
       }
     ],
     "blocks": [
@@ -82,12 +117,12 @@
         "settings": [
           {
             "type": "text",
-            "id": "title",
+            "id": "heading",
             "label": "Question"
           },
           {
             "type": "richtext",
-            "id": "answer",
+            "id": "text",
             "label": "Answer"
           }
         ]
@@ -95,7 +130,7 @@
     ],
     "presets": [
       {
-        "name": "FAQs"
+        "name": "FAQs with Nav"
       }
     ]
   }
