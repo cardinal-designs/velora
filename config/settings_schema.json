@@ -36,7 +36,8 @@
       {
         "type": "url",
         "id": "shop_all_link",
-        "label": "Shop All Link"
+        "label": "Shop All Link",
+        "default": "/collections/all"
       },
       {
         "type": "header",
