@@ -177,9 +177,41 @@
         "title": "Frequently Asked Questions",
         "text": "<p>Need more answers? No worries! Send us an email to <a href=\"mailto:support@velora.com\" title=\"mailto:support@velora.com\">support@velora.com</a> or use our contact form. If you've read this page before, take a look again.</p><p>We update our FAQs after receiving questions from our thoughtful customers.</p>"
       }
+    },
+    "collection_feature_Wq3CAq": {
+      "type": "collection-feature",
+      "blocks": {
+        "block_3CWE8g": {
+          "type": "block",
+          "settings": {
+            "color": "dark",
+            "overlay": true,
+            "heading": "bathroom",
+            "title": "",
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.59.17_PM.png"
+          }
+        },
+        "block_k9LVHq": {
+          "type": "block",
+          "settings": {
+            "color": "dark",
+            "overlay": true,
+            "heading": "living-room",
+            "title": "",
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.51.59_PM.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_3CWE8g",
+        "block_k9LVHq"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "collection_feature_Wq3CAq"
   ]
 }
