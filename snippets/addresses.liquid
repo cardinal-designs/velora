@@ -3,14 +3,17 @@
 
     <ul class="grid grid-cols-1 gap-40 md:grid-cols-2" role="list">
       {% for address in customer.addresses %}
-        <li class="[&>p]:text-m-body md:[&>p]:text-oracle-18" data-address>
+        <li class="" data-address>
           {% if address == customer.default_address %}
-            <p class="mb-5 text-m-body md:text-oracle-18">{{ 'customer.addresses.default' | t }}</p>
+            <p class="mb-5 text-pangram-16">{{ 'customer.addresses.default' | t }}</p>
           {% else %}
             {% assign position = paginate.current_page | times: forloop.index %}
-            <p class="mb-5 text-m-body md:text-oracle-18">Address {{ position }}</p>
+            <p class="mb-5 text-pangram-16">Address {{ position }}</p>
           {% endif %}
-          {{ address | format_address }}
+          <div class="text-oracle-18  [&>p]:leading-[1.8]">
+            {{ address | format_address }}
+          </div>
+          
           <div class="mt-20 md:mt-30 flex gap-20">
             <button
               class="text-oracle-18 underline underline-offset-4"
@@ -40,9 +43,9 @@
       {% endif %}
 
       <li>
-        <div data-address>
+        <div data-address class="text-right">
           <button
-            class="w-full button button--bright md:w-auto"
+            class="text-link text-right ml-auto"
             type="button"
             aria-expanded="false"
             aria-controls="AddAddress"
@@ -69,9 +72,9 @@
     class="modal__overlay"
     tabindex="-1"
     data-micromodal-close>
-    <div class="max-h-full w-full max-w-custom overflow-x-scroll" style="--width: 600px;">
+    <div class="max-h-full w-full max-w-custom overflow-x-scroll no-scrollbar" style="--width: 600px;">
       <div
-        class="modal__container p-20 md:p-40"
+        class="modal__container p-20 md:p-40 bg-[var(--background)] text-[var(--text)]"
         role="dialog"
         aria-modal="true"
         aria-labelledby="address-add-title">
@@ -87,10 +90,10 @@
             data-micromodal-close>
             {% render 'icon' icon: 'close' %}
           </button>
-          <h2 class="mb-40 text-m-h4 font-bold md:text-arizona-48 text-center">Add a New Address</h2>
+          <h2 class="text-arizona-40 lg:text-arizona-48 text-center mb-[33px] font-arizona-flaretext-center">Add a New Address</h2>
           {% form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' %}
-            <div class="block grid-cols-2 gap-20 md:grid">
-              <div class="mb-30">
+            <div class="block grid-cols-2 gap-[14px] md:grid">
+              <div class="mb-[14px]">
                 <label class="field__label" for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
                 <input
                   class="field__input"
@@ -101,7 +104,7 @@
                   autocomplete="given-name"
                   placeholder="{{ 'customer.addresses.first_name' | t }}">
               </div>
-              <div class="mb-30">
+              <div class="mb-[14px]">
                 <label class="field__label" for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
                 <input
                   class="field__input"
@@ -113,7 +116,7 @@
                   placeholder="{{ 'customer.addresses.last_name' | t }}">
               </div>
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
               <input
                 class="field__input"
@@ -124,7 +127,7 @@
                 autocomplete="organization"
                 placeholder="{{ 'customer.addresses.company' | t }}">
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
               <input
                 class="field__input"
@@ -135,7 +138,7 @@
                 autocomplete="tel"
                 placeholder="{{ 'customer.addresses.phone' | t }}">
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
               <input
                 class="field__input"
@@ -146,7 +149,7 @@
                 autocomplete="address-line1"
                 placeholder="{{ 'customer.addresses.address1' | t }}">
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
               <input
                 class="field__input"
@@ -157,7 +160,7 @@
                 autocomplete="address-line2"
                 placeholder="{{ 'customer.addresses.address2' | t }}">
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
               <input
                 class="field__input"
@@ -168,7 +171,7 @@
                 autocomplete="address-level2"
                 placeholder="{{ 'customer.addresses.city' | t }}">
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressCountryNew">
                 {{ 'customer.addresses.country' | t }}
               </label>
@@ -183,11 +186,10 @@
                   autocomplete="country">
                   {{ all_country_option_tags }}
                 </select>
-                {% render 'icon' icon: 'caret' %}
               </div>
             </div>
             <div
-              class="mb-30"
+              class="mb-[14px]"
               id="AddressProvinceContainerNew"
               style="display:none;">
               <label class="field__label" for="AddressProvinceNew">
@@ -203,7 +205,7 @@
                   {% render 'icon' icon: 'caret' %}
               </div>
             </div>
-            <div class="mb-30">
+            <div class="mb-[14px]">
               <label class="field__label" for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
               <input
                 class="field__input"
@@ -215,14 +217,14 @@
                 autocomplete="postal-code"
                 placeholder="{{ 'customer.addresses.zip' | t }}">
             </div>
-            <div class="mb-30 flex items-center gap-10">
+            <div class="mb-[14px] flex items-center gap-10">
               {{ form.set_as_default_checkbox }}
               <label class="block text-m-body md:text-oracle-18" for="address_default_address_new">
                 {{ 'customer.addresses.set_default' | t }}
               </label>
             </div>
             <div class="text-center">
-              <button class="mb-30 button">Add Address</button>
+              <button class="mb-30 button button--large max-w-full">Add Address</button>
               <button
                 class="mx-auto pb-5 block text-oracle-18 underline underline-offset-4"
                 type="reset"
@@ -247,9 +249,9 @@
         class="modal__overlay"
         tabindex="-1"
         data-micromodal-close>
-        <div class="max-h-full w-full max-w-custom overflow-x-scroll" style="--width: 600px;">
+        <div class="max-h-full w-full max-w-custom overflow-x-scroll no-scrollbar" style="--width: 600px;">
           <div
-            class="modal__container p-20 md:p-40"
+            class="modal__container p-20 md:p-40 bg-[var(--background)] text-[var(--text)]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="address-edit--{{ address.id }}-title">
@@ -265,10 +267,10 @@
                 data-micromodal-close>
                 {% render 'icon' icon: 'close' %}
               </button>
-              <h2 class="mb-40 text-m-h4 font-bold md:text-arizona-48 text-center">Edit Address</h2>
+              <h2 class="text-arizona-40 lg:text-arizona-48 text-center mb-[33px] font-arizona-flare text-center">Edit Address</h2>
               {% form 'customer_address', address %}
-                <div class="block grid-cols-2 gap-20 md:grid">
-                  <div class="mb-30">
+                <div class="block grid-cols-2 gap-[14px] md:grid">
+                  <div class="mb-[14px]">
                     <label class="field__label" for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
                     <input
                       class="field__input"
@@ -279,7 +281,7 @@
                       autocomplete="given-name"
                       placeholder="{{ 'customer.addresses.first_name' | t }}">
                   </div>
-                  <div class="mb-30">
+                  <div class="mb-[14px]">
                     <label class="field__label" for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
                     <input
                       class="field__input"
@@ -291,7 +293,7 @@
                       placeholder="{{ 'customer.addresses.last_name' | t }}">
                   </div>
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
                   <input
                     class="field__input"
@@ -302,7 +304,7 @@
                     autocomplete="organization"
                     placeholder="{{ 'customer.addresses.company' | t }}">
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
                   <input
                     class="field__input"
@@ -313,7 +315,7 @@
                     autocomplete="tel"
                     placeholder="{{ 'customer.addresses.phone' | t }}">
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
                   <input
                     class="field__input"
@@ -324,7 +326,7 @@
                     autocomplete="address-line1"
                     placeholder="{{ 'customer.addresses.address1' | t }}">
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
                   <input
                     class="field__input"
@@ -335,7 +337,7 @@
                     autocomplete="address-line2"
                     placeholder="{{ 'customer.addresses.address2' | t }}">
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
                   <input
                     class="field__input"
@@ -346,7 +348,7 @@
                     autocomplete="address-level2"
                     placeholder="{{ 'customer.addresses.city' | t }}">
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressCountry_{{ form.id }}">
                     {{ 'customer.addresses.country' | t }}
                   </label>
@@ -361,10 +363,9 @@
                       autocomplete="country">
                       {{ all_country_option_tags }}
                     </select>
-                    {% render 'icon' icon: 'caret' %}
                   </div>
                 </div>
-                <div class="mb-30" id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+                <div class="mb-[14px]" id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
                   <label class="field__label" for="AddressProvince_{{ form.id }}">
                     {{ 'customer.addresses.province' | t }}
                   </label>
@@ -375,10 +376,9 @@
                       name="address[province]"
                       data-default="{{ form.province }}"
                       autocomplete="address-level1"></select>
-                      {% render 'icon' icon: 'caret' %}
                   </div>
                 </div>
-                <div class="mb-30">
+                <div class="mb-[14px]">
                   <label class="field__label" for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
                   <input
                     class="field__input"
@@ -390,14 +390,14 @@
                     autocomplete="postal-code"
                     placeholder="{{ 'customer.addresses.zip' | t }}">
                 </div>
-                <div class="mb-30 flex items-center gap-10">
+                <div class="mb-[14px] flex items-center gap-10">
                   {{ form.set_as_default_checkbox }}
                   <label class="block text-m-body md:text-oracle-18" for="address_default_address_{{ form.id }}">
                     {{ 'customer.addresses.set_default' | t }}
                   </label>
                 </div>
                 <div class="text-center">
-                  <button class="mb-30 button">Update Address</button>
+                  <button class="mb-[14px] button button--large max-w-full">Update Address</button>
                   <button
                     class="mx-auto pb-5 block text-oracle-18 underline underline-offset-4"
                     type="reset"

@@ -93,7 +93,7 @@
     }
 
     .underline-when-active {
-      @apply relative overflow-x-clip block pb-5
+      @apply relative overflow-x-clip overflow-y-visible block pb-5
       before:absolute before:content-[""] before:w-full before:h-[1px] before:bg-[var(--background)] before:left-0 before:top-full
       after:absolute after:content-[""] after:w-full after:h-[1px] after:bg-[var(--text)] after:left-0 after:top-full after:-translate-x-full after:transition-transform
       [&.active]:after:translate-x-0
@@ -119,11 +119,15 @@
     }
   
     .field__input {
-        @apply w-full py-[18px] px-20 rounded-[10px] text-oracle-14 bg-transparent text-brown border-[1px] border-brown bg-none resize-none placeholder:text-brown md:py-20 md:px-30 md:text-oracle-16;
+        @apply w-full py-[18px] px-20 rounded-[10px] text-oracle-14 bg-transparent text-[var(--text)] border-[1px] border-[var(--text)] bg-none resize-none placeholder:text-[var(--text)] md:py-20 md:px-30 md:text-oracle-16;
     }
   
     .field__select {
-        @apply relative border-1 border-brown;
+        @apply relative border-1 border-[var(--text)] flex flex-row justify-start items-center gap-20 w-full rounded-[10px] py-20 px-30;
+    }
+  
+    .field__select select {
+      @apply w-full bg-transparent
     }
   }
 
@@ -353,7 +357,8 @@
   }
 
   body:not(.template-index) main > .shopify-section:first-child > div:first-child,
-  body:not(.template-index) main > .shopify-section:first-child > section:first-child {
+  body:not(.template-index) main > .shopify-section:first-child > section:first-child,
+  body:not(.template-index) main > script:first-child + div {
     @apply pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
   }
 
@@ -480,3 +485,16 @@
   .wysiwyg p a {
     @apply underline
   }
+
+  /* -- Modal --- */
+.modal__container {
+  @apply bg-[var(--background)] text-[var(--text)]
+}
+
+.modal__title {
+  @apply text-arizona-40 lg:text-arizona-48 text-center mb-[33px] font-arizona-flare
+}
+
+.modal .field__label {
+  @apply visually-hidden
+}

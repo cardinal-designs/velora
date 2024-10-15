@@ -1,8 +1,11 @@
-<script src="{{ 'customer.js' | asset_url }}" defer></script>
+{% section 'main-login' %}
 
-{% render 'account-header' title: 'Log In' %}
 
-<div class="mt-40 mb-60 md:mt-60">
+{% comment %} <script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+{% comment %} {% render 'account-header' title: 'Log In' %} {% endcomment %}
+
+<div class="flex flex-col justify-start items-center lg:grid grid-cols-12 gap-10">
   <div class="page-width">
 
     <div class="max-w-custom mx-auto" id="recover" style="--width: 440px;">
@@ -102,9 +105,9 @@
 
     </div>
   </div>
-</div>
+</div> {% endcomment %}
 
-<style>
+{% comment %} <style>
   /* Formatting */
   #recover,
   #login {
@@ -130,4 +133,4 @@
   #rc_login {
     display: none !important;
   }
-</style>
+</style> {% endcomment %}
