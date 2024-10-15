@@ -37,7 +37,7 @@
       @apply 
       w-[calc(100%_+_52px)] mx-[-26px] *:px-[26px]
       md:w-[calc(100%_+_60px)] md:-mx-30 md:*:px-30
-      lg:w-[calc(100%_+_120px)] lg:-mx-60 lg:*:px-60 overflow-x-auto
+      lg:w-[calc(100%_+_120px)] lg:-mx-60 lg:*:px-60 overflow-x-auto overflow-y-clip
     }
 
     hr {
