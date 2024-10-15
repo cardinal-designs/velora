@@ -83,7 +83,9 @@
         "image_NLfMYm": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/8ddbf5f7b6b5179ff8c7c21cc25c6793.jpg"
+            "image": "shopify://shop_images/8ddbf5f7b6b5179ff8c7c21cc25c6793.jpg",
+            "button_label": "",
+            "button_link": ""
           }
         },
         "text_hn9bQf": {
@@ -92,8 +94,10 @@
             "title": "Not Just a Fixture",
             "title_r": "",
             "heading": "A Foundation For Meaningful Spaces",
+            "text": "",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "inline_button": true
           }
         }
       },
@@ -103,7 +107,8 @@
       ],
       "settings": {
         "color": "dark",
-        "layout": "b"
+        "layout": "b",
+        "layout_mobile": "a"
       }
     },
     "image_text_96Qp9G": {
@@ -115,14 +120,18 @@
             "title": "Find your Fit",
             "title_r": "",
             "heading": "Statements to Staples",
+            "text": "From mid-century to maximalist, our fixtures are crafted to last, and withstand the ebb and flow of home trends. While you’ll find clean, classic pieces, you’ll also discover unexpected intricacies that easily transition to fit within a multitude of tastes.",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "inline_button": true
           }
         },
         "image_fr3iez": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/7ed9e3f459f8ba0f62053882050d38e5.png"
+            "image": "shopify://shop_images/7ed9e3f459f8ba0f62053882050d38e5.png",
+            "button_label": "",
+            "button_link": ""
           }
         }
       },
@@ -132,7 +141,8 @@
       ],
       "settings": {
         "color": "light",
-        "layout": "b"
+        "layout": "b",
+        "layout_mobile": "a"
       }
     },
     "faq_FNNEUr": {
@@ -192,7 +202,9 @@
         "image_yrNxJg": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/9a29a891b8643b840fde97afafc1143a.jpg"
+            "image": "shopify://shop_images/9a29a891b8643b840fde97afafc1143a.jpg",
+            "button_label": "",
+            "button_link": ""
           }
         },
         "text_7tWHRj": {
@@ -201,8 +213,10 @@
             "title": "Artisanal",
             "title_r": "Elegance",
             "heading": "We partner with you to customize your piece and get every detail just right.",
+            "text": "",
             "button_label": "Start Custom Inquiry",
-            "button_link": "shopify://pages/custom"
+            "button_link": "shopify://pages/custom",
+            "inline_button": true
           }
         }
       },
@@ -212,7 +226,8 @@
       ],
       "settings": {
         "color": "light",
-        "layout": "a"
+        "layout": "a",
+        "layout_mobile": "a"
       }
     },
     "product_carousel_yyRkCC": {
