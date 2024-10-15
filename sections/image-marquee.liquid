@@ -30,7 +30,7 @@
                 <h2 class="text-arizona-40 md:text-arizona-48 lg:text-arizona-60 xl:text-arizona-80">{{ section.settings.heading }}</h2>
             {% endif %}
             {% if section.settings.button_label != blank %}
-                <a href="{{ section.settings.button_link }}" class="pb-5 text-link text-pangram-14 leading-[30px] flex-shrink-0 hidden md:inline-block">{{ section.settings.button_label }}</a>
+                <a href="{{ section.settings.button_link }}" class="text-link text-pangram-14 leading-[30px] flex-shrink-0 hidden md:inline-block">{{ section.settings.button_label }}</a>
             {% endif %}
         </div>
         <div class="overflow-scroll">
@@ -42,7 +42,7 @@
         </div>
         {% if section.settings.button_label != blank %}
             <div class="page-width mt-[35px] pb-5 text-center">
-                <a href="{{ section.settings.button_link }}" class="pb-5 text-link text-pangram-14 leading-[30px] flex-shrink-0 md:hidden">{{ section.settings.button_label }}</a>
+                <a href="{{ section.settings.button_link }}" class="text-link text-pangram-14 leading-[30px] flex-shrink-0 md:hidden">{{ section.settings.button_label }}</a>
             </div>
         {% endif %}
     </div>
