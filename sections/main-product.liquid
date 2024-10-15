@@ -89,7 +89,7 @@
           </div>
         {% endif %} {% endcomment %}
 
-        {% render 'product-form' product: product, product_form_id: product_form_id, show_custom_inquiry: section.settings.custom_inqury %}
+        {% render 'product-form' product: product, product_form_id: product_form_id, show_custom_inquiry: section.settings.custom_inquiry %}
 
         {% assign text_blocks = section.blocks | where: 'type', 'text' %}
 
