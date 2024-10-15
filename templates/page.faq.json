@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "main-faq",
@@ -173,8 +173,9 @@
         "faq_item_rTadrx"
       ],
       "settings": {
+        "color": "light",
         "title": "Frequently Asked Questions",
-        "text": "<p>Need more answers? No worries! Send us an email to support@velora.com or use our contact form. If you've read this page before, take a look again.</p> <p>We update our FAQs after receiving questions from our thoughtful customers.</p>"
+        "text": "<p>Need more answers? No worries! Send us an email to <a href=\"mailto:support@velora.com\" title=\"mailto:support@velora.com\">support@velora.com</a> or use our contact form. If you've read this page before, take a look again.</p><p>We update our FAQs after receiving questions from our thoughtful customers.</p>"
       }
     }
   },
