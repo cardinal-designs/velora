@@ -22,6 +22,7 @@ module.exports = {
     extend: {
       animation: {
         marquee: 'marquee 20s linear infinite',
+        'marquee-slow': 'marquee 35s linear infinite',
         spin: 'spin 0.5s linear infinite'
       },
       aria: {
