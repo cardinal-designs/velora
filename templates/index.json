@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "16587824044cd3c400": {
       "type": "hero",
@@ -192,6 +192,74 @@
         "heading": "illuminated               impressions"
       }
     },
+    "image_hotspots_KBNzB9": {
+      "type": "image-hotspots",
+      "blocks": {
+        "hotspot_LzwniG": {
+          "type": "hotspot",
+          "settings": {
+            "product": "cresson",
+            "image": "shopify://shop_images/735645c8c300e0803f94417f35bd5fb6.png",
+            "title": "",
+            "x": 72,
+            "y": 18,
+            "x_mobile": 73,
+            "y_mobile": 39
+          }
+        },
+        "hotspot_CNNKpP": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "product": "cresson",
+            "image": "shopify://shop_images/735645c8c300e0803f94417f35bd5fb6.png",
+            "title": "",
+            "x": 25,
+            "y": 25,
+            "x_mobile": 25,
+            "y_mobile": 25
+          }
+        },
+        "hotspot_hxNXk9": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "product": "cresson",
+            "image": "shopify://shop_images/735645c8c300e0803f94417f35bd5fb6.png",
+            "title": "",
+            "x": 75,
+            "y": 75,
+            "x_mobile": 75,
+            "y_mobile": 75
+          }
+        },
+        "hotspot_CXaqi8": {
+          "type": "hotspot",
+          "settings": {
+            "product": "cresson",
+            "image": "shopify://shop_images/735645c8c300e0803f94417f35bd5fb6.png",
+            "title": "",
+            "x": 25,
+            "y": 75,
+            "x_mobile": 25,
+            "y_mobile": 75
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_LzwniG",
+        "hotspot_CNNKpP",
+        "hotspot_hxNXk9",
+        "hotspot_CXaqi8"
+      ],
+      "settings": {
+        "color": "light",
+        "image": "shopify://shop_images/f6893073d87b1975819aa0409af40c01.png",
+        "position": "center-top",
+        "image_mobile": "shopify://shop_images/Screenshot_2024-08-28_at_4.10.21_PM.png",
+        "position_mobile": "right"
+      }
+    },
     "dropdowns_TeGxJ7": {
       "type": "dropdowns",
       "blocks": {
@@ -257,60 +325,6 @@
         "color": "light",
         "heading": "find a fixture that feels right at home"
       }
-    },
-    "image_marquee_QYK9i3": {
-      "type": "image-marquee",
-      "blocks": {
-        "image_rBdUzH": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Stocksy_comp_watermarked_3995985.jpg"
-          }
-        },
-        "image_MCthUx": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-2-1366x1366.jpg"
-          }
-        },
-        "image_TcNY7R": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MAISON-NICOLE-PUBLI-MILK-40-scaled-750x750.jpg"
-          }
-        },
-        "image_jTVcVX": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-14-1366x1366_9576575b-d11c-41cc-9691-37917a9b856f.jpg"
-          }
-        },
-        "image_mUVNXf": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Stocksy_comp_watermarked_5058029.jpg"
-          }
-        },
-        "image_yzTdY8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Stocksy_comp_watermarked_6273265.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "image_rBdUzH",
-        "image_MCthUx",
-        "image_TcNY7R",
-        "image_jTVcVX",
-        "image_mUVNXf",
-        "image_yzTdY8"
-      ],
-      "settings": {
-        "heading": "Artisanal down to every last detail",
-        "button_label": "Shop Now",
-        "button_link": "shopify://collections/all"
-      }
     }
   },
   "order": [
@@ -320,7 +334,7 @@
     "collection_feature_bwXBGq",
     "image_text_HGij4c",
     "press_dq8gBV",
-    "dropdowns_TeGxJ7",
-    "image_marquee_QYK9i3"
+    "image_hotspots_KBNzB9",
+    "dropdowns_TeGxJ7"
   ]
 }

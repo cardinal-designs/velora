@@ -1,0 +1,268 @@
+<div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px] w-full h-auto aspect-[0.6/1] lg:aspect-[1.7/1] relative overflow-clip" 
+    style="{% render "color-variables", color: section.settings.color %}"
+>
+    {% if section.settings.image != blank %}
+        {% capture class_list %}
+            w-full h-full inset object-cover object-position-{{ section.settings.position }}
+        {% endcapture %}
+
+        {% capture mobile_class_list %}
+            w-full h-full inset object-cover block md:hidden object-position-{{ section.settings.position_mobile }}
+        {% endcapture %}
+
+        {{ section.settings.image | image_url: width: 2000 | image_tag: preload: true, width: section.settings.image.width, class: class_list, sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+        {% if section.settings.image_mobile != blank %}
+          {{ section.settings.image_mobile | image_url: width: 2000 | image_tag: preload: true, width: section.settings.image_mobile.width, class: mobile_class_list, sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+        {% endif %}
+    {% endif %}
+
+    {% for block in section.blocks %}
+        {% if block.settings.product.title == blank %}{% continue %}{% endif %}
+        <div x-data="{ open: false }" class="">
+            <button
+                @click=" open = !open "
+                style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%; --x-mobile: {{ block.settings.x_mobile | default: block.settings.x }}%; --y-mobile: {{ block.settings.y_mobile | default: block.settings.y }}%;"
+                class="group absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)] -translate-x-half -translate-y-half w-30 h-30 lg:w-40 lg:h-40 bg-[var(--background)] border-[var(--text)] border rounded-full"
+                :class=" open ? 'active' : ''"
+            >
+                <span class="w-full h-full flex flex-col justify-center items-center *:w-full *:h-full p-[8px] lg:p-[12px]">
+                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line y1="8.25" x2="16.5" y2="8.25" stroke="currentColor" stroke-width="1.5"/>
+                        <line class="group-[.active]:rotate-90 group-[.active]:opacity-0 transition-all origin-center" x1="8.25" y1="3.27835e-08" x2="8.25" y2="16.5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </span>
+            </button>
+
+            <div x-show="open" @click.outside="open = false">
+                <div 
+                    style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%; --x-mobile: {{ block.settings.x_mobile | default: block.settings.x }}%; --y-mobile: {{ block.settings.y_mobile | default: block.settings.y }}%;
+                    background-image: url({{ 'pale-wall-texture.png' | asset_img_url }}); background-position: center; background-size: cover;
+                    "
+                    class="flex flex-col justify-end items-center bg-[var(--background)] border-[var(--text)] border rounded-[10px] w-[max(150px,14vw)] h-auto aspect-[0.8/1] absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)]
+                    {% if block.settings.x_mobile >= 50 %} translate-x-[calc(-100%_-_25px)] {% else %} translate-x-[calc(0%_+_25px)] {% endif %}
+                    {% if block.settings.y_mobile >= 50 %} translate-y-[calc(-100%_-_25px)] {% else %} translate-y-[25px] {% endif %}
+                    {% if block.settings.x >= 70 %} lg:translate-x-[calc(-100%_-_30px)] {% else %} lg:translate-x-[calc(0%_+_30px)] {% endif %}
+                    {% if block.settings.y>= 70 %} lg:translate-y-[calc(-100%_-_30px)] {% else %} lg:translate-y-[30px] {% endif %}
+                    ">
+                    <div class="p-[7px]">
+                        {% if block.settings.image != blank %}
+                            {{ block.settings.image | image_url: width: 500 | image_tag: class: 'w-full h-full object-contain' }}
+                        {% elsif block.settings.product.featured_image != blank %}
+                            {{ block.settings.product.featured_image | image_url: width: 500 | image_tag: class: 'w-full h-full object-contain' }}
+                        {% endif %}
+                    </div>
+                    <div class="text-oracle-16 w-full border-t border-[var(--text)] text-[var(--brown)] text-center p-[7px]">
+                        <a href="{{ block.settings.product.url | default: '/collections/all' }}">
+                        {% if block.settings.title != blank %}
+                            {{ block.settings.title }}
+                        {% elsif block.settings.product.title != blank %}
+                            Shop {{ block.settings.product.title | split: '-' | first }}
+                        {% else %}
+                            Shop
+                        {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+    {
+        "name": "Image with Hotspots",
+        "settings": [
+            {
+                "type": "select",
+                "id": "color",
+                "label": "Section colors",
+                "options": [
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Dark",
+                        "value": "dark"
+                    }
+                ],
+                "default": "light"
+            },
+            {
+                "type": "header",
+                "content": "Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "select",
+                "id": "position",
+                "label": "Image position",
+                "options": [
+                  {
+                    "value": "left-top",
+                    "label": "Left Top"
+                  },
+                  {
+                    "value": "center-top",
+                    "label": "Center Top"
+                  },
+                  {
+                    "value": "right-top",
+                    "label": "Right Top"
+                  },
+                  {
+                    "value": "left",
+                    "label": "Left"
+                  },
+                  {
+                    "value": "center",
+                    "label": "Center"
+                  },
+                  {
+                    "value": "right",
+                    "label": "Right"
+                  },
+                  {
+                    "value": "left-bottom",
+                    "label": "Left Bottom"
+                  },
+                  {
+                    "value": "center-bottom",
+                    "label": "Center Bottom"
+                  },
+                  {
+                    "value": "right-bottom",
+                    "label": "Right Bottom"
+                  }
+                ],
+                "default": "center"
+            },
+            {
+                "type": "header",
+                "content": "Mobile"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mobile",
+                "label": "Image (optional)"
+            },
+            {
+                "type": "select",
+                "id": "position_mobile",
+                "label": "Image position",
+                "options": [
+                  {
+                    "value": "left-top",
+                    "label": "Left Top"
+                  },
+                  {
+                    "value": "center-top",
+                    "label": "Center Top"
+                  },
+                  {
+                    "value": "right-top",
+                    "label": "Right Top"
+                  },
+                  {
+                    "value": "left",
+                    "label": "Left"
+                  },
+                  {
+                    "value": "center",
+                    "label": "Center"
+                  },
+                  {
+                    "value": "right",
+                    "label": "Right"
+                  },
+                  {
+                    "value": "left-bottom",
+                    "label": "Left Bottom"
+                  },
+                  {
+                    "value": "center-bottom",
+                    "label": "Center Bottom"
+                  },
+                  {
+                    "value": "right-bottom",
+                    "label": "Right Bottom"
+                  }
+                ],
+                "default": "center"
+            },
+        ],
+        "blocks": [
+            {
+                "type": "hotspot",
+                "name": "Hotspot",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product",
+                        "info": "Required"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Label"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Position"
+                    },
+                    {
+                        "type": "range",
+                        "id": "x",
+                        "min": 0,
+                        "max": 100,
+                        "label": "Horizontal (%)",
+                        "default": 50
+                    },
+                    {
+                        "type": "range",
+                        "id": "y",
+                        "min": 0,
+                        "max": 100,
+                        "label": "Vertical (%)",
+                        "default": 50
+                    },
+                    {
+                        "type": "header",
+                        "content": "Mobile Position"
+                    },
+                    {
+                        "type": "range",
+                        "id": "x_mobile",
+                        "min": 0,
+                        "max": 100,
+                        "label": "Horizontal (%)",
+                        "default": 50
+                    },
+                    {
+                        "type": "range",
+                        "id": "y_mobile",
+                        "min": 0,
+                        "max": 100,
+                        "label": "Vertical (%)",
+                        "default": 50
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Image with Hotspots"
+            }
+        ]
+    }
+{% endschema %}

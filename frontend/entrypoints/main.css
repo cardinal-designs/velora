@@ -53,7 +53,7 @@
     }
 
     [class*='text-oracle-'] {
-        @apply font-oracle;
+        @apply font-oracle font-[350];
     }
 
     [class*='text-pangram-'] {
@@ -180,6 +180,8 @@
       @apply min-h-[max(calc(100vh_-_var(--nav-height)_-_var(--announcement-bar-height)),500px)]
     }
 
+    /* flex alignment helpers */
+
     .content-left_top {
       @apply justify-start items-start text-left
     }
@@ -213,6 +215,43 @@
     }
 
     .content-center_bottom {
+      @apply justify-end items-center text-center
+    }
+
+    /* object position helpers */
+    .object-position-left-top {
+      @apply object-left-top
+    }
+
+    .object-position-right-top {
+      @apply object-right-top
+    }
+
+    .object-position-center-top {
+      @apply object-top
+    }
+
+    .object-position-left {
+      @apply object-left
+    }
+
+    .object-position-center {
+      @apply object-center
+    }
+
+    .object-position-right {
+      @apply object-right
+    }
+
+    .object-position-left-bottom {
+      @apply object-left-bottom
+    }
+
+    .object-position-right-bottom {
+      @apply justify-end items-end text-right
+    }
+
+    .object-position-center-bottom {
       @apply justify-end items-center text-center
     }
 
