@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "form": {
       "type": "main-contact",
@@ -53,6 +53,9 @@
         "column_Nnc7Hz",
         "column_zzp4QN",
         "column_AKVcKj"
+      ],
+      "custom_css": [
+        ".text-columns {border-top: 1px solid var(--text);}"
       ],
       "settings": {
         "color": "light",
