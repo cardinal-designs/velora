@@ -34,7 +34,9 @@
         "image_bw3WN6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png"
+            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png",
+            "button_label": "",
+            "button_link": ""
           }
         },
         "text_UG8wmg": {
@@ -43,8 +45,10 @@
             "title": "FIND YOUR FIT",
             "title_r": "",
             "heading": "Talk To An Expert",
+            "text": "",
             "button_label": "Start Custom Inquiry",
-            "button_link": "shopify://pages/custom"
+            "button_link": "shopify://pages/custom",
+            "inline_button": true
           }
         }
       },
@@ -54,7 +58,9 @@
       ],
       "settings": {
         "color": "dark",
-        "layout": "b"
+        "layout": "b",
+        "layout_mobile": "a",
+        "image": "shopify://shop_images/3d9b32a4ddcf4e3f4f94e145aff6c390.jpg"
       }
     },
     "faq_zUUXCU": {
