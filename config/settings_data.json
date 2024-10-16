@@ -15,6 +15,15 @@
     "custom_inquiry_link": "shopify://pages/custom",
     "search_products": "bestsellers",
     "search_suggestions": "Adipiscing,Tortor,Justo,Ullamcorper,Parturient",
+    "no_results_links": [
+      "bestsellers",
+      "new-arrivals",
+      "bedroom",
+      "bathroom",
+      "living-room",
+      "kitchen",
+      "dining-room"
+    ],
     "social_twitter_link": "",
     "social_facebook_link": "https://www.facebook.com/illuminatevintage/",
     "social_pinterest_link": "https://www.pinterest.com/illuminatevtg/",

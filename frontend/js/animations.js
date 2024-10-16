@@ -1,7 +1,7 @@
 export function initLoadingAnimations() {
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: '0px 0px -50px 0px',
+      rootMargin: '0px 0px -150px 0px',
       threshold: 0,
     });
   
