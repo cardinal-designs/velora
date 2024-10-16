@@ -1,18 +1,28 @@
+{% liquid
+  for filter in search.filters
+    assign total_active_values = total_active_values | plus: filter.active_values.size
+  endfor
+
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign sort_by_name = search.sort_options | where: 'value', sort_by | first
+%}
+
 {% if search.performed %}
-  <div class="page-width">
-    <div class="mb-20 py-30 px-20 bg-cream md:p-40">
-      <h1 class="mb-30 text-m-h4 font-bold text-center md:text-arizona-48">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
+  <div x-data="{ largeView: false, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }"
+     class="page-width bg-[var(--background)] text-[var()--text)]">
+    <div class="mb-20 py-30 px-20 md:p-40">
+      <h1 class="mb-30 text-arizona-26 text-center ">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
       
       {% if search.results.size == 0 %}
-        <p class="max-w-custom w-full mx-auto mb-30 text-oracle-18 text-center" style="--width: 375px;">There are no results. Please check your spelling or try a broader search. Try shopping by brand.</p>
+        <p class="max-w-custom w-full mx-auto mb-30 text-oracle-18 text-center" style="--width: 375px;">Nothing found, please try a different search</p>
       {% endif %}
       
       <div class="max-w-custom w-full mx-auto" style="--width: 275px;">
         <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
-          <div class="flex justify-between border-b-1 border-black">
-            <input class="w-full pb-5 text-oracle-18 bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+          <div class="flex justify-between border-b-1 border-[var(--text)]">
+            <input class="w-full pb-5 text-oracle-18 bg-transparent appearance-none placeholder:text-[var(--text)]/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
             <button type="submit" class="flex items-center">
               {% render 'icon' icon: 'search' %}
             </button>
@@ -23,7 +33,7 @@
 
     
     {% unless search.results.size == 0 %}
-      <div class="border-t-1 border-black">
+      <div class="border-t-1 border-[var(--text)]">
         {% render 'filters' collection: search, is_search: true %}
       </div>
     {% endunless %}
@@ -42,10 +52,10 @@
           <div class="collection mb-50">
             <div class="loading-overlay"></div>
 
-            <ul data-id="{{ section.id }}" class="grid gap-x-10 gap-y-20 grid-flow-row-dense sm:grid-cols-2 md:gap-y-40 md:grid-cols-3 lg:grid-cols-4">
+            <ul data-id="{{ section.id }}" class="group/grid grid grid-flow-row-dense md:gap-y-40 gap-y-70 gap-x-20 lg:gap-x-[43px] lg:gap-y-80 [&.smallView]:lg:gap-x-35 [&.smallView]:lg:gap-y-65" :class="largeView ? 'largeView grid-cols-1 md:grid-cols-2' : 'smallView grid-cols-2 lg:grid-cols-4'">
               {% for product in search.results %}
-                <li class="product-grid__item" data-fade-in-up>
-                  {% render 'product-card' product_card_product: product, add_spacing: true %}
+                <li class="product-grid-item" data-fade-in-up>
+                  {% render 'product-card' product_card_product: product, section_id: section.id, no_product_form: true %}
                 </li>
               {% endfor %}
             </ul>
@@ -66,13 +76,13 @@
         <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
-          <div class="flex justify-between border-b-1 border-black">
-            <input class="w-full pb-5 text-oracle-18 bg-transparent appearance-none placeholder:text-black/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-black" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+          <div class="flex justify-between border-b-1 border-[var(--text)]">
+            <input class="w-full pb-5 text-oracle-18 bg-transparent appearance-none placeholder:text-[var(--text)]/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
             <div class="flex items-center">
               {% render 'icon' icon: 'search' %}
             </div>
           </div>
-          <button type="submit" class="button button--black w-full mt-30 md:mt-40" aria-label="{{ 'general.search.search' | t }}">
+          <button type="submit" class="button button--[var(--text)] w-full mt-30 md:mt-40" aria-label="{{ 'general.search.search' | t }}">
             Search
           </button>
         </form>

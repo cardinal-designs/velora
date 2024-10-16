@@ -18,3 +18,6 @@ let headroom = new Headroom(document.querySelector("[data-headroom]"), {
 headroom.init()
 
 swiperInit()
+
+// Add components
+const components = import.meta.glob('../js/components/*.js',{ eager: true });

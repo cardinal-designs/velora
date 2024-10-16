@@ -1,5 +1,5 @@
-<header class="header {% if template.name == 'index' %}overlay-header{% endif %}">
-  <div class="w-full max-w-[1672px] mx-auto lg:px-[44px]">
+<header class="header {% if template.name == 'index' %}overlay-header{% endif %} relative top-0">
+  <div class="w-full max-w-[1672px] mx-auto">
 
     <div class="grid grid-cols-thirds items-center gap-20">
 
@@ -59,7 +59,7 @@
                     {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
                     
                     {% if downcased_mega_menu_name == downcased_link_title %}
-                      <div class="group-megamenu mega-menu w-[calc(100%-56px)] p-[36px] absolute top-full left-[28px] invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
+                      <div class="group-megamenu mega-menu w-full p-[36px] absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
                         <div class="grid grid-cols-12 gap-20">
                           <div class="{% if block.settings.image != blank %}col-span-6{% else %}col-span-full{% endif %} flex flex-row">
                             {% assign halfway = link.links.size | divided_by: 2 %}
@@ -127,12 +127,23 @@
 
       <!-- Icons -->
       <div class="flex justify-end items-center gap-30 text-oracle-16">
-        {% if shop.customer_accounts_enabled %}
-          <button class="hidden md:block">
+        {% if section.settings.enable_search %}
+          <button class="hidden relative md:block" data-open-search>
             {% comment %} {% render 'icon' icon: 'search' %} {% endcomment %}
             <span class="">Search</span>
+            <div class="hidden absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0 md:block"></div>
           </button>
         {% endif %}
+        {% comment %} {% if section.settings.enable_search %}
+          <button class="group/link hidden relative md:block" data-open-search>
+            <span class="md:hidden">
+              {% render 'icon' icon: 'search' %}
+              <span class="visually-hidden">Search</span>
+            </span>
+            <span class="py-20 hidden text-cta uppercase md:block">Search</span>
+            <div class="hidden absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0 md:block"></div>
+          </button>
+        {% endif %} {% endcomment %}
 
         {% if shop.customer_accounts_enabled %}
           <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="hidden md:block">
@@ -166,6 +177,10 @@
 
     </div>
   </div>
+
+  {% if section.settings.enable_search %}
+    {% render 'search-dropdown' %}
+  {% endif %}
 
 </header>
 
@@ -227,7 +242,13 @@
       "id": "menu",
       "default": "main-menu",
       "label": "Menu"
-    }
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "label": "Enable Search",
+      "default": true
+    },
   ],
   "blocks": [
     {

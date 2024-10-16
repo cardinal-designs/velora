@@ -1,4 +1,74 @@
 {% if predictive_search.performed %}
+  <div class="py-30">
+    <div class="grid gap-40 md:grid-cols-4 gap-x-30">
+      <div class="col-span-3">
+        {% if predictive_search.resources.products.size > 0 %}
+          <h3 class="mb-20 pb-10 text-arizona-26">Popular Products</h3>
+          <ul class="grid grid-cols-3 gap-x-30">
+            {% for current_product in predictive_search.resources.products limit: 3 %}
+              <li class="">
+                {% render 'product-card', product_card_product: current_product, no_product_form: true %}
+                {% comment %} <a href="{{ product.url }}" class="flex gap-10 flex-shrink-0">
+                  <div class="w-60">
+                    {% render 'image'
+                      image: current_product.featured_image,
+                      classes: 'w-full aspect-square object-cover',
+                      sizes: '200px',
+                      include_placeholder: true,
+                      placeholder_name: 'product-1',
+                      src_set_type: 'thumbnail'
+                    %}
+                  </div>
+                  <div class="">
+                    <p class="text-sh2 uppercase">{{ current_product.title }}</p>
+                    <p class="price flex items-center gap-5 text-body-3">
+                      {% if current_product.compare_at_price > current_product.price %}
+                        <span class="line-through">{{ current_product.compare_at_price | money }}</span>
+                      {% endif %}
+                      {{ current_product.price | money }}
+                    </p>
+                  </div>
+                </a> {% endcomment %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-arizona-26">Nothing found, please try a different search</p>
+        {% endif %}
+      </div>
+      <div class="col-span-1 col-start-4">
+        {% if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %}
+          <div class="max-w-custom w-full" style="--width: 335px;">
+            <h3 class="mb-20 pb-10 text-arizona-26">Popular Searches</h3>
+            <ul class="flex flex-col gap-10">
+              {% for query in predictive_search.resources.queries %}
+                <li id="predictive-search-option-query-{{ forloop.index }}" class="" role="option" aria-selected="false">
+                  <a href="{{ query.url }}" class="" tabindex="-1">
+                    <p class="text-body-3 [&_mark]:bg-transparent [&_mark]:underline" aria-label="{{ query.text }}">
+                      {{ query.styled_text }}
+                    </p>
+                  </a>
+                </li>
+              {% endfor %}
+              {% for collection in predictive_search.resources.collections %}
+                <li id="predictive-search-option-collection-{{ forloop.index }}" class="" role="option" aria-selected="false">
+                  <a href="{{ collection.url }}" class="" tabindex="-1">
+                    <p class="text-body-3">{{ collection.title | escape }}</p>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="max-w-custom w-full mt-60 mx-auto text-center md:mt-40" style="--width: 375px;">
+      <button class="w-full button" data-submit>See All Products</button>
+    </div>
+  </div>
+{% endif %}
+
+{% comment %} {% if predictive_search.performed %}
   <div id="predictive-search-results">
     {% if predictive_search.resources.products.size > 0 %} 
       <h2 id="predictive-search-products" class="predictive-search__heading text-oracle-18 caption-with-letter-spacing">
@@ -55,4 +125,4 @@
       {{ 'templates.search.results_with_count' | t: terms: predictive_search.terms, count: predictive_search.resources.products.size }}
     {% endif %}
   </span>
-{% endif %}
+{% endif %} {% endcomment %}

@@ -57,6 +57,22 @@
     ]
   },
   {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "search_products",
+        "label": "Popular products"
+      },
+      {
+        "type": "textarea",
+        "id": "search_suggestions",
+        "label": "Popular searchs",
+        "info": "Must be a comma-separated lists"
+      }
+    ]
+  },
+  {
     "name": "Cart",
     "settings": [
       {
