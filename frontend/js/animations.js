@@ -10,7 +10,8 @@ export function initLoadingAnimations() {
     sections.forEach(section => {
       const elements = section.querySelectorAll('[data-animate]');
       for (let count = 0; count < elements.length; count++) {
-        elements[count].setAttribute('style', 'transition-delay: ' + count * 0.07 + 's');
+        // elements[count].setAttribute('style', 'transition-delay: ' + count * 0.07 + 's');
+        elements[count].style.transitionDelay = `${count * 0.07}s`
       }
   
       observer.observe(section)
