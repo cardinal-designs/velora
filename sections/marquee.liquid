@@ -1,13 +1,13 @@
 {% capture blocks %}
   {% for block in section.blocks %}
     <div class="w-fit h-fit flex justify-center items-center gap-[18px] relative flex-shrink-0">
-    <div class="rounded-full border border-brown text-oracle-18 w-auto h-[36px] aspect-square flex flex-col justify-center items-center text-center">{{ forloop.index }}</div>
+    <div class="rounded-full border border-[var(--text)] text-oracle-18 w-auto h-[27px] lg:h-[36px] aspect-square flex flex-col justify-center items-center text-center">{{ forloop.index }}</div>
       <div class="whitespace-nowrap">{{ block.settings.heading }}</div>
     </div>
   {% endfor %}
 {% endcapture %}
 
-<div class="bg-[var(--background)] text-[var(--text)] text-pangram-16" style="{% render "color-variables", color: section.settings.color %}">
+<div class="bg-[var(--background)] text-[var(--text)] text-pangram-custom lg:text-pangram-20" style="--size:15px; {% render "color-variables", color: section.settings.color %}">
     <text-marquee>
         <div class="press-marquee py-[14px] overflow-hidden">
             <div class="still w-fit mx-auto flex justify-center items-center gap-[18vw]">

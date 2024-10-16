@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "main": {
       "type": "main-product",
@@ -43,6 +43,7 @@
         "text_YPGr8t"
       ],
       "settings": {
+        "highlights": "Crafted with care in 5 Days | Customizable | Designed & Assembled in Houston, Texas USA",
         "custom_inquiry": true
       }
     },
