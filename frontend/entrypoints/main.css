@@ -206,7 +206,8 @@
       @apply justify-start items-end text-right
     }
 
-    .content-center_top {
+    .content-center_top,
+    .content-top {
       @apply justify-start items-center text-center
     }
 
@@ -230,7 +231,8 @@
       @apply justify-end items-end text-right
     }
 
-    .content-center_bottom {
+    .content-center_bottom,
+    .content-bottom {
       @apply justify-end items-center text-center
     }
 

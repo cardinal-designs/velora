@@ -4,7 +4,7 @@
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
         {% if slide.image == blank %}{% continue %}{% endif %}
-        <div class="swiper-slide w-full h-full screen-height-with-nav flex justify-center items-center relative" style="--text: {{ slide.text_color }};">
+        <div class="swiper-slide w-full h-full screen-height-with-nav pt-[var(--nav-height)] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
 
           {% if block.type == "full" %}
             {% if slide.image != blank %}
@@ -50,25 +50,21 @@
             </div>
           {% endif %}
 
-            <div class="page-width relative z-[1] h-full text-[var(--text)]">
-              <div class="max-w-custom mx-auto text-center w-full h-full flex flex-col gap-20 content-{{ slide.content_position }} pt-100" style="--width: 600px">
+            <div class="relative z-[1] w-full h-full text-[var(--text)] p-25 md:p-30 lg:p-[max(100px,7vw)]">
+              <div class="max-w-custom mx-auto w-full h-full flex flex-col gap-20 content-{{ slide.content_position }}" style="--width: 600px">
                 {% if slide.title != blank %}
                   <h2 class="text-pangram-20" data-animate>{{ slide.title }}</h2>
                 {% endif %}
                 {% if slide.heading != blank %}
-                  <div class="flex flex-col justify-center items-center">
-                    <h1 class="row-[2/3] text-arizona-60 lg:text-arizona-80" data-aniamte>
-                      {{ slide.heading | newline_to_br }}
-                    </h1>
-                  </div>
+                  <h1 class="row-[2/3] text-arizona-60 lg:text-arizona-80" data-aniamte>
+                    {{ slide.heading | newline_to_br }}
+                  </h1>
                 {% endif %}
                 {% if slide.button_label != blank and slide.button_link != blank %}
-                  <div class="flex flex-col justify-end items-center">
-                    <a data-animate href="{{ slide.button_link }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
-                      {{ slide.button_label }}
-                      <span>{% render 'link-arrow' %}</span>
-                    </a>
-                  </div>
+                  <a data-animate href="{{ slide.button_link }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+                    {{ slide.button_label }}
+                    <span>{% render 'link-arrow' %}</span>
+                  </a>
                 {% elsif slide.button_link != blank %}
                   <a data-animate href="{{ slide.button_link }}" class="absolute top-0 left-0 w-full h-full"> </a>
                 {% endif %}
@@ -200,12 +196,6 @@
               }
             ],
             "default": "center"
-          },
-          {
-            "type": "text",
-            "id": "cursor_text",
-            "label": "Custom cursor text",
-            "info": "Leave blank for default cursor"
           },
           {
             "type": "select",
