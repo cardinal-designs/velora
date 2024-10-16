@@ -48,7 +48,7 @@
             "text": "",
             "button_label": "Start Custom Inquiry",
             "button_link": "shopify://pages/custom",
-            "inline_button": true
+            "inline_button": false
           }
         }
       },
