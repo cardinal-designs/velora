@@ -10,14 +10,14 @@
 {% if search.performed %}
   <div x-data="{ largeView: false, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }"
      class="page-width bg-[var(--background)] text-[var()--text)]">
-    <div class="mb-20 py-30 px-20 md:p-40">
+    <div class="mb-20 py-30">
       <h1 class="mb-30 text-arizona-26 text-center ">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
       
       {% if search.results.size == 0 %}
         <p class="max-w-custom w-full mx-auto mb-30 text-oracle-18 text-center" style="--width: 375px;">Nothing found, please try a different search</p>
       {% endif %}
       
-      <div class="max-w-custom w-full mx-auto" style="--width: 275px;">
+      <div class="w-full mx-auto">
         <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
@@ -32,19 +32,19 @@
     </div>
 
     
-    {% unless search.results.size == 0 %}
-      <div class="border-t-1 border-[var(--text)]">
+    {% comment %} {% unless search.results.size == 0 %}
+      <div class="">
         {% render 'filters' collection: search, is_search: true %}
       </div>
-    {% endunless %}
+    {% endunless %} {% endcomment %}
 
     <div id="product-grid">
-      {% paginate search.results by 16 %}
+      {% paginate search.results by 50 %}
         {% if search.results.size == 0 %}
           <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
             <div class="loading-overlay"></div>
             <div class="text-center">
-              <p class="mb-20 text-oracle-18">No products found.</p>
+              <p class="mb-20 text-oracle-18">{{ settings.no_results_text }}</p>
               <a href="{{ routes.search_url }}" class="button">Clear Filters</a>
             </div>
           </div>

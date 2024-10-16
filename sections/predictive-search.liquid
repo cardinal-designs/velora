@@ -1,41 +1,50 @@
 {% if predictive_search.performed %}
-  <div class="py-30">
+  <div class="py-30 flex flex-col {% if predictive_search.resources.products.size > 0 %}justify-start{% else %}justify-center{% endif %} items-center h-full">
     <div class="grid gap-40 md:grid-cols-4 gap-x-30">
-      <div class="col-span-3">
         {% if predictive_search.resources.products.size > 0 %}
-          <h3 class="mb-20 pb-10 text-arizona-26">Popular Products</h3>
-          <ul class="grid grid-cols-3 gap-x-30">
-            {% for current_product in predictive_search.resources.products limit: 3 %}
-              <li class="">
-                {% render 'product-card', product_card_product: current_product, no_product_form: true %}
-                {% comment %} <a href="{{ product.url }}" class="flex gap-10 flex-shrink-0">
-                  <div class="w-60">
-                    {% render 'image'
-                      image: current_product.featured_image,
-                      classes: 'w-full aspect-square object-cover',
-                      sizes: '200px',
-                      include_placeholder: true,
-                      placeholder_name: 'product-1',
-                      src_set_type: 'thumbnail'
-                    %}
-                  </div>
-                  <div class="">
-                    <p class="text-sh2 uppercase">{{ current_product.title }}</p>
-                    <p class="price flex items-center gap-5 text-body-3">
-                      {% if current_product.compare_at_price > current_product.price %}
-                        <span class="line-through">{{ current_product.compare_at_price | money }}</span>
-                      {% endif %}
-                      {{ current_product.price | money }}
-                    </p>
-                  </div>
-                </a> {% endcomment %}
-              </li>
-            {% endfor %}
-          </ul>
+          <div class="col-span-3">
+            <h3 class="mb-20 pb-10 text-arizona-26">{{ predictive_search.resources.products.size }} Products</h3>
+            <ul class="grid grid-cols-3 gap-x-30">
+              {% for current_product in predictive_search.resources.products limit: 3 %}
+                <li class="">
+                  {% render 'product-card', product_card_product: current_product, no_product_form: true %}
+                  {% comment %} <a href="{{ product.url }}" class="flex gap-10 flex-shrink-0">
+                    <div class="w-60">
+                      {% render 'image'
+                        image: current_product.featured_image,
+                        classes: 'w-full aspect-square object-cover',
+                        sizes: '200px',
+                        include_placeholder: true,
+                        placeholder_name: 'product-1',
+                        src_set_type: 'thumbnail'
+                      %}
+                    </div>
+                    <div class="">
+                      <p class="text-sh2 uppercase">{{ current_product.title }}</p>
+                      <p class="price flex items-center gap-5 text-body-3">
+                        {% if current_product.compare_at_price > current_product.price %}
+                          <span class="line-through">{{ current_product.compare_at_price | money }}</span>
+                        {% endif %}
+                        {{ current_product.price | money }}
+                      </p>
+                    </div>
+                  </a> {% endcomment %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
         {% else %}
-          <p class="text-arizona-26">Nothing found, please try a different search</p>
+          <div class="col-span-4 flex flex-col justify-center items-center text-center w-full">
+            <p class="text-arizona-26">{{ settings.no_results_text }}</p>
+            {% if settings.no_results_links != blank %}
+              <div class="flex flex-row justify-center items-center text-oracle-16 gap-20 mt-[13px]">
+                {% for link in settings.no_results_links %}
+                  <a href="{{ link.url }}" class="">{{ link.title }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
         {% endif %}
-      </div>
       <div class="col-span-1 col-start-4">
         {% if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %}
           <div class="max-w-custom w-full" style="--width: 335px;">
@@ -62,67 +71,8 @@
         {% endif %}
       </div>
     </div>
-    <div class="max-w-custom w-full mt-60 mx-auto text-center md:mt-40" style="--width: 375px;">
+    {% comment %} <div class="max-w-custom w-full mt-60 mx-auto text-center md:mt-40" style="--width: 375px;">
       <button class="w-full button" data-submit>See All Products</button>
-    </div>
+    </div> {% endcomment %}
   </div>
 {% endif %}
-
-{% comment %} {% if predictive_search.performed %}
-  <div id="predictive-search-results">
-    {% if predictive_search.resources.products.size > 0 %} 
-      <h2 id="predictive-search-products" class="predictive-search__heading text-oracle-18 caption-with-letter-spacing">
-        {{ 'templates.search.products' | t }}
-
-        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-        </svg>
-      </h2>
-    {% endif %}
-    <ul id="predictive-search-results-list" class="predictive-search__results-list list-unstyled" role="listbox" aria-labelledby="predictive-search-products">
-      {% for product in predictive_search.resources.products %}
-        <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item" role="option" aria-selected="false">
-          <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--link link link--text" tabindex="-1">
-            {% if product.featured_media != blank %}
-              <img class="predictive-search__image"
-                src="{{ product.featured_media | img_url: '150x' }}"
-                alt="{{ product.featured_media.alt }}"
-                width="50"
-                height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
-              >
-            {% endif %}
-            <div class="predictive-search__item-content{% unless settings.predictive_search_show_vendor or settings.predictive_search_show_price %} predictive-search__item-content--centered{% endunless %}">
-              {% if settings.predictive_search_show_vendor %} 
-                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span><div class="predictive-search__item-vendor caption-with-letter-spacing">{{ product.vendor }}</div>
-              {% endif %}
-              <h3 class="predictive-search__item-heading h5">{{ product.title }}</h3> 
-              {% if settings.predictive_search_show_price %}
-                {% render 'price', product: product, use_variant: true, show_badges: false %} 
-              {% endif %}
-            </div>
-          </a>
-        </li>
-      {% endfor %}
-      <li id="predictive-search-option-search-keywords" class="predictive-search__list-item" role="option">
-        <button class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow" tabindex="-1">
-          {{ 'templates.search.search_for' | t: terms: predictive_search.terms }}
-          {% render 'icon' icon: 'arrow' %}
-        </button>
-      </li> 
-    </ul>
-
-    <div class="predictive-search__loading-state" aria-hidden="true">
-      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-      </svg>
-    </div>
-  </div>
-
-  <span class="hidden" data-predictive-search-live-region-count-value>
-    {% if search.results_count == 0 %}
-      {{ 'templates.search.no_results' | t: terms: predictive_search.terms }}
-    {% else %}
-      {{ 'templates.search.results_with_count' | t: terms: predictive_search.terms, count: predictive_search.resources.products.size }}
-    {% endif %}
-  </span>
-{% endif %} {% endcomment %}

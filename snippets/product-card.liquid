@@ -34,7 +34,7 @@
     <div class="flex flex-col justify-start items-start">
       <div class="flex flex-row justify-between items-center gap-10 w-full">
         <a href="{{ product_card_product.url }}" class="text-pangram-16 lg:text-pangram-20 leading-[30px]">
-          {{ split_product_title[0] }}
+          {{ split_product_title[0] | truncate: 16 }}
         </a>
         <p data-price class="lg:opacity-0 lg:group-hover/card:opacity-100 transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
           {% if product_card_product.price_varies %}<span>from</span>{% endif %}

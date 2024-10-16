@@ -1,28 +1,35 @@
-<search-dropdown class="group/search">
-    <div class="w-full absolute left-0 right-0 flex bg-[var(--background)] opacity-0 invisible transition-visibility duration-200 group-[.active]/search:opacity-100 group-[.active]/search:visible">
-      <predictive-search class="w-full page-width mx-auto px-25" style="--width: 1070px;">
+<search-dropdown class="group/search" x-data="{ search: '' }">
+    <div class="min-h-[calc(50vw_-_var(--nav-height))] w-full absolute left-0 right-0 flex bg-[var(--background)] opacity-0 invisible transition-visibility duration-200 group-[.active]/search:opacity-100 group-[.active]/search:visible">
+      <predictive-search class="w-full page-width max-w-custom mx-auto px-25 flex flex-col justify-start items-center" style="--width: 1070px;">
         <div class="w-full pt-70 relative">
           <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
             <input type="hidden" name="type" value="product">
             <input type="hidden" name="options[prefix]" value="last">
-            <div class="flex flex-row justify-start items-center border-b border-[var(--text)] pb-5">
+            <div class="flex flex-row justify-start items-center border-b border-[var(--text)] pb-5 pr-25">
                 <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="9.41151" cy="6.58826" r="6.08826" stroke="#2B1D0A"/>
                     <path d="M5 11L1 15" stroke="#2B1D0A" stroke-linecap="round"/>
                     </svg>
                 </span>                    
-              <input class="w-full px-10 text-h5 bg-transparent appearance-none placeholder:text-[var(--text)]/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+              <input x-ref="searchInput" x-model="search" class="w-full px-10 text-h5 bg-transparent appearance-none placeholder:text-[var(--text)]/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
               <button type="submit" class=""></button>
+
+              <button 
+                @click.prevent=" 
+                search = '';
+                $nextTick(() => { $refs.searchInput.dispatchEvent(new Event('input')) }) 
+                " 
+                class="underline text-oracle-16">Clear</button>
             </div>
           </form>
-          <button class="p-5 absolute bottom-5 right-15" data-close-search>
+          <button class="p-5 absolute bottom-5 right-0" data-close-search>
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.66699 13.3334L7.50033 7.50008M13.3337 1.66675L7.50033 7.50008M7.50033 7.50008L1.66699 1.66675M7.50033 7.50008L13.3337 13.3334" stroke="#2B1D0A" stroke-linecap="round"/>
             </svg>
         </button>
         </div>
-        <div class="predictive-search" style="">
-            <div class="py-30">
+        <div class="predictive-search h-full" style="">
+            <div class="py-30 flex flex-col justify-start items-center h-full">
                 <div class="grid gap-40 md:grid-cols-4 gap-x-30">
                     <div class="col-span-3">
                         <h3 class="mb-20 pb-10 text-arizona-26">Popular Products</h3>

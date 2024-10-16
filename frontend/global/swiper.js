@@ -14,6 +14,13 @@ function swiperInit() {
                   delay: 3500,
                   disableOnInteraction: false,
               },
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                  return '<span class="swiper-hero-bullet ' + className + '">' + ' ' + "</span>";
+                },
+              },
           }
           if(s.classList.contains("swiper-initialized")) return
           swiper = new Swiper(s, options)
@@ -41,7 +48,7 @@ function swiperInit() {
                 spaceBetween: 0,
                 effect: "fade",
                 autoplay: {
-                    delay: 3500,
+                    delay: 4500,
                     disableOnInteraction: false,
                 },
                 on: {

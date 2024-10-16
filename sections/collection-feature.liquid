@@ -15,7 +15,7 @@
 
             <div class="w-full h-full relative px-[min(65px,3.75vw)] py-[min(60px,3.5vw)] flex flex-col justify-end items-start">
                 <div class="flex flex-row justify-between items-center gap-20 w-full">
-                    <h2 style="--size: 40px;" class="text-arizona-custom lg:text-arizona-80">
+                    <h2 style="--size: 40px;" class="text-arizona-custom lg:text-arizona-80" data-animate>
                         {% if block.settings.title != blank %}
                             {{ block.settings.title }}
                         {% else %}
@@ -23,7 +23,7 @@
                         {% endif %}
                     </h2>
 
-                    <a href="{{ block.settings.heading.url }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+                    <a href="{{ block.settings.heading.url }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold" data-animate>
                         Shop Now
                         <span>{% render 'link-arrow' %}</span>
                     </a>

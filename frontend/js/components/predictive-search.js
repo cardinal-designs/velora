@@ -24,7 +24,7 @@ export default class PredictiveSearch extends HTMLElement {
   }
 
   getSearchResults(searchTerm) {
-    fetch(`/search/suggest?q=${searchTerm}&section_id=predictive-search`)
+    fetch(`/search/suggest?type=product&options%5Bprefix%5D=last&q=${searchTerm}&section_id=predictive-search`)
       .then((response) => {
         if (!response.ok) {
           var error = new Error(response.status);

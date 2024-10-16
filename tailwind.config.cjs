@@ -32,7 +32,8 @@ module.exports = {
       animation: {
         marquee: 'marquee 20s linear infinite',
         'marquee-slow': 'marquee 35s linear infinite',
-        spin: 'spin 0.5s linear infinite'
+        spin: 'spin 0.5s linear infinite',
+        pulseShadow: 'pulseShadow 2s infinite'
       },
       aria: {
         unhidden: 'hidden="false"',
@@ -113,6 +114,23 @@ module.exports = {
         spin: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
+        },
+        pulseShadow: {
+          '0%': {
+            opacity: '1',
+            transform: 'scale(0.95)',
+            boxShadow: '0 0 0 0 rgba(0, 0, 0, 0.7)'
+          },        
+          '70%': {
+            opacity: '1',
+            transform: 'scale(1)',
+            boxShadow: '0 0 0 10px rgba(0, 0, 0, 0)'
+          },        
+          '100%': {
+            opacity: '1',
+            transform: 'scale(0.95)',
+            boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)'
+          }
         }
       },
       maxWidth: {

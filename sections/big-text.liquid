@@ -1,14 +1,14 @@
 <div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px]" style="{% render "color-variables", color: section.settings.color %}">
     <div class="page-width flex flex-col lg:grid grid-cols-12 gap-x-10 gap-y-40 lg:py-20 relative">
         <div class="lg:col-span-9 pr-50 lg:pr-0">
-            <h4 class="text-arizona-26 lg:text-arizona-48">
+            <h4 class="text-arizona-26 lg:text-arizona-48" data-animate >
                 {{ section.settings.heading }}
             </h4>
         </div>
 
         <div class="lg:col-span-3 lg:relative lg:py-20 flex flex-col justify-center items-end">
             {% if section.settings.small_text != blank %}
-                <div class="absolute right-[14px] lg:right-0 w-auto h-auto top-10 lg:top-0 vertical-text-mobile">
+                <div class="absolute right-[14px] lg:right-0 w-auto h-auto top-10 lg:top-0 vertical-text-mobile" data-animate>
                     <p class="text-pangram-14 whitespace-pre">{{ section.settings.small_text }}</p>
                 </div>
             {% endif %}

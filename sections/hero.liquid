@@ -53,35 +53,37 @@
             <div class="page-width relative z-[1] h-full text-[var(--text)]">
               <div class="max-w-custom mx-auto text-center w-full h-full flex flex-col gap-20 content-{{ slide.content_position }} pt-100" style="--width: 600px">
                 {% if slide.title != blank %}
-                  <h2 class="font-founders md:text-h5">{{ slide.title }}</h2>
+                  <h2 class="text-pangram-20" data-animate>{{ slide.title }}</h2>
                 {% endif %}
                 {% if slide.heading != blank %}
                   <div class="flex flex-col justify-center items-center">
-                    <h1 class="row-[2/3] text-arizona-60 lg:text-arizona-80">
+                    <h1 class="row-[2/3] text-arizona-60 lg:text-arizona-80" data-aniamte>
                       {{ slide.heading | newline_to_br }}
                     </h1>
                   </div>
                 {% endif %}
                 {% if slide.button_label != blank and slide.button_link != blank %}
                   <div class="flex flex-col justify-end items-center">
-                    <a href="{{ slide.button_link }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
+                    <a data-animate href="{{ slide.button_link }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold">
                       {{ slide.button_label }}
                       <span>{% render 'link-arrow' %}</span>
                     </a>
                   </div>
                 {% elsif slide.button_link != blank %}
-                  <a href="{{ slide.button_link }}" class="absolute top-0 left-0 w-full h-full"> </a>
+                  <a data-animate href="{{ slide.button_link }}" class="absolute top-0 left-0 w-full h-full"> </a>
                 {% endif %}
               </div>
             </div>
         </div>
       {% endfor %}
     </div>
+
+    <div class="swiper-hero-pagination swiper-pagination"></div>
   </div>
 
   {% if section.settings.text != blank %}
     <div class="bg-cream text-brown text-oracle-18 p-[27px]">
-      <div class="page-width text-center">
+      <div class="page-width text-center" data-animate>
         {{ section.settings.text }}
       </div>
     </div>

@@ -53,12 +53,26 @@
           "type": "url",
           "id": "custom_inquiry_link",
           "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Animations"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animations",
+        "label": "Enable Animations",
+        "default": true
       }
     ]
   },
   {
     "name": "Search",
     "settings": [
+      {
+        "type": "header",
+        "content": "Default"
+      },
       {
         "type": "collection",
         "id": "search_products",
@@ -69,6 +83,21 @@
         "id": "search_suggestions",
         "label": "Popular searchs",
         "info": "Must be a comma-separated lists"
+      },
+      {
+        "type": "header",
+        "content": "No Results"
+      },
+      {
+        "type": "text",
+        "id": "no_results_text",
+        "label": "Text",
+        "default": "Nothing found, please try a different search"
+      },
+      {
+        "type": "collection_list",
+        "id": "no_results_links",
+        "label": "Links"
       }
     ]
   },

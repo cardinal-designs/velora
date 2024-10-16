@@ -19,7 +19,7 @@ export default class SearchDropdown extends HTMLElement {
       
       document.documentElement.classList.add('scrolled');
       document.body.setAttribute("data-search-open", true)
-      this.overlay.classList.remove('invisible', 'opacity-0');
+      // this.overlay.classList.remove('invisible', 'opacity-0');
   
       // Focus on input
       setTimeout(() => {
@@ -37,7 +37,7 @@ export default class SearchDropdown extends HTMLElement {
 
       console.log("close search")
   
-      this.overlay.classList.add('invisible', 'opacity-0');
+      // this.overlay.classList.add('invisible', 'opacity-0');
       document.body.removeAttribute("data-search-open")
   
       if (window.scrollY < 5) {

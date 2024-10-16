@@ -33,7 +33,7 @@
                     {% if p.title == blank%}
                         {% continue %}
                     {% endif %}
-                    <div class="flex-1 w-[min(340px,_86vw)] lg:w-[min(600px,_35vw)]">
+                    <div class="flex-1 w-[min(340px,_86vw)] lg:w-[min(600px,_35vw)]" data-animate>
                     {% render "product-card", product_card_product: p %}
                     </div>
                 {% endfor %}

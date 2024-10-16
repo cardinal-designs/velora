@@ -14,19 +14,19 @@
         <div class="w-full h-full lg:col-span-5 p-[max(30px,2.5vw)] flex flex-col justify-between items-center gap-y-40">
 
           {% if section.settings.feature_title != blank%}
-            <h6 class="text-pangram-14 leading-[30px] text-center">
+            <h6 data-animate class="text-pangram-14 leading-[30px] text-center">
               {{ section.settings.feature_title }}
-          </h6>
+            </h6>
           {% endif %}
 
           {% if section.settings.feature_heading != blank %}
-              <div style="--size: 40px" class="text-arizona-custom md:text-arizona-48 text-center">
+              <div data-animate style="--size: 40px" class="text-arizona-custom md:text-arizona-48 text-center">
                   {{ section.settings.feature_heading }}
               </div>
           {% endif %}
 
           {% if section.settings.feature_text != blank %}
-            <div class="text-oracle-18 text-left indent-8">
+            <div data-animate class="text-oracle-18 text-left indent-8">
                 {{ section.settings.feature_text }}
             </div>
         {% endif %}
@@ -38,7 +38,7 @@
                 {% endif %}
 
                 {%- if section.settings.feature_button_label != blank and section.settings.feature_button_link != blank -%}
-                  <a href="{{ section.settings.feature_button_link }}" class="relative button button--large whitespace-nowrap mt-[28px] block w-full lg:mt-0 lg:inline-block lg:align-super lg:w-[80%]">
+                  <a data-animate href="{{ section.settings.feature_button_link }}" class="relative button button--large whitespace-nowrap mt-[28px] block w-full lg:mt-0 lg:inline-block lg:align-super lg:w-[80%]">
                   {{ section.settings.feature_button_label }}
                   </a>
                 {%- endif -%}
@@ -76,7 +76,7 @@
 
           <ul data-id="{{ section.id }}" class="group/grid grid grid-flow-row-dense md:gap-y-40 gap-y-70 gap-x-20 lg:gap-x-[43px] lg:gap-y-80 [&.smallView]:lg:gap-x-35 [&.smallView]:lg:gap-y-65" :class="largeView ? 'largeView grid-cols-1 md:grid-cols-2' : 'smallView grid-cols-2 lg:grid-cols-4'">
             {% for product in collection.products %}
-              <li class="product-grid-item" data-fade-in-up>
+              <li data-animate class="product-grid-item" data-fade-in-up>
                 {% render 'product-card' product_card_product: product, section_id: section.id %}
               </li>
 

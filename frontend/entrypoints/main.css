@@ -63,6 +63,18 @@
     .font-pangram {
       @apply uppercase font-semibold;
     }
+
+      /* Animations */
+      html.enable-animations[data-editor-open="false"] [data-animate] {
+        opacity: 0;
+        /* transform: translateY(15px); */
+        transition: opacity 0.5s ease;
+      }
+
+      html.enable-animations[data-editor-open="false"] .shopify-section.animated [data-animate] {
+        opacity: 1;
+        transform: translateY(0);
+      }
   }
 
   @layer components {
@@ -443,6 +455,21 @@
     @apply after:content-none relative top-0 w-fit h-fit mt-0 text-[currentColor] fill-[currentColor] right-0 left-0
   }
 
+  .swiper-hero-pagination {
+    @apply flex flex-row justify-end items-center gap-20;
+  }
+
+  .swiper-hero-bullet {
+    @apply w-[max(58px,4vw)] h-[2px] bg-cream/50 overflow-clip opacity-100 border-none m-0
+    top-auto left-auto bottom-[max(60px,4vw)] right-[max(60px,4vw)]
+    relative overflow-x-clip block
+    before:absolute before:content-[""] before:w-full before:h-full before:bg-cream/50 before:left-0 before:top-0
+    after:absolute after:content-[""] after:w-full after:h-full after:bg-cream after:left-0 after:top-0 after:-translate-x-full after:transition-opacity
+    [&.swiper-pagination-bullet-active]:after:translate-x-0
+    [&.swiper-pagination-bullet-active]:after:duration-[3500ms]
+    [&.swiper-pagination-bullet-active]:after:transition-transform
+  }
+
   /* --- RICHTEXT / WYSIWYG --- */
 
   .wysiwyg > * + * {
@@ -501,4 +528,12 @@
 
 .modal .field__label {
   @apply visually-hidden
+}
+
+/* Default Browser search clear */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
 }
