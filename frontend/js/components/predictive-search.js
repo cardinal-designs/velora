@@ -1,4 +1,4 @@
-import { debounce } from '../helpers';
+import { debounce } from "../helpers";
 
 export default class PredictiveSearch extends HTMLElement {
   constructor() {

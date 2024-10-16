@@ -1,10 +1,11 @@
 import 'vite/modulepreload-polyfill'
 import Headroom from "headroom.js"
 import Alpine from 'alpinejs'
-import swiperInit from '@/global/swiper'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { handleTab } from '../js/helpers';
 import { initLoadingAnimations } from '../js/animations';
+import swiperInit from '@/js/components/swiper';
  
 window.Alpine = Alpine
  
@@ -27,6 +28,9 @@ const components = import.meta.glob('../js/components/*.js',{ eager: true });
 
 // Initialize animations
 gsap.registerPlugin(ScrollTrigger);
+
+// a11y tab handler
+handleTab();
 
 // Initialize animations
 if (document.documentElement.classList.contains('enable-animations')) initLoadingAnimations();

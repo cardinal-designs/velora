@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     {% else %}
-                        <div class="w-full h-full {% if section.settings.image != blank %}lg:col-span-6{% else %}lg:col-span-5{% endif %} pb-0 lg:pb-[max(30px,2.5vw)] p-[max(30px,2.5vw)] flex flex-col justify-between items-center gap-y-40">
+                        <div class="w-full h-full {% if section.settings.image != blank %}lg:col-span-6{% else %}lg:col-span-5{% endif %} pb-[max(30px,2.5vw)] p-[max(30px,2.5vw)] flex flex-col justify-between items-center gap-y-40">
 
                     
                             <div class="flex flex-row {% if block.settings.title != blank and block.settings.title_r != blank %}justify-between{% else %}justify-center{% endif %} items-end gap-10 w-full">
@@ -90,11 +90,12 @@
                                     {{ block.settings.heading }}
                                 </div>
 
-                                <div class="text-oracle-18 text-left indent-8 {% if section.settings.image != blank %}lg:max-w-[75%] mx-auto{% endif %}">
+                                <div class="text-oracle-18 text-left indent-8 flex flex-col gap-y-[28px] {% if section.settings.image != blank %}lg:max-w-[75%] mx-auto{% endif %}">
                                     {{ block.settings.text }}
 
                                     {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
-                                        <a href="{{ block.settings.button_link }}" class="relative button button--large whitespace-nowrap block w-full">
+                                        &nbsp;
+                                        <a href="{{ block.settings.button_link }}" class="relative button button--large whitespace-nowrap mx-auto block w-full">
                                         {{ block.settings.button_label }}
                                         </a>
                                     {%- endif -%}
