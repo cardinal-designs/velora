@@ -135,7 +135,26 @@
     </div>
 
     <div class="col-span-6">
-      <div class="bg-[var(--text)] text-[var(--background)] px-[4.5vw] pb-10 pt-30 lg:py-30 sticky top-[var(--nav-height)] overflow-clip">
+      <div class="bg-[var(--text)] text-[var(--background)] px-[4.5vw] pb-10 pt-5 lg:pt-35 lg:pb-[47px] sticky top-[var(--nav-height)] overflow-clip">
+
+        {% if section.settings.title != blank %}
+          <div class="py-5 text-center lg:mb-[27px]">
+            <div class="animate-marquee xl:animate-none no-scrollbar xl:overflow-x-auto">
+              <div class="mx-auto w-fit flex flex-row justify-center items-center gap-40 *:whitespace-nowrap">
+                <p class="text-pangram-10 lg:text-pangram-14 leading-[30px]">
+                  {{ section.settings.title }}
+                </p>
+          
+                {% comment %} duplicate items for smaller browsers {% endcomment %}
+                <p class="text-pangram-10 lg:text-pangram-14 leading-[30px] block xl:hidden">
+                  {{ section.settings.title }}
+                </p>
+          
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
         <div class="product-slider list-unstyled swiper !overflow-x-visible !overflow-y-clip" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
           <div class="swiper-wrapper">
             {% for media in product.media %}
@@ -263,6 +282,12 @@
       {
         "type": "paragraph",
         "content": "To override template with product specific values, enter them in the Product Metafields > Highlights"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title",
+        "info": "Displays above product images"
       },
       {
         "type": "header",
