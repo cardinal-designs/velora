@@ -1,5 +1,5 @@
 <div class="">
-  <div class="swiper w-full h-full" data-swiper="hero">
+  <div class="swiper w-full h-full relative" data-swiper="hero">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
@@ -78,7 +78,13 @@
       {% endfor %}
     </div>
 
-    <div class="swiper-hero-pagination swiper-pagination"></div>
+    <div class="swiper-hero-pagination swiper-pagination z-[2] opacity-0 lg:opacity-100"></div>
+
+    {% if section.settings.logo_transition == true and settings.logo_svg != blank %}
+      <div data-logo-transition class="text-cream mx-auto w-full max-w-full lg:max-w-[90%] h-auto max-h-[50svh] [&_svg]:w-full [&_svg]:h-full absolute -bottom-10 left-half -translate-x-half z-[3] origin-bottom">
+        {{ settings.logo_svg }}
+      </div>
+    {% endif %}
   </div>
 
   {% if section.settings.text != blank %}
@@ -98,6 +104,12 @@
         "type": "inline_richtext",
         "id": "text",
         "label": "Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "logo_transition",
+        "label": "Logo scroll transition",
+        "default": false
       }
     ],
     "blocks": [

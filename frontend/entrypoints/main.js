@@ -34,3 +34,54 @@ handleTab();
 
 // Initialize animations
 if (document.documentElement.classList.contains('enable-animations')) initLoadingAnimations();
+
+if(document.querySelector("[data-logo-transition]")) {
+  // Homepage
+  const heroLogo = document.querySelector("[data-logo-transition]")
+
+  const hero = heroLogo.closest(".shopify-section")
+  const header = document.querySelector("header")
+  const headerLogo = header.querySelector("[data-header-logo]")
+
+  headerLogo.classList.add("opacity-0")
+
+  // Other pages
+  let firstSection = document.querySelector("#MainContent .shopify-policy__title") || document.querySelector("#MainContent .shopify-section:first-of-type")
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach( entry => {
+        entry.target.classList.toggle("show", entry.isIntersecting)
+        if(heroLogo){
+            headerLogo.classList.toggle('opacity-0', entry.isIntersecting)
+        }
+
+      })
+    },
+    {
+      rootMargin: `-${(header.clientHeight - 20)}px`,
+      threshold: 0
+    }
+  )
+
+  heroLogo != undefined ? observer.observe(heroLogo) : observer.observe(firstSection)
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: hero,
+      scrub: true,
+      pin: false,
+      
+      start: "0%",
+      end: "+=90%",
+      markers: false
+    }
+  })
+  
+  .to(heroLogo, {
+    scale: 0.1, 
+    ease: "linear"
+  })
+}
