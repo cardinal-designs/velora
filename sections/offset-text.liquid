@@ -1,7 +1,7 @@
 <div class="page-width my-70 relative md:mb-[130px]{% if section.settings.optional_image != blank %} md:mt-[190px]{% else %} md:mt-[140px]{% endif %}">
     
     {% if section.settings.optional_image != blank %}
-        <div class="h-[175px] w-[165px] mb-60 ml-auto relative overflow-hidden md:m-0 md:absolute md:-top-100 md:right-50 lg:h-[355px] lg:w-[330px]">
+        <div data-animate class="h-[175px] w-[165px] mb-60 ml-auto relative overflow-hidden md:m-0 md:absolute md:-top-100 md:right-50 lg:h-[355px] lg:w-[330px]">
             {% if section.settings.optional_image != blank %}
                 {{ section.settings.optional_image | image_url: width: 450 | image_tag: class: 'inset size-full object-cover' }}
             {% endif %}
@@ -10,16 +10,16 @@
 
     <div class="max-w-custom w-full mx-auto relative md:pl-30" style="--width: 1270px;">
         {% if section.settings.heading != blank %}
-            <h2 class="text-pangram-12 leading-8 whitespace-pre text-center mb-30 md:mb-[77px] md:text-pangram-14 md:leading-none">{{ section.settings.heading }}</h2>
+            <h2 data-animate class="text-pangram-12 leading-8 whitespace-pre text-center mb-30 md:mb-[77px] md:text-pangram-14 md:leading-none">{{ section.settings.heading }}</h2>
         {% endif %}
         {% if section.settings.text_1 != blank %}
             <div class="max-w-custom w-full pr-30" style="--width: 730px;">
-                <p class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_1 }}</p>
+                <p data-animate class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_1 }}</p>
             </div>
         {% endif %}
         {% if section.settings.text_2 != blank %}
             <div class="max-w-custom w-full ml-auto mt-30 pl-50 md:mt-60" style="--width: 743px;">
-                <p class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_2 }}</p>
+                <p data-animate class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_2 }}</p>
             </div>
         {% endif %}
     </div>
