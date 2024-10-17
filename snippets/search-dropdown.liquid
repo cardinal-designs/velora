@@ -11,7 +11,7 @@
                     <path d="M5 11L1 15" stroke="#2B1D0A" stroke-linecap="round"/>
                     </svg>
                 </span>                    
-              <input x-ref="searchInput" x-model="search" class="w-full px-10 text-h5 bg-transparent appearance-none placeholder:text-[var(--text)]/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+              <input x-ref="searchInput" x-model="search" class="peer w-full px-10 text-h5 bg-transparent appearance-none placeholder:text-[var(--text)]/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
               <button type="submit" class=""></button>
 
               <button 
@@ -19,14 +19,14 @@
                 search = '';
                 $nextTick(() => { $refs.searchInput.dispatchEvent(new Event('input')) }) 
                 " 
-                class="underline text-oracle-16">Clear</button>
+                class="peer-placeholder-shown:opacity-0 underline text-oracle-16">Clear</button>
             </div>
           </form>
           <button class="p-5 absolute bottom-5 right-0" data-close-search>
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.66699 13.3334L7.50033 7.50008M13.3337 1.66675L7.50033 7.50008M7.50033 7.50008L1.66699 1.66675M7.50033 7.50008L13.3337 13.3334" stroke="#2B1D0A" stroke-linecap="round"/>
             </svg>
-        </button>
+            </button>
         </div>
         <div class="predictive-search h-full" style="">
             <div class="py-30 flex flex-col justify-start items-center h-full">

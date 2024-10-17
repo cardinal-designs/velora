@@ -4,7 +4,7 @@
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
         {% if slide.image == blank %}{% continue %}{% endif %}
-        <div class="swiper-slide w-full h-full screen-height-with-nav pt-[var(--nav-height)] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
+        <div class="swiper-slide w-full h-full screen-height-with-nav pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
 
           {% if block.type == "full" %}
             {% if slide.image != blank %}

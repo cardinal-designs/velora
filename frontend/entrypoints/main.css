@@ -392,6 +392,10 @@
     @apply visually-hidden
   }
 
+  predictive-search .group\/card [data-price] {
+    @apply hidden lg:flex
+  }
+
   /* FORM */
 
   .form__label {

@@ -1,34 +1,13 @@
 {% if predictive_search.performed %}
   <div class="py-30 flex flex-col {% if predictive_search.resources.products.size > 0 %}justify-start{% else %}justify-center{% endif %} items-center h-full">
-    <div class="grid gap-40 md:grid-cols-4 gap-x-30">
+    <div class="flex flex-col-reverse lg:grid gap-40 grid-cols-4 gap-x-30">
         {% if predictive_search.resources.products.size > 0 %}
           <div class="col-span-3">
             <h3 class="mb-20 pb-10 text-arizona-26">{{ predictive_search.resources.products.size }} Products</h3>
-            <ul class="grid grid-cols-3 gap-x-30">
+            <ul class="grid grid-cols-2 lg:grid-cols-3 gap-y-[24px] gap-x-[16px] lg:gap-x-30">
               {% for current_product in predictive_search.resources.products limit: 3 %}
                 <li class="">
                   {% render 'product-card', product_card_product: current_product, no_product_form: true %}
-                  {% comment %} <a href="{{ product.url }}" class="flex gap-10 flex-shrink-0">
-                    <div class="w-60">
-                      {% render 'image'
-                        image: current_product.featured_image,
-                        classes: 'w-full aspect-square object-cover',
-                        sizes: '200px',
-                        include_placeholder: true,
-                        placeholder_name: 'product-1',
-                        src_set_type: 'thumbnail'
-                      %}
-                    </div>
-                    <div class="">
-                      <p class="text-sh2 uppercase">{{ current_product.title }}</p>
-                      <p class="price flex items-center gap-5 text-body-3">
-                        {% if current_product.compare_at_price > current_product.price %}
-                          <span class="line-through">{{ current_product.compare_at_price | money }}</span>
-                        {% endif %}
-                        {{ current_product.price | money }}
-                      </p>
-                    </div>
-                  </a> {% endcomment %}
                 </li>
               {% endfor %}
             </ul>
