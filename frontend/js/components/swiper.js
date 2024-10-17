@@ -51,6 +51,10 @@ function swiperInit() {
                     delay: 4500,
                     disableOnInteraction: false,
                 },
+                navigation: {
+                  nextEl: `.swiper-button-next-${s.dataset.sectionId}`,
+                  prevEl: `.swiper-button-prev-${s.dataset.sectionId}`,
+                },
                 on: {
                     slideChange: function() {
                         let alpineObject = s.closest("div[x-data]")
@@ -78,6 +82,7 @@ function swiperInit() {
                         else if (elLeft < elParentLeft + scrollContainer.scrollLeft) {
                             scrollContainer.scrollLeft = elLeft - elParentLeft + 30;
                         }
+                        s.closest('.shopify-section').querySelector(`[data-active-slide="${s.dataset.sectionId}"]`).innerText = ( swiper.realIndex + 1 )
                     }
                 }
             }
