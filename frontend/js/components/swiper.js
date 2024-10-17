@@ -82,7 +82,9 @@ function swiperInit() {
                         else if (elLeft < elParentLeft + scrollContainer.scrollLeft) {
                             scrollContainer.scrollLeft = elLeft - elParentLeft + 30;
                         }
-                        s.closest('.shopify-section').querySelector(`[data-active-slide="${s.dataset.sectionId}"]`).innerText = ( swiper.realIndex + 1 )
+                    },
+                    activeIndexChange: function() {
+                      s.closest('.shopify-section').querySelector(`[data-active-slide="${s.dataset.sectionId}"]`).innerText = ( swiper.activeIndex + 1 )
                     }
                 }
             }
