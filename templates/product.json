@@ -232,6 +232,24 @@
         "layout_mobile": "a"
       }
     },
+    "app_image_jaJpq9": {
+      "type": "app-image",
+      "blocks": {
+        "judge_me_reviews_review_widget_JQ8mk3": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_JQ8mk3"
+      ],
+      "settings": {
+        "color": "light",
+        "heading": "Reviews",
+        "image": "shopify://shop_images/ce130a6f6560e76fc08e3afa5299f221.png"
+      }
+    },
     "product_carousel_yyRkCC": {
       "type": "product-carousel",
       "settings": {
@@ -260,6 +278,7 @@
     "image_text_96Qp9G",
     "faq_FNNEUr",
     "image_text_GNtkCE",
+    "app_image_jaJpq9",
     "product_carousel_yyRkCC",
     "product-recommendations"
   ]

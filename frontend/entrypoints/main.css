@@ -543,3 +543,111 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
 }
+
+/*--- judgeme ---*/
+
+.shopify-section .jdgm-rev-widg {
+  @apply mt-0 px-0
+}
+
+.shopify-section .jdgm-rev-widg__body {
+  @apply border-[var(--text)] border-t lg:mt-[32px]
+}
+
+.shopify-section .jdgm-rev-widg__title {
+  @apply hidden
+}
+
+.shopify-section .jdgm-histogram.jdgm-temp-hidden {
+  @apply hidden
+}
+
+.shopify-section .jdgm-rev-widg__header {
+  @apply flex flex-row justify-center items-center gap-[18px] flex-wrap
+}
+
+.shopify-section .jdgm-form-wrapper {
+  @apply w-full
+}
+
+.shopify-section .jdgm-form-wrapper input:not([type='submit']),
+.shopify-section .jdgm-form-wrapper textarea,
+.shopify-section .jdgm-form-wrapper select {
+  @apply bg-[var(--background)] border-[var(--text)] placeholder:text-[var(--text)] px-10 py-5
+}
+
+.shopify-section .jdgm-form-wrapper input:not([type='submit']),
+.shopify-section .jdgm-form-wrapper textarea {
+  @apply rounded-[10px]
+}
+
+.shopify-section .jdgm-rev-widg__summary-inner {
+  @apply flex flex-row justify-center items-center gap-10 text-oracle-14
+}
+
+.shopify-section .jdgm-rev__prod-link {
+  @apply whitespace-nowrap
+}
+
+.shopify-section .jdgm-write-rev-link {
+  @apply border-[var(--text)] rounded-[10px] bg-[var(--background)] py-[8px] px-[17px] text-oracle-16
+}
+
+.shopify-section .jdgm-rev-widg__sort-wrapper {
+  @apply hidden;
+}
+
+.shopify-section .jdgm-rev__timestamp {
+  @apply hidden
+}
+
+.shopify-section .jdgm-rev__icon {
+  @apply hidden
+}
+
+.shopify-section .jdgm-rev__buyer-badge {
+  @apply text-[var(--text)] bg-[var(--background)] text-oracle-13 lg:text-oracle-18 font-oracle font-[350] opacity-75
+}
+
+.shopify-section .jdgm-rev__author {
+  @apply text-pangram-10 lg:text-pangram-14 font-pangram
+}
+
+.shopify-section .jdgm-rev__title {
+  @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350]
+}
+
+.shopify-section .jdgm-rev__body {
+  @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350] [&_p:first-of-type]:indent-8
+}
+
+.shopify-section .jdgm-rev__body * {
+  @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350]
+}
+
+.shopify-section .jdgm-rev {
+  @apply border-b border-t-0 border-[var(--text)] m-0 py-20
+}
+
+.shopify-section .jdgm-rev__rating,
+.shopify-section .jdgm-rev__header,
+.shopify-section .jdgm-rev__title {
+  @apply mb-10 lg:mb-15 block
+}
+
+.shopify-section .jdgm-rev__br {
+  @apply hidden
+}
+
+.shopify-section .jdgm-paginate,
+.shopify-section .jdgm-paginate__page.jdgm-curt {
+  @apply text-oracle-12 lg:text-oracle-16 font-oracle font-[350]
+}
+
+.shopify-section .jdgm-paginate__page.jdgm-curt {
+  @apply underline
+}
+
+.shopify-section .jdgm-star {
+  @apply text-[10px] lg:text-[12px]
+}

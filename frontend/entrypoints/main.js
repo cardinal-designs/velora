@@ -11,6 +11,10 @@ window.Alpine = Alpine
  
 Alpine.start()
 
+
+// Add components
+const components = import.meta.glob('../js/components/*.js',{ eager: true });
+
 // set up header
 let headroom = new Headroom(document.querySelector("[data-headroom]"), {
     // offset: document.querySelector("main section") ? document.querySelector("main section").offsetHeight : 30,
@@ -22,9 +26,6 @@ let headroom = new Headroom(document.querySelector("[data-headroom]"), {
 headroom.init()
 
 swiperInit()
-
-// Add components
-const components = import.meta.glob('../js/components/*.js',{ eager: true });
 
 // Initialize animations
 gsap.registerPlugin(ScrollTrigger);
