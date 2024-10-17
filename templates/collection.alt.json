@@ -14,6 +14,7 @@
       "blocks": {
         "block_zVk8i4": {
           "type": "block",
+          "disabled": true,
           "settings": {
             "heading": "Room",
             "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
@@ -22,6 +23,7 @@
         },
         "block_7hGQVB": {
           "type": "block",
+          "disabled": true,
           "settings": {
             "heading": "Fixture",
             "title": ""
@@ -29,6 +31,7 @@
         },
         "block_VpwqiP": {
           "type": "block",
+          "disabled": true,
           "settings": {
             "heading": "Style",
             "title": ""
