@@ -31,7 +31,6 @@
           "settings": {
             "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png",
             "content_position": "center",
-            "cursor_text": "",
             "text_color": "#F1ECE3",
             "title": "",
             "heading": "",
@@ -46,7 +45,7 @@
       ],
       "settings": {
         "text": "Original fixtures, straight from our workshop to your home.",
-        "logo_transition": false
+        "logo_transition": true
       }
     },
     "big_text_xqLtEP": {
