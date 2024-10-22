@@ -8,7 +8,8 @@
 %}
 
 {% if search.performed %}
-  <div x-data="{ largeView: false, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }"
+  <div id="CollectionGrid" 
+    x-data="{ largeView: false, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }"
      class="page-width bg-[var(--background)] text-[var()--text)]">
     <div class="mb-20 py-30">
       <h1 class="mb-30 text-arizona-26 text-center ">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
@@ -38,7 +39,7 @@
       </div>
     {% endunless %} {% endcomment %}
 
-    <div id="product-grid">
+    <div id="product-grid" class="scroll-m-[calc(var(--nav-height)_+_50px)]">
       {% paginate search.results by 50 %}
         {% if search.results.size == 0 %}
           <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
@@ -61,7 +62,7 @@
             </ul>
 
             {% if paginate.pages > 1 %}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
+              {% render 'pagination', paginate: paginate, anchor: '', container: "#CollectionGrid", target: "#product-grid" %}
             {% endif %}
           </div>
         {% endif %}

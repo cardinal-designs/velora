@@ -105,7 +105,7 @@
                   </div>
                 </fieldset>
             {% else %}
-                <fieldset class="product-form-input js block" data-option-name="{{ option.name }}" x-data="{ optionValue: '{{ option.selected_value }}'}">
+                <fieldset class="product-form-input js block" data-option-name="{{ option.name }}" x-data="{ optionValue: '{{ option.selected_value | escape }}'}">
                   <div class="flex flex-row justify-start items-center gap-10">
                     <legend class="form__label flex flex-row justify-start items-center gap-20 mb-0">
                       <span>{{ option.name }}</span>
@@ -159,7 +159,7 @@
                               >
                               <label 
                                 @click="
-                                  optionValue = '{{ value }}'
+                                  optionValue = '{{ value | escape }}'
                                  $nextTick(() => { open = false })
                                 "
                                 class="py-5 text-oracle-16 border-b border-transparent peer-checked:border-brown cursor-pointer{% if option_disabled %} opacity-50{% endif %}" 

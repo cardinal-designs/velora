@@ -48,7 +48,7 @@
 </div>
 {% endcapture %}
 
-<div x-data="{ largeView: true, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }" class="page-width">
+<div id="CollectionGrid" x-data="{ largeView: true, orderBy: '{{ sort_by_name.name | default: sort_by }}', mainFilter: 'All', toggleView(b) {  this.largeView = b }, {% for filter in collection.filters %}{{ filter.label | handle }}: '{{ filter.active_values[0].label }}', {% endfor %}  }" class="page-width">
   <div class="py-10 visually-hidden">
     <p class="text-oracle-18 opacity-60">
       <a href="{{ settings.shop_all_link }}">Shop</a> > 
@@ -59,7 +59,7 @@
 
   {% render 'filters', main_filters: section.settings.main_filter, section_settings: section.settings, blocks: section.blocks %}
 
-  <div id="product-grid">
+  <div id="product-grid" class="scroll-m-[calc(var(--nav-height)_+_50px)]">
     {% paginate collection.products by 12 %}
       {% if collection.products.size == 0 %}
         <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
@@ -80,14 +80,14 @@
                 {% render 'product-card' product_card_product: product, section_id: section.id %}
               </li>
 
-              {% if collection_feature != blank and forloop.index == feature_placement %}
+              {% if collection_feature != blank and forloop.index == feature_placement and paginate.current_page == 1 %}
                 {{ collection_feature }}
               {% endif %}
             {% endfor %}
           </ul>
 
           {% if paginate.pages > 1 %}
-            {% render 'pagination', paginate: paginate, anchor: '' %}
+            {% render 'pagination', paginate: paginate, anchor: '', container: "#CollectionGrid", target: "#product-grid" %}
           {% endif %}
         </div>
       {% endif %}
