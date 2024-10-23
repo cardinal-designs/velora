@@ -50,6 +50,10 @@
             </div>
           {% endif %}
 
+          <div class="absolute top-0 left-0 w-full h-half bg-gradient-to-b from-[#201609] to-[#20160900] opacity-[.24]">
+            
+          </div>
+
             <div class="relative z-[1] w-full h-full text-[var(--text)] p-25 md:p-30 lg:p-[max(100px,7vw)]">
               <div class="max-w-custom mx-auto w-full h-full flex flex-col gap-20 content-{{ slide.content_position }}" style="--width: 600px">
                 {% if slide.title != blank %}
@@ -77,7 +81,7 @@
     <div class="swiper-hero-pagination swiper-pagination z-[2] opacity-0 lg:opacity-100"></div>
 
     {% if section.settings.logo_transition == true and settings.logo_svg != blank %}
-      <div data-logo-transition class="text-cream mx-auto w-full max-w-full lg:max-w-[90%] h-auto max-h-[50svh] [&_svg]:w-full [&_svg]:h-full absolute -bottom-10 left-half -translate-x-half z-[3] origin-bottom">
+      <div data-logo-transition class="text-cream mx-auto w-full max-w-full lg:max-w-[90%] h-auto [&_svg]:max-h-[50svh] [&_svg]:w-full [&_svg]:h-full absolute -bottom-10 left-half -translate-x-half z-[3] origin-bottom">
         {{ settings.logo_svg }}
       </div>
     {% endif %}

@@ -16,8 +16,10 @@
 
         {% if section.settings.image != blank %}
             <div class="col-span-6 col-start-7">
-                <div class="w-full h-full relative aspect-[0.9/1] lg:aspect-auto">
-                    {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full inset object-cover' }}
+                <div class="sticky top-[var(--nav-height)] w-full h-auto">
+                    <div class="w-full h-auto relative aspect-[0.96/1]">
+                        {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full inset object-cover' }}
+                    </div>
                 </div>
             </div>
         {% endif %}
