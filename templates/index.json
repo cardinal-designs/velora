@@ -325,6 +325,60 @@
         "color": "light",
         "heading": "find a fixture that feels right at home"
       }
+    },
+    "image_marquee_QYK9i3": {
+      "type": "image-marquee",
+      "blocks": {
+        "image_rBdUzH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_3995985.jpg"
+          }
+        },
+        "image_MCthUx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-2-1366x1366.jpg"
+          }
+        },
+        "image_TcNY7R": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MAISON-NICOLE-PUBLI-MILK-40-scaled-750x750.jpg"
+          }
+        },
+        "image_jTVcVX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-14-1366x1366_9576575b-d11c-41cc-9691-37917a9b856f.jpg"
+          }
+        },
+        "image_mUVNXf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_5058029.jpg"
+          }
+        },
+        "image_yzTdY8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Stocksy_comp_watermarked_6273265.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_rBdUzH",
+        "image_MCthUx",
+        "image_TcNY7R",
+        "image_jTVcVX",
+        "image_mUVNXf",
+        "image_yzTdY8"
+      ],
+      "settings": {
+        "heading": "Artisanal down to every last detail",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
@@ -335,6 +389,7 @@
     "image_text_HGij4c",
     "press_dq8gBV",
     "image_hotspots_KBNzB9",
-    "dropdowns_TeGxJ7"
+    "dropdowns_TeGxJ7",
+     "image_marquee_QYK9i3"
   ]
 }
