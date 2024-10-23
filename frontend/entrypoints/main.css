@@ -180,12 +180,12 @@
     }
 
     .swatch {
-        @apply block outline outline-1 outline-transparent outline-offset-0 transition-["outline"] w-[17px] lg:w-[23px] h-auto aspect-square rounded-full bg-cover bg-center
+        @apply block outline outline-1 outline-transparent outline-offset-0 transition-["outline"] w-[17px] lg:w-[23px] h-auto aspect-square rounded-full bg-cover bg-center cursor-pointer
     }
 
     .active-swatch {
         @apply relative
-        outline outline-1 outline-[var(--text)] outline-offset-4
+        outline outline-1 outline-[var(--text)] outline-offset-4 cursor-default
     }
 
     .below-nav {

@@ -41,6 +41,10 @@ var MobileMenu = class extends HTMLElement {
 
     document.body.classList.remove('overflow-hidden');
     document.body.removeAttribute("menu-drawer-open")
+
+    if(this.hasAttribute("x-data")) {
+      this._x_dataStack[0].searchOpen = false
+    }
   }
 
   handleButtonClick(event) {

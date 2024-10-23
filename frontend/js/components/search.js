@@ -34,8 +34,6 @@ export default class SearchDropdown extends HTMLElement {
     close() {
       this.isOpen = false;
       this.classList.remove('active');
-
-      console.log("close search")
   
       // this.overlay.classList.add('invisible', 'opacity-0');
       document.body.removeAttribute("data-search-open")

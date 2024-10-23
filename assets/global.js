@@ -527,6 +527,7 @@ var VariantSelects = class extends HTMLElement {
 
   updateMedia() {
     // if(this.getAttribute("data-section") == 'product-bar') return
+    if( !this.closest(".product" )) return
     const slider = this.closest(".product").querySelector(".product-slider")
     if(!slider) return
     const newVariantImage = slider.querySelector(`[data-image-variants*="${this.currentVariant.id}"]`)
