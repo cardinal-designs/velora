@@ -6,7 +6,7 @@
             </h4>
         </div>
 
-        <div class="lg:col-span-3 lg:relative lg:py-20 flex flex-col justify-center items-end">
+        <div class="lg:col-span-3 lg:relative lg:pt-20 flex flex-col justify-center items-end">
             {% if section.settings.small_text != blank %}
                 <div class="absolute right-[14px] lg:right-0 w-auto h-auto top-10 lg:top-0 vertical-text-mobile" data-animate>
                     <p class="text-pangram-14 whitespace-pre">{{ section.settings.small_text }}</p>
@@ -18,7 +18,7 @@
                 </div>
             {% endif %}
             {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-                <div class="flex flex-col justify-center lg:justify-end items-center w-full">
+                <div class="flex flex-col justify-center lg:justify-end items-center w-full mt-auto">
                   <a href="{{ section.settings.button_link }}" class="button button--outline button--large w-full">
                     {{ section.settings.button_label }}
                   </a>

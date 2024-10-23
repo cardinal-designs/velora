@@ -27,7 +27,7 @@
                             {% endif %}
 
                             {% if block.settings.heading != blank %}
-                                <div style="--size: 40px;" class="leading-[1.2] text-arizona-custom md:text-arizona-48 xl:text-arizona-72">
+                                <div style="--size: 40px;" class="!leading-[1.2] text-arizona-custom md:text-arizona-48 xl:text-arizona-72">
                                     {{ block.settings.heading }}{%- if block.settings.inline_button == true and block.settings.button_label != blank and block.settings.button_link != blank -%}
                                         &nbsp;
                                         <a href="{{ block.settings.button_link }}" class="button button--large button--outline whitespace-nowrap mt-[28px] block w-full lg:mt-0 lg:inline-block lg:align-super lg:w-[80%]">

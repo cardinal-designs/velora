@@ -35,7 +35,7 @@
           {% assign filter = get_filter.first %}
           <div :class="mainFilter == '{{ filter.label }}' ? 'active' : '' " class="group/filter flex-1 w-full flex flex-col justify-center items-center py-10 lg:py-30 border-b border-brown/40 [&.active]:border-brown transition-colors">
             <button @click.prevent="mainFilter = '{{ filter.label }}'" class="text-arizona-20 lg:text-arizona-48 font-normal relative opacity-40 group-[.active]/filter:opacity-100 transition-opacity">
-              <span style="--size: 18px;" class="text-[8px] leading-normal font-pangram lg:text-pangram-custom absolute top-0 left-0 -translate-x-full">By</span>
+              <span style="--size: 18px;" class="text-[8px] leading-normal font-pangram lg:text-pangram-custom absolute top-0 left-[-6px] -translate-x-full">By</span>
               <span>{{ filter.label }}</span>
             </button>
           </div>

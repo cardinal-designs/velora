@@ -1,4 +1,4 @@
-<div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px] w-full h-auto aspect-[0.6/1] lg:aspect-[1.7/1] relative overflow-clip" 
+<div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px] w-full h-auto aspect-[0.6/1] lg:aspect-[1.7/1] max-h-[1039px] relative overflow-clip" 
     style="{% render "color-variables", color: section.settings.color %}"
 >
     {% if section.settings.image != blank %}
@@ -18,7 +18,7 @@
 
     {% for block in section.blocks %}
         {% if block.settings.product.title == blank %}{% continue %}{% endif %}
-        <div x-data="{ open: false }" class="">
+        <div x-data="{ open: {% if forloop.first %}true{% else %}false{% endif %} }" class="">
             <div 
                 style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%; --x-mobile: {{ block.settings.x_mobile | default: block.settings.x }}%; --y-mobile: {{ block.settings.y_mobile | default: block.settings.y }}%;"
                 class="absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)] -translate-x-half -translate-y-half w-30 h-30">
@@ -41,20 +41,20 @@
                     style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%; --x-mobile: {{ block.settings.x_mobile | default: block.settings.x }}%; --y-mobile: {{ block.settings.y_mobile | default: block.settings.y }}%;
                     background-image: url({{ 'pale-wall-texture.png' | asset_img_url }}); background-position: center; background-size: cover;
                     "
-                    class="flex flex-col justify-end items-center bg-[var(--background)] border-[var(--text)] border rounded-[10px] w-[max(150px,14vw)] h-auto aspect-[0.8/1] absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)]
+                    class="flex flex-col justify-end items-center bg-[var(--background)] border-[var(--text)] border rounded-[10px] w-[max(200px,14vw)] h-auto aspect-[0.8/1] absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)]
                     {% if block.settings.x_mobile >= 50 %} translate-x-[calc(-100%_-_25px)] {% else %} translate-x-[calc(0%_+_25px)] {% endif %}
                     {% if block.settings.y_mobile >= 50 %} translate-y-[calc(-100%_-_25px)] {% else %} translate-y-[25px] {% endif %}
                     {% if block.settings.x >= 70 %} lg:translate-x-[calc(-100%_-_30px)] {% else %} lg:translate-x-[calc(0%_+_30px)] {% endif %}
                     {% if block.settings.y>= 70 %} lg:translate-y-[calc(-100%_-_30px)] {% else %} lg:translate-y-[30px] {% endif %}
                     ">
-                    <div class="p-[7px]">
+                    <div class="py-[7px] px-30 my-auto">
                         {% if block.settings.image != blank %}
                             {{ block.settings.image | image_url: width: 500 | image_tag: class: 'w-full h-full object-contain' }}
                         {% elsif block.settings.product.featured_image != blank %}
                             {{ block.settings.product.featured_image | image_url: width: 500 | image_tag: class: 'w-full h-full object-contain' }}
                         {% endif %}
                     </div>
-                    <div class="text-oracle-16 w-full border-t border-[var(--text)] text-[var(--brown)] text-center p-[7px]">
+                    <div class="text-oracle-16 leading-[30px] w-full border-t border-[var(--text)] text-[var(--brown)] text-center p-[7px]">
                         <a href="{{ block.settings.product.url | default: '/collections/all' }}">
                         {% if block.settings.title != blank %}
                             {{ block.settings.title }}

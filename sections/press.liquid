@@ -35,7 +35,7 @@
                 </div>
 
                 <div data-press-scroll class="hidden md:block no-scrollbar overflow-x-auto w-[calc(100%_+_6vw)] ml-[-3vw] mr-[-3vw] *:px-[3vw]">
-                    <div class="w-fit flex flex-row justify-around items-center mt-[max(95px,5.5vw)] mx-auto gap-40">
+                    <div class="w-fit flex flex-row justify-around items-center mt-[max(95px,5.5vw)] mx-auto gap-[max(86px,6vw)]">
                         {% for block in section.blocks %}
                             <button data-press-thumbs="{{ forloop.index0 }}" @click="changeSlide({{ forloop.index0 }})" style="--height: {{ block.settings.height }}px;" :class=" slide == {{ forloop.index0 }} ? 'active' : '' " class="shrink-0 text-center w-fit h-[var(--height)] *:h-full *:w-auto *:mx-auto opacity-50 [&.active]:opacity-100 transition:opacity">
                                 {% if block.settings.image != blank %}

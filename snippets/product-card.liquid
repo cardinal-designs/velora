@@ -14,26 +14,26 @@
 
 <div class="group/card block relative" data-product-card>
   <div class="group/image block relative aspect-square overflow-hidden" data-product-card-image>
-    <div data-image class="relative w-full h-full bg-cover bg-center bg-no-repeat {% if settings.product_image_bg != blank and settings.product_image_multiply == true %} [&>img[data-first-image]]:mix-blend-multiply {% endif %}" style="{% if settings.product_image_bg != blank %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}">
+    <div data-image class="relative w-full h-full bg-cover bg-center bg-no-repeat [&>img[data-first-image]]:!object-contain [&>img[data-first-image]]:scale-75 {% if settings.product_image_bg != blank and settings.product_image_multiply == true %} [&>img[data-first-image]]:mix-blend-multiply {% endif %}" style="{% if settings.product_image_bg != blank %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}">
     {% if product_card_product.featured_image != blank %}
       {{ product_card_product.featured_image | image_url: width: 700 | image_tag: width: product_card_product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative', data-first-image: '' }}
       {% if product_card_product.images[1] != blank %}
-        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity group-hover/image:opacity-100' }}
+        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity duration-[600ms] ease-in-out group-hover/card:opacity-100' }}
       {% endif %}
     {% else %}
       <div class="w-full h-full bg-brown"> </div>
     {% endif %}
     </div>
 
-    <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue scale-[200%] group-hover/image:scale-100 transition-transform" class="absolute w-full h-full"> </div>
+    <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue rounded-[9%] scale-[200%] group-hover/card:scale-100 transition-transform" class="absolute w-full h-full"> </div>
 
     <a class="absolute top-0 left-0 w-full h-full" href="{{ product_card_product.url }}"> </a>
   </div>
 
-  <div class="mt-[22px]">
+  <div class="mt-[23px]">
     <div class="flex flex-col justify-start items-start">
       <div class="flex flex-row justify-between items-center gap-10 w-full">
-        <a href="{{ product_card_product.url }}" class="text-pangram-16 lg:text-pangram-20 leading-[30px]">
+        <a href="{{ product_card_product.url }}" class="text-pangram-16 lg:text-pangram-18 !leading-[30px] block">
           {{ split_product_title[0] | truncate: 16 }}
         </a>
         <p data-price class="lg:opacity-0 lg:group-hover/card:opacity-100 transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
@@ -45,7 +45,7 @@
         </p>
       </div>
       {% if split_product_title[1] != blank  %}
-        <a href="{{ product_card_product.url }}" class="text-arizona-18 lg:text-arizona-20">
+        <a href="{{ product_card_product.url }}" class="text-arizona-18 lg:text-arizona-18 mt-[1px] block">
           {{ split_product_title[1] }}
         </a>
       {% endif %}

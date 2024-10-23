@@ -30,6 +30,7 @@
         <div class="no-scrollbar overflow-page-width">
             <div class="w-fit flex flex-row justify-start items-start gap-[20px]">
                 {% for p in carousel_products %}
+                    {% if template == 'product' and p == product %}{% continue %}{% endif %}
                     {% if p.title == blank%}
                         {% continue %}
                     {% endif %}

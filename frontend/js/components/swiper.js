@@ -11,7 +11,7 @@ function swiperInit() {
               spaceBetween: 0,
               effect: "fade",
               autoplay: {
-                  delay: 3500,
+                  delay: 4000,
                   disableOnInteraction: false,
               },
               pagination: {

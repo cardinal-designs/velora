@@ -63,16 +63,16 @@ module.exports = {
       fontSize: {
         // Headings
         //h1
-        'arizona-80': ['80px', { lineHeight: '1', letterSpacing: '-0.03em', }],
+        'arizona-80': ['80px', { lineHeight: '1', letterSpacing: '-3px', }],
         //h2
-        'arizona-72': ['72px', { lineHeight: '1.2', letterSpacing: '-0.03em', }],
+        'arizona-72': ['72px', { lineHeight: '1.2', letterSpacing: '-3px', }],
         //h3
-        'arizona-60': ['60px', { lineHeight: '1.1', letterSpacing: '-0.0237em', }],
+        'arizona-60': ['60px', { lineHeight: '1.1', letterSpacing: '-2px', }],
         //h4
-        'arizona-48': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em', }],
-        'arizona-40': ['40px', { lineHeight: '1.1', letterSpacing: '-0.02em', }],
+        'arizona-48': ['48px', { lineHeight: '1.1', letterSpacing: '-2px', }],
+        'arizona-40': ['40px', { lineHeight: '1.1', letterSpacing: '-2px', }],
         //h5
-        'arizona-36': ['36px', { lineHeight: '1.2', letterSpacing: '-0.015em', }],
+        'arizona-36': ['36px', { lineHeight: '1.2', letterSpacing: '-2px', }],
         //h6
         'arizona-26': ['26px', { lineHeight: '1.2', letterSpacing: '-0.01em', }],
         'arizona-24': ['24px', { lineHeight: '1.2', letterSpacing: '-0.01em', }],

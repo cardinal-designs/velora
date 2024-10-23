@@ -4,18 +4,18 @@
             {% continue %}
         {% endif %}
 
-        <div class="relative w-full h-auto flex-1 overflow-hidden bg-[var(--background)] text-[var(--text)] aspect-square lg:aspect-[0.84/1]" style="{% render "color-variables", color: block.settings.color %}">
+        <div class="group/block [&:hover>img]:scale-105 relative w-full h-auto flex-1 overflow-hidden bg-[var(--background)] text-[var(--text)] aspect-square lg:aspect-[0.84/1]" style="{% render "color-variables", color: block.settings.color %}">
             {% if block.settings.image != blank %}
-                {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset' }}
+                {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset scale-100 transition-transform duration-500 ease-in-out' }}
             {% elsif block.settings.heading.featured_image != blank %}
-                {{ block.settings.heading.featured_image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset' }}
+                {{ block.settings.heading.featured_image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset scale-100 transition-transform duration-500 ease-in-out' }}
             {% endif %}
 
             <div class="bg-brown opacity-10 absolute top-0 left-0 w-full h-full {% if block.settings.overlay == false %}hidden{% endif %}"> </div>
 
             <div class="w-full h-full relative px-[min(65px,3.75vw)] py-[min(60px,3.5vw)] flex flex-col justify-end items-start">
                 <div class="flex flex-row justify-between items-center gap-20 w-full">
-                    <h2 style="--size: 40px;" class="text-arizona-custom lg:text-arizona-80" data-animate>
+                    <h2 style="--size: 40px;" class="text-arizona-custom lg:text-arizona-80 peer" data-animate>
                         {% if block.settings.title != blank %}
                             {{ block.settings.title }}
                         {% else %}
@@ -23,7 +23,7 @@
                         {% endif %}
                     </h2>
 
-                    <a href="{{ block.settings.heading.url }}" class="svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold" data-animate>
+                    <a href="{{ block.settings.heading.url }}" class=" svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold peer-hover:svg-link-peer-hover" data-animate>
                         Shop Now
                         <span>{% render 'link-arrow' %}</span>
                     </a>

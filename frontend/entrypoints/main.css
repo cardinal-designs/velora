@@ -57,7 +57,7 @@
     }
 
     [class*='text-pangram-'] {
-        @apply font-pangram uppercase font-semibold;
+        @apply font-pangram uppercase font-semibold tracking-[0.1em];
     }
 
     .font-pangram {
@@ -99,8 +99,8 @@
 
     .text-link {
         @apply relative overflow-x-clip block
-        before:absolute before:content-[""] before:w-full before:h-[2px] before:bg-[var(--text)] before:left-0 before:top-full
-        after:absolute after:content-[""] after:w-full after:h-[2px] after:bg-blue after:left-0 after:top-full after:-translate-x-full after:transition-transform
+        before:absolute before:content-[""] before:w-full before:h-[1px] before:bg-[var(--text)] before:left-0 before:top-[calc(100%_-_3px)]
+        after:absolute after:content-[""] after:w-full after:h-[2px] after:bg-blue after:left-0 after:top-[calc(100%_-_3px)] after:-translate-x-full after:transition-transform
         hover:after:translate-x-0
     }
 
@@ -126,6 +126,10 @@
         @apply flex-nowrap whitespace-nowrap [&_svg_circle]:fill-transparent [&:hover_svg_circle]:fill-[var(--text)] [&:hover_svg_path]:fill-[var(--background)] [&_svg_circle]:transition-[fill]
     }
 
+    .svg-link-peer-hover {
+      @apply [&_svg_circle]:fill-[var(--text)] [&_svg_path]:fill-[var(--background)]
+    }
+
     .field__label {
         @apply mb-5 block text-oracle-18;
     }
@@ -144,6 +148,10 @@
   }
 
   @layer utilities {
+    .pause {
+      animation-play-state: paused;
+    }
+
     .inset {
       @apply absolute top-0 right-0 bottom-0 left-0;
     }
@@ -462,18 +470,19 @@
   }
 
   .swiper-hero-pagination {
-    @apply flex flex-row justify-end items-center gap-20;
+    @apply flex flex-col justify-end items-center gap-20 top-0 right-0 !w-fit h-full bottom-auto !left-auto;
   }
 
   .swiper-hero-bullet {
-    @apply w-[max(58px,4vw)] h-[2px] bg-cream/50 overflow-clip opacity-100 border-none m-0
-    top-auto left-auto bottom-[max(60px,4vw)] right-[max(60px,4vw)]
+    @apply h-[max(58px,4vw)] w-[2px] bg-cream/30 overflow-clip opacity-100 border-none m-0
+    top-auto left-auto bottom-[max(60px,4vw)] right-[max(60px,4vw)] rounded-none
     relative overflow-x-clip block
-    before:absolute before:content-[""] before:w-full before:h-full before:bg-cream/50 before:left-0 before:top-0
-    after:absolute after:content-[""] after:w-full after:h-full after:bg-cream after:left-0 after:top-0 after:-translate-x-full after:transition-opacity
-    [&.swiper-pagination-bullet-active]:after:translate-x-0
-    [&.swiper-pagination-bullet-active]:after:duration-[3500ms]
+    before:absolute before:content-[""] before:w-full before:h-full before:bg-cream/40 before:left-0 before:top-0
+    after:absolute after:content-[""] after:w-full after:h-full after:bg-cream after:left-0 after:top-0 after:translate-y-full after:transition-opacity after:ease-linear
+    [&.swiper-pagination-bullet-active]:after:translate-y-0
+    [&.swiper-pagination-bullet-active]:after:duration-[4200ms]
     [&.swiper-pagination-bullet-active]:after:transition-transform
+    [&.swiper-pagination-bullet-active]:after:ease-linear
   }
 
   /* --- RICHTEXT / WYSIWYG --- */
@@ -590,7 +599,8 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .shopify-section .jdgm-write-rev-link {
-  @apply border-[var(--text)] rounded-[10px] bg-[var(--background)] py-[8px] px-[17px] text-oracle-16
+  @apply border-[var(--text)] rounded-[10px] bg-[var(--background)] py-[8px] px-[17px] text-oracle-16 transition-all
+  md:hover:bg-[var(--button)] md:hover:text-[var(--button\_text)] md:hover:border-[var(--button\_text)];
 }
 
 .shopify-section .jdgm-rev-widg__sort-wrapper {
@@ -605,8 +615,12 @@ input[type="search"]::-webkit-search-results-decoration {
   @apply hidden
 }
 
+.shopify-section .jdgm-rev__buyer-badge-wrapper {
+  @apply block
+}
+
 .shopify-section .jdgm-rev__buyer-badge {
-  @apply text-[var(--text)] bg-[var(--background)] text-oracle-13 lg:text-oracle-18 font-oracle font-[350] opacity-75
+  @apply text-[var(--text)] bg-[var(--background)] text-oracle-13 lg:text-oracle-18 font-oracle font-[350] opacity-75 px-0 mb-[13px]
 }
 
 .shopify-section .jdgm-rev__author {
@@ -626,7 +640,11 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .shopify-section .jdgm-rev {
-  @apply border-b border-t-0 border-[var(--text)] m-0 py-20
+  @apply border-b border-t-0 border-[var(--text)] m-0 pt-[18px] pb-25 pr-[32px]
+}
+
+.shopify-section .jdgm-rev__rating {
+  @apply leading-[1]
 }
 
 .shopify-section .jdgm-rev__rating,
