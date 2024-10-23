@@ -67,6 +67,26 @@
     ]
   },
   {
+   "name": "Product",
+   "settings": [
+    {
+      "type": "image_picker",
+      "id": "product_image_bg",
+      "label": "Product Image Background"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_image_multiply",
+      "label": "Set image to multiply",
+      "default": false
+    },
+    {
+      "type": "paragraph",
+      "content": "If the first image for all products has a white background, use this checkbox to allow the texture background to show through"
+    }
+   ] 
+  },
+  {
     "name": "Search",
     "settings": [
       {

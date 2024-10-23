@@ -45,8 +45,15 @@
           <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
             <div class="loading-overlay"></div>
             <div class="text-center">
-              <p class="mb-20 text-oracle-18">{{ settings.no_results_text }}</p>
-              <a href="{{ routes.search_url }}" class="button">Clear Filters</a>
+              <p class="text-arizona-26">{{ settings.no_results_text }}</p>
+            {% if settings.no_results_links != blank %}
+              <div class="flex flex-col lg:flex-row justify-center items-center text-oracle-16 gap-20 mt-[13px]">
+                {% for link in settings.no_results_links %}
+                  <a href="{{ link.url }}" class="">{{ link.title }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+              {% comment %} <a href="{{ routes.search_url }}" class="button">Clear Filters</a> {% endcomment %}
             </div>
           </div>
         {% else %}

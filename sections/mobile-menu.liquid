@@ -1,6 +1,6 @@
 <script src="{{ 'mobile-menu.js' | asset_url }}" defer="defer"></script>
 
-<mobile-menu>
+<mobile-menu x-data="{ searchOpen: false }">
   <div class="w-full h-full fixed below-nav left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-30 bg-transparent -translate-y-full transition-transform aria-unhidden:translate-y-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
     {% comment %} <div class="p-20 flex justify-between items-center border-b-1 border-black">
       <h2 class="text-m-h4">Menu</h2>
@@ -8,7 +8,7 @@
         {% render 'icon' icon: 'close' %}
       </button>
     </div> {% endcomment %}
-    <div class="pt-20 px-20 pb-30 flex flex-col bg-cream text-brown rounded-b-[10px] mx-25">
+    <div x-data="{ search: '' }" class="pt-20 px-20 pb-30 flex flex-col bg-cream text-brown rounded-b-[10px] mx-25">
       {% if section.settings.enable_search %}
         <predictive-search class="w-full page-width max-w-custom mx-auto px-0 lg:px-25 flex flex-col justify-start items-center mb-35 lg:mb-0" style="--width: 1070px;">
           <div class="w-full pt-35 lg:pt-70 relative">
@@ -21,7 +21,7 @@
                       <path d="M5 11L1 15" stroke="#2B1D0A" stroke-linecap="round"/>
                       </svg>
                   </span>                    
-                <input x-ref="searchInput" x-model="search" class="peer w-full px-10 text-h5 bg-transparent appearance-none placeholder:text-[var(--text)]/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+                <input @click=" searchOpen = true" x-ref="searchInput" x-model="search" class="peer w-full px-10 text-h5 bg-transparent appearance-none placeholder:text-[var(--text)]/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-[var(--text)]" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
                 <button type="submit" class=""></button>
   
                 <button 
@@ -32,14 +32,14 @@
                   class="underline text-oracle-16 peer-placeholder-shown:opacity-0">Clear</button>
               </div>
             </form>
-            <button class="p-5 absolute bottom-5 right-0" data-close-search>
+            <button class="p-5 absolute bottom-5 right-0" @click=" searchOpen = false">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.66699 13.3334L7.50033 7.50008M13.3337 1.66675L7.50033 7.50008M7.50033 7.50008L1.66699 1.66675M7.50033 7.50008L13.3337 13.3334" stroke="#2B1D0A" stroke-linecap="round"/>
               </svg>
               </button>
           </div>
-          <div class="predictive-search h-full" style="">
-              <div class="hidden py-30 lg:flex flex-col justify-start items-center h-full">
+          <div x-show=" searchOpen " class="predictive-search h-full" style="">
+              <div class="py-30 lg:flex flex-col justify-start items-center h-full">
                   <div class="flex flex-col-reverse lg:grid gap-40 md:grid-cols-4 gap-x-30">
                       <div class="col-span-3">
                           <h3 class="mb-20 pb-10 text-arizona-26">Popular Products</h3>
@@ -78,68 +78,70 @@
         </predictive-search>
       {% endif %}
 
-      <ul class="text-arizona-26 flex flex-col justify-start items-start gap-20 [&_li]:w-full" role="list">
-        {% for link in section.settings.menu.links %}
-          <li>
-            {% if link.links != blank %}
-              <button class="dropdown-button group/button w-full flex flex-row justify-between items-center" href="{{ link.url }}">
-                <span>{{ link.title }}</span>
-                <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
-                  <span class="[&_svg]:rotate-90">{% render 'link-arrow' | color: 'currentColor' %}</span>
-                </div>
-              </button>
-              <ul class="dropdown hidden text-oracle-14 leading-[30px]" role="list">
-                <li class="pt-[13px] grid grid-cols-2 grid-flow-row-dense w-full gap-[23px]">
-                  {% for child_link in link.links %}
-                    {% if child_link.links != blank %}
-                      <ul class="flex flex-col [&:hover_li]:opacity-50 gap-5">
-                        {% for grandchild_link in child_link.links %}
-                          <li class="">
-                            <a href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% else %}
-                      <li class="pb-5 last:pb-20">
-                        <a class="" href="{{ child_link.url }}">{{ child_link.title }}</a>
-                      </li>
-                    {% endif %}
-                  {% endfor %}
-                </li>
-              </ul>
-            {% else %}
-              <a class="block" href="{{ link.url }}">{{ link.title }}</a>
-            {% endif %}
-          </li>
-        {% endfor %}
-        {% if shop.customer_accounts_enabled %}
-          <li>
-            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="">
-              <span class="">Account</span>
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-      {% if section.settings.secondary_menu != blank %}
-        <div class="pt-20 grid grid-cols-2 grid-flow-row-dense w-full gap-[23px] text-oracle-14 leading-[30px]">
-        {% for link in section.settings.secondary_menu.links %}
-          <div class="{% if link.title == "Social" or link.title == "social" %}basis-full w-full lg:basis-auto lg:w-auto{% else %}{% endif %} flex-1">
-            {% comment %} <h5 class="text-arizona-26 mb-10">{{ link.title }}</h5> {% endcomment %}
-             {% if link.links != blank %}
-              <ul class="flex gap-5 flex-col">
-                {% for child_link in link.links %}
-                  <li>
-                    <a href="{{ child_link.url }}" {% if child_link.type == 'http_link' %} target="_blank" {% endif %} class="underline-offset-2 hover:underline{% if child_link.active %} active{% endif %}">
-                        <span>{{ child_link.title }}</span>
-                    </a>
+      <div x-show="! searchOpen">
+        <ul class="text-arizona-26 flex flex-col justify-start items-start gap-20 [&_li]:w-full" role="list">
+          {% for link in section.settings.menu.links %}
+            <li>
+              {% if link.links != blank %}
+                <button class="dropdown-button group/button w-full flex flex-row justify-between items-center" href="{{ link.url }}">
+                  <span>{{ link.title }}</span>
+                  <div class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+                    <span class="[&_svg]:rotate-90">{% render 'link-arrow' | color: 'currentColor' %}</span>
+                  </div>
+                </button>
+                <ul class="dropdown hidden text-oracle-14 leading-[30px]" role="list">
+                  <li class="pt-[13px] grid grid-cols-2 grid-flow-row-dense w-full gap-[23px]">
+                    {% for child_link in link.links %}
+                      {% if child_link.links != blank %}
+                        <ul class="flex flex-col [&:hover_li]:opacity-50 gap-5">
+                          {% for grandchild_link in child_link.links %}
+                            <li class="">
+                              <a href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% else %}
+                        <li class="pb-5 last:pb-20">
+                          <a class="" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
                   </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
+                </ul>
+              {% else %}
+                <a class="block" href="{{ link.url }}">{{ link.title }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+          {% if shop.customer_accounts_enabled %}
+            <li>
+              <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="">
+                <span class="">Account</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+        {% if section.settings.secondary_menu != blank %}
+          <div class="pt-20 grid grid-cols-2 grid-flow-row-dense w-full gap-[23px] text-oracle-14 leading-[30px]">
+          {% for link in section.settings.secondary_menu.links %}
+            <div class="{% if link.title == "Social" or link.title == "social" %}basis-full w-full lg:basis-auto lg:w-auto{% else %}{% endif %} flex-1">
+              {% comment %} <h5 class="text-arizona-26 mb-10">{{ link.title }}</h5> {% endcomment %}
+              {% if link.links != blank %}
+                <ul class="flex gap-5 flex-col">
+                  {% for child_link in link.links %}
+                    <li>
+                      <a href="{{ child_link.url }}" {% if child_link.type == 'http_link' %} target="_blank" {% endif %} class="underline-offset-2 hover:underline{% if child_link.active %} active{% endif %}">
+                          <span>{{ child_link.title }}</span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
           </div>
-        {% endfor %}
-        </div>
-      {% endif %}
+        {% endif %}
+      </div>
     </div>
   </div>
 </mobile-menu>
