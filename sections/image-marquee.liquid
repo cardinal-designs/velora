@@ -1,5 +1,5 @@
 {% capture marquee_contents %}
-    <div class="w-[985px] h-[293px] pr-60 flex-shrink-0 whitespace-nowrap animate-marquee-slow relative md:w-[2100px] md:h-[640px]">
+    <div class="w-[985px] h-[293px] pr-60 flex-shrink-0 whitespace-nowrap animate-marquee-slow relative md:w-[2100px] md:h-[640px] hover:[animation-play-state:paused]">
         {% for block in section.blocks %}
             {% assign classes = 'w-[193px] h-[137px] left-[35px] top-0 md:w-[422px] md:h-[300px] md:left-[75px]' %}
             {% case forloop.index %}
