@@ -4,7 +4,7 @@
             {% continue %}
         {% endif %}
 
-        <div class="group/block [&:hover>img]:scale-105 relative w-full h-auto flex-1 overflow-hidden bg-[var(--background)] text-[var(--text)] aspect-square lg:aspect-[0.84/1]" style="{% render "color-variables", color: block.settings.color %}">
+        <div class="group/block [&:hover>img]:scale-105 relative w-full h-auto flex-1 overflow-hidden bg-[var(--background)] text-[var(--text)] aspect-square lg:aspect-[0.84/1] lg:max-h-[1070px ]" style="{% render "color-variables", color: block.settings.color %}">
             {% if block.settings.image != blank %}
                 {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset scale-100 transition-transform duration-500 ease-in-out' }}
             {% elsif block.settings.heading.featured_image != blank %}
