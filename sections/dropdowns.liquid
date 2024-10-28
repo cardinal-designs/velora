@@ -1,5 +1,5 @@
 <div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px]" style="{% render "color-variables", color: section.settings.color %}">
-    <div x-data="{ open: 1, toggle(index){ if (this.open == !index ? slideToggle($root.querySelector('.accordion-content')) : ''); this.open = index } }" class="page-width flex flex-col justify-start items-center lg:grid grid-cols-12 gap-[5vw]">
+    <div x-data="{ open: 1, hovered: 0, toggle(index){ if (this.open == !index ? slideToggle($root.querySelector('.accordion-content')) : ''); this.open = index } }" class="page-width flex flex-col justify-start items-center lg:grid grid-cols-12 gap-[5vw]">
         <div class="lg:col-span-7 w-full">
             {% if section.settings.heading!= blank %}
                 <h6 data-animate class="text-pangram-12 lg:text-pangram-14 leading-[30px] lb-[8px] lg:mb-25">{{ section.settings.heading}}</h6>
@@ -8,7 +8,7 @@
             {% if section.blocks != blank %}
                 <div class="">
                     {% for block in section.blocks %}
-                        <div class="group/accordion border-b border-brown first-of-type:border-t" :class="open == {{ forloop.index }} ? 'active' : '' " >
+                        <div @mouseenter=" hovered = {{ forloop.index }}" @mouseleave=" hovered = open " class="group/accordion border-b border-brown first-of-type:border-t" :class="open == {{ forloop.index }} ? 'active' : '' " >
                             <button @click="toggle({{ forloop.index }})" class="accordion-header w-full grid grid-cols-[22px,1fr] lg:grid-cols-[max(150px,18vw),_1fr] gap-x-50 py-10  lg:pt-[18px] lg:pb-[22px]">
                                 <div class="w-[22px] lg:w-[44px] [&_svg]:w-full">
                                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,10 +18,10 @@
                                 </div>
                                     
                                 <div class="flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:items-center flex-wrap text-left w-full gap-10">
-                                    <h4 data-animate style="--size: 28px;" class="text-arizona-custom lg:text-arizona-48 whitespace-nowrap">{{ block.settings.heading }}</h4>
+                                    <h4 data-animate style="--size: 28px;" class="text-arizona-custom lg:text-arizona-48 whitespace-nowrap peer">{{ block.settings.heading }}</h4>
 
                                     {% if block.settings.button_label != blank and block.settings.button_link != blank %}
-                                        <div class="hidden lg:group-[.active]/accordion:block">
+                                        <div class="hidden lg:group-[.active]/accordion:block peer-[:hover_.svg-link]:svg-link-peer-hover">
                                             <a href="{{ block.settings.button_link }}" class="svg-link text-oracle-14 lg:text-oracle-16 leading-[30px] flex flex-row justify-start items-center gap-[9px]">
                                                 {{ block.settings.button_label }}
                                                 <span>{% render 'link-arrow' %}</span>
@@ -63,12 +63,12 @@
             {% endif %}
         </div>
 
-        <div class="col-span-5 hidden lg:flex flex-col justify-center items-center">
+        <div class="col-span-5 hidden lg:flex flex-col justify-center items-center relative">
             {% if section.blocks != blank %}
-                <div class="w-full h-auto aspect-[0.93/1] rounded-[10px] overflow-hidden relative [&_.active]:z-[2]">
+                <div class="w-full h-auto aspect-[0.93/1] rounded-[10px] overflow-hidden relative [&_.active]:z-[2] [&_.active]:opacity-100 [&_.super-active]:z-[3] [&_.super-active]:opacity-100 [&_.super-active]:transition-opacity ">
                     {% for block in section.blocks %}
                         {% if block.settings.image != blank %}
-                            <div class="inset" :class="open == {{ forloop.index }} ? 'active' : '' ">
+                            <div class="inset opacity-0" :class="{ 'active': open == {{ forloop.index }}, 'super-active': hovered == {{ forloop.index }} }">
                             {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover'  }}
                             </div>
                         {% endif %}

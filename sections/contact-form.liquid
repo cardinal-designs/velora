@@ -7,7 +7,7 @@
                         <h2 class="text-arizona-custom lg:text-arizona-48" style="--size: 40px;">{{ section.settings.heading }}</h2>
                     {% endif %}
                     {% if section.settings.text != blank %}
-                        <div class="rte max-w-custom w-full mt-25 ml-auto pl-15 text-oracle-14 text-right whitespace-pre-wrap [&_p]:mb-10 lg:text-oracle-18 xl:mt-[45px]" style="--width: 525px;">{{ section.settings.text }}</div>
+                        <div class="rte max-w-custom w-full mt-25 ml-auto [&_p:first-of-type]:indent-8 text-oracle-14 whitespace-pre-wrap [&_p]:mb-10 lg:text-oracle-18 xl:mt-[45px]" style="--width: min(503px, 73%);">{{ section.settings.text }}</div>
                     {% endif %}
                 </div>
                 {% form 'contact', id: 'ContactForm' %}
