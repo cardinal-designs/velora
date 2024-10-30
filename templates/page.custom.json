@@ -36,7 +36,8 @@
           "settings": {
             "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "scroll_to": ""
           }
         },
         "text_UG8wmg": {
@@ -47,7 +48,8 @@
             "heading": "Talk To An Expert",
             "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their  design vision.",
             "button_label": "Start Custom Inquiry",
-            "button_link": "shopify://pages/custom",
+            "button_link": "",
+            "scroll_to": "#shopify-section-template--18643328958710__contact_form_YfQrzt",
             "inline_button": false
           }
         }
