@@ -10,11 +10,11 @@
 
     <div class="max-w-custom w-full mx-auto relative md:pl-30" style="--width: 1270px;">
         {% if section.settings.heading != blank %}
-            <h2 data-animate class="text-pangram-12 leading-8 whitespace-pre text-center mb-30 md:mb-[77px] md:text-pangram-14 md:leading-none">{{ section.settings.heading }}</h2>
+            <h2 data-animate data-individual class="text-pangram-12 leading-8 whitespace-pre text-center mb-30 md:mb-[77px] md:text-pangram-14 md:leading-none">{{ section.settings.heading }}</h2>
         {% endif %}
         {% if section.settings.text_1 != blank %}
             <div class="max-w-custom w-full pr-30" style="--width: 730px;">
-                <p data-animate class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_1 }}</p>
+                <p data-animate data-individual class="text-arizona-26 tracking-[-1px] md:text-arizona-36 md:tracking-[-1.5px]">{{ section.settings.text_1 }}</p>
             </div>
         {% endif %}
         {% if section.settings.text_2 != blank %}

@@ -12,10 +12,15 @@ export function initLoadingAnimations() {
       for (let count = 0; count < elements.length; count++) {
         // elements[count].setAttribute('style', 'transition-delay: ' + count * 0.07 + 's');
         elements[count].style.transitionDelay = `${count * 0.07}s`
+
+        if(elements[count].hasAttribute('data-individual')) {
+          observer.observe(elements[count])
+        }
       }
   
       observer.observe(section)
     });
+
   }
   
   function callback(entries, observer) {

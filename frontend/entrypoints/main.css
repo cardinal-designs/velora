@@ -71,7 +71,12 @@
         transition: opacity 0.5s ease;
       }
 
-      html.enable-animations[data-editor-open="false"] .shopify-section.animated [data-animate] {
+      html.enable-animations[data-editor-open="false"] .shopify-section.animated [data-animate]:not([data-individual]) {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      html.enable-animations[data-editor-open="false"] .shopify-section [data-animate][data-individual].animated {
         opacity: 1;
         transform: translateY(0);
       }

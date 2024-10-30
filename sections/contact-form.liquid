@@ -50,9 +50,9 @@
                         </textarea>
                 
                         {% if form.posted_successfully? %}
-                            <div class="mt-10 text-oracle-14" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+                            <div class="mt-10 text-oracle-16" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
                         {% elsif form.errors %}
-                            <div class="mt-10 text-oracle-14 text-error">{{ form.errors | default_errors }}</div>
+                            <div class="mt-10 text-oracle-16 text-error">{{ form.errors | default_errors }}</div>
                         {% endif %}
                     </div>
               
