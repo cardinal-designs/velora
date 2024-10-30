@@ -1,21 +1,165 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "floating-text-images": {
+      "type": "floating-text-images",
       "settings": {
+        "small_image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-47-750x750_1.jpg",
+        "large_image": "shopify://shop_images/Stocksy_comp_watermarked_4095181.jpg",
+        "text": "We see ourselves as more than a shop, but a partner to our customers and trade professionals. We understand the power that lighting can have over a space, so we ensure that each fixture we sell brings out the best light wherever it's placed, and we'll do anything we can to make it happen.",
+        "floating_text_1": "Effortless",
+        "floating_text_2": "customization",
+        "floating_text_3": "&  prototyping"
+      }
+    },
+    "offset_text_cqKUha": {
+      "type": "offset-text",
+      "settings": {
+        "heading": "Detailed                difference",
+        "text_1": "We offer a wide range of customization options for our fixtures, including adjustments to dimensions, finishes, and the number of sockets. Additionally, if you have a specific idea in mind, we are happy to work with you to create a bespoke fixture that meets your needs, as long as it falls within our production capabilities.",
+        "text_2": "Minor customizations typically do not affect the production timeline or cost. Moreover, we provide complimentary photos of a completed prototype for your approval upon request. This service is usually completed within 48 hours."
+      }
+    },
+    "image_text_JPXG8x": {
+      "type": "image-text",
+      "blocks": {
+        "image_bw3WN6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "text_UG8wmg": {
+          "type": "text",
+          "settings": {
+            "title": "FIND YOUR FIT",
+            "title_r": "",
+            "heading": "Talk To An Expert",
+            "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their  design vision.",
+            "button_label": "Start Custom Inquiry",
+            "button_link": "shopify://pages/custom",
+            "inline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "image_bw3WN6",
+        "text_UG8wmg"
+      ],
+      "settings": {
+        "color": "dark",
+        "layout": "b",
+        "layout_mobile": "a",
+        "image": "shopify://shop_images/3d9b32a4ddcf4e3f4f94e145aff6c390.jpg"
+      }
+    },
+    "faq_zUUXCU": {
+      "type": "faq",
+      "blocks": {
+        "faq_XNDywF": {
+          "type": "faq",
+          "settings": {
+            "heading": "Is there a minimum order quantity?",
+            "text": "Lorem ipsum"
+          }
+        },
+        "faq_DxBptz": {
+          "type": "faq",
+          "settings": {
+            "heading": "How do I place an order?",
+            "text": "Lorem ipsum"
+          }
+        },
+        "faq_BiEt6Y": {
+          "type": "faq",
+          "settings": {
+            "heading": "How do I get in touch with questions?",
+            "text": "Lorem ipsum"
+          }
+        },
+        "faq_RAkkDy": {
+          "type": "faq",
+          "settings": {
+            "heading": "What shipping options are available?",
+            "text": "Lorem ipsum"
+          }
+        }
+      },
+      "block_order": [
+        "faq_XNDywF",
+        "faq_DxBptz",
+        "faq_BiEt6Y",
+        "faq_RAkkDy"
+      ],
+      "settings": {
+        "color": "light",
+        "heading": "frequently asked questions"
+      }
+    },
+    "numbered_text_blocks_wM9t8w": {
+      "type": "numbered-text-blocks",
+      "blocks": {
+        "block_iDjyaq": {
+          "type": "block",
+          "settings": {
+            "title": "In house design <br>and fabrication",
+            "text": "<p>We take pride in designing and fabricating everything in-house. By overseeing every step of the process, from concept to creation, we guarantee unique, custom lighting solutions that perfectly illuminate your spaces.</p>"
+          }
+        },
+        "block_zREzBf": {
+          "type": "block",
+          "settings": {
+            "title": "Exclusive trade pricing",
+            "text": "<p>Flat discount across our catalog including custom orders, no minimums.</p>"
+          }
+        },
+        "block_nXyPgT": {
+          "type": "block",
+          "settings": {
+            "title": "Never discontinued",
+            "text": "<p>Ever spec’d something for a project only to find out down the road it has been discontinued? That won’t happen with us since everything is made to order. If you’ve purchased a fixture from us before and even if the item has been removed from our catalog, we can still make it for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_iDjyaq",
+        "block_zREzBf",
+        "block_nXyPgT"
+      ],
+      "settings": {
+        "color": "dark",
+        "title_top": "Custom",
+        "title_bottom": "& Curated",
+        "image": "shopify://shop_images/MAISON-NICOLE-PUBLI-MILK-74-scaled-1366x1366.jpg"
+      }
+    },
+    "contact_form_YfQrzt": {
+      "type": "contact-form",
+      "settings": {
+        "color": "light",
+        "heading": "Start Your Custom Inquiry",
+        "text": "<p>         Process lorem customization timeline and expectations how to contact ipsum lorem dolor sit amet melior </p>",
+        "disclaimer": "This site is protected by hCaptcha and the hCaptcha Privacy Policy and Terms of Service apply.",
+        "image": "shopify://shop_images/MAISON-NICOLE-PUBLI-MILK-41-750x750.jpg"
       }
     }
   },
   "order": [
-    "main"
+    "floating-text-images",
+    "offset_text_cqKUha",
+    "image_text_JPXG8x",
+    "faq_zUUXCU",
+    "numbered_text_blocks_wM9t8w",
+    "contact_form_YfQrzt"
   ]
 }
