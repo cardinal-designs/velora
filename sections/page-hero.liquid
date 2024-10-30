@@ -1,10 +1,58 @@
 <div>
     <div class="px-25 py-20 bg-brown md:px-40 md:py-30">
         <div class="pb-[175%] relative overflow-hidden rounded-[10px] md:pb-[53%]">
-            {% if section.settings.image != blank %}
+            {% if section.settings.video != blank %}
+                {{ section.settings.video | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center', image_size: '1000x'  }}
+            {% comment %} {% elsif section.settings.video_url %}
+                {%- if section.settings.video_url contains 'youtube.com/watch' -%}
+                    {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+                    {%- assign video_id = video_id[1] | split: '&' | first -%}
+                    <div
+                      id="YouTubeVideo-{{ section.id }}"
+                      data-section-id="{{ section.id }}"
+                      class="video-div absolute top-0 left-0 w-full h-full"
+                      data-type="youtube"
+                      data-video-player
+                      data-video-id="{{ video_id }}"></div>
+                  {%- endif -%}
+              
+                  {%- if section.settings.video_url contains 'youtu.be/' -%}
+                    {%- assign video_id = section.settings.video_url | split: '.be/' -%}
+                    {%- assign video_id = video_id[1] | split: '&' | first -%}
+                    <div
+                      id="YouTubeVideo-{{ section.id }}"
+                      data-section-id="{{ section.id }}"
+                      class="video-div absolute top-0 left-0 w-full h-full"
+                      data-type="youtube"
+                      data-video-player
+                      data-video-id="{{ video_id }}"></div>
+                  {%- endif -%}
+              
+                  {%- if section.settings.video_url contains 'vimeo.com' -%}
+                    {%- assign video_id = section.settings.video_url | split: '.com/' -%}
+                    {%- assign video_id = video_id[1] | split: '/' | first -%}
+                    <div
+                      id="Vimeo-{{ section.id }}"
+                      data-section-id="{{ section.id }}"
+                      class="video-div absolute top-0 left-0 w-full h-full"
+                      data-type="vimeo"
+                      data-video-player
+                      data-video-id="{{ video_id }}"></div>
+                  {%- endif -%}
+              
+                  {%- if section.settings.video_url contains '.mp4' or section.settings.video_url contains '.MP4' -%}
+                    <video
+                      id="Mp4Video-{{ section.id }}"
+                      data-section-id="{{ section.id }}"
+                      class="video-div absolute top-0 left-0 w-full h-full"
+                      src="{{ section.settings.video_url }}"
+                      data-type="mp4"
+                      loop muted playsinline autoplay></video>
+                  {%- endif -%} {% endcomment %}
+            {% elsif section.settings.image != blank %}
                 {{ section.settings.image | image_url: width: 2000 | image_tag: preload: true, width: section.settings.image.width, class: 'w-full h-full inset object-cover object-center', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
                 {% if section.settings.mobile_image != blank %}
-                    {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: preload: true, width: slide.mobile_image.width, class: 'w-full h-full inset object-cover object-center block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
+                    {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: preload: true, width: section.settings.mobile_image.width, class: 'w-full h-full inset object-cover object-center block md:hidden', sizes: '100vw', widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000' }}
                 {% endif %}
             {% endif %}
 
@@ -28,6 +76,15 @@
         "name": "Page Hero",
         "settings": [
             {
+                "type": "inline_richtext",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "header",
+                "content": "Image"
+            },
+            {
                 "type": "image_picker",
                 "id": "image",
                 "label": "Image"
@@ -38,9 +95,22 @@
                 "label": "Mobile Image"
             },
             {
-                "type": "inline_richtext",
-                "id": "title",
-                "label": "Title"
+                "type": "header",
+                "content": "Video"
+            },
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Uploaded video"
+            },
+            {
+                "type": "video_url",
+                "id": "video_url",
+                "label": "Youtube or Vimeo hosted video",
+                "accept": [
+                  "youtube",
+                  "vimeo"
+                ]
             }
         ],
         "presets": [

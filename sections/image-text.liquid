@@ -28,11 +28,15 @@
 
                             {% if block.settings.heading != blank %}
                                 <div style="--size: 40px;" class="!leading-[1.2] text-arizona-custom md:text-arizona-48 xl:text-arizona-72">
-                                    {{ block.settings.heading }}{%- if block.settings.inline_button == true and block.settings.button_label != blank and block.settings.button_link != blank -%}
-                                        &nbsp;
+                                    {{ block.settings.heading }}{%- if block.settings.inline_button == true and block.settings.button_label != blank -%}
+                                        &nbsp;{% if block.settings.button_link != blank %}
                                         <a href="{{ block.settings.button_link }}" class="button button--large button--outline whitespace-nowrap mt-[28px] block w-full lg:mt-0 lg:inline-block lg:align-super lg:w-[80%]">
                                         {{ block.settings.button_label }}
-                                        </a>
+                                        </a>{%- elsif block.settings.scroll_to != blank -%}
+                                            <button onclick="document.querySelector('{{ block.settings.scroll_to }}').scrollIntoView({ behavior: 'smooth'})" class="button button--large button--outline whitespace-nowrap mt-[28px] block w-full lg:mt-0 lg:inline-block lg:align-super lg:w-[80%]">
+                                                {{ block.settings.button_label }}
+                                            </button>
+                                        {%- endif -%}
                                     {%- endif -%}
                                 </div>
                             {% endif %}
@@ -43,10 +47,16 @@
                                 </div>
                             {% endif %}
 
-                            {%- if block.settings.inline_button != true and block.settings.button_label != blank and block.settings.button_link != blank -%}
-                                <a href="{{ block.settings.button_link }}" class="button button--large button--outline whitespace-nowrap block w-full">
-                                {{ block.settings.button_label }}
-                                </a>
+                            {%- if block.settings.inline_button != true and block.settings.button_label != blank -%}
+                                {% if block.settings.button_link != blank %}
+                                    <a href="{{ block.settings.button_link }}" class="button button--large button--outline whitespace-nowrap block w-full">
+                                    {{ block.settings.button_label }}
+                                    </a>
+                                {% elsif block.settings.scroll_to != blank %}
+                                    <button onclick="document.querySelector('{{ block.settings.scroll_to }}').scrollIntoView({ behavior: 'smooth'})" class="button button--large button--outline whitespace-nowrap block w-full">
+                                        {{ block.settings.button_label }}
+                                    </button>
+                                {% endif %}
                             {%- endif -%}
 
                         </div>
@@ -65,10 +75,16 @@
                                     {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset'  }}
                                 {% endif %}
 
-                                {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
-                                    <a href="{{ block.settings.button_link }}" class="relative button button--outline button--large whitespace-nowrap block w-full lg:inline-block lg:align-super lg:w-[80%]">
-                                    {{ block.settings.button_label }}
-                                    </a>
+                                {%- if block.settings.button_label != blank -%}
+                                    {% if block.settings.button_link != blank %}
+                                        <a href="{{ block.settings.button_link }}" class="relative button button--outline button--large whitespace-nowrap block w-full lg:inline-block lg:align-super lg:w-[80%]">
+                                        {{ block.settings.button_label }}
+                                        </a>
+                                    {% elsif block.settings.scroll_to != blank %}
+                                        <button onclick="document.querySelector('{{ block.settings.scroll_to }}').scrollIntoView({ behavior: 'smooth'})" class="relative button button--outline button--large whitespace-nowrap block w-full lg:inline-block lg:align-super lg:w-[80%]">
+                                            {{ block.settings.button_label }}
+                                        </button>
+                                    {% endif %}
                                 {%- endif -%}
                             </div>
                         </div>
@@ -93,11 +109,17 @@
                                 <div class="text-oracle-18 text-left indent-8 flex flex-col gap-y-[28px] {% if section.settings.image != blank %}lg:max-w-[75%] mx-auto{% endif %}">
                                     {{ block.settings.text }}
 
-                                    {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                                    {%- if block.settings.button_label != blank -%}
                                         &nbsp;
-                                        <a href="{{ block.settings.button_link }}" class="relative button button--large whitespace-nowrap mx-auto block w-full">
-                                        {{ block.settings.button_label }}
-                                        </a>
+                                        {% if block.settings.button_link != blank %}
+                                            <a href="{{ block.settings.button_link }}" class="relative button button--large whitespace-nowrap mx-auto block w-full">
+                                            {{ block.settings.button_label }}
+                                            </a>
+                                        {% elsif block.settings.scroll_to != blank %}
+                                            <button onclick="document.querySelector('{{ block.settings.scroll_to }}').scrollIntoView({ behavior: 'smooth'})" class="relative button button--large whitespace-nowrap mx-auto block w-full">
+                                                {{ block.settings.button_label }}
+                                            </button>
+                                        {% endif %}
                                     {%- endif -%}
                                 </div>
                         </div>
@@ -193,6 +215,12 @@
                         "type": "url",
                         "id": "button_link",
                         "label": "Button Link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "scroll_to",
+                        "label": "Element to scroll to",
+                        "info": "Enter an element selector instead of a url link"
                     }
                 ]
             },
@@ -233,6 +261,12 @@
                         "type": "url",
                         "id": "button_link",
                         "label": "Button Link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "scroll_to",
+                        "label": "Element to scroll to",
+                        "info": "Enter an element selector instead of a url link"
                     },
                     {
                         "type": "checkbox",

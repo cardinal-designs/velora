@@ -1,4 +1,13 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
   "general": {
     "password_page": {
       "login_form_heading": "Enter store using password:",
@@ -99,7 +108,7 @@
   },
   "products": {
     "general": {
-      "color_swatch_trigger": "Finish",
+      "color_swatch_trigger": "Finish"
     },
     "product": {
       "add_to_cart": "Add to Cart",
@@ -142,8 +151,7 @@
       "xr_button": "View in your space",
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "include_taxes": "Tax included.",
-      "shipping_policy_html":
-      "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
     },
     "modal": {
       "label": "Media gallery"
@@ -398,6 +406,19 @@
       "expired": "Expired",
       "copy_code_success": "Code copied successfully",
       "print_gift_card": "Print"
+    }
+  },
+  "shopify": {
+    "collections": {
+      "sorting": {
+        "best_selling": "Best Sellers",
+        "az": "Alphabetically (A-Z)",
+        "za": "Alphabetically (Z-A)",
+        "price_ascending": "Price (Lowest)",
+        "price_descending": "Price (Highest)",
+        "date_ascending": "Oldest",
+        "date_descending": "Newest"
+      }
     }
   }
 }

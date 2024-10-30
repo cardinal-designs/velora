@@ -6,7 +6,7 @@
       <!-- Navigation -->
       {% if section.settings.menu != blank %}
         <nav class="flex h-full">
-          <ul class="hidden items-center gap-30 md:flex" role="list">
+          <ul class="hidden items-center gap-30 lg:gap-[37px] md:flex" role="list">
             {% for link in section.settings.menu.links %}
               {% assign downcased_link_title = link.title | downcase | strip %}
               {% assign mega_menu_names = '' %}
