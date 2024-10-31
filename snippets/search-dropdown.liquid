@@ -38,7 +38,7 @@
                                 {% for current_product in settings.search_products.products limit: 3 %}
                                     {% if current_product.title == blank %}{% continue %}{% endif %}
                                     <li id="predictive-search-option-collection-{{ forloop.index }}" class="" role="option" aria-selected="false">
-                                        {% render 'product-card', product_card_product: current_product, no_product_form: true %}
+                                        {% render 'product-card', product_card_product: current_product, no_product_form: true, container: 'search' %}
                                     </li>
                                 {% endfor %}
                             {% endif %}

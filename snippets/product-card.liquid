@@ -25,7 +25,7 @@
     {% endif %}
     </div>
 
-    <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue rounded-[9%] scale-[200%] group-hover/card:scale-100 transition-transform" class="absolute w-full h-full"> </div>
+    <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue rounded-[40px] scale-[200%] group-hover/card:scale-100 transition-transform" class="absolute w-full h-full"> </div>
     <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_10px)] h-[calc(100%_+_10px)] border-[10px] border-blue scale-[200%] group-hover/card:scale-100 transition-transform" class="absolute w-full h-full"> </div>
 
     <a class="absolute top-0 left-0 w-full h-full" href="{{ product_card_product.url }}"> </a>
@@ -34,10 +34,10 @@
   <div class="mt-[23px]">
     <div class="flex flex-col justify-start items-start">
       <div class="flex flex-row justify-between items-center gap-10 w-full">
-        <a href="{{ product_card_product.url }}" class="text-pangram-16 lg:text-pangram-18 !leading-[30px] block">
+        <a href="{{ product_card_product.url }}" class="{% if container == 'search' %}text-pangram-12 lg:text-pangram-16{% else %}text-pangram-16 lg:text-pangram-18 !leading-[30px]{% endif %} block">
           {{ split_product_title[0] | truncate: 16 }}
         </a>
-        <p data-price class="lg:opacity-0 lg:group-hover/card:opacity-100 transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
+        <p data-price class="lg:opacity-0 {% unless container == 'search' %} lg:group-hover/card:opacity-100 {% endunless %} transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
           {% if product_card_product.price_varies %}<span>from</span>{% endif %}
           {{ product_card_product.price | money_without_trailing_zeros }}
           {% if product_card_product.compare_at_price > product_card_product.price %}
@@ -46,7 +46,7 @@
         </p>
       </div>
       {% if split_product_title[1] != blank  %}
-        <a href="{{ product_card_product.url }}" class="text-arizona-18 lg:text-arizona-18 mt-[1px] block">
+        <a href="{{ product_card_product.url }}" class="{% if container == 'search' %}text-arizona-12 lg:text-arizona-16{% else %}text-arizona-18 lg:text-arizona-18{% endif %} mt-[1px] block">
           {{ split_product_title[1] }}
         </a>
       {% endif %}
