@@ -20,8 +20,15 @@
         </div>
     </div>
   
-    <div class="w-full pt-[43px]">
-        <div x-show="tab == 'addresses'" x-transition class="account-content" data-tab="addresses">
+    <div class="w-full pt-[43px] flex flex-col">
+        <div x-show="tab == 'addresses'" 
+            x-transition:enter="transition ease-out duration-400"
+            x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-0"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90"
+            class="account-content w-full" data-tab="addresses">
             <h2 class="text-arizona-24 lg:text-arizona-36 mb-[33px] lg:mb-[48px]">Billing Addresses</h2>
 
             <div data-customer-addresses>
@@ -29,7 +36,14 @@
             </div>
         </div>
         
-        <div x-show="tab == 'orders'" x-transition class="account-content" data-tab="orders">
+        <div x-show="tab == 'orders'" 
+            x-transition:enter="transition ease-out duration-400"
+            x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-0"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90"
+            class="account-content w-full" data-tab="orders">
             <h2 class="text-arizona-24 lg:text-arizona-36 mb-[26px] lg:mb-[48px]">Order History</h2>
 
             {% paginate customer.orders by 20 %}
