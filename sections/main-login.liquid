@@ -1,4 +1,4 @@
-<div class="login {% if section.settings.image != blank %} flex flex-col md:grid md:grid-cols-[0.6fr_0.4fr] md:items-center{% endif %}">
+<div class="login {% if section.settings.image != blank %} flex flex-col md:grid md:grid-cols-2 md:items-center{% endif %}">
     {% if section.settings.image != blank %}
       <div class="pb-full relative overflow-hidden h-full">
         {{ section.settings.image | image_url: width: 1600 | image_tag: class: "w-full h-full object-cover inset" }}
