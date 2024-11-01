@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "main-product",
@@ -87,7 +87,8 @@
           "settings": {
             "image": "shopify://shop_images/8ddbf5f7b6b5179ff8c7c21cc25c6793.jpg",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "scroll_to": ""
           }
         },
         "text_hn9bQf": {
@@ -99,6 +100,7 @@
             "text": "In the world of home decor, there’s an abundance of same-same options at the ready. We create truly unique, artisanal pieces that you can’t find anywhere else, lending a bespoke feel to the home that you can’t find anywhere else.",
             "button_label": "",
             "button_link": "",
+            "scroll_to": "",
             "inline_button": true
           }
         }
@@ -110,7 +112,8 @@
       "settings": {
         "color": "dark",
         "layout": "b",
-        "layout_mobile": "a"
+        "layout_mobile": "a",
+        "image": "shopify://shop_images/7d121cdd7e7c64233b23ae02ebcc9efd.jpg"
       }
     },
     "image_text_96Qp9G": {
@@ -125,6 +128,7 @@
             "text": "From mid-century to maximalist, our fixtures are crafted to last, and withstand the ebb and flow of home trends. While you’ll find clean, classic pieces, you’ll also discover unexpected intricacies that easily transition to fit within a multitude of tastes.",
             "button_label": "",
             "button_link": "",
+            "scroll_to": "",
             "inline_button": true
           }
         },
@@ -133,7 +137,8 @@
           "settings": {
             "image": "shopify://shop_images/7ed9e3f459f8ba0f62053882050d38e5.png",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "scroll_to": ""
           }
         }
       },
@@ -206,7 +211,8 @@
           "settings": {
             "image": "shopify://shop_images/9a29a891b8643b840fde97afafc1143a.jpg",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "scroll_to": ""
           }
         },
         "text_7tWHRj": {
@@ -218,6 +224,7 @@
             "text": "",
             "button_label": "Start Custom Inquiry",
             "button_link": "shopify://pages/custom",
+            "scroll_to": "",
             "inline_button": true
           }
         }
