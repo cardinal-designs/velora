@@ -567,6 +567,9 @@ var VariantSelects = class extends HTMLElement {
   renderProductInfo() {
     if(this.closest('[data-product-card]')){
 
+      const imageWrapper = this.closest('[data-product-card]').querySelector("[data-image]")
+      imageWrapper.classList.add("loading")
+
       let fetchUrl = new URL(`${this.dataset.url}`, window.shopUrl);
       let fetchParams = new URLSearchParams(fetchUrl.search);
       fetchParams.append('variant', `${this.currentVariant.id}`);
@@ -576,21 +579,17 @@ var VariantSelects = class extends HTMLElement {
       .then((response) => response.text())
       .then((responseText) => {
         const html = new DOMParser().parseFromString(responseText, 'text/html')
-        const productCard = this.closest("[data-product-card]")
 
-        const contentToReplace = [
-          {
-            selector: '[data-image]'
-          }
-          // {
-          //   selector: '[data-price]'
-          // }
-        ]
+        if(!html.querySelector('[data-image]')) return
+        const elementToReplace = imageWrapper.querySelector(`img`)
+        imageWrapper.insertBefore(html.querySelector(`img`), elementToReplace)
 
-        contentToReplace.forEach( c => {
-          if(!html.querySelector(c.selector)) return
-          productCard.querySelector(c.selector).innerHTML = html.querySelector(c.selector).innerHTML
-        })
+        imageWrapper.querySelector(`img`).addEventListener("load", () => {
+          imageWrapper.classList.remove("loading"); 
+          elementToReplace.remove()
+        },
+        {once: true}
+      )
 
       });
     } else {

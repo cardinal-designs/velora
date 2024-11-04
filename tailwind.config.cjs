@@ -81,7 +81,6 @@ module.exports = {
         'arizona-18': ['18px', { lineHeight: '1.1', letterSpacing: '0', }],
         //custom
         'arizona-custom': ['var(--size)', { lineHeight: '1'}],
-         // Mobile Headings
 
         // Body
         'body': ['18px', { lineHeight: '1.1', letterSpacing: '0', }],

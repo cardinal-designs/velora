@@ -24,6 +24,10 @@
     .no-js:not(html) {
       display: none !important;
     }
+
+    *:focus-visible {
+      @apply outline-1 outline-blue outline-offset-2 rounded-sm
+    }
   
     .page-width {
       @apply w-full max-w-1610 mx-auto px-25 md:px-30 lg:px-60;
@@ -678,6 +682,19 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 /* Loading Spinner */
+
+.loading-spinner {
+  @apply absolute top-half left-half w-50 h-50 -translate-x-half -translate-y-half opacity-0 z-[-1] transition-all
+}
+
+.loading-spinner__overlay {
+  @apply absolute top-0 left-0 w-full h-full opacity-0 z-[-1] transition-all bg-white/20 backdrop-blur-[1px]
+}
+
+.loading .loading-spinner,
+.loading .loading-spinner__overlay {
+  @apply opacity-100 z-[1]
+}
 
 .loading-overlay__spinner {
   top: 50%;

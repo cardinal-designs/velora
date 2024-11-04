@@ -14,7 +14,7 @@
             {% endif %}
             {% if section.settings.image != blank %}
                 <div class="rounded-10 overflow-hidden w-full h-auto">
-                    {{ section.settings.image | image_width: width: 800 | image_tag: class: "w-full h-full object-cover" }}
+                    {{ section.settings.image | image_url: width: 800 | image_tag: class: "w-full h-full object-cover" }}
                 </div>
             {% endif %}
             {% if section.settings.button_label != blank and section.settings.button_link != blank %}

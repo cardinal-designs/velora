@@ -16,13 +16,15 @@
   <div class="group/image block relative aspect-square overflow-hidden" data-product-card-image>
     <div data-image class="relative w-full h-full bg-cover bg-center bg-no-repeat [&>img[data-first-image]]:!object-contain [&>img[data-first-image]]:scale-75 {% if settings.product_image_bg != blank and settings.product_image_multiply == true %} [&>img[data-first-image]]:mix-blend-multiply {% endif %}" style="{% if settings.product_image_bg != blank %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}">
     {% if product_card_product.featured_image != blank %}
-      {{ product_card_product.featured_image | image_url: width: 700 | image_tag: width: product_card_product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative', data-first-image: '' }}
+      {{ product_card_product.featured_image | image_url: width: 700 | image_tag: width: product_card_product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover inset relative', data-first-image: '' }}
       {% if product_card_product.images[1] != blank %}
-        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity duration-[600ms] ease-in-out group-hover/card:opacity-100' }}
+        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity duration-[600ms] ease-in-out group-hover/image:opacity-100', data-hover-image: '' }}
       {% endif %}
     {% else %}
       <div class="w-full h-full bg-brown"> </div>
     {% endif %}
+
+    {% render 'loading-spinner', include_overlay: true %}
     </div>
 
     <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue rounded-[40px] scale-[200%] group-hover/card:scale-100 transition-transform" class="absolute w-full h-full"> </div>
