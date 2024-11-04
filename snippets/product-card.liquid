@@ -14,7 +14,7 @@
 
 <div class="group/card block relative" data-product-card>
   <div class="group/image block relative aspect-square overflow-hidden" data-product-card-image>
-    <div data-image class="relative w-full h-full bg-cover bg-center bg-no-repeat [&>img[data-first-image]]:!object-contain [&>img[data-first-image]]:scale-75 {% if settings.product_image_bg != blank and settings.product_image_multiply == true %} [&>img[data-first-image]]:mix-blend-multiply {% endif %}" style="{% if settings.product_image_bg != blank %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}">
+    <div data-image class="relative w-full h-full bg-cover bg-center bg-no-repeat [&>img[data-first-image]]:!object-contain [&>img[data-first-image]]:scale-70 {% if settings.product_image_bg != blank and settings.product_image_multiply == true %} [&>img[data-first-image]]:mix-blend-multiply {% endif %}" style="{% if settings.product_image_bg != blank %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}">
     {% if product_card_product.featured_image != blank %}
       {{ product_card_product.featured_image | image_url: width: 700 | image_tag: width: product_card_product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover inset relative', data-first-image: '' }}
       {% if product_card_product.images[1] != blank %}
