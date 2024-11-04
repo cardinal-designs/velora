@@ -103,7 +103,7 @@
                     <button 
                       @click="
                       {{ filter.label | handle }} == '{{  value.label }}' ? {{ filter.label | handle }} = '' : {{ filter.label | handle }} = '{{ value.label }}' ;
-                      $nextTick(() => { $refs.filterForm.dispatchEvent(new Event('change')) })" :class="{{ filter.label | handle }} == '{{ value.label }}' ? 'active' : '' " class="[&.active]:underline cursor-pointer">
+                      $nextTick(() => { $refs.filterForm.dispatchEvent(new Event('change')) })" :class="{{ filter.label | handle }} == '{{ value.label }}' ? 'active' : '' " class="[&.active]:underline underline-offset-4 cursor-pointer">
                       {{ value.label | escape }}
                     </button>
                   </div>

@@ -214,6 +214,10 @@
       @apply min-h-[max(calc(100vh_-_var(--nav-height)_-_var(--announcement-bar-height)),500px)]
     }
 
+    .screen-height-with-announcement {
+      @apply min-h-[max(calc(100vh_-_var(--announcement-bar-height)),500px)]
+    }
+
     /* flex alignment helpers */
 
     .content-left_top {

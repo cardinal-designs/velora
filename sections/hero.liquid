@@ -1,10 +1,10 @@
-<div class="">
+<div class="" style="--text-bar-height: {% if section.settings.text != blank %}34px{% else %}0px{% endif %}">
   <div class="swiper w-full h-full relative" data-swiper="hero">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
         {% if slide.image == blank %}{% continue %}{% endif %}
-        <div class="swiper-slide w-full h-full screen-height-with-nav pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
+        <div class="swiper-slide w-full h-full min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
 
           {% if block.type == "full" %}
             {% if slide.image != blank %}
@@ -54,7 +54,7 @@
             
           </div>
 
-            <div class="relative z-[1] w-full h-full text-[var(--text)] p-25 md:p-30 lg:p-[max(100px,7vw)]">
+            <div class="relative z-[1] w-full h-full text-[var(--text)] p-25 md:p-30 lg:p-[min(100px,7vw)]">
               <div class="max-w-custom mx-auto w-full h-full flex flex-col gap-20 content-{{ slide.content_position }}" style="--width: 600px">
                 {% if slide.title != blank %}
                   <h2 class="text-pangram-20" data-animate>{{ slide.title }}</h2>
@@ -81,14 +81,14 @@
     <div class="swiper-hero-pagination swiper-pagination z-[2] opacity-0 lg:opacity-100"></div>
 
     {% if section.settings.logo_transition == true and settings.logo_svg != blank %}
-      <div data-logo-transition class="text-cream mx-auto w-full max-w-full lg:max-w-[90%] h-auto [&_svg]:max-h-[50svh] [&_svg]:w-full [&_svg]:h-full absolute -bottom-10 left-half -translate-x-half z-[3] origin-bottom">
-        {{ settings.logo_svg }}
+      <div data-logo-transition class="text-cream mx-auto w-full max-w-full lg:max-w-[90%] h-auto [&_svg]:max-h-[50svh] [&_svg]:w-full [&_svg]:h-full absolute bottom-[-1px] left-half -translate-x-half z-[3] origin-bottom">
+        {% if section.settings.custom_logo != blank %}{{ section.settings.custom_logo }}{% else %}{{ settings.logo_svg }}{% endif %}
       </div>
     {% endif %}
   </div>
 
   {% if section.settings.text != blank %}
-    <div class="bg-cream text-brown text-oracle-18 p-[27px]">
+    <div class="bg-cream text-brown text-oracle-18 p-[23px] md:p-[27px]">
       <div class="page-width text-center" data-animate>
         {{ section.settings.text }}
       </div>
@@ -110,6 +110,11 @@
         "id": "logo_transition",
         "label": "Logo scroll transition",
         "default": false
+      },
+      {
+        "type": "html",
+        "id": "custom_logo",
+        "label": "Override logo from theme settings"
       }
     ],
     "blocks": [
