@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product-grid": {
@@ -24,14 +24,16 @@
           "type": "block",
           "settings": {
             "heading": "Fixture",
-            "title": ""
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png"
           }
         },
         "block_VpwqiP": {
           "type": "block",
           "settings": {
             "heading": "Style",
-            "title": ""
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
+            "image": "shopify://shop_images/5dfd9a5020178d84444d5b2a838d998f.png"
           }
         }
       },
