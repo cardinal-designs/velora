@@ -1,7 +1,7 @@
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 <cart-drawer>
-  <div  style="--width: 50vw; {% render "color-variables", color: 'dark' %}" 
+  <div  style="--width: max(393px, 50vw); {% render "color-variables", color: 'dark' %}" 
     class="cart-drawer max-w-full md:max-w-custom w-full h-[100dvh] fixed top-0 right-0 text-[var(--text)] bg-[var(--background)] z-top translate-x-full transition-transform ease-in-out aria-unhidden:translate-x-0" id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
     <form id="cart-drawer__form" action="{{ routes.cart_url }}" method="post" class="h-full">
 
@@ -10,7 +10,11 @@
 
           <div class="flex flex-col justify-start items-end">
             <cart-close type="button" class="js-close-cart text-right w-[22px] lg:w-40 h-auto aspect-square [&_svg]:w-full [&_svg]:h-auto" aria-label="Close cart drawer">
-              {% render 'icon' icon: 'close' %}
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="1.28295" y1="17.2295" x2="17.2295" y2="1.28294" stroke="#F1ECE3" stroke-width="1.17188"/>
+                <line x1="0.662367" y1="1.28465" x2="16.6089" y2="17.2312" stroke="#F1ECE3" stroke-width="1.17188"/>
+                </svg>
+                             
             </cart-close>
 
             <h2 class="w-full text-center lg:text-left text-arizona-36 md:text-arizona-48 {% if cart.items.size == 0 %}hidden{% endif %}">Cart</h2>
@@ -65,7 +69,7 @@
 
         <div data-cart-footer class="w-full p-20 sticky bottom-0 flex flex-col justify-start items-center">
           <div class="px-25 lg:px-[max(58px,4vw)] mb-15 flex justify-between items-center gap-20 w-full" id="cart-drawer-subtotal">
-            <p class="text-pangram-10 lg:text-pangram-12">Subtotal</p>
+            <p class="text-pangram-12">Subtotal</p>
             <p class="text-pangram-12">{{ cart.total_price | money_without_trailing_zeros }}</p>
           </div>
           <button type="submit" class="w-full button button--large max-w-[max(574px,40vw)] mx-auto hover:bg-blue hover:text-brown hover:border-blue" name="checkout" form="cart">Checkout</button>
