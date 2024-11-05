@@ -12,16 +12,17 @@
     "page_hero_Ahyk8b": {
       "type": "page-hero",
       "settings": {
+        "title": "Crafted with care. Rooted in the Montrose district of Houston, Texas.",
         "image": "shopify://shop_images/Screenshot_2024-08-05_at_8.52.26_AM_2.jpg",
         "mobile_image": "shopify://shop_images/Screenshot_2024-08-05_at_8.52.26_AM_2_1.jpg",
-        "title": "Crafted with care. Rooted in the Montrose district of Houston, Texas."
+        "video_url": ""
       }
     },
     "big_text_i34Kpb": {
       "type": "big-text",
       "settings": {
         "color": "light",
-        "heading": "Founded by a team of expert designers and craftspeople, lighting isn't just a business—but a passion that's grown over years of experience.\nVelora is home to lighting with character, bringing a unique touch to every space.",
+        "heading": "Founded by a team of expert designers and craftspeople, lighting isn't just a business—but a passion that's grown over years of experience.\n\nVelora is home to lighting with character, bringing a unique touch to every space.",
         "small_text": "",
         "button_label": "",
         "button_link": ""
