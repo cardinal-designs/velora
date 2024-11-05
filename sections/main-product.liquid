@@ -11,18 +11,18 @@
 
     <div id="ProductInfo-{{ section.id }}" class="col-span-6 py-20 lg:py-[57px]">
       {% assign product_form_id = 'product-form-' | append: section.id %}
-      <div class="flex flex-col justify-center items-center gap-y-[13px] w-full max-w-[max(564px,40vw)] mx-auto px-[4.5vw]">
+      <div class="flex flex-col justify-center items-center gap-y-10 md:gap-y-[13px] w-full max-w-[max(564px,40vw)] mx-auto px-[4.5vw]">
         <h1 class="text-arizona-40 lg:text-arizona-60 text-center">
           {{ split_product_title[0] }}
         </h1>
 
         {% if split_product_title[1] != blank  %}
-          <h2 class="text-arizona-18 lg:text-arizona-26 text-center">
+          <h2 class="tracking-[-0.75px] md:tracking-none text-arizona-18 lg:text-arizona-26 text-center mb-[6px] md:mb-0">
             {{ split_product_title[1] }}
           </h2>
         {% endif %}
 
-        <div class="flex flex-row justify-center items-center gap-[26px] mb-20 lg:mb-30">
+        <div class="flex flex-row justify-center items-center gap-[26px] mb-10 lg:mb-30">
           <p class="price flex items-center gap-5 text-pangram-16">
             {{ product.price | money }}
             {% if product.compare_at_price > product.price %}
@@ -59,7 +59,7 @@
         {% if product.metafields.custom.overview != blank or product.metafields.custom.measurements_details != blank or product.metafields.custom.technical_specifications != blank %}
           <div class="flex flex-col justify-start items-center gap-[16px] lg:gap-30" x-data="{ activeTab: 0, changeTab(i) { this.activeTab = i} }">
             <div class="no-scrollbar overflow-x-auto w-full">
-              <div class="min-w-fit w-full flex flex-row justify-center items-center gap-x-20 pb-5 [&_button]:text-pangram-10 [&_button]:lg:text-pangram-12 [&_button]:uppercase">
+              <div class="min-w-fit w-full flex flex-row justify-center items-center gap-x-20 pb-5 [&_button]:text-pangram-12 [&_button]:uppercase">
                 {% if product.metafields.custom.overview != blank %}
                   <button @click.prevent="changeTab(0)" class="underline-when-active" :class="activeTab == 0 ? 'active' : ''">
                     Overview
@@ -117,7 +117,7 @@
         {% if text_blocks != blank %}
           <div class="flex flex-row justify-center items-center gap-x-[max(10px,3vw)] gap-y-10 flex-wrap mt-35">
           {% for block in text_blocks %}
-            <p class="text-oracle-13">{{ block.settings.heading }}</p>
+            <p class="text-oracle-14 md:text-oracle-13">{{ block.settings.heading }}</p>
           {% endfor %}
           </div>
         {% endif %}

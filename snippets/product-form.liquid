@@ -106,13 +106,13 @@
                 </fieldset>
             {% else %}
                 <fieldset class="product-form-input js block" data-option-name="{{ option.name }}" x-data="{ optionValue: '{{ option.selected_value | escape }}'}">
-                  <div class="flex flex-row justify-start items-center gap-10">
+                  <div class="flex flex-row justify-start items-center gap-30 md:gap-10">
                     <legend class="form__label flex flex-row justify-start items-center gap-20 mb-0">
                       <span>{{ option.name }}</span>
                       <span data-selected-option class="!hidden text-oracle-14 lg:text-oracle-16 font-[350] normal-case">{{ option.selected_value }}</span>
                     </legend>
                     <div class="no-scrollbar overflow-x-visible overflow-y-visible p-0 relative
-                      border border-brown rounded-[10px] px-20 py-10 w-full max-w-[54vw]"
+                      border border-brown rounded-[10px] px-20 py-[12px] md:py-10 w-full max-w-[54vw]"
                       x-data="{ open: false, toggle() { this.open = ! this.open } }"
                       @click.outside="open = false"
                     >
