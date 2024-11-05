@@ -643,7 +643,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .shopify-section .jdgm-rev__title {
-  @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350]
+  @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350] capitalize
 }
 
 .shopify-section .jdgm-rev__body {
@@ -651,11 +651,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .shopify-section .jdgm-rev__body * {
-  @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350]
-}
-
-.shopify-section .jdgm-rev__body p::first-letter {
-  @apply capitalize
+  @apply text-oracle-14 lg:text-oracle-18 font-oracle font-[350] capitalize
 }
 
 .shopify-section .jdgm-rev {
