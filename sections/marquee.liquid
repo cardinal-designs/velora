@@ -8,26 +8,21 @@
 {% endcapture %}
 
 <div class="bg-[var(--background)] text-[var(--text)] text-pangram-custom lg:text-pangram-20" style="--size:15px; {% render "color-variables", color: section.settings.color %}">
-    <text-marquee>
-        <div class="press-marquee py-[14px] overflow-hidden">
-            <div class="still w-fit mx-auto flex justify-center items-center gap-[18vw]">
-                {{ blocks }}
-            </div>
-            <div class="marquee hidden">
-                <div class="flex justify-center items-center gap-[18vw] shrink-0 overflow-x-hidden"> 
-                    <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
-                    {{ blocks }}
-                    </div>
-                    <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
-                    {{ blocks }}
-                    </div>
-                    <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
-                    {{ blocks }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </text-marquee>
+      <div class="press-marquee py-[14px] overflow-hidden">
+          <div class="marquee">
+              <div class="flex justify-center items-center gap-[18vw] shrink-0 overflow-x-hidden"> 
+                  <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
+                  {{ blocks }}
+                  </div>
+                  <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
+                  {{ blocks }}
+                  </div>
+                  <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
+                  {{ blocks }}
+                  </div>
+              </div>
+          </div>
+      </div>
 </div>
 
 
