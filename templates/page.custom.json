@@ -46,7 +46,7 @@
             "title": "FIND YOUR FIT",
             "title_r": "",
             "heading": "Talk To An Expert",
-            "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their  design vision.",
+            "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their design vision.",
             "button_label": "Start Custom Inquiry",
             "button_link": "",
             "scroll_to": "#shopify-section-template--18643328958710__contact_form_YfQrzt",
@@ -72,28 +72,28 @@
           "type": "faq",
           "settings": {
             "heading": "Is there a minimum order quantity?",
-            "text": "Lorem ipsum"
+            "text": "<p>Lorem ipsum</p>"
           }
         },
         "faq_DxBptz": {
           "type": "faq",
           "settings": {
             "heading": "How do I place an order?",
-            "text": "Lorem ipsum"
+            "text": "<p>Lorem ipsum</p>"
           }
         },
         "faq_BiEt6Y": {
           "type": "faq",
           "settings": {
             "heading": "How do I get in touch with questions?",
-            "text": "Lorem ipsum"
+            "text": "<p>Lorem ipsum</p>"
           }
         },
         "faq_RAkkDy": {
           "type": "faq",
           "settings": {
             "heading": "What shipping options are available?",
-            "text": "Lorem ipsum"
+            "text": "<p>Lorem ipsum</p>"
           }
         }
       },

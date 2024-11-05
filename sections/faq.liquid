@@ -8,10 +8,10 @@
             {% if section.blocks != blank %}
                 <div class="">
                     {% for block in section.blocks %}
-                        <div class="group/accordion border-b border-[var(--text)] first-of-type:border-t py-10 lg:py-[24px]" :class="open == {{ forloop.index }} ? 'active' : '' " >
+                        <div class="group/accordion border-b border-[var(--text)] first-of-type:border-t py-[17px] lg:py-[24px]" :class="open == {{ forloop.index }} ? 'active' : '' " >
                             <button @click="toggle({{ forloop.index }})" class="accordion-header w-full grid grid-cols-12 gap-x-10 lg:gap-x-[max(50px,3.5vw)] items-center">
                                 <div class="col-span-2 lg:col-span-3">
-                                    <div class="w-[22px] lg:w-[44px] [&_svg]:w-full">
+                                    <div class="w-[22px] lg:w-[44px] aspect-square [&_svg]:w-full [&_svg]:h-auto">
                                         <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <line vector-effect="non-scaling-stroke" y1="23.5" x2="44" y2="23.5" stroke="currentColor"/>
                                             <line vector-effect="non-scaling-stroke" class="origin-center transition-all opacity-100 group-[.active]/accordion:rotate-90 group-[.active]/accordion:opacity-0" x1="20.5" y1="2.18557e-08" x2="20.5" y2="44" stroke="currentColor"/>
@@ -20,16 +20,16 @@
                                 </div>
                                     
                                 <div class="col-span-9 flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:items-center flex-wrap text-left w-full gap-10">
-                                    <h4 class="text-oracle-18">{{ block.settings.heading }}</h4>
+                                    <h4 class="text-oracle-14 lg:text-oracle-18">{{ block.settings.heading }}</h4>
                                 </div>
                             </button>
 
                             <div x-show="open == {{ forloop.index }}" x-transition class="accordion-content hidden group-[.active]/accordion:block">
-                                <div class="grid grid-cols-12 gap-x-10 lg:gap-x-[max(50px,3.5vw)] lg:pt-[13px]">
-                                    <div class="col-start-3 col-span-10 lg:col-start-4 lg:col-span-9 flex flex-col justify-start items-start gap-5">
-                                        <p class="text-oracle-14 lg:text-oracle-18 indent-8 lg:max-w-[75%]">
+                                <div class="grid grid-cols-12 gap-x-10 lg:gap-x-[max(50px,3.5vw)] pt-[19px] lg:pt-[13px]">
+                                    <div class="col-start-2 col-span-10 lg:col-start-4 lg:col-span-9 flex flex-col justify-start items-start gap-5">
+                                        <div class="text-oracle-14 lg:text-oracle-18 [&_p:first-of-type]:indent-8 lg:max-w-[75%] pb-[8px] lg:pb-10">
                                             {{ block.settings.text }}
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                         "label": "Question"
                     },
                     {
-                        "type": "inline_richtext",
+                        "type": "richtext",
                         "id": "text",
                         "label": "Answer"
                     }

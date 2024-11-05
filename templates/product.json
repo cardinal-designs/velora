@@ -159,35 +159,35 @@
           "type": "faq",
           "settings": {
             "heading": "Can I customize the size or finish of a product?",
-            "text": "Yes! Most of our products can be customized to your specific size and finish preferences. Please see the product page for available customization options, or contact our customer service team to discuss your specific needs."
+            "text": "<p>Yes! Most of our products can be customized to your specific size and finish preferences. Please see the product page for available customization options, or contact our customer service team to discuss your specific needs.</p>"
           }
         },
         "faq_eRpcne": {
           "type": "faq",
           "settings": {
             "heading": "Do you offer warranty on your products?",
-            "text": "Yes! We stand behind the quality and craftsmanship of our products and offer a one-year warranty against defects in materials and workmanship. Please contact our customer service team if you have any issues with your Illuminate Vintage product."
+            "text": "<p>Yes! We stand behind the quality and craftsmanship of our products and offer a one-year warranty against defects in materials and workmanship. Please contact our customer service team if you have any issues with your Illuminate Vintage product.</p>"
           }
         },
         "faq_jbqmxg": {
           "type": "faq",
           "settings": {
             "heading": "How do I install Illuminate Vintage products?",
-            "text": "Installation instructions are included with each product, and our customer service team is always available to help answer any installation questions you may have."
+            "text": "<p>Installation instructions are included with each product, and our customer service team is always available to help answer any installation questions you may have.</p>"
           }
         },
         "faq_8WHgQG": {
           "type": "faq",
           "settings": {
             "heading": "Can I return a product if I'm not satisfied?",
-            "text": "We want you to be completely satisfied with your Illuminate Vintage product, so we offer a 90-day return policy on all products."
+            "text": "<p>We want you to be completely satisfied with your Illuminate Vintage product, so we offer a 90-day return policy on all products.</p>"
           }
         },
         "faq_TmwY3t": {
           "type": "faq",
           "settings": {
             "heading": "How can I contact customer service if I have additional questions?",
-            "text": "You can reach our customer service team via phone, email, or live chat during business hours. Please see our <a href=\"https://www.illuminatevintage.com/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page for more information."
+            "text": "<p>You can reach our customer service team via phone, email, or live chat during business hours. Please see our <a href=\"https://www.illuminatevintage.com/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page for more information.</p>"
           }
         }
       },
