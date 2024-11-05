@@ -68,6 +68,7 @@ module.exports = {
         'arizona-72': ['72px', { lineHeight: '1.2', letterSpacing: '-3px', }],
         //h3
         'arizona-60': ['60px', { lineHeight: '1.1', letterSpacing: '-2px', }],
+        'arizona-50': ['50px', { lineHeight: '1.1', letterSpacing: '-2px', }],
         //h4
         'arizona-48': ['48px', { lineHeight: '1.1', letterSpacing: '-2px', }],
         'arizona-42': ['42px', { lineHeight: '1.1', letterSpacing: '-2px', }],

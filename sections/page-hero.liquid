@@ -1,45 +1,45 @@
 <div>
     <div class="px-25 py-20 bg-brown md:px-40 md:py-30">
-        <div class="pb-[175%] relative overflow-hidden rounded-[10px] md:pb-[53%]">
+        <div class="aspect-[0.57/1] lg:aspect-[1.74/1] w-full h-auto relative overflow-hidden rounded-[10px] [&_iframe]:absolute [&_iframe]:top-0 [&_iframe]:-left-full [&_iframe]:w-[350%] [&_iframe]:lg:w-[300%] [&_iframe]:max-w-none">
             {% if section.settings.video != blank %}
                 {{ section.settings.video | video_tag: controls: false, autoplay: true, mute: true, loop: true, class: 'w-full h-full object-cover object-center', image_size: '1000x'  }}
-            {% comment %} {% elsif section.settings.video_url %}
+            {% elsif section.settings.video_url %}
                 {%- if section.settings.video_url contains 'youtube.com/watch' -%}
                     {%- assign video_id = section.settings.video_url | split: 'v=' -%}
                     {%- assign video_id = video_id[1] | split: '&' | first -%}
                     <div
-                      id="YouTubeVideo-{{ section.id }}"
-                      data-section-id="{{ section.id }}"
-                      class="video-div absolute top-0 left-0 w-full h-full"
-                      data-type="youtube"
-                      data-video-player
-                      data-video-id="{{ video_id }}"></div>
-                  {%- endif -%}
-              
-                  {%- if section.settings.video_url contains 'youtu.be/' -%}
+                        id="YouTubeVideo-{{ section.id }}"
+                        data-section-id="{{ section.id }}"
+                        class="video-div absolute top-0 left-0 w-full h-full"
+                        data-type="youtube"
+                        data-video-player
+                        data-video-id="{{ video_id }}"></div>
+                {%- endif -%}
+                
+                {%- if section.settings.video_url contains 'youtu.be/' -%}
                     {%- assign video_id = section.settings.video_url | split: '.be/' -%}
                     {%- assign video_id = video_id[1] | split: '&' | first -%}
                     <div
-                      id="YouTubeVideo-{{ section.id }}"
-                      data-section-id="{{ section.id }}"
-                      class="video-div absolute top-0 left-0 w-full h-full"
-                      data-type="youtube"
-                      data-video-player
-                      data-video-id="{{ video_id }}"></div>
-                  {%- endif -%}
-              
-                  {%- if section.settings.video_url contains 'vimeo.com' -%}
+                        id="YouTubeVideo-{{ section.id }}"
+                        data-section-id="{{ section.id }}"
+                        class="video-div absolute top-0 left-0 w-full h-full"
+                        data-type="youtube"
+                        data-video-player
+                        data-video-id="{{ video_id }}"></div>
+                {%- endif -%}
+                
+                {%- if section.settings.video_url contains 'vimeo.com' -%}
                     {%- assign video_id = section.settings.video_url | split: '.com/' -%}
                     {%- assign video_id = video_id[1] | split: '/' | first -%}
                     <div
-                      id="Vimeo-{{ section.id }}"
-                      data-section-id="{{ section.id }}"
-                      class="video-div absolute top-0 left-0 w-full h-full"
-                      data-type="vimeo"
-                      data-video-player
-                      data-video-id="{{ video_id }}"></div>
-                  {%- endif -%}
-              
+                        id="Vimeo-{{ section.id }}"
+                        data-section-id="{{ section.id }}"
+                        class="video-div absolute top-0 left-0 w-full h-full"
+                        data-type="vimeo"
+                        data-video-player
+                        data-video-id="{{ video_id }}"></div>
+                {%- endif -%}
+              {% comment %}
                   {%- if section.settings.video_url contains '.mp4' or section.settings.video_url contains '.MP4' -%}
                     <video
                       id="Mp4Video-{{ section.id }}"
@@ -57,7 +57,7 @@
             {% endif %}
 
             <div class="inset p-10 flex justify-center items-center z-20 md:p-40">
-                <p data-animate class="max-w-custom w-full mx-auto text-arizona-custom leading-none tracking-[-3px] text-center text-cream md:text-arizona-60 lg:text-arizona-72 xl:text-arizona-80" style="--width: 825px; --size: 50px">{{ section.settings.title }}</p>
+                <p data-animate class="max-w-custom w-full mx-auto text-arizona-50 leading-none tracking-[-3px] text-center text-cream md:text-arizona-60 lg:text-arizona-72 xl:text-arizona-80" style="--width: 825px;">{{ section.settings.title }}</p>
             </div>
         </div>
     </div>
