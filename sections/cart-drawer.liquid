@@ -1,8 +1,8 @@
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 <cart-drawer>
-  <div  style="--width: max(863px,60vw); {% render "color-variables", color: 'dark' %}" 
-    class="cart-drawer max-w-custom w-full h-[100dvh] fixed top-0 right-0 text-[var(--text)] bg-[var(--background)] z-top translate-x-full transition-transform ease-in-out aria-unhidden:translate-x-0" id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
+  <div  style="--width: 50vw; {% render "color-variables", color: 'dark' %}" 
+    class="cart-drawer max-w-full md:max-w-custom w-full h-[100dvh] fixed top-0 right-0 text-[var(--text)] bg-[var(--background)] z-top translate-x-full transition-transform ease-in-out aria-unhidden:translate-x-0" id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
     <form id="cart-drawer__form" action="{{ routes.cart_url }}" method="post" class="h-full">
 
       <div id="cart-drawer__inner" class="h-full flex flex-col" data-id="{{ section.id }}">
