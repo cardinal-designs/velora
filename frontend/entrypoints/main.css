@@ -654,6 +654,10 @@ input[type="search"]::-webkit-search-results-decoration {
   @apply text-oracle-13 lg:text-oracle-18 font-oracle font-[350]
 }
 
+.shopify-section .jdgm-rev__body p::first-letter {
+  @apply capitalize
+}
+
 .shopify-section .jdgm-rev {
   @apply border-b border-t-0 border-[var(--text)] m-0 pt-[18px] pb-25 pr-[32px]
 }
