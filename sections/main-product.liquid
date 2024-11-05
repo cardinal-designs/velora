@@ -161,14 +161,14 @@
               {% if media.media_type == "image" %}
                 {% assign image_variants = product.images | where: 'src', media.src | first %}
               {% endif %}
-              <div class="swiper-slide w-[100%_-_4.5vw] [&:first-child>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %}" 
+              <div class="swiper-slide w-[calc(100%_-_4.5vw)] [&:first-child>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %}" 
                 style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
                 data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
                 {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
                 data-media-index="{{ forloop.index0 }}" 
                 data-media-id="{{ section.id }}-{{ media.id }}">
                 {% assign sizes = '(min-width: 769px) 75vw, 100vw' %}
-                {{ media | image_url: width: 1000 | image_tag: preload: true, width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-product object-cover' }}
+                {{ media | image_url: width: 1000 | image_tag: preload: true, width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
               </div>
             {% endfor %}
           </div>
