@@ -1,6 +1,6 @@
 <div class="bg-[var(--background)] text-[var(--text)]" style="{% render "color-variables", color: section.settings.color %}">
   <script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
-  <div class="page-width py-60 lg:py-[86px]">
+  <div class="page-width py-60 lg:py-[86px] scroll-mt-[var(--nav-height)_+_var(--announcement-bar-height)]">
     <div class="flex flex-col justify-start items-start lg:grid grid-cols-2 gap-[22px]">
       {% if section.settings.title != blank %}
         <h1 class="text-arizona-48 flex-1 col-start-1">{{ section.settings.title }}</h1>
