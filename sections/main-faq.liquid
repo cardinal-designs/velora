@@ -1,7 +1,7 @@
 <div class="bg-[var(--background)] text-[var(--text)]" style="{% render "color-variables", color: section.settings.color %}">
   <script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
   <div class="page-width py-60 lg:py-[86px]">
-    <div class="flex flex-col justify-start items-start lg:grid grid-cols-2 gap-20">
+    <div class="flex flex-col justify-start items-start lg:grid grid-cols-2 gap-[22px]">
       {% if section.settings.title != blank %}
         <h1 class="text-arizona-48 flex-1 col-start-1">{{ section.settings.title }}</h1>
       {% endif %}
@@ -10,11 +10,11 @@
         <div class="wysiwyg flex-1 indent-8 col-start-2 row-span-2">{{ section.settings.text }}</div>
       {% endif %}
 
-      <div class="faq-navigation col-start-1">
-        <div class="flex flex-col justify-center gap-10">
+      <div class="faq-navigation col-start-1 mt-[16px] md:mt-0">
+        <div class="w-fit flex flex-col justify-center gap-[7px] md:gap-10">
           {% for block in section.blocks %}
             {% if block.type == 'header' %}
-              <button class="faq-link svg-link text-pangram-14 flex flex-row justify-start items-center gap-[9px]" data-section="{{ block.settings.title | handleize }}">
+              <button class="flex-2 faq-link svg-link text-pangram-12 md:text-pangram-14 flex flex-row justify-between items-center gap-[9px] !leading-[30px]" data-section="{{ block.settings.title | handleize }}">
                 {{ block.settings.title }}
                 <span class="rotate-90">{% render 'link-arrow' %}</span>
               </button>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div x-data="{ open: 1, toggle(index){ this.open == index ? this.open = 0 : this.open = index } }" class="w-full mt-80">
+    <div x-data="{ open: 1, toggle(index){ this.open == index ? this.open = 0 : this.open = index } }" class="w-full mt-[63px] md:mt-80">
       {% assign is_first_faq = true %}
 
       {% for block in section.blocks %}
