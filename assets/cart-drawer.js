@@ -10,6 +10,18 @@ class CartDrawerRemoveButton extends HTMLElement {
 
 customElements.define('cart-drawer-remove-button', CartDrawerRemoveButton);
 
+class CartClose extends HTMLElement {
+  constructor() {
+    super();
+    this.addEventListener('click', (event) => {
+      // event.preventDefault();
+      this.closest('cart-drawer').close();
+    });
+  }
+}
+
+customElements.define('cart-close', CartClose);
+
 class CartDrawer extends HTMLElement {
   constructor() {
     super();

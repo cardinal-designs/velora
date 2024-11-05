@@ -5,7 +5,7 @@
 <div class="cart-item flex flex-row justify-start items-stretch gap-20 py-20">
   <a href="{{ item.product.url }}" class="h-[133px] lg:h-[177px] w-auto aspect-square block relative overflow-hidden flex-shrink-0">
     {% if item.image %}
-      {{ item.image | image_url: width: block.settings.image.width | image_tag: class: 'h-full w-full inset object-cover', sizes: '100px', widths: '60, 70, 80, 90, 100' }}
+      {{ item.image | image_url: width: 600 | image_tag: class: 'h-full w-full inset object-cover' }}
     {% endif %}
   </a>
 
