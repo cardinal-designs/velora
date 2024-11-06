@@ -25,6 +25,34 @@
             "text": "<p>Our fixtures are handmade to order and have a build time of 5 business days in addition to 3-5 business days for shipping within the US, or 10-15 business days for international shipping. We do not keep stock of our fixtures at this time.</p>"
           }
         },
+        "faq_item_A3RqLC": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "Do you offer expedited build times?",
+            "text": "<p>Yes, pricing depends on your order subtotal but starts at just $50.This option puts you to the front of the build queue and typically reduces build times from the standard 5 business days to just 1-2 business days if parts are in stock. This option does not change the shipping speed, which is generally 3-4 business days for USA customers, and 2 weeks for international customers. Send us a message or give us a call at<strong>832-365-3395</strong>if you're on a time crunch and we'll work with you!</p>"
+          }
+        },
+        "faq_item_FaKwC7": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "What services do you ship with?",
+            "text": "<p>Standard USA service is USPS Priority Mail or UPS SurePost for small items. Larger or heavier items are typically shipped FedEx Ground/Home Delivery.</p>"
+          }
+        },
+        "faq_item_PJXfrE": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "My fixture arrived damaged. What now?",
+            "text": "<p>We do our best to pack our fixtures so that they do not get damaged, but sometimes damage does occur during shipping. Shoot us a message at<strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>and we'll help you out.</p>"
+          }
+        },
+        "faq_item_LgnfRB": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "Do international customers have to pay taxes and duties?",
+            "text": "<p>Yes, since we do not collect tax on behalf of your local government, your purchases are subject to local taxes and duties as applicable.</p>"
+          }
+        },
         "header_8gQExG": {
           "type": "header",
           "settings": {
@@ -35,6 +63,10 @@
       "block_order": [
         "header_qbLBpq",
         "faq_item_Q9kJBz",
+        "faq_item_A3RqLC",
+        "faq_item_FaKwC7",
+        "faq_item_PJXfrE",
+        "faq_item_LgnfRB",
         "header_8gQExG"
       ],
       "settings": {
