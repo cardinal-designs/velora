@@ -18,6 +18,13 @@
             "title": "Shipping"
           }
         },
+        "faq_item_Q9kJBz": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "When will my order ship?",
+            "text": "<p>Our fixtures are handmade to order and have a build time of 5 business days in addition to 3-5 business days for shipping within the US, or 10-15 business days for international shipping. We do not keep stock of our fixtures at this time.</p>"
+          }
+        },
         "header_8gQExG": {
           "type": "header",
           "settings": {
@@ -27,6 +34,7 @@
       },
       "block_order": [
         "header_qbLBpq",
+        "faq_item_Q9kJBz",
         "header_8gQExG"
       ],
       "settings": {
