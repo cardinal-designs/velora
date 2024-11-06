@@ -15,167 +15,24 @@
         "header_qbLBpq": {
           "type": "header",
           "settings": {
-            "title": "General"
-          }
-        },
-        "faq_item_qAed64": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "How do I clean Raw Brass?",
-            "text": "<p>If your Raw Brass fixture has tarnish or fingerprinting, you can clean it using a brass metal polish. We recommend a product called Brasso.</p>"
-          }
-        },
-        "faq_item_HtLdpX": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Are your fixtures dimmable?",
-            "text": "<p>Yes, all of our fixtures are compatible with dimmer switches.</p>"
-          }
-        },
-        "faq_item_rBX9eF": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Are your fixtures compatible with sloped ceilings?",
-            "text": "<p>Yes, we can add a swivel to accommodate sloped ceilings on most of our chandeliers and semi-flush fixtures. Please send us a message if you'd like to add this option to your fixture.</p>"
-          }
-        },
-        "faq_item_Nhg6Kw": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Can this fixture be made in a plug in version?",
-            "text": "<p>Most fixtures can be made into a plug in version for an additional fee, just shoot us a message!</p>"
-          }
-        },
-        "faq_item_MfmVkB": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Can you add a switch to this fixture?",
-            "text": "<p>Most fixtures can have a pull chain or push button switches added for an additional fee, just shoot us a message!</p>"
-          }
-        },
-        "faq_item_DM6XAM": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Is this fixture compatible with my country's voltage?",
-            "text": "<p>Yes, our fixtures are 110-240V compatible so they work in all countries.</p>"
-          }
-        },
-        "faq_item_zCKQF3": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "What is UL Listed and why is it important? ",
-            "text": "<p>UL is the most respected name in product safety in the United States. Using UL's strict traceability guidelines, all components of a completed product meet or exceed UL's quality and safety standards. When a lighting fixture is UL Listed, it means the final product has been tested and certified to UL standards. It then gets a UL label on the backside of the canopy indicating it has passed. To see if an Illuminate Vintage fixture is UL Listed, look in the title or description of the listing. Note that fixtures with movable joints will not be UL Listed, but will be constructed with UL Listed electrical components.</p>"
-          }
-        },
-        "faq_item_pqinDm": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "NOTICE TO CALIFORNIA RESIDENTS : PROPOSITION 65 INFO ",
-            "text": "<p>California's Proposition 65 entitles California consumers to special warnings for products that contain chemicals known to the state of California to cause cancer and birth defects or other reproductive harm if those products expose consumers to such chemicals above certain threshold levels. We care about our customers' safety and hope that the information below helps with your buying decisions.WARNING: This product can expose you to chemicals including nickel which is known to the State of California to cause cancer and birth defects or other reproductive harm. For more information, visit www.p65warnings.ca.gov/. Wash hands after handling.</p>"
-          }
-        },
-        "header_EbAj6B": {
-          "type": "header",
-          "settings": {
             "title": "Shipping"
           }
         },
-        "faq_item_j8KLhA": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "When will my order ship?",
-            "text": "<p>Our fixtures are handmade to order and have a build time of 5 business days in addition to 3-5 business days for shipping within the US, or 10-15 business days for international shipping. We do not keep stock of our fixtures at this time.</p>"
-          }
-        },
-        "faq_item_mfbFg6": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Do you offer expedited build times?",
-            "text": "<p>Yes, pricing depends on your order subtotal but starts at just $50. This option puts you to the front of the build queue and typically reduces build times from the standard 5 business days down to just 1-2 business days if parts are in stock. This option does not change the shipping speed, which is generally 3-4 business days for USA customers, and 2 weeks for international customers. Send us a message or give us a call at<strong>832-365-3395</strong>if you're on a time crunch and we'll work with you!</p>"
-          }
-        },
-        "faq_item_jBFBJU": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "What services do you ship with?",
-            "text": "<p>Standard USA service is USPS Priority Mail or UPS SurePost for small items. Larger or heavier items are typically shipped FedEx Ground/Home Delivery.</p>"
-          }
-        },
-        "faq_item_GczqCd": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "My fixture arrived damaged. What now?",
-            "text": "<p>We do our best to pack our fixtures so that they do not get damaged, but sometimes damage does occur during shipping. Shoot us a message at<strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>and we'll help you out.</p>"
-          }
-        },
-        "faq_item_Cgk7wT": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Do international customers have to pay taxes and duties? ",
-            "text": "<p>Yes, since we do not collect tax on behalf of your local government, your purchases are subject to local taxes and duties as applicable.</p>"
-          }
-        },
-        "faq_item_LcY76j": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "International Customers: My tracking link isn't working, what do I do?",
-            "text": "<p>The tracking hyperlink does not work for our international customers, instead you can use the same tracking number provided (starts with an R) at www.ppxtrack.comOur international shipments are fulfilled from a central hub in Chicago, so for the first few days while it is in transit the tracking will display an error. Once it is scanned into the central hub, it will begin to display information. Shoot us an email at<strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>if you have any trouble or need assistance!</p>"
-          }
-        },
-        "header_yzNY7X": {
+        "header_8gQExG": {
           "type": "header",
           "settings": {
             "title": "Returns"
-          }
-        },
-        "faq_item_wC39gw": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "What is your return policy? ",
-            "text": "<p>We provide refunds for non-custom fixtures sent back within 90 days of delivery. Buyers are responsible for the return shipping costs. No restocking fees. Custom orders are final sale and are not returnable.</p>"
-          }
-        },
-        "faq_item_QcwCHb": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "How do I initiate a return?",
-            "text": "<p>Send over a message to<strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>.</p>"
-          }
-        },
-        "faq_item_rTadrx": {
-          "type": "faq_item",
-          "settings": {
-            "heading": "Do you offer a warranty?",
-            "text": "<p>We offer a limited lifetime warranty on all of our fixtures, if you have any issues with your fixture at any point you can send us a message or give us a call at <strong>832-365-3395</strong>and we'll help you out.</p>"
           }
         }
       },
       "block_order": [
         "header_qbLBpq",
-        "faq_item_qAed64",
-        "faq_item_HtLdpX",
-        "faq_item_rBX9eF",
-        "faq_item_Nhg6Kw",
-        "faq_item_MfmVkB",
-        "faq_item_DM6XAM",
-        "faq_item_zCKQF3",
-        "faq_item_pqinDm",
-        "header_EbAj6B",
-        "faq_item_j8KLhA",
-        "faq_item_mfbFg6",
-        "faq_item_jBFBJU",
-        "faq_item_GczqCd",
-        "faq_item_Cgk7wT",
-        "faq_item_LcY76j",
-        "header_yzNY7X",
-        "faq_item_wC39gw",
-        "faq_item_QcwCHb",
-        "faq_item_rTadrx"
+        "header_8gQExG"
       ],
       "settings": {
         "color": "light",
-        "title": "Frequently Asked Questions",
-        "text": "<p>Need more answers? No worries! Send us an email to <a href=\"mailto:support@velora.com\" title=\"mailto:support@velora.com\">support@velora.com</a> or use our contact form. If you've read this page before, take a look again.</p><p>We update our FAQs after receiving questions from our thoughtful customers.</p>"
+        "title": "Shipping & Returns",
+        "text": ""
       }
     },
     "collection_feature_Wq3CAq": {
