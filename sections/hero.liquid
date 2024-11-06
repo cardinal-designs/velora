@@ -4,7 +4,7 @@
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
         {% if slide.image == blank %}{% continue %}{% endif %}
-        <div class="swiper-slide w-full h-full min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
+        <div class="swiper-slide w-full h-full max-h-[785px] md:max-h-full aspect-[0.5/1] md:aspect-auto min-h-full md:min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
 
           {% if block.type == "full" %}
             {% if slide.image != blank %}
@@ -54,7 +54,7 @@
             
           </div>
 
-            <div class="relative z-[1] w-full h-full text-[var(--text)] p-25 md:p-30 lg:p-[min(100px,7vw)]">
+            <div class="relative z-[1] w-full h-full text-[var(--text)] pt-100 p-25 md:p-30 lg:p-[min(100px,7vw)]">
               <div class="max-w-custom mx-auto w-full h-full flex flex-col gap-20 content-{{ slide.content_position }}" style="--width: 600px">
                 {% if slide.title != blank %}
                   <h2 class="text-pangram-20" data-animate>{{ slide.title }}</h2>
