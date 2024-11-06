@@ -18,12 +18,11 @@
             "image": "shopify://shop_images/86a8d0aac2373e9293e34b4061d145ee.jpg",
             "image_right": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png",
             "content_position": "top",
-            "cursor_text": "",
             "text_color": "#F1ECE3",
             "title": "",
             "heading": "Crafted for\ncharacter",
             "button_label": "Shop Now",
-            "button_link": "shopify://collections"
+            "button_link": "/collections/all"
           }
         },
         "full_fQ3hHp": {
