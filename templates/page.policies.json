@@ -65,6 +65,34 @@
           "settings": {
             "title": "Returns"
           }
+        },
+        "faq_item_8EkUjL": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "What is your return policy?",
+            "text": "<p>We accept returns on all fixtures, even custom orders. Buyers are responsible for the return shipping costs. Fixtures must be returned to us within 90 days of delivery. No restocking fees.</p>"
+          }
+        },
+        "faq_item_JAAdMp": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "How do I initiate a return?",
+            "text": "<p>Send over a message to<strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>.</p>"
+          }
+        },
+        "faq_item_ywzwcJ": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "Do you accept returns on custom fixtures?",
+            "text": "<p>Yes! We accept returns on all of our fixtures, including custom orders.</p>"
+          }
+        },
+        "faq_item_3XeRwM": {
+          "type": "faq_item",
+          "settings": {
+            "heading": "Do you offer a warranty?",
+            "text": "<p>We offer a lifetime warranty on all of our fixtures, if you have any issues with your fixture at any point you can send us a message or give us a call at<strong>832-365-3395</strong>and we'll help you out.</p>"
+          }
         }
       },
       "block_order": [
@@ -75,7 +103,11 @@
         "faq_item_PJXfrE",
         "faq_item_LgnfRB",
         "faq_item_VtknAJ",
-        "header_8gQExG"
+        "header_8gQExG",
+        "faq_item_8EkUjL",
+        "faq_item_JAAdMp",
+        "faq_item_ywzwcJ",
+        "faq_item_3XeRwM"
       ],
       "settings": {
         "color": "light",
