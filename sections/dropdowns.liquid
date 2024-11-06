@@ -9,7 +9,7 @@
                 <div class="">
                     {% for block in section.blocks %}
                         <div @mouseenter=" hovered = {{ forloop.index }}" @mouseleave=" hovered = open " class="group/accordion border-b border-brown first-of-type:border-t" :class="open == {{ forloop.index }} ? 'active' : '' " >
-                            <button @click="toggle({{ forloop.index }})" class="accordion-header w-full grid grid-cols-[22px,1fr] lg:grid-cols-[max(150px,18vw),_1fr] gap-x-50 py-10  lg:pt-[18px] lg:pb-[22px]">
+                            <button @click="toggle({{ forloop.index }})" class="accordion-header w-full grid grid-cols-[22px,1fr] lg:grid-cols-[max(150px,18vw),_1fr] items-center gap-x-50 py-10  lg:pt-[18px] lg:pb-[22px]">
                                 <div class="w-[22px] lg:w-[44px] [&_svg]:w-full">
                                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <line vector-effect="non-scaling-stroke" y1="23.5" x2="44" y2="23.5" stroke="currentColor"/>
@@ -18,7 +18,7 @@
                                 </div>
                                     
                                 <div class="flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:items-center flex-wrap text-left w-full gap-10">
-                                    <h4 data-animate style="--size: 28px;" class="text-arizona-custom lg:text-arizona-48 whitespace-nowrap peer">{{ block.settings.heading }}</h4>
+                                    <h4 data-animate class="text-arizona-28 lg:text-arizona-48 whitespace-nowrap peer">{{ block.settings.heading }}</h4>
 
                                     {% if block.settings.button_label != blank and block.settings.button_link != blank %}
                                         <div class="hidden lg:group-[.active]/accordion:block peer-[:hover_.svg-link]:svg-link-peer-hover">
