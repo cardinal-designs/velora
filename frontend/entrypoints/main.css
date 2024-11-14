@@ -151,7 +151,8 @@
         @apply relative border-1 border-[var(--text)] flex flex-row justify-start items-center gap-20 w-full rounded-[10px] py-20 px-30;
     }
   
-    .field__select select {
+    .field__select select,
+    .spb-select select {
       @apply w-full bg-transparent
     }
   }
@@ -770,4 +771,12 @@ input[type="search"]::-webkit-search-results-decoration {
     stroke-dashoffset: 280;
     transform: rotate(450deg);
   }
+}
+/* infinite options */
+.spb-label-tooltip {
+  @apply form__label mb-20
+}
+
+.spb-select {
+  @apply relative border-1 border-[var(--text)] flex flex-row justify-start items-center gap-20 w-full rounded-[10px] py-10 px-20;
 }

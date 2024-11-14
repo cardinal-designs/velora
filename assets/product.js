@@ -25,6 +25,8 @@ customElements.define('product-form', class ProductForm extends HTMLElement {
     submitButton.setAttribute('disabled', true);
     submitButton.classList.add('loading');
 
+    console.log(serializeForm(this.form))
+
     const body = JSON.stringify({
       ...JSON.parse(serializeForm(this.form)),
       sections: getSectionsToRender().map((section) => section.section),

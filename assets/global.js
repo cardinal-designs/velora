@@ -396,6 +396,16 @@ const serializeForm = form => {
   for (const key of formData.keys()) {
     obj[key] = formData.get(key);
   }
+
+  Object.keys(obj).forEach(k => {
+    var path = k.replace(/\[/g, '.').replace(/\]/g, '').split('.'),
+        last = path.pop();
+
+    if (path.length) {
+        path.reduce((o, p) => o[p] = o[p] || {}, obj)[last] = obj[k];
+        delete obj[k];
+    }
+  });
   return JSON.stringify(obj);
 };
 
