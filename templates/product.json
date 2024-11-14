@@ -12,10 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "infinite_options_app_block_wkNaCn": {
+          "type": "shopify://apps/infinite-options/blocks/app-block/7e73b6f9-82b0-45f5-9b9b-04f446ba1a9b",
+          "disabled": true,
+          "settings": {}
+        },
         "selleasy_lb_upsell_addon_block_gRa7LR": {
           "type": "shopify://apps/selleasy/blocks/lb-upsell-addon-block/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {
-          }
+          "settings": {}
         },
         "text_34WHVe": {
           "type": "text",
@@ -37,6 +41,7 @@
         }
       },
       "block_order": [
+        "infinite_options_app_block_wkNaCn",
         "selleasy_lb_upsell_addon_block_gRa7LR",
         "text_34WHVe",
         "text_zfpUiG",
@@ -244,8 +249,7 @@
       "blocks": {
         "judge_me_reviews_review_widget_JQ8mk3": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -263,9 +267,7 @@
         "color": "light",
         "title": "Designed to be Different",
         "collection": "bestsellers",
-        "products": [
-
-        ],
+        "products": [],
         "button_label": "",
         "button_link": ""
       }
