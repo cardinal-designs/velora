@@ -780,3 +780,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .spb-select {
   @apply relative border-1 border-[var(--text)] flex flex-row justify-start items-center gap-20 w-full rounded-[10px] py-10 px-20;
 }
+
+.spb-select select {
+  @apply text-oracle-14
+}

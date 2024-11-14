@@ -110,7 +110,23 @@
           </div>
         {% endif %} {% endcomment %}
 
-        {% render 'product-form' product: product, product_form_id: product_form_id, show_custom_inquiry: section.settings.custom_inquiry, blocks: section.blocks  %}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% if block.id contains 'infinite_options_app' %}
+                {% capture infinite_options %}
+                  <div class="
+                     col-span-12 border-t border-brown py-[17px] lg:pt-[max(25px,1.7vw)] lg:pb-[max(30px,2vw)]
+                    [&:nth-last-of-type(2)]:col-span-8 [&:nth-last-of-type(2)]:lg:border-r [&:nth-last-of-type(2)]:lg:border-b [&:nth-last-of-type(2)]:lg:pr-[min(30px,2vw)]
+                    ">
+                    {% render block %}
+                  </div>
+                {% endcapture %}
+              {% endif %}
+          {%- endcase -%}
+        {%- endfor -%}
+
+        {% render 'product-form' product: product, product_form_id: product_form_id, show_custom_inquiry: section.settings.custom_inquiry, options_app: infinite_options  %}
 
         {% assign text_blocks = section.blocks | where: 'type', 'text' %}
 

@@ -501,6 +501,25 @@ var VariantSelects = class extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('change', this.onVariantChange);
+
+    this.optionsApp = this.querySelector("#infiniteoptions-container")
+
+    if (this.optionsApp) {
+      const callback = (mutationList, observer) => {
+        for (const mutation of mutationList) {
+          if (mutation.type === "childList") {
+            if (!this.optionsApp.closest('section').querySelector('div')) return
+
+            this.insertBefore(this.optionsApp.closest('section').querySelector('div'), this.querySelector(".product-form-quantity"))
+            observer.disconnect();
+          }
+        }
+      };
+
+      const config = { attributes: false, childList: true, subtree: false };
+      const observer = new MutationObserver(callback);
+      observer.observe(this.optionsApp, config);
+    }
   }
 
   onVariantChange(event) {
