@@ -59,7 +59,9 @@
       ],
       "settings": {
         "color": "light",
-        "heading": "Reach Out Directly"
+        "heading": "Reach Out Directly",
+        "button_label": "Contact",
+        "button_link": "mailto:support@velora.com"
       }
     }
   },
