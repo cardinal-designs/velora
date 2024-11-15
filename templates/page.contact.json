@@ -33,19 +33,19 @@
         "column_Nnc7Hz": {
           "type": "column",
           "settings": {
-            "heading": "<h5>Customizations</h5><p>Talk to our team of experts about customizing any of our pieces</p><p><a href=\"mailto:customize@velora.com\" title=\"mailto:customize@velora.com\">customize@velora.com</a></p>"
+            "heading": "<h5>Customizations</h5><p>Talk to our team of experts about customizing any of our pieces</p>"
           }
         },
         "column_zzp4QN": {
           "type": "column",
           "settings": {
-            "heading": "<h5>partnerships</h5><p>For brands, influencers, and ambassadors</p><p><a href=\"mailto:parters@velora.com\" title=\"mailto:parters@velora.com\">parters@velora.com</a></p>"
+            "heading": "<h5>partnerships</h5><p>For brands, influencers, and ambassadors</p>"
           }
         },
         "column_AKVcKj": {
           "type": "column",
           "settings": {
-            "heading": "<h5>industry</h5><p>For designers, wholesale, trade professionals</p><p><a href=\"mailto:industry@velora.com\" title=\"mailto:industry@velora.com\">industry@velora.com</a></p>"
+            "heading": "<h5>industry</h5><p>For designers, wholesale, trade professionals</p>"
           }
         }
       },
