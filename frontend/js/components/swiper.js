@@ -42,6 +42,22 @@ function swiperInit() {
           if(s.classList.contains("swiper-initialized")) return
           swiper = new Swiper(s, options)
           break;
+        case 'product-carousel':
+          options = {
+              slidesPerView: 'auto',
+              spaceBetween: 20,
+              mousewheel: {
+                enabled: true,
+                releaseOnEdges: false,
+                forceToAxis: true,
+              },
+              freeMode: {
+                enabled: true
+              }
+          }
+          if(s.classList.contains("swiper-initialized")) return
+          swiper = new Swiper(s, options)
+          break;
         case 'press':
             options = {
                 slidesPerView: 1,

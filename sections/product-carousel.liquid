@@ -27,17 +27,19 @@
         {% endif %}
 
         {% if carousel_products != blank %}
-        <div class="no-scrollbar overflow-page-width">
-            <div class="w-fit flex flex-row justify-start items-start gap-[20px]">
-                {% for p in carousel_products %}
-                    {% if template == 'product' and p == product %}{% continue %}{% endif %}
-                    {% if p.title == blank%}
-                        {% continue %}
-                    {% endif %}
-                    <div class="flex-1 w-[min(340px,_86vw)] lg:w-[min(600px,_35vw)]" data-animate>
-                    {% render "product-card", product_card_product: p %}
-                    </div>
-                {% endfor %}
+        <div class="overflow-x-clip overflow-page-width">
+            <div class="swiper !overflow-x-visible !overflow-y-clip" data-swiper="product-carousel" role="list">
+                <div class="swiper-wrapper flex">
+                    {% for p in carousel_products %}
+                        {% if template == 'product' and p == product %}{% continue %}{% endif %}
+                        {% if p.title == blank%}
+                            {% continue %}
+                        {% endif %}
+                        <div class="swiper-slide w-full max-w-[min(340px,_86vw)] lg:max-w-[min(600px,_35vw)]" data-animate>
+                        {% render "product-card", product_card_product: p %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
          {% endif %}
