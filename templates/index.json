@@ -55,7 +55,7 @@
         "heading": "We believe extraordinary details are what add bespoke character to a home. Our fixtures are the antidote to mass-production—and you can customize any piece to better suit your space and style.",
         "small_text": "originals              only",
         "button_label": "Start Custom Inquiry",
-        "button_link": "/"
+        "button_link": "shopify://pages/custom"
       }
     },
     "product_carousel_3UA6Pd": {
@@ -64,9 +64,7 @@
         "color": "dark",
         "title": "add an artisanal touch  to your space",
         "collection": "bestsellers",
-        "products": [
-
-        ],
+        "products": [],
         "button_label": "Shop Best Sellers",
         "button_link": "shopify://collections/bestsellers"
       }
@@ -99,8 +97,7 @@
         "block_98kf7W",
         "block_DzCN46"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "image_text_HGij4c": {
       "type": "image-text",
