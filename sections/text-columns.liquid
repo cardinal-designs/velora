@@ -16,6 +16,14 @@
                     {% endfor %}
                 </div>
             {% endif %}
+
+            {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                <div class="flex flex-col justify-center lg:justify-end items-center w-full mt-auto">
+                  <a href="{{ section.settings.button_link }}" class="button button--outline button--large w-full">
+                    {{ section.settings.button_label }}
+                  </a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -45,6 +53,21 @@
                 "type": "textarea",
                 "id": "heading",
                 "label": "Text"
+            },
+            {
+                "type": "header",
+                "content": "Button"
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "label": "Button Label"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button Link",
+                "info": "Leave Label field blank to make entire slide clickable"
             }
         ],
         "blocks": [

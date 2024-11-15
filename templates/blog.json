@@ -1,11 +1,11 @@
 {
   "sections": {
-    "header": {
-      "type": "page-header",
-      "settings": {
-        "title": "The Blog"
-      }
-    },
+    // "header": {
+    //   "type": "page-header",
+    //   "settings": {
+    //     "title": "The Blog"
+    //   }
+    // },
     "main": {
       "type": "main-blog",
       "settings": {
@@ -13,7 +13,7 @@
     }
   },
   "order": [
-    "header",
+    // "header",
     "main"
   ]
 }
