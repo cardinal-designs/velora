@@ -1,6 +1,6 @@
 <div class="bg-[var(--background)] text-[var(--text)] py-60 lg:py-[86px]" style="{% render "color-variables", color: section.settings.color %}">
     <div class="page-width">
-        <div class="flex flex-col gap-50">
+        <div class="flex flex-col gap-50 justify-center items-center">
             {% if section.settings.heading != blank %}
                 <h4 style="--size: 42px;" class="text-arizona-custom lg:text-arizona-48 text-center">
                     {{ section.settings.heading }}
@@ -18,11 +18,17 @@
             {% endif %}
 
             {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-                <div class="flex flex-col justify-center lg:justify-end items-center w-full mt-auto">
-                  <a href="{{ section.settings.button_link }}" class="button button--outline button--large w-full">
-                    {{ section.settings.button_label }}
-                  </a>
-                </div>
+                {% if section.settings.button_style == 'link' %}
+                        <a href="{{ section.settings.button_link }}" class="inline-block text-link text-pangram-14 leading-[30px] w-fit">
+                            {{ section.settings.button_label }}
+                        </a>
+                {% else %}
+                    <div class="flex flex-col justify-center lg:justify-end items-center w-full mt-auto">
+                    <a href="{{ section.settings.button_link }}" class="button button--outline button--large w-full">
+                        {{ section.settings.button_label }}
+                    </a>
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>
@@ -61,13 +67,23 @@
             {
                 "type": "text",
                 "id": "button_label",
-                "label": "Button Label"
+                "label": "Label"
             },
             {
                 "type": "url",
                 "id": "button_link",
-                "label": "Button Link",
+                "label": "Link",
                 "info": "Leave Label field blank to make entire slide clickable"
+            },
+            {
+                "type": "select",
+                "id": "button_style",
+                "label": "Style",
+                "options": [
+                    {"label": "Button", "value": "button"},
+                    {"label": "Link", "value": "link"}
+                ],
+                "default": "link"
             }
         ],
         "blocks": [

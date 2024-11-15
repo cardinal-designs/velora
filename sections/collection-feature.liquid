@@ -23,12 +23,14 @@
                         {% endif %}
                     </h2>
 
-                    <a href="{{ block.settings.heading.url }}" class=" svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold peer-hover:svg-link-peer-hover" data-animate>
+                    <div class=" svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold group-hover/block:svg-link-peer-hover" data-animate>
                         Shop Now
                         <span>{% render 'link-arrow' %}</span>
-                    </a>
+                    </div>
                 </div>
             </div>
+
+            <a href="{{ block.settings.heading.url }}" class="absolute top-0 left-0 w-full h-full" data-animate> </a>
         </div>
     {% endfor %}
 </div>
