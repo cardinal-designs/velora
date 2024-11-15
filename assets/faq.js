@@ -18,14 +18,14 @@ const links = document.querySelectorAll('.faq-link');
 // });
 
 // Scroll to link
-links.forEach(link => {
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    const section = document.querySelector(`.faq-component[data-section="${event.currentTarget.dataset.section}"]`)
+// links.forEach(link => {
+//   link.addEventListener('click', event => {
+//     event.preventDefault();
+//     const section = document.querySelector(`.faq-component[data-section="${event.currentTarget.dataset.section}"]`)
 
-    window.scrollTo({
-      top: section.offsetTop,
-      behavior: "smooth"
-    });
-  });
-});
+//     window.scrollTo({
+//       top: section.offsetTop,
+//       behavior: "smooth"
+//     });
+//   });
+// });

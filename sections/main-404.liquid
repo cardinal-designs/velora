@@ -1,23 +1,11 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
-
-  @media screen and (min-width: 769px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
-    }
-  }
-</style>
-
-<div class="template-404 page-width page-margin center">
-  <p>
+<div class="template-404 page-width screen-height-with-nav page-margin center flex flex-col justify-center items-center gap-10">
+  <p class="text-arizona-80">
     {{ 'templates.404.subtext' | t }}
   </p>
-  <h1 class="title">
+  <h1 class="title text-pangram-18">
     {{ 'templates.404.title' | t }}
   </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
+  <a href="{{ routes.all_products_collection_url }}" class="button mt-30">
     {{ 'general.continue_shopping' | t }}
   </a>
 </div>

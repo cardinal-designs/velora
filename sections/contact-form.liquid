@@ -2,9 +2,9 @@
     <div class="flex flex-col-reverse md:grid md:grid-cols-2">
         <div class="flex justify-center items-center">
             <div class="max-w-custom w-full px-25 pt-40 pb-50 md:px-30 md:py-40 lg:p-60" style="--width: 745px;">
-                <div class="mb-30 md:mb-70 lg:pl-25">
+                <div class="mb-30 md:mb-70">
                     {% if section.settings.heading != blank %}
-                        <h2 class="text-arizona-custom lg:text-arizona-48" style="--size: 40px;">{{ section.settings.heading }}</h2>
+                        <h2 class="text-arizona-40 lg:text-arizona-48">{{ section.settings.heading }}</h2>
                     {% endif %}
                     {% if section.settings.text != blank %}
                         <div class="rte max-w-custom w-full mt-25 ml-auto [&_p:first-of-type]:indent-8 text-oracle-14 whitespace-pre-wrap [&_p]:mb-10 lg:text-oracle-18 xl:mt-[45px]" style="--width: min(503px, 73%);">{{ section.settings.text }}</div>

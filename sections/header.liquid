@@ -1,5 +1,5 @@
-<header class="header {% if template.name == 'index' %}overlay-header{% endif %} relative top-0">
-  <div class="w-full max-w-[1672px] mx-auto">
+<header x-data="{ openMenu: false }" class="header {% if template.name == 'index' %}overlay-header{% endif %} top-0 w-screen" :data-menu-open="openMenu">
+  <div class="w-full px-[28px] relative">
 
     <div class="grid grid-cols-thirds items-center gap-20">
 
@@ -45,7 +45,7 @@
                   {% endif %}
                 </li>
               {% else %}
-                <li class="group/nav">
+                <li class="group/nav" @mouseenter="openMenu = true" @mouseleave=" openMenu = false">
                   <a href="{{ link.url }}" class="flex items-center gap-10 relative"{% if link.current %} aria-current="page"{% endif %}>
                     {{ link.title | escape }}
                     <div class="transition-transform origin-center ease-in-out group-hover/nav:rotate-180">
@@ -59,7 +59,7 @@
                     {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
                     
                     {% if downcased_mega_menu_name == downcased_link_title %}
-                      <div class="group-megamenu mega-menu w-full p-[36px] absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
+                      <div class="group-megamenu mega-menu w-full p-[36px] rounded-b-[10px] absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
                         <div class="grid grid-cols-12 gap-20">
                           <div class="{% if block.settings.image != blank %}col-span-6{% else %}col-span-full{% endif %} flex flex-row">
                             {% assign halfway = link.links.size | divided_by: 2 %}

@@ -18,7 +18,8 @@
   
     html,
     body {
-        scroll-padding-top: calc(var(--nav-height) + var(--announcement-bar-height)); /* set to the height of your header */
+        scroll-margin-top: calc(var(--nav-height) + var(--announcement-bar-height)); /* set to the height of your header */
+        scroll-behavior: smooth;
     }
     
     .no-js:not(html) {
@@ -328,8 +329,8 @@
     @apply text-oracle-16 leading-[30px] whitespace-nowrap
   }
 
-  header {
-    @apply bg-cream text-brown border-b border-transparent lg:border-brown transition-all
+  header > div {
+    @apply bg-cream text-brown border-b border-transparent transition-all
   }
 
   header .mega-menu {
@@ -354,7 +355,7 @@
   }
 
   header.overlay-header {
-    @apply mx-25 lg:px-25 
+    @apply lg:px-25 
     /* lg:mx-0  */
   }
 
@@ -362,22 +363,32 @@
     @apply px-25
   }
 
-  .headroom--top header.overlay-header {
+  .overlay-header[data-menu-open],
+  [data-menu-open] {
+    @apply after:h-[1px] after:w-full after:content-[''] after:bg-brown bottom-0 left-0 after:absolute after:z-20
+  }
+
+  .overlay-header[data-menu-open] [data-header-logo] {
+    @apply opacity-100
+  }
+
+  .headroom--top header.overlay-header:not([data-menu-open]) > div {
     @apply bg-transparent text-cream border-transparent translate-y-0
     /* top-[var(--announcement-bar-height)] */
   }
 
-  [menu-drawer-open] .headroom--top header.overlay-header,
-  [data-search-open] .headroom--top header.overlay-header {
-    @apply bg-cream text-brown px-[17px] lg:px-[25px]
+  [menu-drawer-open] .headroom--top header.overlay-header > div,
+  [data-search-open] .headroom--top header.overlay-header > div {
+    @apply bg-cream text-brown px-[16px] md:px-[25px]
   }
 
   .headroom--not-top {
     @apply -translate-y-[var(--announcement-bar-height)]
   }
 
-  .headroom--not-top header.overlay-header {
-    @apply px-[17px] bg-cream
+  .headroom--not-top header.overlay-header:not([data-menu-open]),
+  .headroom--not-top header:not([data-menu-open]) {
+    @apply bg-cream border-b border-brown
   }
 
   .headroom--not-top + #shopify-section-mobile-menu mobile-menu #mobile-menu {
@@ -390,7 +401,7 @@
 
   [menu-drawer-open] header,
   [data-search-open] header {
-    @apply border-transparent px-[17px] lg:px-[25px]
+    @apply border-transparent px-[25px]
   }
 
   [menu-drawer-open] .js-open-menu {
