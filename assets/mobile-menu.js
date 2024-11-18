@@ -29,6 +29,8 @@ var MobileMenu = class extends HTMLElement {
       this.close();
     });
 
+    console.log(document.querySelector(".headroom-initialized").offsetHeight)
+
     document.body.classList.add('overflow-hidden');
     document.body.setAttribute("menu-drawer-open", true)
   }

@@ -1,17 +1,17 @@
 <script src="{{ 'mobile-menu.js' | asset_url }}" defer="defer"></script>
 
 <mobile-menu x-data="{ searchOpen: false }">
-  <div class="w-full h-full fixed below-nav left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-30 bg-transparent -translate-y-full transition-transform aria-unhidden:translate-y-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
+  <div class="w-screen h-full fixed below-nav left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-30 bg-transparent -translate-y-full transition-transform aria-unhidden:translate-y-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
     {% comment %} <div class="p-20 flex justify-between items-center border-b-1 border-black">
       <h2 class="text-m-h4">Menu</h2>
       <button class="js-close-menu" aria-label="{{ 'general.search.search' | t }}">
         {% render 'icon' icon: 'close' %}
       </button>
     </div> {% endcomment %}
-    <div x-data="{ search: '' }" class="pt-20 px-25 pb-30 flex flex-col bg-cream text-brown rounded-b-[10px] mx-25">
+    <div x-data="{ search: '' }" class="pt-20 px-15 md:px-25 pb-30 flex flex-col bg-cream text-brown rounded-b-[10px] mx-25">
       {% if section.settings.enable_search %}
         <predictive-search class="w-full page-width max-w-custom mx-auto px-0 lg:px-25 flex flex-col justify-start items-center mb-35 lg:mb-0" style="--width: 1070px;">
-          <div class="w-full pt-35 lg:pt-70 relative">
+          <div class="w-full pt-15 lg:pt-70 relative">
             <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
               <input type="hidden" name="type" value="product">
               <input type="hidden" name="options[prefix]" value="last">
@@ -38,17 +38,17 @@
               </svg>
               </button>
           </div>
-          <div x-show=" searchOpen " class="predictive-search h-full" style="">
+          <div x-show=" searchOpen " class="predictive-search h-full w-full" style="">
               <div class="py-30 lg:flex flex-col justify-start items-center h-full">
-                  <div class="flex flex-col-reverse lg:grid gap-40 md:grid-cols-4 gap-x-30">
+                  <div class="flex flex-col-reverse lg:grid gap-y-[18px] md:grid-cols-4 gap-x-30">
                       <div class="col-span-3">
-                          <h3 class="mb-20 pb-10 text-arizona-26">Popular Products</h3>
+                          <h3 class="mb-10 md:mb-20 md:pb-10 text-arizona-20">Popular Products</h3>
                           <ul class=" grid grid-cols-2 lg:grid-cols-3 gap-y-[24px] gap-x-[16px] lg:gap-x-30">
                               {% if settings.search_products != blank %}
                                   {% for current_product in settings.search_products.products limit: 3 %}
                                       {% if current_product.title == blank %}{% continue %}{% endif %}
                                       <li id="predictive-search-option-collection-{{ forloop.index }}" class="" role="option" aria-selected="false">
-                                          {% render 'product-card', product_card_product: current_product, no_product_form: true %}
+                                          {% render 'product-card', product_card_product: current_product, no_product_form: true, container: 'search' %}
                                       </li>
                                   {% endfor %}
                               {% endif %}
@@ -58,12 +58,12 @@
                       <div class="col-start-4 col-span-1">
                           {% if settings.search_suggestions != blank %}
                               {% assign search_suggestions = settings.search_suggestions | split: ',' %}
-                              <h3 class="mb-20 pb-10 text-arizona-26">Popular Searches</h3>
-                              <ul class="flex flex-col gap-10">
+                              <h3 class="mb-5 md:mb-20 md:pb-10 text-arizona-20">Popular Searches</h3>
+                              <ul class="flex flex-col px-[17px]">
                                   {% for query in search_suggestions %}
                                       <li id="predictive-search-option-query-{{ forloop.index }}" class="" role="option" aria-selected="false">
                                           <a href="/search?type=product&q={{ query}}" class="" tabindex="-1">
-                                            <p class="text-body-3 [&_mark]:bg-transparent [&_mark]:underline" aria-label="{{ query }}">
+                                            <p class="text-oracle-14 leading-[2] [&_mark]:bg-transparent [&_mark]:underline" aria-label="{{ query }}">
                                               {{ query }}
                                             </p>
                                           </a>
@@ -78,7 +78,7 @@
         </predictive-search>
       {% endif %}
 
-      <div x-show="! searchOpen">
+      <div x-show="! searchOpen" class="px-[17px]">
         <ul class="text-arizona-26 flex flex-col justify-start items-start gap-20 [&_li]:w-full" role="list">
           {% for link in section.settings.menu.links %}
             <li>

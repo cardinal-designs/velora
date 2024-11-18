@@ -66,13 +66,16 @@
 <style>
     .headroom--top .header,
     .headroom--top .header > div {
-        background-color: #2B1D0A;
-        color: #F1ECE3;
-        border-color: #F1ECE3;
+        background-color: var(--text);
+        color: var(--background);
+    }
+
+    .headroom--top .header {
+        border-color: var(--background);
     }
 
     .headroom--top .header nav [aria-current="page"]::after {
-        background: #F1ECE3;
+        background: var(--background);
     }
 </style>
 

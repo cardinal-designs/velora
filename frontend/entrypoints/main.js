@@ -17,8 +17,8 @@ const components = import.meta.glob('../js/components/*.js',{ eager: true });
 
 // set up header
 let headroom = new Headroom(document.querySelector("[data-headroom]"), {
-    // offset: document.querySelector("main section") ? document.querySelector("main section").offsetHeight : 30,
-    offset: document.querySelector("[data-headroom]").offsetHeight + 20,
+    offset: document.querySelector("main .shopify-section:first-of-type") ? document.querySelector("main .shopify-section:first-of-type").offsetHeight - 150 : 30,
+    // offset: document.querySelector("[data-headroom]").offsetHeight + 20,
     classes: {
         initial: 'headroom-initialized'
     }

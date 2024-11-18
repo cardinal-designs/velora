@@ -33,10 +33,10 @@
     <a class="absolute top-0 left-0 w-full h-full" href="{{ product_card_product.url }}"> </a>
   </div>
 
-  <div class="mt-[23px]">
+  <div class="{% if container == 'search' %}mt-10 {% else %} mt-[22px] {% endif %} md:mt-[23px]">
     <div class="flex flex-col justify-start items-start">
       <div class="flex flex-row justify-between items-center gap-10 w-full">
-        <a href="{{ product_card_product.url }}" class="{% if container == 'search' %}text-pangram-12 lg:text-pangram-16{% else %}text-pangram-16 lg:text-pangram-18 !leading-[30px]{% endif %} block">
+        <a href="{{ product_card_product.url }}" class="{% if container == 'search' %}text-pangram-12 lg:text-pangram-16 {% else %} text-pangram-16 lg:text-pangram-18 !leading-[30px]{% endif %} block">
           {{ split_product_title[0] | truncate: 16 }}
         </a>
         <p data-price class="lg:opacity-0 {% unless container == 'search' %} lg:group-hover/card:opacity-100 {% endunless %} transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
@@ -48,7 +48,7 @@
         </p>
       </div>
       {% if split_product_title[1] != blank  %}
-        <a href="{{ product_card_product.url }}" class="{% if container == 'search' %}text-arizona-12 lg:text-arizona-16{% else %}text-arizona-18 lg:text-arizona-18{% endif %} mt-[1px] block">
+        <a href="{{ product_card_product.url }}" class="{% if container == 'search' %} text-arizona-12 lg:text-arizona-16 {% else %} text-arizona-18 lg:text-arizona-18{% endif %} mt-[1px] block">
           {{ split_product_title[1] }}
         </a>
       {% endif %}

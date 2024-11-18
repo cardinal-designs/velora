@@ -82,6 +82,8 @@ module.exports = {
         //'h7'
         'arizona-20': ['20px', { lineHeight: '1.1', letterSpacing: '0', }],
         'arizona-18': ['18px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'arizona-16': ['16px', { lineHeight: '1.1', letterSpacing: '0', }],
+        'arizona-12': ['12px', { lineHeight: '1.1', letterSpacing: '0', }],
         //custom
         'arizona-custom': ['var(--size)', { lineHeight: '1'}],
 
