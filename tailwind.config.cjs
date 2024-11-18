@@ -98,7 +98,7 @@ module.exports = {
         
         // Captions
         'pangram-20': ['20px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
-        'pangram-18': ['16px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
+        'pangram-18': ['18px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
         'pangram-16': ['16px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
         'pangram-14': ['14px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
         'pangram-12': ['12px', { lineHeight: '1.1', letterSpacing: '0.1em', }],
