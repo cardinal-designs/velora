@@ -1,9 +1,6 @@
 <!doctype html>
 <html class="no-js group/html{% if settings.enable_animations %} enable-animations{% endif %}" lang="{{ request.locale.iso_code }}" data-editor-open="{{ request.design_mode }}">
   <head>
-<!-- Start of Shoplift scripts -->
-{% comment %} {% render 'shoplift' %} {% endcomment %}
-<!-- End of Shoplift scripts -->
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +41,7 @@
     {% comment %} {{ 'app.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
-    {% comment %} <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=rsujilyzhudhzkchvo6atg" async="true"></script> {% endcomment %}
+    <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=rsujilyzhudhzkchvo6atg" async="true"></script>
   </head>
 
   <body class="template-{{ template }}"
