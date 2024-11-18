@@ -134,7 +134,7 @@
 
       <div class="col-span-full pt-[64px]">
         <div class="grid grid-cols-[1fr,auto,1fr] gap-5  md:flex flex-row justify-between items-end md:gap-20 font-pangram uppercase text-[8px] lg:text-pangram-custom" style="--size: 10px;">
-          <p class="text-center lg:text-left">&copy; {{ shop.name }} {{ 'now' | date: "%Y" }}. <br class="block lg:hidden"> All rights reserved.</p>
+          <p class="text-center lg:text-left">&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. <br class="block lg:hidden"> All rights reserved.</p>
 
           <div class="max-w-[43px] md:max-w-[65px] block lg:hidden *:w-full *:h-auto">
             {% if settings.secondary_logo != blank %}
