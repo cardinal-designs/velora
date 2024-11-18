@@ -41,7 +41,7 @@
                     style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%; --x-mobile: {{ block.settings.x_mobile | default: block.settings.x }}%; --y-mobile: {{ block.settings.y_mobile | default: block.settings.y }}%;
                     background-image: url({{ 'pale-wall-texture.png' | asset_img_url }}); background-position: center; background-size: cover;
                     "
-                    class="flex flex-col justify-end items-center bg-[var(--background)] border-[var(--text)] border rounded-[10px] w-[max(200px,14vw)] h-auto aspect-[0.8/1] absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)]
+                    class="z-[1] flex flex-col justify-end items-center bg-[var(--background)] border-[var(--text)] border rounded-[10px] w-[max(200px,14vw)] h-auto aspect-[0.8/1] absolute top-[var(--y-mobile)] left-[var(--x-mobile)] lg:top-[var(--y)] lg:left-[var(--x)]
                     {% if block.settings.x_mobile >= 50 %} translate-x-[calc(-100%_-_25px)] {% else %} translate-x-[calc(0%_+_25px)] {% endif %}
                     {% if block.settings.y_mobile >= 50 %} translate-y-[calc(-100%_-_25px)] {% else %} translate-y-[25px] {% endif %}
                     {% if block.settings.x >= 70 %} lg:translate-x-[calc(-100%_-_30px)] {% else %} lg:translate-x-[calc(0%_+_30px)] {% endif %}
