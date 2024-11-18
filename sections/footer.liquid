@@ -1,11 +1,11 @@
 <footer class="footer bg-brown text-cream p-[26px] lg:p-[35px]">
-  <div class="border-cream border-2 rounded-[10px] p-[25px] lg:p-[37px]">
+  <div class="border-cream border-2 rounded-[10px] p-[25px] lg:px-[37px] lg:py-[32px]">
     <div class="">
       <div class="grid grid-cols-12 gap-10">
 
         <div class="col-span-full flex flex-row justify-center lg:justify-between items-start lg:mb-30">
           <div class="">
-            <a href="{{ routes.root_url }}" class="w-[122px] lg:w-[200px] block pt-5 pb-[8px] [&_svg]:w-full [&_svg]:h-auto" aria-label="Header Logo Link">
+            <a href="{{ routes.root_url }}" class="w-[122px] lg:w-[max(170px,14vw)] block pt-5 pb-[8px] [&_svg]:w-full [&_svg]:h-auto" aria-label="Header Logo Link">
               {% if settings.logo_svg != blank %}
                   {{ settings.logo_svg }}
                 {% elsif settings.logo_image != blank %}
@@ -16,15 +16,15 @@
               </a>
           </div>
 
-          <div class="hidden lg:block">
+          <div class="hidden lg:block [&_svg]:w-full [&_svg]:h-auto max-w-[max(42px,11vw)] md:max-w-[max(58px,4vw)]">
             {% if settings.secondary_logo != blank %}
               {{ settings.secondary_logo }}
             {% endif %}
           </div>
         </div>
 
-        <div class="col-span-full col-start-1 lg:col-span-4 lg:col-start-3">
-          <div class="mt-40 mb-50 flex justify-end row-start-2 lg:row-start-auto lg:m-0">
+        <div class="col-span-full lg:col-span-6">
+          <div class="mt-40 mb-50 flex justify-center row-start-2 lg:row-start-auto lg:m-0">
             <div class="max-w-full w-full lg:max-w-custom" style="--width: 375px;">
               {% if section.settings.newsletter_title != blank %}
                 <p class="mb-10 text-arizona-28 lg:text-arizona-42 leading-[30px] tracking-[-0.75px] md:tracking-[-2.37px] lg:leading-normal" >{{ section.settings.newsletter_title }}</p>
@@ -79,8 +79,8 @@
           </div>
         </div>
 
-        <div class="col-span-full lg:col-span-5">
-          <div class="flex flex-row justify-start items-start flex-wrap gap-10">
+        <div class="col-span-full lg:col-span-6">
+          <div class="flex flex-row justify-between items-start flex-wrap gap-10">
             {% if section.settings.contact != blank %}
               <div class="flex-1">
                 <h5 class="text-arizona-26 mb-[18px] md:mb-10">Contact</h5>
@@ -89,7 +89,7 @@
             {% endif %}
             {% if section.settings.menu != blank %}
               {% for link in section.settings.menu.links %}
-                <div class="{% if link.title == "Social" or link.title == "social" %}basis-full w-full lg:basis-auto lg:w-auto{% else %}{% endif %} flex-1">
+                <div class="flex-1">
                   <h5 class="text-arizona-26 mb-[12px] md:mb-10">{{ link.title }}</h5>
                   <ul class="flex {% if link.title == "Social" or link.title == "social" %}gap-x-[16px] flex-row lg:flex-col{% else %}md:pl-15 flex-col{% endif %}">
                     {% for child_link in link.links %}
@@ -133,7 +133,7 @@
       </div>
 
       <div class="col-span-full pt-[64px]">
-        <div class="flex flex-row justify-between items-end gap-20 font-pangram uppercase text-[8px] lg:text-pangram-custom" style="--size: 10px;">
+        <div class="grid grid-cols-[1fr,auto,1fr] gap-5  md:flex flex-row justify-between items-end md:gap-20 font-pangram uppercase text-[8px] lg:text-pangram-custom" style="--size: 10px;">
           <p class="text-center lg:text-left">&copy; {{ shop.name }} {{ 'now' | date: "%Y" }}. <br class="block lg:hidden"> All rights reserved.</p>
 
           <div class="max-w-[43px] md:max-w-[65px] block lg:hidden *:w-full *:h-auto">
