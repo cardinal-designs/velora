@@ -82,14 +82,14 @@
         <div class="col-span-full lg:col-span-6">
           <div class="flex flex-row justify-between items-start flex-wrap gap-10">
             {% if section.settings.contact != blank %}
-              <div class="flex-1">
+              <div class="md:flex-1">
                 <h5 class="text-arizona-26 mb-[18px] md:mb-10">Contact</h5>
                 <p class="md:pl-15 text-oracle-14 md:text-oracle-16 lg:leading-[30px]">{{ section.settings.contact | newline_to_br }}</p>
               </div>
             {% endif %}
             {% if section.settings.menu != blank %}
               {% for link in section.settings.menu.links %}
-                <div class="flex-1">
+                <div class="md:flex-1">
                   <h5 class="text-arizona-26 mb-[12px] md:mb-10">{{ link.title }}</h5>
                   <ul class="flex {% if link.title == "Social" or link.title == "social" %}gap-x-[16px] flex-row lg:flex-col{% else %}md:pl-15 flex-col{% endif %}">
                     {% for child_link in link.links %}
