@@ -105,7 +105,6 @@
             "button_label": "",
             "button_link": "",
             "scroll_to": "",
-            "inline_button": true
           }
         }
       },
@@ -133,7 +132,6 @@
             "button_label": "",
             "button_link": "",
             "scroll_to": "",
-            "inline_button": true
           }
         },
         "image_fr3iez": {
@@ -229,7 +227,6 @@
             "button_label": "Start Custom Inquiry",
             "button_link": "shopify://pages/custom",
             "scroll_to": "",
-            "inline_button": true
           }
         }
       },

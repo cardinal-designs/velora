@@ -151,10 +151,10 @@
     </div>
 
     <div class="col-span-6">
-      <div class="bg-[var(--text)] text-[var(--background)] px-[4.5vw] pb-10 pt-5 lg:pt-35 lg:pb-[47px] sticky top-[var(--nav-height)] overflow-clip">
+      <div class="bg-[var(--text)] text-[var(--background)] px-[4.5vw] pb-10 pt-5 lg:pt-[13px] lg:pb-[23px] sticky top-[var(--nav-height)] overflow-clip">
 
         {% if section.settings.title != blank %}
-          <div class="py-5 text-center lg:mb-[27px]">
+          <div class="py-5 text-center lg:mb-[13px]">
             <div class="animate-marquee xl:animate-none no-scrollbar xl:overflow-x-auto">
               <div class="mx-auto w-fit flex flex-row justify-center items-center gap-40 *:whitespace-nowrap">
                 <p class="text-pangram-10 lg:text-pangram-14 leading-[30px]">
@@ -177,7 +177,7 @@
               {% if media.media_type == "image" %}
                 {% assign image_variants = product.images | where: 'src', media.src | first %}
               {% endif %}
-              <div class="swiper-slide w-[calc(100%_-_4.5vw)] [&:first-child>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %}" 
+              <div class="swiper-slide w-[calc(100%_-_4.5vw)] [&:first-child>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
                 style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
                 data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
                 {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
@@ -188,7 +188,9 @@
               </div>
             {% endfor %}
           </div>
-          {% render 'swiper-arrows', section_id: section.id, total_slides: product.media.size %}
+          <div class="mt-[23px]">
+            {% render 'swiper-arrows', section_id: section.id, total_slides: product.media.size %}
+          </div>
         </div>
       </div>
     </div>
