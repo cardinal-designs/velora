@@ -547,7 +547,7 @@
   }
 
   .wysiwyg h5 {
-    @apply text-pangram-18 lg:text-pangram-20 font-pangram
+    @apply text-pangram-18 lg:text-pangram-18 font-pangram
   }
 
   .wysiwyg h6 {
