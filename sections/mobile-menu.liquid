@@ -93,7 +93,7 @@
                   <li class="pt-[13px] grid grid-cols-2 grid-flow-row-dense w-full gap-[23px]">
                     {% for child_link in link.links %}
                       {% if child_link.links != blank %}
-                        <ul class="flex flex-col [&:hover_li]:opacity-50 gap-5">
+                        <ul class="flex flex-col gap-5">
                           {% for grandchild_link in child_link.links %}
                             <li class="">
                               <a href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
