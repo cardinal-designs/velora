@@ -65,16 +65,16 @@
 
 <style>
     .headroom--top .header,
-    .headroom--top .header > div {
+    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) > div {
         background-color: var(--text);
         color: var(--background);
     }
 
-    .headroom--top .header {
+    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) {
         border-color: var(--background);
     }
 
-    .headroom--top .header nav [aria-current="page"]::after {
+    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) nav [aria-current="page"]::after {
         background: var(--background);
     }
 </style>
