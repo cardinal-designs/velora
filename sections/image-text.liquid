@@ -27,8 +27,8 @@
                             {% endif %}
 
                             {% if block.settings.heading != blank %}
-                                <div class="!leading-[1.2] text-arizona-40 md:text-arizona-48 xl:text-arizona-60 xxl:text-arizona-72 xl:max-w-[min(607px,33vw)]">
-                                    {{ block.settings.heading }}
+                                <div class="!leading-[1.2] text-arizona-40 md:text-arizona-48 xl:text-arizona-60 xxl:text-arizona-72 xl:max-w-[min(607px,33vw)] [&_br]:hidden [&_br]:md:block">
+                                    {{ block.settings.heading | newline_to_br }}
                                 </div>
                             {% endif %}
 
@@ -230,7 +230,7 @@
                         "label": "Subhead (right)"
                     },
                     {
-                        "type": "inline_richtext",
+                        "type": "textarea",
                         "id": "heading",
                         "label": "Heading"
                     },
