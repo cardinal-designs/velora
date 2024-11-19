@@ -115,7 +115,7 @@ module.exports = {
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(calc(-100% - var(--gap)))' },
         },
         spin: {
           '0%': { transform: 'rotate(0deg)' },

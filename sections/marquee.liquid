@@ -2,7 +2,7 @@
   {% for block in section.blocks %}
     <div class="w-fit h-fit flex justify-center items-center gap-[18px] relative flex-shrink-0">
     <div class="rounded-full border border-[var(--text)] text-oracle-18 w-auto h-[27px] lg:h-[36px] aspect-square flex flex-col justify-center items-center text-center">{{ forloop.index }}</div>
-      <div class="whitespace-nowrap">{{ block.settings.heading }}</div>
+      <div class="whitespace-nowrap leading-[1] pt-[1%]">{{ block.settings.heading }}</div>
     </div>
   {% endfor %}
 {% endcapture %}
@@ -10,15 +10,15 @@
 <div class="bg-[var(--background)] text-[var(--text)] text-pangram-custom lg:text-pangram-20" style="--size:15px; {% render "color-variables", color: section.settings.color %}">
       <div class="press-marquee py-[14px] overflow-hidden">
           <div class="marquee">
-              <div class="flex justify-center items-center gap-[18vw] shrink-0 overflow-x-hidden"> 
-                  <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
-                  {{ blocks }}
+              <div class="flex justify-center items-center gap-[var(--gap)] shrink-0 overflow-x-hidden" style="--gap: 18vw;"> 
+                  <div class="flex items-center gap-[var(--gap)] shrink-0 whitespace-nowrap animate-marquee">
+                    {{ blocks }}
                   </div>
-                  <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
-                  {{ blocks }}
+                  <div class="flex items-center gap-[var(--gap)] shrink-0 whitespace-nowrap animate-marquee" aria-hidden="true">
+                    {{ blocks }}
                   </div>
-                  <div class="flex items-center gap-[18vw] shrink-0 whitespace-nowrap animate-marquee">
-                  {{ blocks }}
+                  <div class="flex items-center gap-[var(--gap)] shrink-0 whitespace-nowrap animate-marquee" aria-hidden="true">
+                    {{ blocks }}
                   </div>
               </div>
           </div>
