@@ -1,33 +1,56 @@
+{% capture blocks %}
+  {% for block in section.blocks %}
+    <p class="text-pangram-12 leading-[30px]">
+      {% if block.settings.link != blank %}
+        <a href="{{ block.settings.link }}" class="">
+          {{ block.settings.heading }}
+        </a>
+      {% else %}
+        {{ block.settings.heading }}
+      {% endif %}
+    </p>
+  {% endfor %}
+{% endcapture %}
+
 {% if section.blocks != blank and template =='index' %}
 <div class="py-5 text-center bg-blue text-brown">
-  <div class="animate-marquee md:animate-none no-scrollbar md:overflow-x-auto">
-    <div class="mx-auto w-fit flex flex-row justify-center items-center gap-50 *:whitespace-nowrap">
-      {% for block in section.blocks %}
-        <p class="text-pangram-12 leading-[30px]">
-          {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link }}" class="">
-              {{ block.settings.heading }}
-            </a>
-          {% else %}
-            {{ block.settings.heading }}
-          {% endif %}
-        </p>
-      {% endfor %}
-
-      {% comment %} duplicate items for smaller browsers {% endcomment %}
-      {% for block in section.blocks %}
-        <p class="text-pangram-12 leading-[30px] block md:hidden">
-          {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link }}" class="">
-              {{ block.settings.heading }}
-            </a>
-          {% else %}
-            {{ block.settings.heading }}
-          {% endif %}
-        </p>
-      {% endfor %}
-
+  {% if section.settings.slider == true %}
+    <div class="hidden lg:block">
+      <div class="swiper" data-swiper="announcement">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <p class="text-pangram-12 leading-[30px]">
+                {% if block.settings.link != blank %}
+                  <a href="{{ block.settings.link }}" class="">
+                    {{ block.settings.heading }}
+                  </a>
+                {% else %}
+                  {{ block.settings.heading }}
+                {% endif %}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
+{% endif %}
+
+  <div class="{% if section.settings.slider == true %} block lg:hidden{% endif %}">
+    <div class="marquee">
+      <div class="flex justify-center items-center gap-[var(--gap)] shrink-0 overflow-x-hidden" style="--gap: 50px;"> 
+          <div class="flex items-center gap-[var(--gap)] shrink-0 whitespace-nowrap animate-marquee lg:animate-none *:whitespace-nowrap">
+            {{ blocks }}
+          </div>
+          <div class="flex lg:hidden items-center gap-[var(--gap)] shrink-0 whitespace-nowrap animate-marquee lg:animate-none *:whitespace-nowrap" aria-hidden="true">
+            {{ blocks }}
+          </div>
+          <div class="flex lg:hidden items-center gap-[var(--gap)] shrink-0 whitespace-nowrap animate-marquee lg:animate-none *:whitespace-nowrap" aria-hidden="true">
+            {{ blocks }}
+          </div>
+      </div>
+  </div>
+
   </div>
 </div>
 {% endif %}
@@ -35,7 +58,14 @@
 {% schema %}
 {
   "name": "Announcement Bar",
-  "settings": [],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "slider",
+      "label": "Slider",
+      "default": true
+    }
+  ],
   "blocks": [
     {
       "name": "Block",

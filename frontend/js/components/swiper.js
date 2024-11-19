@@ -10,10 +10,10 @@ function swiperInit() {
               slidesPerView: 1,
               spaceBetween: 0,
               effect: "fade",
-              // autoplay: {
-              //     delay: 4000,
-              //     disableOnInteraction: false,
-              // },
+              autoplay: {
+                  delay: 4000,
+                  disableOnInteraction: false,
+              },
               pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -109,8 +109,22 @@ function swiperInit() {
             swiper = new Swiper(s, options)
             break
         // case 'press-thumbs'
+        case 'announcement':
+          options = {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            effect: "fade",
+            fadeEffect: { crossFade: true },
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false,
+            }
+          }
+          if(s.classList.contains("swiper-initialized")) return
+          swiper = new Swiper(s, options)
+          break;
         default:
-          options = JSON.parse(`{${s.dataset.options}}`)
+          options = s.dataset.options ? JSON.parse(`{${s.dataset.options}}`) : {slidesPerView: 1}
           if(s.classList.contains("swiper-initialized")) return
           swiper = new Swiper(s, options)
           break
