@@ -10,10 +10,10 @@ function swiperInit() {
               slidesPerView: 1,
               spaceBetween: 0,
               effect: "fade",
-              autoplay: {
-                  delay: 4000,
-                  disableOnInteraction: false,
-              },
+              // autoplay: {
+              //     delay: 4000,
+              //     disableOnInteraction: false,
+              // },
               pagination: {
                 el: ".swiper-pagination",
                 clickable: true,

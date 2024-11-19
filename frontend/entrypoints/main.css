@@ -94,7 +94,7 @@
         rounded-[5px]
         border
         bg-[var(--button)] border-[var(--button\_text)] text-[var(--button\_text)]
-        md:hover:bg-[var(--button\_text)] md:hover:text-[var(--button)] md:hover:border-[var(--button)];
+        md:hover:bg-blue md:hover:text-[var(--button)] md:hover:border-blue;
     }
 
     .button--outline {
@@ -709,7 +709,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .shopify-section .jdgm-star {
-  @apply text-[10px] lg:text-[12px]
+  @apply text-[10px] lg:text-[17px]
 }
 
 /* Loading Spinner */

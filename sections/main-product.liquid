@@ -11,7 +11,7 @@
 
     <div id="ProductInfo-{{ section.id }}" class="col-span-6 py-20 lg:py-[57px]">
       {% assign product_form_id = 'product-form-' | append: section.id %}
-      <div class="flex flex-col justify-center items-center gap-y-10 md:gap-y-[13px] w-full max-w-[max(564px,40vw)] mx-auto px-[4.5vw]">
+      <div class="flex flex-col justify-center items-center gap-y-10 md:gap-y-[13px] w-full max-w-[max(564px,32vw)] mx-auto ">
         <h1 class="text-arizona-40 lg:text-arizona-60 text-center">
           {{ split_product_title[0] }}
         </h1>
@@ -22,7 +22,7 @@
           </h2>
         {% endif %}
 
-        <div class="flex flex-row justify-center items-center gap-[26px] mb-10 lg:mb-30">
+        <div class="flex flex-row justify-center items-center gap-[26px] mb-10 lg:mb-[17px]">
           <p class="price flex items-center gap-5 text-pangram-16">
             {{ product.price | money }}
             {% if product.compare_at_price > product.price %}

@@ -566,8 +566,9 @@ var VariantSelects = class extends HTMLElement {
     const newVariantImage = slider.querySelector(`[data-image-variants*="${this.currentVariant.id}"]`)
     
     if(newVariantImage) {
-      const slideToIndex = newVariantImage.getAttribute("data-swiper-slide-index") || newVariantImage.getAttribute("data-media-index")
-      slider.swiper.slideTo(slideToIndex)
+      const slideToIndex = parseInt(newVariantImage.getAttribute("data-swiper-slide-index") || newVariantImage.getAttribute("data-media-index"))
+      const speed = Math.abs(slider.swiper.activeIndex - slideToIndex) > 10 ? 2000 : 1000
+      slider.swiper.slideTo(slideToIndex, speed)
     }
   }
 
