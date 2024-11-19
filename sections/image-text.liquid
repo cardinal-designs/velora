@@ -27,7 +27,7 @@
                             {% endif %}
 
                             {% if block.settings.heading != blank %}
-                                <div class="!leading-[1.2] text-arizona-40 md:text-arizona-48 xl:text-arizona-72 xl:max-w-[min(607px,33vw)]">
+                                <div class="!leading-[1.2] text-arizona-40 md:text-arizona-48 xl:text-arizona-60 xxl:text-arizona-72 xl:max-w-[min(607px,33vw)]">
                                     {{ block.settings.heading }}
                                 </div>
                             {% endif %}
@@ -40,7 +40,7 @@
 
                             {%- if block.settings.button_label != blank -%}
                                 {% if block.settings.button_link != blank %}
-                                    <a href="{{ block.settings.button_link }}" class="button button--large button--outline whitespace-nowrap block w-full mt-[22px] md:mt-0">
+                                    <a href="{{ block.settings.button_link }}" class="button button--large button--outline whitespace-nowrap block w-full mt-[22px] lg:mt-0">
                                     {{ block.settings.button_label }}
                                     </a>
                                 {% elsif block.settings.scroll_to != blank %}
