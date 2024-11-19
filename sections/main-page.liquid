@@ -1,6 +1,14 @@
 <div class="screen-height-with-nav page-width my-40 md:mb-60">
-  <div class="text-editor wysiwyg max-w-custom w-full mx-auto" style="--width: 900px;">
-    {{ page.content }}
+
+  <div class="flex flex-col justify-start items-start lg:grid grid-cols-2 gap-[22px] lg:gap-[38px]">
+    {% if page.title != blank %}
+      <h1 class="text-arizona-48 flex-1 col-start-1">{{ page.title }}</h1>
+    {% endif %}
+
+    <div class="text-editor wysiwyg w-full mx-auto col-span-full">
+      {{ page.content }}
+    </div>
+
   </div>
 </div>
 
