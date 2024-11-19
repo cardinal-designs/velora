@@ -1,4 +1,4 @@
-<div class="" style="--text-bar-height: {% if section.settings.text != blank %}34px{% else %}0px{% endif %}">
+<div class="" style="--text-bar-height: {% if section.settings.text != blank %}15px{% else %}0px{% endif %}">
   <div class="swiper w-full h-full relative" data-swiper="hero">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
@@ -88,7 +88,7 @@
   </div>
 
   {% if section.settings.text != blank %}
-    <div class="bg-cream text-brown text-oracle-18 p-[23px] md:p-[27px]">
+    <div class="bg-cream text-brown text-oracle-18 p-[23px] md:p-[15px]">
       <div class="page-width text-center" data-animate>
         {{ section.settings.text }}
       </div>
