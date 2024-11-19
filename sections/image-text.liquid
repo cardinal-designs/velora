@@ -57,11 +57,11 @@
         </div>
     {% else %}
         <div class="page-width {% if section.settings.image != blank %}lg:grid grid-cols-12 gap-x-10{% endif %}">
-            <div class="{% if section.settings.image != blank %}col-start-2 col-span-10{% endif %} flex {% if section.settings.layout_mobile == 'b' %}flex-col-reverse{% else %}flex-col{% endif %} justify-start items-center lg:grid grid-cols-12 gap-x-0 gap-y-30 lg:gap-y-[46px] {% unless section.settings.image != blank %}rounded-[10px]{% endunless %} bg-[var(--text)] text-[var(--background)] overflow-hidden">
+            <div class="{% if section.settings.image != blank %}col-start-2 col-span-10{% endif %} flex {% if section.settings.layout_mobile == 'b' %}flex-col-reverse{% else %}flex-col{% endif %} justify-start items-center lg:grid grid-cols-12 gap-x-0 md:gap-y-30 lg:gap-y-[46px] {% unless section.settings.image != blank %}rounded-[10px]{% endunless %} bg-[var(--text)] text-[var(--background)] overflow-hidden">
                 {% for block in section.blocks %}
                     {% if block.type == "image" %}
                         <div class="w-full h-full {% if section.settings.image != blank %}lg:col-span-6{% else %}lg:col-span-7{% endif %}">
-                            <div data-animate class="w-full h-full aspect-square overflow-hidden relative flex flex-col justify-end items-center lg:items-end text-right py-20 px-30 md:p-[max(30px,2.5vw)]">
+                            <div data-animate class="w-full h-full aspect-square lg:aspect-[1.1/1] lg:max-h-[45vw] overflow-hidden relative flex flex-col justify-end items-center lg:items-end text-right py-20 px-30 md:p-[max(30px,2.5vw)]">
                                 {% if block.settings.image != blank %}
                                     {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover inset'  }}
                                 {% endif %}
