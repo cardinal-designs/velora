@@ -40,7 +40,7 @@
         {% if product.metafields.custom.highlights != blank %}
           <div class="flex flex-row justify-center items-center flex-wrap gap-10 lg:gap-x-[14px] lg:gap-y-[13px] mb-30 lg:mb-45 text-oracle-12 lg:text-oracle-16 capitalize">
             {% for highlight in product.metafields.custom.highlights.value %}
-              <div class="bg-blue py-[8px] px-[11px]">
+              <div class="bg-blue pt-[8px] pb-[6px] px-[11px]">
                 {{ highlight }}
               </div>
             {% endfor %}
