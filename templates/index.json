@@ -116,11 +116,11 @@
           "settings": {
             "title": "details make",
             "title_r": "the difference",
-            "heading": "Inspired by the timeless character of heirlooms—with distinct, modern flair.",
+            "heading": "Inspired by the \ntimeless character \nof heirlooms—\nwith distinct, modern \nflair.",
             "text": "",
             "button_label": "Our Origin",
             "button_link": "shopify://pages/about",
-            "scroll_to": "",
+            "scroll_to": ""
           }
         }
       },
