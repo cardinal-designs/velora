@@ -138,6 +138,7 @@ module.exports = {
             boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)'
           }
         }
+
       },
       maxWidth: {
         'custom': 'var(--width)',
