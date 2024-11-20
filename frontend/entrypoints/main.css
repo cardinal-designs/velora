@@ -325,6 +325,10 @@
 
   /* HEADER */
 
+  header {
+    @apply border-b border-transparent
+  }
+
   header nav li,
   header nav a {
     @apply text-oracle-16 leading-[30px] whitespace-nowrap
@@ -392,7 +396,7 @@
   body:not(.template-index):not([menu-drawer-open]) header:not([data-menu-open]),
   body:not([menu-drawer-open]) .headroom--not-top header.overlay-header:not([data-menu-open]),
   body:not([menu-drawer-open]) .headroom--not-top header:not([data-menu-open]) {
-    @apply bg-cream border-b border-brown
+    @apply bg-cream border-brown
   }
 
   .headroom--not-top + #shopify-section-mobile-menu mobile-menu #mobile-menu {
