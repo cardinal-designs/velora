@@ -405,7 +405,7 @@
 
   header:not(.overlay-header)[data-menu-open],
   [menu-drawer-open] header {
-    @apply bg-transparent border-transparent
+    @apply bg-transparent border-transparent 
   }
 
   .js-open-menu + .js-close-menu {
@@ -416,10 +416,10 @@
     @apply px-[9px] md:px-0
   }
 
-  [menu-drawer-open] header,
+  /* [menu-drawer-open] header,
   [data-search-open] header {
-    @apply border-transparent px-[25px]
-  }
+    @apply !border-transparent px-[25px]
+  } */
 
   [data-search-open] search-dropdown > div:first-child {
     @apply px-[25px]
@@ -439,10 +439,6 @@
   body .shopify-challenge__container {
     @apply pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
   }
-
-  /* body.template-index main > .shopify-section:first-child > div:first-child {
-    @apply pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]
-  } */
 
   /* --- PRODUCT CARD --- */
   .group\/card fieldset legend,
