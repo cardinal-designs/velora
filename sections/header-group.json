@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header Group",
@@ -17,7 +17,7 @@
         "block_Ndb4ez": {
           "type": "block",
           "settings": {
-            "heading": "Proudly Designed & Assembled in the USA",
+            "heading": "Proudly Designed & Assembled in the USA              free shipping on orders over $35",
             "link": ""
           }
         },
@@ -34,6 +34,7 @@
         "block_qh7zNH"
       ],
       "settings": {
+        "slider": true
       }
     },
     "header": {
@@ -52,7 +53,8 @@
         "mega_menu_3BRjWk"
       ],
       "settings": {
-        "menu": "dev-main-nav"
+        "menu": "dev-main-nav",
+        "enable_search": true
       }
     }
   },
