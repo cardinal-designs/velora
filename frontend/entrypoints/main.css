@@ -213,7 +213,7 @@
     }
 
     .below-nav {
-      @apply aria-hidden:top-0 aria-unhidden:top-[calc(0px_+_var(--nav-height)_+_var(--announcement-bar-height))]
+      @apply aria-hidden:top-0 aria-unhidden:top-[calc(0px_+_var(--nav-height)_+_var(--announcement-bar-height)_-_2px)]
     }
 
     .screen-height-with-nav,
@@ -389,9 +389,9 @@
     @apply -translate-y-[var(--announcement-bar-height)]
   }
 
-  body:not(.template-index) header,
-  .headroom--not-top header.overlay-header:not([data-menu-open]),
-  .headroom--not-top header:not([data-menu-open]) {
+  body:not(.template-index):not([menu-drawer-open]) header:not([data-menu-open]),
+  body:not([menu-drawer-open]) .headroom--not-top header.overlay-header:not([data-menu-open]),
+  body:not([menu-drawer-open]) .headroom--not-top header:not([data-menu-open]) {
     @apply bg-cream border-b border-brown
   }
 
@@ -400,7 +400,7 @@
   }
 
   header:not(.overlay-header)[data-menu-open],
-  [menu-drawer-open] header:not(.overlay-header) {
+  [menu-drawer-open] header {
     @apply bg-transparent border-transparent
   }
 
