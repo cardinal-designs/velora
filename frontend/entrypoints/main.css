@@ -41,7 +41,7 @@
 
     .overflow-page-width {
       @apply 
-      w-[calc(100%_+_52px)] mx-[-26px] *:px-[26px]
+      w-[calc(100%_+_50px)] -mx-25 *:px-25
       md:w-[calc(100%_+_60px)] md:-mx-30 md:*:px-30
       lg:w-[calc(100%_+_120px)] lg:-mx-60 lg:*:px-60 overflow-x-auto overflow-y-clip
     }
