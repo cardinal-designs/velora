@@ -65,9 +65,14 @@
 
 <style>
     .headroom--top .header,
-    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) > div {
+    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) > div,
+    body:not(.template-index):not([menu-drawer-open]) .headroom--top  header:not([data-menu-open]) {
         background-color: var(--text);
         color: var(--background);
+    }
+
+    header:not(.overlay-header)[data-menu-open] {
+        background-color: var(--text);
     }
 
     body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) {
