@@ -366,7 +366,7 @@
 
   .overlay-header[data-menu-open],
   [data-menu-open] {
-    @apply after:h-[1px] after:w-full after:content-[''] after:bg-brown bottom-0 left-0 after:absolute after:z-20
+    @apply after:h-[1px] after:w-[calc(100%-50px)] after:content-[''] after:bg-brown bottom-0 left-0 after:absolute after:z-20
   }
 
   .overlay-header[data-menu-open] [data-header-logo],
@@ -396,7 +396,12 @@
   }
 
   .headroom--not-top + #shopify-section-mobile-menu mobile-menu #mobile-menu {
-    @apply aria-unhidden:top-[calc(0px_+_var(--nav-height))]
+    @apply aria-unhidden:top-[calc(0px_+_var(--nav-height)_-_2px)]
+  }
+
+  header:not(.overlay-header)[data-menu-open],
+  [menu-drawer-open] header:not(.overlay-header) {
+    @apply bg-transparent border-transparent
   }
 
   .js-open-menu + .js-close-menu {
