@@ -547,12 +547,12 @@
   }
 
   .swiper-hero-pagination {
-    @apply flex flex-col justify-end items-center gap-20 top-0 right-0 !w-fit h-full bottom-auto !left-auto;
+    @apply flex flex-col justify-center md:justify-end items-center gap-20 top-0 right-0 !w-fit h-full bottom-auto !left-auto pt-[var(--announcement-bar-height)];
   }
 
   .swiper-hero-bullet {
     @apply h-[max(58px,4vw)] w-[2px] bg-cream/30 overflow-clip opacity-100 border-none m-0
-    top-auto left-auto bottom-[max(60px,4vw)] right-[max(60px,4vw)] rounded-none
+    top-auto left-auto md:bottom-[max(60px,4vw)] right-10 md:right-[max(60px,4vw)] rounded-none
     relative overflow-x-clip block
     before:absolute before:content-[""] before:w-full before:h-full before:bg-cream/40 before:left-0 before:top-0
     after:absolute after:content-[""] after:w-full after:h-full after:bg-cream after:left-0 after:top-0 after:translate-y-full after:transition-opacity after:ease-linear
