@@ -57,7 +57,7 @@
         {% endif %}
 
         {% if product.metafields.custom.overview != blank or product.metafields.custom.measurements_details != blank or product.metafields.custom.technical_specifications != blank %}
-          <div class="flex flex-col justify-start items-center gap-[16px] lg:gap-30" x-data="{ activeTab: 0, changeTab(i) { this.activeTab = i} }">
+          <div class="w-full flex flex-col justify-start items-start gap-[16px] lg:gap-30" x-data="{ activeTab: 0, changeTab(i) { this.activeTab = i} }">
             <div class="no-scrollbar overflow-x-auto w-full">
               <div class="min-w-fit w-full flex flex-row justify-center items-center gap-x-20 pb-5 [&_button]:text-pangram-12 [&_button]:uppercase">
                 {% if product.metafields.custom.overview != blank %}
@@ -84,7 +84,14 @@
             <div class="px-10 lg:px-30 text-oracle-14 lg:text-oracle-16 [&_p:first-of-type]:indent-8">
               {% if product.metafields.custom.overview != blank %}
                 <div class=" [&_p:not(:last-child)]:mb-10" x-show="activeTab == 0">
-                  {{ product.metafields.custom.overview | metafield_tag }}
+                    <div x-data="{ open: false }">
+                      <div class="relative">
+                        <div :class="open ? '' : 'truncated' " class="overflow-hidden [&.truncated]:max-h-[116px]">
+                          {{ product.metafields.custom.overview | metafield_tag }}
+                        </div>
+                        <button x-show="!open" class="-mt-20 pt-20 text-left underline underline-offset-2 w-full bg-gradient-to-t from-cream to-cream/60" @click="open = true">Read More</button>
+                      </div>
+                    </div>
                 </div>
               {% endif %}
 
