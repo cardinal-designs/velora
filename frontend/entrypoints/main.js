@@ -25,6 +25,8 @@ let headroom = new Headroom(document.querySelector("[data-headroom]"), {
 })
 headroom.init()
 
+window.headroom = headroom
+
 swiperInit()
 
 // Initialize animations
@@ -41,10 +43,10 @@ if(document.querySelector("[data-logo-transition]")) {
   const heroLogo = document.querySelector("[data-logo-transition]")
 
   const hero = heroLogo.closest(".shopify-section")
-  const header = document.querySelector("header")
+  const header = document.querySelector(".headroom")
   const headerLogo = header.querySelector("[data-header-logo]")
 
-  headerLogo.classList.add("opacity-0")
+  // headerLogo.classList.add("opacity-0")
 
   // Other pages
   let firstSection = document.querySelector("#MainContent .shopify-policy__title") || document.querySelector("#MainContent .shopify-section:first-of-type")
@@ -52,15 +54,21 @@ if(document.querySelector("[data-logo-transition]")) {
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach( entry => {
-        entry.target.classList.toggle("show", entry.isIntersecting)
-        if(heroLogo){
-            headerLogo.classList.toggle('opacity-0', entry.isIntersecting)
+        // entry.target.classList.toggle("show", entry.isIntersecting)
+        if(!entry.isIntersecting) {
+          window.headroom.unpin()
         }
+
+        // if(heroLogo){
+        //     // headerLogo.classList.toggle('opacity-0', entry.isIntersecting)
+        //     headroom.unpin()
+        //     console.log('INTERSECTION')
+        // }
 
       })
     },
     {
-      rootMargin: `-${(header.clientHeight - 20)}px`,
+      rootMargin: `-${(header.clientHeight + 40)}px`,
       threshold: 0
     }
   )
@@ -69,6 +77,7 @@ if(document.querySelector("[data-logo-transition]")) {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  const startingSize = headerLogo.offsetWidth / heroLogo.offsetWidth
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: hero,
@@ -82,7 +91,7 @@ if(document.querySelector("[data-logo-transition]")) {
   })
   
   .to(heroLogo, {
-    scale: 0.1, 
+    scale: startingSize, 
     ease: "linear"
   })
 }

@@ -1,4 +1,4 @@
-<div class="bg-brown">
+<div class="bg-[var(--text)]">
     <div class="px-25 py-20 md:px-40 md:py-30">
         <div class="aspect-[0.57/1] lg:aspect-[1.74/1] w-full h-auto relative overflow-hidden rounded-[10px] [&_iframe]:absolute [&_iframe]:top-0 [&_iframe]:-left-full [&_iframe]:w-[350%] [&_iframe]:lg:w-[300%] [&_iframe]:max-w-none">
             {% if section.settings.video != blank %}
@@ -54,31 +54,24 @@
 </div>
 
 <style>
-    .shopify-section-group-header-group,
-    .headroom--top .header,
-    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) > div,
-    body:not(.template-index):not([menu-drawer-open]) .headroom--top  header:not([data-menu-open]) {
-        background-color: var(--text);
+    .headroom.headroom--top {
+        background: var(--text);
         color: var(--background);
     }
 
-    header:not(.overlay-header)[data-menu-open] {
-        background-color: var(--text);
-        border-color: transparent;
-        
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom:not([data-menu-open]).headroom--top:after {
+        background-color: var(--background);
     }
 
-    body[menu-drawer-open] header {
-        border-width: 0px;
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom.headroom--top header {
+        background: var(--text);
+        color: var(--background);
     }
 
-    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) {
-        border-color: var(--background);
-    }
-
-    body:not([menu-drawer-open]) .headroom--top header:not([data-menu-open]) nav [aria-current="page"]::after {
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom[data-menu-open] header {
         background: var(--background);
-    }
+        color: var(--text)
+    };
 </style>
 
 {% schema %}

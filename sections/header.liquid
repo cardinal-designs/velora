@@ -1,8 +1,7 @@
-<header x-data="{ openMenu: false }" class="header {% if template.name == 'index' %}overlay-header{% endif %} top-0 w-screen relative" :data-menu-open="openMenu">
-  <div class="w-full px-[16px] md:px-[28px] relative">
+<div class="px-25">
+  <header class="top-0 relative px-[16px] md:px-[28px]">
 
     <div class="grid grid-cols-thirds items-center gap-20">
-
       <!-- Navigation -->
       {% if section.settings.menu != blank %}
         <nav class="flex h-full">
@@ -176,13 +175,13 @@
       </div>
 
     </div>
-  </div>
 
-  {% if section.settings.enable_search %}
-    {% render 'search-dropdown' %}
-  {% endif %}
+    {% if section.settings.enable_search %}
+      {% render 'search-dropdown' %}
+    {% endif %}
 
-</header>
+  </header>
+</div>
 
 <script type="application/ld+json">
   {

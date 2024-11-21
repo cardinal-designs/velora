@@ -11,11 +11,18 @@ export default class SearchDropdown extends HTMLElement {
       this.closeButtons.forEach(button => button.addEventListener('click', this.close.bind(this)));
     }
   
-    open() {
+    open(e) {
+      if(e) e.preventDefault()
       const search = this.querySelector('input[type="search"]');
+
+      if(this.isOpen == true) {
+        this.close()
+        return
+      }
   
       this.isOpen = true;
       this.classList.add('active');
+
       
       document.documentElement.classList.add('scrolled');
       document.body.setAttribute("data-search-open", true)
@@ -31,7 +38,8 @@ export default class SearchDropdown extends HTMLElement {
       this.addEventListener('keyup', this.handleKeyup.bind(this));
     }
   
-    close() {
+    close(e) {
+      if(e) e.preventDefault()
       this.isOpen = false;
       this.classList.remove('active');
   
@@ -44,14 +52,14 @@ export default class SearchDropdown extends HTMLElement {
     }
   
     handleFocusOut(event) {
-      const parent = event.target.closest('.header');
-      if (parent == null && this.isOpen) this.close();
+      const parent = event.target.closest('header');
+      if (parent == null && this.isOpen) this.close(event);
     }
   
     handleKeyup(event) {
       if (event.keyCode !== 27) return;
   
-      this.close();
+      this.close(event);
     }
   }
   

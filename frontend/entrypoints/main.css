@@ -213,7 +213,7 @@
     }
 
     .below-nav {
-      @apply aria-hidden:top-0 aria-unhidden:top-[calc(0px_+_var(--nav-height)_+_var(--announcement-bar-height)_-_2px)]
+      @apply aria-hidden:top-0 aria-unhidden:top-[calc(0px_+_var(--nav-height)_+_var(--announcement-bar-height)_-_1px)]
     }
 
     .screen-height-with-nav,
@@ -326,7 +326,7 @@
   /* HEADER */
 
   header {
-    @apply border-b border-transparent
+    /* @apply border-b border-transparent */
   }
 
   header nav li,
@@ -334,12 +334,12 @@
     @apply text-oracle-16 leading-[30px] whitespace-nowrap
   }
 
-  header > div {
-    @apply bg-cream text-brown border-b border-transparent transition-all
-  }
+  /* header > div {
+    @apply bg-[var(--background)] text-[var(--text)] border-b border-transparent transition-all
+  } */
 
   header .mega-menu {
-    @apply bg-cream text-brown
+    @apply bg-[var(--background)] text-[var(--text)] border-t border-[var(--text)] drop-shadow-sm
   }
 
   .header .group\/nav {
@@ -349,14 +349,43 @@
   .headroom {
     will-change: transform;
     transition: transform 200ms linear;
+    @apply transition-all bg-[var(--background)] text-[var(--text)] h-fit
+    after:h-[1px] after:w-full after:content-[''] after:bg-[var(--text)] bottom-0 left-0 after:absolute after:z-20 after:transition-all
   }
 
-  /* headroom showing */
+  .headroom[data-menu-open] header,
+  [data-search-open] header {
+    @apply bg-[var(--background)] text-[var(--text)]
+  }
+ 
+  /* Above offset */
+  .headroom--top {
+
+  }
+
+  body:not([menu-drawer-open]):not([data-search-open]) .headroom--top.overlay-header:not([data-menu-open]) {
+    @apply bg-transparent text-[var(--background)] after:bg-transparent [&_[data-header-logo]]:opacity-0
+  }
+
+  /* Below offset */
+  .headroom--not-top {
+
+  }
+
+  /* before transition */
   .headroom--pinned {
   }
 
-  /* headroom hidden */
+  /* after transition */
   .headroom--unpinned {
+    @apply -translate-y-[var(--announcement-bar-height)]
+  }
+
+  .headroom[data-menu-open],
+  [data-search-open] .headroom,
+  [menu-drawer-open] .headroom {
+    @apply bg-transparent text-[var(--text)] after:bg-transparent 
+    [&_header]:bg-[var(--background)] [&_header]:text-[var(--text)]
   }
 
   header.overlay-header {
@@ -368,45 +397,45 @@
     @apply px-25
   }
 
-  .overlay-header[data-menu-open],
+  /* .overlay-header[data-menu-open],
   [data-menu-open] {
     @apply after:h-[1px] after:w-[calc(100%-50px)] after:content-[''] after:bg-brown bottom-0 left-0 after:absolute after:z-20
-  }
+  } */
 
-  .overlay-header[data-menu-open] [data-header-logo],
+  /* .overlay-header[data-menu-open] [data-header-logo],
   [menu-drawer-open="true"] .overlay-header [data-header-logo] {
     @apply opacity-100
   }
 
   .headroom--top header.overlay-header:not([data-menu-open]) > div {
     @apply bg-transparent text-cream border-transparent translate-y-0
-    /* top-[var(--announcement-bar-height)] */
-  }
+    top-[var(--announcement-bar-height)]
+  } */
 
-  [menu-drawer-open] .headroom--top header.overlay-header > div,
+  /* [menu-drawer-open] .headroom--top header.overlay-header > div,
   [data-search-open] .headroom--top header.overlay-header > div {
     @apply bg-cream text-brown px-[16px] md:px-[25px]
-  }
+  } */
 
-  .headroom--not-top
+  /* .headroom--not-top
    {
     @apply -translate-y-[var(--announcement-bar-height)]
-  }
+  } */
 
-  body:not(.template-index):not([menu-drawer-open]) header:not([data-menu-open]),
+  /* body:not(.template-index):not([menu-drawer-open]) header:not([data-menu-open]),
   body:not([menu-drawer-open]) .headroom--not-top header.overlay-header:not([data-menu-open]),
   body:not([menu-drawer-open]) .headroom--not-top header:not([data-menu-open]) {
     @apply bg-cream border-brown
-  }
+  } */
 
   .headroom--not-top + #shopify-section-mobile-menu mobile-menu #mobile-menu {
-    @apply aria-unhidden:top-[calc(0px_+_var(--nav-height)_-_2px)]
+    @apply aria-unhidden:top-[calc(0px_+_var(--nav-height)_-_1px)]
   }
 
-  header:not(.overlay-header)[data-menu-open],
+  /* header:not(.overlay-header)[data-menu-open],
   [menu-drawer-open] header {
     @apply bg-transparent border-transparent 
-  }
+  } */
 
   .js-open-menu + .js-close-menu {
     @apply hidden lg:!hidden;

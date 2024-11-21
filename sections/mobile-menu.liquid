@@ -1,7 +1,7 @@
 <script src="{{ 'mobile-menu.js' | asset_url }}" defer="defer"></script>
 
 <mobile-menu x-data="{ searchOpen: false }">
-  <div class="w-screen h-full fixed below-nav left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-30 bg-transparent -translate-y-full transition-transform aria-unhidden:translate-y-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
+  <div class="drop-shadow-sm w-screen h-full fixed below-nav left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-30 bg-transparent -translate-y-full transition-transform aria-unhidden:translate-y-0" id="mobile-menu" aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1">
     {% comment %} <div class="p-20 flex justify-between items-center border-b-1 border-black">
       <h2 class="text-m-h4">Menu</h2>
       <button class="js-close-menu" aria-label="{{ 'general.search.search' | t }}">
