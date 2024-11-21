@@ -4,7 +4,7 @@
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
         {% if slide.image == blank %}{% continue %}{% endif %}
-        <div class="swiper-slide w-full h-full max-h-[785px] md:max-h-full min-h-[max(400px,200vw)] aspect-auto md:min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }};">
+        <div class="swiper-slide w-full h-full max-h-[785px] md:max-h-full min-h-[max(400px,200vw)] aspect-auto md:min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }}; {% if slide.text_color == '#F1ECE3' %} --background: #2B1D0A; {% endif %}">
 
           {% if block.type == "full" %}
             {% if slide.image != blank %}
@@ -60,7 +60,7 @@
                   <h2 class="text-pangram-20" data-animate>{{ slide.title }}</h2>
                 {% endif %}
                 {% if slide.heading != blank %}
-                  <h1 class="row-[2/3] text-arizona-60 lg:text-arizona-80" data-aniamte>
+                  <h1 class="row-[2/3] leading-[0.9em] text-arizona-60 lg:leading-[1em] lg:text-arizona-80" data-animate>
                     {{ slide.heading | newline_to_br }}
                   </h1>
                 {% endif %}
@@ -78,7 +78,7 @@
       {% endfor %}
     </div>
 
-    <div class="swiper-hero-pagination swiper-pagination z-[2] opacity-0 lg:opacity-100"></div>
+    <div class="swiper-hero-pagination swiper-pagination z-[2]"></div>
 
     {% if section.settings.logo_transition == true and settings.logo_svg != blank %}
       <div data-logo-transition class="text-cream mx-auto w-full max-w-full lg:max-w-[90%] h-auto [&_svg]:max-h-[50svh] [&_svg]:w-full [&_svg]:h-full absolute bottom-[-1px] left-half -translate-x-half z-[3] origin-bottom">
