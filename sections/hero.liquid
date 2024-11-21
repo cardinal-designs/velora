@@ -1,10 +1,19 @@
 <div class="" style="--text-bar-height: {% if section.settings.text != blank %}15px{% else %}0px{% endif %}">
-  <div class="swiper w-full h-full relative" data-swiper="hero">
+  <div class="swiper w-full h-full relative mt-[var(--announcement-bar-height)]" data-swiper="hero">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
         {% assign slide = block.settings %}
         {% if slide.image == blank %}{% continue %}{% endif %}
-        <div class="swiper-slide w-full h-full max-h-[785px] md:max-h-full min-h-[max(400px,200vw)] aspect-auto md:min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] pt-[calc(var(--nav-height)+var(--announcement-bar-height))] relative flex flex-col gap-20 content-{{ slide.content_position }}" style="--text: {{ slide.text_color }}; {% if slide.text_color == '#F1ECE3' %} --background: #2B1D0A; {% endif %}">
+        <div class="swiper-slide 
+          w-full h-full 
+          max-h-[785px] md:max-h-full 
+          min-h-[max(400px,200vw)] aspect-auto md:min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] 
+          py-[calc(var(--nav-height)+var(--announcement-bar-height))] 
+          relative flex flex-col gap-20 
+          md:content-{{ slide.content_position }}
+          content-{{ slide.mobile_content_position }}
+          " 
+          style="--text: {{ slide.text_color }}; {% if slide.text_color == '#F1ECE3' %} --background: #2B1D0A; {% endif %}">
 
           {% if block.type == "full" %}
             {% if slide.image != blank %}
@@ -55,7 +64,10 @@
           </div>
 
             <div class="relative z-[1] w-full h-full text-[var(--text)] pt-90 {% if section.settings.logo_transition == true and settings.logo_svg != blank %}pb-100{% endif %} p-25 md:p-30 lg:p-[min(70px,5vw)]">
-              <div class="max-w-custom mx-auto w-full h-full flex flex-col gap-20 content-{{ slide.content_position }}" style="--width: 600px">
+              <div class="max-w-custom mx-auto w-full h-full flex flex-col gap-20 
+                md:content-{{ slide.content_position }}
+                content-{{ slide.mobile_content_position }}" 
+                style="--width: 600px">
                 {% if slide.title != blank %}
                   <h2 class="text-pangram-20" data-animate>{{ slide.title }}</h2>
                 {% endif %}
@@ -166,6 +178,50 @@
             "type": "select",
             "id": "content_position",
             "label": "Content position",
+            "options": [
+              {
+                "value": "left_top",
+                "label": "Left Top"
+              },
+              {
+                "value": "center_top",
+                "label": "Center Top"
+              },
+              {
+                "value": "right_top",
+                "label": "Right Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "left_bottom",
+                "label": "Left Bottom"
+              },
+              {
+                "value": "center_bottom",
+                "label": "Center Bottom"
+              },
+              {
+                "value": "right_bottom",
+                "label": "Right Bottom"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "mobile_content_position",
+            "label": "Mobile content position",
             "options": [
               {
                 "value": "left_top",
@@ -365,6 +421,50 @@
               {
                 "value": "bottom",
                 "label": "Bottom"
+              },
+              {
+                "value": "right_bottom",
+                "label": "Right Bottom"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "mobile_content_position",
+            "label": "Mobile content position",
+            "options": [
+              {
+                "value": "left_top",
+                "label": "Left Top"
+              },
+              {
+                "value": "center_top",
+                "label": "Center Top"
+              },
+              {
+                "value": "right_top",
+                "label": "Right Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "left_bottom",
+                "label": "Left Bottom"
+              },
+              {
+                "value": "center_bottom",
+                "label": "Center Bottom"
               },
               {
                 "value": "right_bottom",
