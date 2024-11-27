@@ -62,6 +62,9 @@
         "image_mUVNXf",
         "image_yzTdY8"
       ],
+      "custom_css": [
+        "[id*='_image_marquee']{}"
+      ],
       "settings": {
         "heading": "Page not found—find your fit.",
         "button_label": "Shop Now",
