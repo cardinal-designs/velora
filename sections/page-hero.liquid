@@ -72,6 +72,14 @@
         background: var(--background);
         color: var(--text)
     };
+
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom.headroom--top nav [aria-current=page]:after {
+      background: var(--background);
+    }
+
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom[data-menu-open] {
+      background: var(--text)
+    }
 </style>
 
 {% schema %}
