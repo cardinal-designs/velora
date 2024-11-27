@@ -18,6 +18,7 @@
             "image": "shopify://shop_images/86a8d0aac2373e9293e34b4061d145ee.jpg",
             "image_right": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png",
             "content_position": "top",
+            "mobile_content_position": "center_top",
             "text_color": "#F1ECE3",
             "title": "",
             "heading": "Crafted for\ncharacter",
@@ -30,6 +31,7 @@
           "settings": {
             "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png",
             "content_position": "center",
+            "mobile_content_position": "center",
             "text_color": "#F1ECE3",
             "title": "",
             "heading": "",
