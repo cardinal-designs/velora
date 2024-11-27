@@ -8,7 +8,7 @@
           w-full h-full 
           max-h-[785px] md:max-h-full 
           min-h-[max(400px,200vw)] aspect-auto md:min-h-[max(calc(100vh_-_var(--announcement-bar-height)_-_var(--text-bar-height)),500px)] 
-          py-[calc(var(--nav-height)+var(--announcement-bar-height))] 
+          py-[var(--nav-height)] 
           relative flex flex-col gap-20 
           md:content-{{ slide.content_position }}
           content-{{ slide.mobile_content_position }}
@@ -100,7 +100,7 @@
   </div>
 
   {% if section.settings.text != blank %}
-    <div class="bg-cream text-brown text-oracle-18 p-[23px] md:p-[15px]">
+    <div class="bg-cream text-brown text-oracle-18 p-[13px] md:p-[15px]">
       <div class="page-width text-center" data-animate>
         {{ section.settings.text }}
       </div>
