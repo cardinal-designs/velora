@@ -63,7 +63,7 @@
         "image_yzTdY8"
       ],
       "custom_css": [
-        "[id*='_image_marquee']{}"
+        "[id^=\"_image_marquee\"] {margin-top: 105px;}"
       ],
       "settings": {
         "heading": "Page not found—find your fit.",
