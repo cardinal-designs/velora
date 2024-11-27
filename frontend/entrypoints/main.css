@@ -841,3 +841,16 @@ input[type="search"]::-webkit-search-results-decoration {
 .spb-select select {
   @apply text-oracle-14
 }
+
+.pc--opt-out-email_input,
+.pc--opt-out-form-field_wrapper .field__input {
+  @apply !border-x-0 !border-t-0 !border-b rounded-none w-full h-auto !px-0 !pt-0 !pb-[14px] text-oracle-14 !bg-cream text-brown placeholder:text-brown lg:placeholder:text-brown/50 !h-auto !mb-20
+}
+
+.pc--opt-out-form-button {
+  @apply !h-fit mt-[6px]
+}
+
+.pc--opt-out-form-field_wrapper .field__label {
+  @apply visually-hidden text-oracle-14
+}
