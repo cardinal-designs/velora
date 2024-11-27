@@ -73,11 +73,11 @@
         color: var(--text)
     };
 
-    body:not([menu-drawer-open]):not([data-search-open]) .headroom.headroom--top header nav [aria-current=page]:after {
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom.headroom--top header nav .group\/nav a::after {
       background: var(--background);
     }
 
-    body:not([menu-drawer-open]):not([data-search-open]) .headroom[data-menu-open] header nav [aria-current=page]:after {
+    body:not([menu-drawer-open]):not([data-search-open]) .headroom[data-menu-open] header nav .group\/nav a::after {
       background: var(--text)
     }
 </style>
