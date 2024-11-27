@@ -34,7 +34,7 @@
             {% endif %}
         </div>
         <div class="overflow-scroll no-scrollbar" style="--gap: 0px;">
-            <div class="flex justify-center items-center flex-shrink-0 overflow-x-hidden [&:hover>div]:[animation-play-state:paused]"> 
+            <div class="flex justify-center items-center flex-shrink-0 overflow-x-hidden {% if section.settings.pause_on_hover == true %} [&:hover>div]:[animation-play-state:paused] {% endif %}"> 
                 {{ marquee_contents }}
                 {{ marquee_contents }}
                 {{ marquee_contents }}
