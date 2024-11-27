@@ -851,6 +851,10 @@ input[type="search"]::-webkit-search-results-decoration {
   @apply !h-fit mt-[6px]
 }
 
+.pc--opt-out-form-button svg {
+  @apply w-20 h-20 border-brown rounded-full p-[3px]
+}
+
 .pc--opt-out-form-field_wrapper .field__label {
   @apply visually-hidden text-oracle-14
 }
