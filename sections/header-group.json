@@ -47,10 +47,46 @@
             "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.08_PM.png",
             "text": "Bespoke lighting for every space"
           }
+        },
+        "hover_image_mU4jcy": {
+          "type": "hover_image",
+          "settings": {
+            "title": "Shop All",
+            "image": "shopify://shop_images/1fd71331080818210d88fb1dcc0a40bd.png",
+            "text": ""
+          }
+        },
+        "hover_image_WjAykx": {
+          "type": "hover_image",
+          "settings": {
+            "title": "Best Sellers",
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.33_PM.png",
+            "text": ""
+          }
+        },
+        "hover_image_tnYD3e": {
+          "type": "hover_image",
+          "settings": {
+            "title": "New Arrivals",
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png",
+            "text": ""
+          }
+        },
+        "hover_image_8qNTGw": {
+          "type": "hover_image",
+          "settings": {
+            "title": "Accessories",
+            "image": "shopify://shop_images/15a0538f82a68428c2eff2048c615ed4.png",
+            "text": ""
+          }
         }
       },
       "block_order": [
-        "mega_menu_3BRjWk"
+        "mega_menu_3BRjWk",
+        "hover_image_mU4jcy",
+        "hover_image_WjAykx",
+        "hover_image_tnYD3e",
+        "hover_image_8qNTGw"
       ],
       "settings": {
         "menu": "dev-main-nav",
