@@ -1,6 +1,9 @@
 <div class="px-25">
   <header class="top-0 relative px-[16px] md:px-[28px]">
 
+    {% assign mega_menus = section.blocks | where: 'type', 'mega_menu' %}
+    {% assign menu_images = section.blocks | where: 'type', 'hover_image' %}
+
     <div class="grid grid-cols-thirds items-center gap-20">
       <!-- Navigation -->
       {% if section.settings.menu != blank %}
@@ -10,7 +13,7 @@
               {% assign downcased_link_title = link.title | downcase | strip %}
               {% assign mega_menu_names = '' %}
 
-              {% for block in section.blocks %}
+              {% for block in mega_menus %}
                 {% if block.type == 'mega_menu' %}
                   {% assign trim_mega_menu_name = block.settings.title | strip %}
                   {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
@@ -52,13 +55,13 @@
                     </div>
                   </a>
 
-                  {% for block in section.blocks %}
+                  {% for block in mega_menus %}
                     {% assign trim_mega_menu_name = block.settings.title | strip %}
                     {% assign downcased_mega_menu_name = trim_mega_menu_name | downcase %}
                     {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
                     
                     {% if downcased_mega_menu_name == downcased_link_title %}
-                      <div class="group-megamenu mega-menu w-full p-[36px] rounded-b-[10px] absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
+                      <div x-data="{ hovered: ''}" class="group-megamenu mega-menu w-full p-[36px] rounded-b-[10px] absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 transition-visibility duration-300 group-hover/nav:visible group-hover/nav:opacity-100" {{ block.shopify_attributes }}>
                         <div class="grid grid-cols-12 gap-20">
                           <div class="{% if block.settings.image != blank %}col-span-6{% else %}col-span-full{% endif %} flex flex-row">
                             {% assign halfway = link.links.size | divided_by: 2 %}
@@ -66,10 +69,10 @@
                               {% for child_link in link.links %}
                                 <div class="hover:!opacity-100 transition-opacity">
                                   <h2 class="text-arizona-26">{{ child_link.title }}</h2>
-                                  <ul class="flex flex-col ml-40 [&:hover_li]:opacity-50">
+                                  <ul @mouseleave=" hovered = ''" class="flex flex-col ml-40 [&:hover_li]:opacity-50">
                                     {% for grandchild_link in child_link.links %}
                                       <li class="hover:!opacity-100 transition-opacity">
-                                        <a href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
+                                        <a @mouseenter=" hovered = '{{ grandchild_link.title }}'" href="{{ grandchild_link.url }}" class="block">{{ grandchild_link.title }}</a>
                                       </li>
                                     {% endfor %}
                                   </ul>
@@ -81,14 +84,29 @@
                           {% if block.settings.image != blank %}
                             <div class="col-span-6">
                               <div class="w-full h-full rounded-[10px] overflow-hidden relative">
-                                {{ block.settings.image | image_url: width: 1400 | image_tag: class: 'w-full h-full object-cover object-center relative' }}
-                                
-                                {% if block.settings.text != blank %}
-                                  <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-                                    <div class="bg-brown opacity-10 absolute top-0 left-0 w-full h-full"> </div>
-                                    <h4 class="relative text-arizona-48 text-center text-cream whitespace-normal">{{ block.settings.text }}</h4>
+                                <div class="w-full h-full absolute top-0 left-0">
+                                  {{ block.settings.image | image_url: width: 1400 | image_tag: class: 'w-full h-full object-cover object-center relative' }}
+                                  
+                                  {% if block.settings.text != blank %}
+                                    <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+                                      <div class="bg-brown opacity-10 absolute top-0 left-0 w-full h-full"> </div>
+                                      <h4 class="relative text-arizona-48 text-center text-cream whitespace-normal">{{ block.settings.text }}</h4>
+                                    </div>
+                                  {% endif %}
+                                </div>
+
+                                {% for hover in menu_images %}
+                                  <div :class="{ 'active': hovered == '{{ hover.settings.title }}' }" class="w-full h-full absolute top-0 left-0 inset opacity-0 delay-300 z-[2] scale-105 [&.active]:delay-0 [&.active]:scale-100 [&.active]:z-[3] [&.active]:opacity-100 transition-[transform,opacity]">
+                                    {{ hover.settings.image | image_url: width: 1400 | image_tag: class: 'w-full h-full object-cover object-center relative' }}
+                                    
+                                    {% if hover.settings.text != blank %}
+                                      <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+                                        <div class="bg-brown opacity-10 absolute top-0 left-0 w-full h-full"> </div>
+                                        <h4 class="relative text-arizona-48 text-center text-cream whitespace-normal">{{ hover.settings.text }}</h4>
+                                      </div>
+                                    {% endif %}
                                   </div>
-                                {% endif %}
+                                {% endfor %}
                               </div>
                             </div>
                           {% endif %}
@@ -264,6 +282,36 @@
           "id": "title",
           "label": "Menu Item",
           "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "paragraph",
+          "content": "Right side menu feature"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "hover_image",
+      "name": "Hover image",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Config"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Menu Item",
+          "info": "Enter menu item to apply an image that will show during hover"
         },
         {
           "type": "paragraph",

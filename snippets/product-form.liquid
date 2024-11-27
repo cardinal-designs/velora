@@ -4,7 +4,7 @@
   assign swatch_file_extension = 'png'
 %}
 
-<product-form class="product-form">
+<product-form class="product-form w-full">
   {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 

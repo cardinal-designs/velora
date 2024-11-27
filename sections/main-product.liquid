@@ -89,7 +89,7 @@
                         <div :class="open ? '' : 'truncated' " class="overflow-hidden [&.truncated]:max-h-[116px]">
                           {{ product.metafields.custom.overview | metafield_tag }}
                         </div>
-                        <button x-show="!open" class="-mt-20 pt-20 text-left underline underline-offset-2 w-full bg-gradient-to-t from-cream to-cream/60" @click="open = true">Read More</button>
+                        <button :class=" open ? 'from-cream/0 to-cream/0' : 'from-cream to-cream/60'" class="-mt-20 pt-20 text-left underline underline-offset-2 w-full bg-gradient-to-t" @click="open = !open">Read <span x-text=" open ? 'Less' : 'More'"></span></button>
                       </div>
                     </div>
                 </div>
