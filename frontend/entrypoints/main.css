@@ -852,7 +852,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .pc--opt-out-form-button svg {
-  @apply w-20 h-20 border-brown rounded-full p-[3px]
+  @apply w-20 h-20 border-brown border rounded-full p-[1px]
 }
 
 .pc--opt-out-form-field_wrapper .field__label {
