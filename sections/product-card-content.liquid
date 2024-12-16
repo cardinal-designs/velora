@@ -1,16 +1,16 @@
 <div data-image>
 {% if product.selected_variant %}
     {% if product.selected_variant.featured_image != blank %}
-        {{ product.selected_variant.featured_image | image_url: width: 700 | image_tag: width: product.selected_variant.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative' }}
+        {{ product.selected_variant.featured_image | image_url: width: 700 | image_tag: width: product.selected_variant.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover inset relative' }}
     {% else %}
-        {{ product.featured_image | image_url: width: 700 | image_tag: width: product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative' }}
+        {{ product.featured_image | image_url: width: 700 | image_tag: width: product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover inset relative' }}
     {% endif %}
     {% if product.images[1] != blank %}
         {{ product.images[1] | image_url: width: 700 | image_tag: width: product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity group-hover/image:opacity-100' }}
     {% endif %}
 {% else %}
     {% if product.featured_image != blank %}
-        {{ product.featured_image | image_url: width: 700 | image_tag: width: product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover relative' }}
+        {{ product.featured_image | image_url: width: 700 | image_tag: width: product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover inset relative' }}
         {% if product.images[1] != blank %}
         {{ product.images[1] | image_url: width: 700 | image_tag: width: product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity group-hover/image:opacity-100' }}
         {% endif %}
