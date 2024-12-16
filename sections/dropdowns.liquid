@@ -68,7 +68,17 @@
                 <div class="w-full h-auto aspect-[0.93/1] rounded-[10px] overflow-hidden relative ">
                     {% for block in section.blocks %}
                         {% if block.settings.image != blank %}
-                            <div class="inset opacity-0 scale-105 duration-slow delay-300 z-[3] [&.active]:z-[2] [&.active]:opacity-100 [&.active]:scale-100 [&.super-active]:delay-0 [&.super-active]:scale-100 [&.super-active]:z-[3] [&.super-active]:opacity-100 transition-[transform,opacity]" :class="{ 'active': open == {{ forloop.index }}, 'super-active': hovered == {{ forloop.index }} }">
+                            <div class="inset z-[3] scale-100 opacity-0
+                                [&.active]:z-[2] [&.active]:opacity-100" 
+                                :class="{ 'active': open == {{ forloop.index }}}">
+                            {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover'  }}
+                            </div>
+                            <div class="inset opacity-0 scale-105 z-[3]
+                                [&.active]:scale-100
+                                [&.super-active]:delay-0 [&.super-active]:scale-100 [&.super-active]:z-[3] [&.super-active]:opacity-100 
+                                transition-[transform,opacity] duration-slow
+                                " 
+                                :class="{'active': open == {{ forloop.index }}, 'super-active': hovered == {{ forloop.index }} }">
                             {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover'  }}
                             </div>
                         {% endif %}
