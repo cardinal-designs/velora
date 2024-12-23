@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer Group",
@@ -17,7 +17,7 @@
         "newsletter_title": "Illuminate Your Inbox",
         "newsletter_text": "Share your email for news on new products, exclusive deals, and more.",
         "klaviyo_form_embed": "",
-        "contact": "1200 Missouri Street\nHouston, TX 77066\nsupport@velora.com\n832-365-3395",
+        "contact": "1200 Missouri Street\nHouston, TX 77006\nsupport@velora.com\n832-365-3395",
         "menu": "dev-footer"
       }
     }
