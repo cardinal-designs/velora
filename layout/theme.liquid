@@ -29,6 +29,7 @@
     <script src="{{ 'vendors.min.js' | asset_url }}" defer="defer"></script>
 
     {{ 'vendors.min.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
     
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
@@ -104,5 +105,14 @@
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
     </script>
+    {% if page.handle == 'email-signup' %}
+      <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", (event) => {
+          console.log('text')
+          window._klOnsite = window._klOnsite || [];
+          window._klOnsite.push(['openForm', 'YfziJ3']);  
+        });
+      </script>
+    {% endif %}
   </body>
 </html>

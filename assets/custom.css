@@ -1,0 +1,163 @@
+[data-testid="klaviyo-form-U8cvxq"] > .kl-private-reset-css-Xuajs1 {
+    border-bottom: 1px solid rgb(241, 236, 227) !important;
+    height: auto !important;
+    min-height: auto !important;
+}
+
+[data-testid="klaviyo-form-U8cvxq"] [type="email"] {
+    border: none !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+    padding: 0 0 14px !important;
+    background-color: transparent !important;
+    width: 100% !important;
+    height: auto !important;
+    font-family: oracle, sans-serif !important;
+    font-weight: 350 !important;
+    color: rgb(241, 236, 227) !important;
+    outline: none !important;
+}
+
+[data-testid="klaviyo-form-U8cvxq"] [type="email"]::placeholder {
+    font-family: oracle, sans-serif !important;
+    font-weight: 350 !important;
+    color: rgb(241, 236, 227) !important;
+}
+
+@media (min-width: 1024px) {
+
+    [data-testid="klaviyo-form-U8cvxq"] [type="email"]::placeholder {
+        color: #f1ece380 !important;
+    }
+
+ }
+
+[data-testid="klaviyo-form-U8cvxq"] [type="button"] {
+    background: url('https://cdn.shopify.com/s/files/1/0035/6014/4941/files/arrow-button.svg?v=1735627466') no-repeat center center !important;
+    padding: 0 0 10px !important;
+    font-size: 0 !important;
+    height: 32px !important;
+    width: 20px !important;
+}
+
+[data-testid="klaviyo-form-U8cvxq"] .kl-private-reset-css-Xuajs1 > h1,
+[data-testid="klaviyo-form-U8cvxq"] .kl-private-reset-css-Xuajs1 > h2,
+[data-testid="klaviyo-form-U8cvxq"] .kl-private-reset-css-Xuajs1 > h3,
+[data-testid="klaviyo-form-U8cvxq"] .kl-private-reset-css-Xuajs1 > h4,
+[data-testid="klaviyo-form-U8cvxq"] .kl-private-reset-css-Xuajs1 > h5 {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+    font-family: oracle, sans-serif !important;
+    font-weight: 350 !important;
+    color: rgb(241, 236, 227) !important;
+    text-align: left !important;
+    padding: 0 0 10px !important;
+}
+
+/* [data-testid="klaviyo-form-VSmCWX"] {
+    display: none !important;
+} */
+
+[data-testid="klaviyo-form-YfziJ3"] {
+    padding: 22px !important;
+    background: #201609 !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] > .kl-private-reset-css-Xuajs1:first-child {
+    margin: 0 !important;
+    width: 378px !important;
+    min-width: 378px !important;
+    min-height: 444px !important;
+    border-radius: 10px 0 0 10px !important;
+    background: #F1ECE3 !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] > .kl-private-reset-css-Xuajs1 + .kl-private-reset-css-Xuajs1 {
+    border-radius: 0 10px 10px 0 !important;
+    background: #F1ECE3 !important;
+    padding-right: 28px !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] .kl-private-reset-css-Xuajs1 h1 {
+    margin: 0 0 22px !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] .kl-private-reset-css-Xuajs1 h1 span {
+    font-family: arizona-flare, serif !important;
+    font-size: 48px !important;
+    font-weight: 400 !important;
+    line-height: 48px !important;
+    letter-spacing: -2.5px !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] .kl-private-reset-css-Xuajs1 p > * {
+    font-family: oracle, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 350 !important;
+    line-height: 21.6px !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] .kl-private-reset-css-Xuajs1 [data-testid="form-row"]:last-child {
+    border-bottom: 1.25px solid #2B1D0A !important;
+    height: auto !important;
+    min-height: auto !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] [type="email"] {
+    border: none !important;
+    font-size: 18px !important;
+    line-height: 19.8px !important;
+    font-weight: 350 !important;
+    letter-spacing: 0 !important;
+    padding: 0 0 16px !important;
+    background-color: transparent !important;
+    width: 100% !important;
+    height: auto !important;
+    font-family: oracle, sans-serif !important;
+    font-weight: 350 !important;
+    color: #2B1D0A!important;
+    outline: none !important;
+    margin: 37px 0 0 !important;
+}
+
+[data-testid="klaviyo-form-YfziJ3"] [type="email"]::placeholder {
+    font-family: oracle, sans-serif !important;
+    font-weight: 350 !important;
+    color: #2B1D0ABF!important;
+
+}
+
+[data-testid="klaviyo-form-YfziJ3"] [type="button"] {
+    background: url('https://cdn.shopify.com/s/files/1/0035/6014/4941/files/popup-arrow-button.svg?v=1735640751') no-repeat center center !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    height: 25px !important;
+    width: 25px !important;
+    margin: 0 0 14px 5px !important;
+}
+
+@media (max-width: 1023px) {
+
+    [data-testid="klaviyo-form-YfziJ3"] > .kl-private-reset-css-Xuajs1:nth-child(1) {
+        background: #F1ECE3 !important;
+        border-radius: 10px !important;
+        width: auto !important;
+        min-width: auto !important;
+        min-height: auto !important;
+        padding: 25px 20px !important;
+    }
+
+    [data-testid="klaviyo-form-YfziJ3"] .kl-private-reset-css-Xuajs1 h1 span {
+        font-size: 28px !important;
+        line-height: 28px !important;
+        letter-spacing: -1.5px !important;
+    }
+    
+    [data-testid="klaviyo-form-YfziJ3"] .kl-private-reset-css-Xuajs1 p > * {
+        font-size: 16px !important;
+        line-height: 19.6px !important;
+    }
+
+}
