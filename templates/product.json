@@ -168,13 +168,13 @@
           "type": "faq",
           "settings": {
             "heading": "Do you offer warranty on your products?",
-            "text": "<p>Yes! We stand behind the quality and craftsmanship of our products and offer a one-year warranty against defects in materials and workmanship. Please contact our customer service team if you have any issues with your Illuminate Vintage product.</p>"
+            "text": "<p>Yes! We stand behind the quality and craftsmanship of our products and offer a one-year warranty against defects in materials and workmanship. Please contact our customer service team if you have any issues with your Velora product.</p>"
           }
         },
         "faq_jbqmxg": {
           "type": "faq",
           "settings": {
-            "heading": "How do I install Illuminate Vintage products?",
+            "heading": "How do I install Velora products?",
             "text": "<p>Installation instructions are included with each product, and our customer service team is always available to help answer any installation questions you may have.</p>"
           }
         },
@@ -182,14 +182,14 @@
           "type": "faq",
           "settings": {
             "heading": "Can I return a product if I'm not satisfied?",
-            "text": "<p>We want you to be completely satisfied with your Illuminate Vintage product, so we offer a 90-day return policy on all products.</p>"
+            "text": "<p>We want you to be completely satisfied with your Velora product, so we offer a 90-day return policy on all products.</p>"
           }
         },
         "faq_TmwY3t": {
           "type": "faq",
           "settings": {
             "heading": "How can I contact customer service if I have additional questions?",
-            "text": "<p>You can reach our customer service team via phone, email, or live chat during business hours. Please see our <a href=\"https://www.illuminatevintage.com/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page for more information.</p>"
+            "text": "<p>You can reach our customer service team via phone or email during business hours. Please see our <a href=\"https://www.illuminatevintage.com/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page for more information.</p>"
           }
         }
       },
