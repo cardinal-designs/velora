@@ -289,7 +289,7 @@
           "type": "dropdown",
           "settings": {
             "heading": "Bedroom",
-            "text": "",
+            "text": "Set the mood in your bedroom with lighting that combines warmth and practicality for a space that’s both inviting and functional.",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/bedroom",
             "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png"
@@ -299,7 +299,7 @@
           "type": "dropdown",
           "settings": {
             "heading": "Dining Room",
-            "text": "",
+            "text": "Set the scene for memorable meals with dining room lighting that elevates your space and enhances your table’s centerpiece.",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/dining-room",
             "image": "shopify://shop_images/Screenshot_2024-08-28_at_4.45.49_PM.png"
