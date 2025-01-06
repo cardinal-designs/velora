@@ -13,9 +13,9 @@
       "type": "page-hero",
       "settings": {
         "title": "Crafted with care. Rooted in the Montrose district of Houston, Texas.",
-        "image": "shopify://shop_images/Screenshot_2024-08-05_at_8.52.26_AM_2.jpg",
-        "mobile_image": "shopify://shop_images/Screenshot_2024-08-05_at_8.52.26_AM_2_1.jpg",
-        "video_url": "https://youtu.be/URNuwK2-dvE"
+        "image": "shopify://shop_images/2_hero.jpg",
+        "mobile_image": "shopify://shop_images/2_hero.jpg",
+        "video_url": ""
       }
     },
     "big_text_i34Kpb": {
@@ -34,7 +34,7 @@
         "block_qj8MPW": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/Stocksy_comp_watermarked_2628678_5a11ece5-bf50-4466-81b5-da2d89950188.jpg",
+            "image": "shopify://shop_images/42.jpg",
             "title": "Individually Designed",
             "text": "Our tight-knit group of artisans seeks inspiration from antiques and vintage fixtures to create new and modern original designs."
           }
@@ -42,7 +42,7 @@
         "block_V4LzCm": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_008.jpg",
+            "image": "shopify://shop_images/269.jpg",
             "title": "Curated & Custom",
             "text": "We offer a streamlined curation of pieces to simplify the shopping process, and offer the capability to customize any piece."
           }
@@ -50,7 +50,7 @@
         "block_pQMAmJ": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/DTS_Another_Planet_Daniel_Faro_Photos_ID3933_1.jpg",
+            "image": "shopify://shop_images/27.jpg",
             "title": "Sustainable Sophistication",
             "text": "We are committed to sustainability,  and use eco-friendly materials and energy-efficient lighting options in every piece."
           }
@@ -102,8 +102,7 @@
         "block_DfFLYp",
         "block_h9yRYD"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product_carousel_bMDhQ9": {
       "type": "product-carousel",
@@ -111,9 +110,7 @@
         "color": "dark",
         "title": "Designed to be Different",
         "collection": "bestsellers",
-        "products": [
-
-        ],
+        "products": [],
         "button_label": "",
         "button_link": ""
       }
