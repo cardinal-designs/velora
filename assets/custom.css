@@ -148,7 +148,7 @@
   color: rgb(43, 29, 10) !important;
 }
 [data-testid="animated-teaser"] > span {
-  background-color: #F1ECE3;
+  background-color: #F1ECE3 !important;
 }
 
 @media (max-width: 1023px) {
