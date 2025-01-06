@@ -74,13 +74,6 @@
             "text": "<p>There is no minimum order quantity or order dollar amount necessary for custom fixtures.</p>"
           }
         },
-        "faq_DxBptz": {
-          "type": "faq",
-          "settings": {
-            "heading": "How do I place an order?",
-            "text": "<p>After you've submitted the form below with all the relevant information, we create an account and send you a login. Once you're logged into your account, the discount will automatically be applied at checkout based on the quantity criteria. No codes necessary.</p>"
-          }
-        },
         "faq_BiEt6Y": {
           "type": "faq",
           "settings": {
@@ -98,7 +91,6 @@
       },
       "block_order": [
         "faq_XNDywF",
-        "faq_DxBptz",
         "faq_BiEt6Y",
         "faq_RAkkDy"
       ],
