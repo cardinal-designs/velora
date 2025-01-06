@@ -34,9 +34,9 @@
             "mobile_content_position": "center",
             "text_color": "#F1ECE3",
             "title": "",
-            "heading": "",
-            "button_label": "",
-            "button_link": ""
+            "heading": "Crafted for character",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections"
           }
         }
       },
