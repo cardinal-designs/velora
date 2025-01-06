@@ -138,6 +138,16 @@
     margin: 0 0 14px 5px !important;
 }
 
+[data-testid="animated-teaser"] {
+  font-size: 14px !important;
+  line-height: 1.1 !important;
+  letter-spacing: .1em !important;
+  font-family: pangram, sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  color: rgb(43, 29, 10) !important;
+}
+
 @media (max-width: 1023px) {
 
     [data-testid="klaviyo-form-YfziJ3"] > .kl-private-reset-css-Xuajs1:nth-child(1) {
