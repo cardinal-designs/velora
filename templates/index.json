@@ -15,7 +15,7 @@
         "split_NenVnd": {
           "type": "split",
           "settings": {
-            "image": "shopify://shop_images/86a8d0aac2373e9293e34b4061d145ee.jpg",
+            "image": "shopify://shop_images/44.jpg",
             "image_right": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png",
             "content_position": "top",
             "mobile_content_position": "center_top",
@@ -377,7 +377,8 @@
       "settings": {
         "heading": "Artisanal down to every last detail",
         "button_label": "Shop Now",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/all",
+        "pause_on_hover": false
       }
     }
   },
