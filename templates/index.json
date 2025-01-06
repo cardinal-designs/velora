@@ -30,7 +30,7 @@
           "type": "full",
           "settings": {
             "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png",
-            "content_position": "center",
+            "content_position": "center_top",
             "mobile_content_position": "center",
             "text_color": "#F1ECE3",
             "title": "",
