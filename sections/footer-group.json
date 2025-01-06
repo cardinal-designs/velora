@@ -16,8 +16,8 @@
       "settings": {
         "newsletter_title": "Illuminate Your Inbox",
         "newsletter_text": "Share your email for news on new products, exclusive deals, and more.",
-        "klaviyo_form_embed": "<div class=\"klaviyo-form-U8cvxq\"><\/div>",
-        "contact": "1200 Missouri Street\nHouston, TX 77006\nsupport@velora.com\n832-365-3395",
+        "klaviyo_form_embed": "<div class=\"klaviyo-form-U8cvxq\"></div>",
+        "contact": "1200 Missouri Street\nHouston, TX 77006\nsupport@velorahome.com\n832-365-3395",
         "menu": "dev-footer"
       }
     }
