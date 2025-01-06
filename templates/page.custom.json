@@ -12,8 +12,8 @@
     "floating-text-images": {
       "type": "floating-text-images",
       "settings": {
-        "small_image": "shopify://shop_images/VI_Process_288.jpg",
-        "large_image": "shopify://shop_images/IlluminateVintage_R2__018.jpg",
+        "small_image": "shopify://shop_images/VI_Process_288_f53f430b-5a60-4ab6-ab19-31933981f87a.jpg",
+        "large_image": "shopify://shop_images/18_carousel.jpg",
         "text": "We see ourselves as more than a shop, but a partner to our customers and trade professionals. We understand the power that lighting can have over a space, so we ensure that each fixture we sell brings out the best light wherever it’s placed, and we’ll do anything we can to make it happen.",
         "floating_text_1": "Effortless",
         "floating_text_2": "customization",
@@ -34,7 +34,7 @@
         "image_bw3WN6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/VI_Process_270_square_crop.jpg",
+            "image": "shopify://shop_images/270_custom_page.jpg",
             "button_label": "",
             "button_link": "",
             "scroll_to": ""
@@ -61,7 +61,7 @@
         "color": "dark",
         "layout": "b",
         "layout_mobile": "a",
-        "image": "shopify://shop_images/VI_Process_294.jpg"
+        "image": "shopify://shop_images/294_custom_page.jpg"
       }
     },
     "faq_zUUXCU": {
@@ -71,28 +71,28 @@
           "type": "faq",
           "settings": {
             "heading": "Is there a minimum order quantity?",
-            "text": "<p>Lorem ipsum</p>"
+            "text": "<p>There is no minimum order quantity or order dollar amount necessary to receive your discount.</p>"
           }
         },
         "faq_DxBptz": {
           "type": "faq",
           "settings": {
             "heading": "How do I place an order?",
-            "text": "<p>Lorem ipsum</p>"
+            "text": "<p>After you've submitted the form below with all the relevant information, we create an account and send you a login. Once you're logged into your account, the discount will automatically be applied at checkout based on the quantity criteria. No codes necessary.</p>"
           }
         },
         "faq_BiEt6Y": {
           "type": "faq",
           "settings": {
             "heading": "How do I get in touch with questions?",
-            "text": "<p>Lorem ipsum</p>"
+            "text": "<p>Please call or email us with any questions or requests: </p><p>Email: support@illuminatevintage.com<br/>Call:  832-365-3395<br/>Customer service is available via phone Monday - Friday from 9AM - 12PM, 1PM - 5PM CST</p>"
           }
         },
         "faq_RAkkDy": {
           "type": "faq",
           "settings": {
             "heading": "What shipping options are available?",
-            "text": "<p>Lorem ipsum</p>"
+            "text": "<p>Shipping is free for trade program members unless you request something to be expedited. Our fixtures are handmade to order and have a build time of 10 business days in addition to 3-5 business days for shipping within the US, or 10-15 business days for international shipping.</p><p>We do offer expedited build times at a discounted rate for members. This option puts you to the front of the build queue and typically reduces build times from the standard 10 business days down to just 1-2 business days if parts are in stock.</p>"
           }
         }
       },
