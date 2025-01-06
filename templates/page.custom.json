@@ -105,15 +105,15 @@
         "block_iDjyaq": {
           "type": "block",
           "settings": {
-            "title": "In house design <br>and fabrication",
-            "text": "<p>We take pride in designing and fabricating everything in-house. By overseeing every step of the process, from concept to creation, we guarantee unique, custom lighting solutions that perfectly illuminate your spaces.</p>"
+            "title": "In house design",
+            "text": "<p>Every lighting concept begins in our studio, where we create unique designs tailored to enhance your spaces.</p>"
           }
         },
         "block_zREzBf": {
           "type": "block",
           "settings": {
-            "title": "Exclusive trade pricing",
-            "text": "<p>Flat discount across our catalog including custom orders, no minimums.</p>"
+            "title": "In house fabrication",
+            "text": "<p>From start to finish, we craft each fixture in our workshop, ensuring quality and attention to detail at every stage of production.</p>"
           }
         },
         "block_nXyPgT": {
