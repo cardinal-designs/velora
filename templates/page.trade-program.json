@@ -12,8 +12,8 @@
     "floating-text-images": {
       "type": "floating-text-images",
       "settings": {
-        "small_image": "shopify://shop_images/MAISON_NICOLE_LIVRABLE-47-750x750_1.jpg",
-        "large_image": "shopify://shop_images/Stocksy_comp_watermarked_4095181.jpg",
+        "small_image": "shopify://shop_images/283_trade.jpg",
+        "large_image": "shopify://shop_images/22_trade.jpg",
         "text": "We see ourselves as more than a shop, but a partner to our customers and trade professionals. We understand the power that lighting can have over a space, so we ensure that each fixture we sell brings out the best light wherever it’s placed, and we’ll do anything we can to make it happen.",
         "floating_text_1": "Effortless",
         "floating_text_2": "customization",
@@ -34,7 +34,7 @@
         "image_bw3WN6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/DTS_Daniel_Faro_Architects_006_1.png",
+            "image": "shopify://shop_images/270_custom_page.jpg",
             "button_label": "",
             "button_link": "",
             "scroll_to": ""
@@ -49,7 +49,7 @@
             "text": "We offer the capability to customize any piece to better suit a space or style, ensuring each customer gets something that just right for them and their design vision.",
             "button_label": "Start Custom Inquiry",
             "button_link": "",
-            "scroll_to": "#shopify-section-template--18718023483638__contact_form_YfQrzt",
+            "scroll_to": "#shopify-section-template--18718023483638__contact_form_YfQrzt"
           }
         }
       },
@@ -61,7 +61,7 @@
         "color": "dark",
         "layout": "b",
         "layout_mobile": "a",
-        "image": "shopify://shop_images/3d9b32a4ddcf4e3f4f94e145aff6c390.jpg"
+        "image": "shopify://shop_images/294_custom_page.jpg"
       }
     },
     "faq_zUUXCU": {
