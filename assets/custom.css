@@ -147,6 +147,9 @@
   text-transform: uppercase !important;
   color: rgb(43, 29, 10) !important;
 }
+[data-testid="animated-teaser"] > span {
+  background-color: #F1ECE3;
+}
 
 @media (max-width: 1023px) {
 
