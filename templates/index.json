@@ -259,7 +259,7 @@
           "type": "dropdown",
           "settings": {
             "heading": "Kitchen",
-            "text": "",
+            "text": "Light up the heart of your home with stylish, functional fixtures. Perfect for creating a warm, inviting space for cooking and gathering.",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/kitchen",
             "image": "shopify://shop_images/0a5b7155ef6d6d7d1da511a6b7df652e.png"
@@ -269,7 +269,7 @@
           "type": "dropdown",
           "settings": {
             "heading": "Bathroom",
-            "text": "",
+            "text": "Enhance your bathroom with fixtures ideal for daily routines and unwinding at the end of the day.",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/bathroom",
             "image": "shopify://shop_images/1fd71331080818210d88fb1dcc0a40bd.png"
@@ -279,7 +279,7 @@
           "type": "dropdown",
           "settings": {
             "heading": "Living Room",
-            "text": "",
+            "text": "Create a welcoming atmosphere in your living room with lighting that complements your space and sets the tone for relaxation or socializing.",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/living-room",
             "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.53.37_PM.png"
