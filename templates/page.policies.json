@@ -77,7 +77,7 @@
           "type": "faq_item",
           "settings": {
             "heading": "How do I initiate a return?",
-            "text": "<p>Send over a message to<strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>.</p>"
+            "text": "<p>Send over a message to <strong>support@illuminatevintage.com</strong>or give us a call at<strong>832-365-3395</strong>.</p>"
           }
         },
         "faq_item_ywzwcJ": {
@@ -91,7 +91,7 @@
           "type": "faq_item",
           "settings": {
             "heading": "Do you offer a warranty?",
-            "text": "<p>We offer a lifetime warranty on all of our fixtures, if you have any issues with your fixture at any point you can send us a message or give us a call at<strong>832-365-3395</strong>and we'll help you out.</p>"
+            "text": "<p>We offer a lifetime warranty on all of our fixtures, if you have any issues with your fixture at any point you can send us a message or give us a call at <strong>832-365-3395</strong>and we'll help you out.</p>"
           }
         }
       },
@@ -143,8 +143,7 @@
         "block_3CWE8g",
         "block_k9LVHq"
       ],
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
