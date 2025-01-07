@@ -178,13 +178,13 @@
           </div>
         {% endif %}
 
-        <div class="product-slider list-unstyled swiper !overflow-x-visible !overflow-y-clip" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
+        <div class="product-slider list-unstyled swiper !overflow-x-clip !overflow-y-clip" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
           <div class="swiper-wrapper">
             {% for media in product.media %}
               {% if media.media_type == "image" %}
                 {% assign image_variants = product.images | where: 'src', media.src | first %}
               {% endif %}
-              <div class="swiper-slide w-[calc(100%_-_4.5vw)] [&:first-child>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
+              <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
                 style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
                 data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
                 {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
