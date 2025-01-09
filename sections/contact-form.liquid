@@ -1,4 +1,4 @@
-<div class="bg-[var(--background)] text-[var(--text)]" style="{% render "color-variables", color: section.settings.color %}">
+<div class="bg-[var(--background)] text-[var(--text)] scroll-mt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]" style="{% render "color-variables", color: section.settings.color %}" {% if form.posted_successfully? %}autofocus{% endif %}>
     <div class="flex flex-col-reverse md:grid md:grid-cols-2">
         <div class="flex justify-center items-center">
             <div class="max-w-custom w-full px-25 pt-40 pb-50 md:px-30 md:py-40 lg:p-60" style="--width: 745px;">
@@ -12,7 +12,7 @@
                 </div>
                 {% form 'contact', id: 'ContactForm' %}
                     {% if form.posted_successfully? %}
-                        <div class="mt-10 mb-20 text-oracle-18 scroll-pt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+                        <div class="mt-10 mb-20 text-oracle-18" tabindex="-1">{{ 'templates.contact.form.post_success' | t }}</div>
                     {% endif %}
                   
                     <div class="mb-20 grid gap-20 md:grid-cols-2">
