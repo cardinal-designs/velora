@@ -36,7 +36,7 @@
             "title": "",
             "heading": "Crafted for character",
             "button_label": "Shop Now",
-            "button_link": "shopify://collections"
+            "button_link": "/collections/all"
           }
         }
       },
