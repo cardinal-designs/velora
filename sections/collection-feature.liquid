@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <a href="{{ block.settings.heading.url }}" class="absolute top-0 left-0 w-full h-full" data-animate> </a>
+            <a href="{{ block.settings.link | default: block.settings.heading.url }}" class="absolute top-0 left-0 w-full h-full" data-animate> </a>
         </div>
     {% endfor %}
 </div>
@@ -89,6 +89,11 @@
                         "type": "image_picker",
                         "id": "image",
                         "label": "Image"
+                    },
+                    {
+                      "type": "url",
+                      "id": "link",
+                      "label": "Link"
                     }
                 ]
             }
