@@ -11,6 +11,10 @@
                     {% endif %}
                 </div>
                 {% form 'contact', id: 'ContactForm' %}
+                    {% if form.posted_successfully? %}
+                        <div class="mt-10 text-oracle-18" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+                    {% endif %}
+                  
                     <div class="mb-20 grid gap-20 md:grid-cols-2">
                         <div>
                             <label class="field__label visually-hidden" for="ContactForm-name">Name</label>
@@ -48,10 +52,8 @@
                         >
                             {{- form.body -}}
                         </textarea>
-                
-                        {% if form.posted_successfully? %}
-                            <div class="mt-10 text-oracle-16" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
-                        {% elsif form.errors %}
+                        
+                        {% if form.errors %}
                             <div class="mt-10 text-oracle-16 text-error">{{ form.errors | default_errors }}</div>
                         {% endif %}
                     </div>
