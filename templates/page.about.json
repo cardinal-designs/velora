@@ -84,7 +84,8 @@
             "overlay": true,
             "heading": "bestsellers",
             "title": "Custom",
-            "image": "shopify://shop_images/Screenshot_2024-08-28_at_4.45.49_PM.png"
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_4.45.49_PM.png",
+            "link": "shopify://pages/custom"
           }
         },
         "block_h9yRYD": {
@@ -94,7 +95,8 @@
             "overlay": true,
             "heading": "bestsellers",
             "title": "Best Sellers",
-            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png"
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png",
+            "link": ""
           }
         }
       },
