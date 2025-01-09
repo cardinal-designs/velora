@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "order": [
+    "product-grid"
+  ],
+  "sections": {
+    "product-grid": {
+      "block_order": [
+        "block_zVk8i4",
+        "block_7hGQVB",
+        "block_VpwqiP"
+      ],
+      "blocks": {
+        "block_7hGQVB": {
+          "settings": {
+            "heading": "Fixture",
+            "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique."
+          },
+          "type": "block"
+        },
+        "block_VpwqiP": {
+          "settings": {
+            "heading": "Style",
+            "image": "shopify://shop_images/5dfd9a5020178d84444d5b2a838d998f.png",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique."
+          },
+          "type": "block"
+        },
+        "block_zVk8i4": {
+          "settings": {
+            "heading": "Room",
+            "image": "shopify://shop_images/15a0538f82a68428c2eff2048c615ed4.png",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique."
+          },
+          "type": "block"
+        }
+      },
+      "settings": {
+        "feature_button_label": "Learn More About Customization",
+        "feature_button_link": "shopify://pages/custom",
+        "feature_color": "dark",
+        "feature_heading": "Statements to Staples",
+        "feature_image": "shopify://shop_images/5dfd9a5020178d84444d5b2a838d998f.png",
+        "feature_text": "From mid-century to maximalist, our fixtures are crafted to last, and withstand the ebb and flow of home trends. While you’ll find clean, classic pieces, you’ll also discover unexpected intricacies that easily transition to fit within a multitude of tastes, encouraging customers to play with a variety of styles that speak to them.",
+        "feature_title": "Find Your Fit",
+        "heading": "Artisanal, bespoke, and detailed to perfection, our fixtures add meaning to your space, elevating simple functionality into something that lights up your favorite parts of living.",
+        "image": "shopify://shop_images/44_carousel.jpg"
+      },
+      "type": "main-collection"
+    }
+  }
+}

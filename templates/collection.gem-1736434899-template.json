@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product-grid": {
+      "type": "main-collection",
+      "blocks": {
+        "block_zVk8i4": {
+          "type": "block",
+          "settings": {
+            "heading": "Room",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
+            "image": "shopify:\/\/shop_images\/15a0538f82a68428c2eff2048c615ed4.png"
+          }
+        },
+        "block_7hGQVB": {
+          "type": "block",
+          "settings": {
+            "heading": "Fixture",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-28_at_3.58.56_PM.png"
+          }
+        },
+        "block_VpwqiP": {
+          "type": "block",
+          "settings": {
+            "heading": "Style",
+            "title": "While we value the timelessness of minimalism, we know that extraordinary details are what add character to a home. We strive to offer depth to a layered look that can’t be replicated, because it’s truly unique.",
+            "image": "shopify:\/\/shop_images\/5dfd9a5020178d84444d5b2a838d998f.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_zVk8i4",
+        "block_7hGQVB",
+        "block_VpwqiP"
+      ],
+      "settings": {
+        "heading": "Artisanal, bespoke, and detailed to perfection, our fixtures add meaning to your space, elevating simple functionality into something that lights up your favorite parts of living.",
+        "image": "shopify:\/\/shop_images\/44_carousel.jpg",
+        "feature_color": "dark",
+        "feature_title": "Find Your Fit",
+        "feature_heading": "Statements to Staples",
+        "feature_text": "From mid-century to maximalist, our fixtures are crafted to last, and withstand the ebb and flow of home trends. While you’ll find clean, classic pieces, you’ll also discover unexpected intricacies that easily transition to fit within a multitude of tastes, encouraging customers to play with a variety of styles that speak to them.",
+        "feature_button_label": "Learn More About Customization",
+        "feature_button_link": "shopify:\/\/pages\/custom",
+        "feature_image": "shopify:\/\/shop_images\/5dfd9a5020178d84444d5b2a838d998f.png"
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

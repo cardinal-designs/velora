@@ -1,0 +1,290 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "order": [
+    "main",
+    "marquee_fMPRA7",
+    "image_text_j7TmER",
+    "image_text_96Qp9G",
+    "faq_FNNEUr",
+    "image_text_GNtkCE",
+    "app_image_jaJpq9",
+    "product_carousel_yyRkCC",
+    "product-recommendations"
+  ],
+  "sections": {
+    "app_image_jaJpq9": {
+      "block_order": [
+        "judge_me_reviews_review_widget_JQ8mk3"
+      ],
+      "blocks": {
+        "judge_me_reviews_review_widget_JQ8mk3": {
+          "settings": {},
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8"
+        }
+      },
+      "settings": {
+        "color": "light",
+        "heading": "Reviews",
+        "image": "shopify://shop_images/ce130a6f6560e76fc08e3afa5299f221.png"
+      },
+      "type": "app-image"
+    },
+    "faq_FNNEUr": {
+      "block_order": [
+        "faq_GjKpWC",
+        "faq_eRpcne",
+        "faq_jbqmxg",
+        "faq_8WHgQG",
+        "faq_TmwY3t"
+      ],
+      "blocks": {
+        "faq_8WHgQG": {
+          "settings": {
+            "heading": "Can I return a product if I'm not satisfied?",
+            "text": "<p>We want you to be completely satisfied with your Velora product, so we offer a 90-day return policy on all products.</p>"
+          },
+          "type": "faq"
+        },
+        "faq_GjKpWC": {
+          "settings": {
+            "heading": "Can I customize the size or finish of a product?",
+            "text": "<p>Yes! Most of our products can be customized to your specific size and finish preferences. Please see the product page for available customization options, or contact our customer service team to discuss your specific needs.</p>"
+          },
+          "type": "faq"
+        },
+        "faq_TmwY3t": {
+          "settings": {
+            "heading": "How can I contact customer service if I have additional questions?",
+            "text": "<p>You can reach our customer service team via phone or email during business hours. Please see our <a href=\"https://www.illuminatevintage.com/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page for more information.</p>"
+          },
+          "type": "faq"
+        },
+        "faq_eRpcne": {
+          "settings": {
+            "heading": "Do you offer warranty on your products?",
+            "text": "<p>Yes! We stand behind the quality and craftsmanship of our products and offer a one-year warranty against defects in materials and workmanship. Please contact our customer service team if you have any issues with your Velora product.</p>"
+          },
+          "type": "faq"
+        },
+        "faq_jbqmxg": {
+          "settings": {
+            "heading": "How do I install Velora products?",
+            "text": "<p>Installation instructions are included with each product, and our customer service team is always available to help answer any installation questions you may have.</p>"
+          },
+          "type": "faq"
+        }
+      },
+      "settings": {
+        "color": "light",
+        "heading": "Frequently asked questions"
+      },
+      "type": "faq"
+    },
+    "image_text_96Qp9G": {
+      "block_order": [
+        "text_PNWhjC",
+        "image_fr3iez"
+      ],
+      "blocks": {
+        "image_fr3iez": {
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "image": "shopify://shop_images/7ed9e3f459f8ba0f62053882050d38e5.png",
+            "scroll_to": ""
+          },
+          "type": "image"
+        },
+        "text_PNWhjC": {
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "heading": "Statements to Staples",
+            "scroll_to": "",
+            "text": "From mid-century to maximalist, our fixtures are crafted to last, and withstand the ebb and flow of home trends. While you’ll find clean, classic pieces, you’ll also discover unexpected intricacies that easily transition to fit within a multitude of tastes.",
+            "title": "Find your Fit",
+            "title_r": ""
+          },
+          "type": "text"
+        }
+      },
+      "settings": {
+        "color": "light",
+        "layout": "b",
+        "layout_mobile": "a"
+      },
+      "type": "image-text"
+    },
+    "image_text_GNtkCE": {
+      "block_order": [
+        "image_yrNxJg",
+        "text_7tWHRj"
+      ],
+      "blocks": {
+        "image_yrNxJg": {
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "image": "shopify://shop_images/53_carousel.jpg",
+            "scroll_to": ""
+          },
+          "type": "image"
+        },
+        "text_7tWHRj": {
+          "settings": {
+            "button_label": "Start Custom Inquiry",
+            "button_link": "shopify://pages/custom",
+            "heading": "We partner with you to customize your piece and get every detail just right.",
+            "scroll_to": "",
+            "text": "",
+            "title": "Artisanal",
+            "title_r": "Elegance"
+          },
+          "type": "text"
+        }
+      },
+      "settings": {
+        "color": "light",
+        "layout": "a",
+        "layout_mobile": "a"
+      },
+      "type": "image-text"
+    },
+    "image_text_j7TmER": {
+      "block_order": [
+        "image_NLfMYm",
+        "text_hn9bQf"
+      ],
+      "blocks": {
+        "image_NLfMYm": {
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "image": "shopify://shop_images/52_carousel.jpg",
+            "scroll_to": ""
+          },
+          "type": "image"
+        },
+        "text_hn9bQf": {
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "heading": "A Foundation For Meaningful Spaces",
+            "scroll_to": "",
+            "text": "In the world of home decor, there’s an abundance of same-same options at the ready. We create truly unique, artisanal pieces that you can’t find anywhere else, lending a bespoke feel to the home that you can’t find anywhere else.",
+            "title": "Not Just a Fixture",
+            "title_r": ""
+          },
+          "type": "text"
+        }
+      },
+      "settings": {
+        "color": "dark",
+        "image": "shopify://shop_images/59.jpg",
+        "layout": "b",
+        "layout_mobile": "a"
+      },
+      "type": "image-text"
+    },
+    "main": {
+      "block_order": [
+        "infinite_options_app_block_wkNaCn",
+        "selleasy_lb_upsell_addon_block_gRa7LR",
+        "text_34WHVe",
+        "text_zfpUiG",
+        "text_YPGr8t"
+      ],
+      "blocks": {
+        "infinite_options_app_block_wkNaCn": {
+          "settings": {},
+          "type": "shopify://apps/infinite-options/blocks/app-block/7e73b6f9-82b0-45f5-9b9b-04f446ba1a9b"
+        },
+        "selleasy_lb_upsell_addon_block_gRa7LR": {
+          "settings": {},
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-addon-block/790c1a03-a71f-4bc1-9869-00dad526d3c2"
+        },
+        "text_34WHVe": {
+          "settings": {
+            "heading": "Easy 90 Day Return Policy"
+          },
+          "type": "text"
+        },
+        "text_YPGr8t": {
+          "settings": {
+            "heading": "Expert Team Support"
+          },
+          "type": "text"
+        },
+        "text_zfpUiG": {
+          "settings": {
+            "heading": "Lifetime Warranty"
+          },
+          "type": "text"
+        }
+      },
+      "settings": {
+        "custom_inquiry": true,
+        "highlights": "Crafted with care in 10 Days | Customizable | Designed & Assembled in Houston, Texas USA",
+        "title": "Original fixtures, straight from our workshop to your home"
+      },
+      "type": "main-product"
+    },
+    "marquee_fMPRA7": {
+      "block_order": [
+        "block_zjriYG",
+        "block_MJwYyE",
+        "block_CBLB7M"
+      ],
+      "blocks": {
+        "block_CBLB7M": {
+          "settings": {
+            "heading": "sustainable sophistication"
+          },
+          "type": "block"
+        },
+        "block_MJwYyE": {
+          "settings": {
+            "heading": "custom & curated"
+          },
+          "type": "block"
+        },
+        "block_zjriYG": {
+          "settings": {
+            "heading": "individually designed"
+          },
+          "type": "block"
+        }
+      },
+      "settings": {
+        "color": "accent"
+      },
+      "type": "marquee"
+    },
+    "product-recommendations": {
+      "disabled": true,
+      "settings": {
+        "title": "You may also like"
+      },
+      "type": "product-recommendations"
+    },
+    "product_carousel_yyRkCC": {
+      "settings": {
+        "button_label": "",
+        "button_link": "",
+        "collection": "bestsellers",
+        "color": "light",
+        "products": [],
+        "title": "Designed to be Different"
+      },
+      "type": "product-carousel"
+    }
+  }
+}
