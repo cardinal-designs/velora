@@ -50,9 +50,11 @@
                 </button>
               </noscript>
 
-              <button type="submit" id="checkout" class="cart__checkout-button w-full button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+              <!-- <button type="submit" id="checkout" class="cart__checkout-button w-full button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
                 Checkout
-              </button>
+              </button> -->
+              <input class="w-full button button--large max-w-[max(574px,40vw)] mx-auto hover:bg-blue hover:text-brown hover:border-blue" type="submit" name="checkout" value="Checkout">
+
 
               <p class="mt-10 text-oracle-18 text-center">Shipping & taxes calculated at checkout.</p>
             </div>
