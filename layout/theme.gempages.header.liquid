@@ -1,0 +1,167 @@
+<!doctype html>
+<html class="no-js group/html{% if settings.enable_animations %} enable-animations{% endif %}" lang="{{ request.locale.iso_code }}" data-editor-open="{{ request.design_mode }}">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KTC82Q8');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Ads: 615353351 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-615353351"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'AW-615353351');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    <meta name="google-site-verification" content="eaelZHJa4ljbnQgf9b8qTZzvl5qfjy7W4nGMA-m4VnY" />
+    <meta name="google-site-verification" content="mInaZxppfLMoNf5g04fqGC3BIydfjxR9LHOk0A-C_VY" />
+
+    {% if settings.favicon != blank %}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {% endif %}
+
+    <title>
+      {{ page_title }}
+      {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+      {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script src="{{ 'vendors.min.js' | asset_url }}" defer="defer"></script>
+
+    {{ 'vendors.min.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    {%- liquid
+      render 'fonts'
+      render 'vite-tag' with 'main.css'
+      render 'vite-tag' with 'main.js'
+    -%}
+    {{ content_for_header }}
+
+    <!-- Start VWO Async SmartCode -->
+    <script type='text/javascript' id='vwoCode'>
+    window._vwo_code=window._vwo_code || (function() {
+    var account_id=723881,
+    version = 1.5,
+    settings_tolerance=2000,
+    library_tolerance=2500,
+    use_existing_jquery=false,
+    is_spa=1,
+    hide_element='body',
+    hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+    /* DO NOT EDIT BELOW THIS LINE */
+    f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jquery:function(){return use_existing_jquery},library_tolerance:function(){return library_tolerance},hide_element_style:function(){return'{'+hide_element_style+'}'},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=d.createElement('script');t.fetchPriority='high';t.src=e;t.type='text/javascript';t.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(t)},getVersion:function(){return version},getMatchedCookies:function(e){var t=[];if(document.cookie){t=document.cookie.match(e)||[]}return t},getCombinationCookie:function(){var e=code.getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_\d+_combi=[^;$]*)/gi);e=e.map(function(e){try{var t=decodeURIComponent(e);if(!/_vis_opt_exp_\d+_combi=(?:\d+,?)+\s*$/.test(t)){return''}return t}catch(e){return''}});var i=[];e.forEach(function(e){var t=e.match(/([\d,]+)/g);t&&i.push(t.join('-'))});return i.join('|')},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;window.settings_timer=setTimeout(function(){_vwo_code.finish()},settings_tolerance);var e=d.createElement('style'),t=hide_element?hide_element+'{'+hide_element_style+'}':'',i=d.getElementsByTagName('head')[0];e.setAttribute('id','_vis_opt_path_hides');vwoCodeEl&&e.setAttribute('nonce',vwoCodeEl.nonce);e.setAttribute('type','text/css');if(e.styleSheet)e.styleSheet.cssText=t;else e.appendChild(d.createTextNode(t));i.appendChild(e);var n=this.getCombinationCookie();this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+ +is_spa+'&vn='+version+(n?'&c='+n:''));return settings_timer}};window._vwo_settings_timer = code.init();return code;}());
+    </script>
+    <!-- End VWO Async SmartCode -->
+
+    <!-- Microsoft Clarify -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "mf5qaewaza");
+    </script>
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=rsujilyzhudhzkchvo6atg" async="true"></script>
+  </head>
+
+  <body class="template-{{ template }}"
+    style="
+    --background: #F1ECE3;
+    --text: #2B1D0A;
+    --button: #2B1D0A;
+    --button_text: #F1ECE3;
+    --nav-height: 0px; 
+    --announcement-bar-height: 0px; 
+    --footer-height: 0px;"
+    >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTC82Q8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ "accessibility.skip_to_text" | t }}
+    </a>
+
+    <div class="page-overlay fixed below-nav right-0 bottom-0 left-0 bg-black/20 z-50 invisible opacity-0 transition-visibility"></div>
+
+    <div class="fixed w-screen top-0 z-[35] headroom {% if template.name == 'index' %}overlay-header{% endif %}" x-data="{ openMenu: false }" :data-menu-open="openMenu" data-headroom>
+      {% sections 'header-group' %}
+    </div>
+
+    {% section 'mobile-menu' %}
+
+    {% if template != 'cart' %}
+      {% section 'cart-drawer' %}
+    {% endif %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ shop.url }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      }
+
+      window.accessibilityStrings = {
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+      }
+    </script>
+    {% if page.handle == 'email-signup' %}
+      <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", (event) => {
+          console.log('text')
+          window._klOnsite = window._klOnsite || [];
+          window._klOnsite.push(['openForm', 'YfziJ3']);  
+        });
+      </script>
+    {% endif %}
+  </body>
+</html>
