@@ -227,6 +227,7 @@
         },
         "hotspot_CXaqi8": {
           "type": "hotspot",
+          "disabled": true,
           "settings": {
             "product": "cresson",
             "image": "shopify://shop_images/735645c8c300e0803f94417f35bd5fb6.png",
