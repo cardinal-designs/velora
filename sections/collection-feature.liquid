@@ -24,7 +24,7 @@
                     </h2>
 
                     <div class=" svg-link text-oracle-16 leading-[30px] px-[13px] flex flex-row justify-start items-center gap-[9px] font-semibold group-hover/block:svg-link-peer-hover" data-animate>
-                        Shop Now
+                        {{ block.settings.button_text | default: 'Shop Now' }}
                         <span>{% render 'link-arrow' %}</span>
                     </div>
                 </div>
@@ -89,6 +89,11 @@
                         "type": "image_picker",
                         "id": "image",
                         "label": "Image"
+                    },
+                    {
+                      "type": "text",
+                      "id": "button_text",
+                      "label": "Button text"
                     },
                     {
                       "type": "url",
