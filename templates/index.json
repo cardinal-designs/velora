@@ -36,7 +36,7 @@
             "title": "",
             "heading": "Crafted for character",
             "button_label": "Shop Now",
-            "button_link": "shopify://collections"
+            "button_link": "/collections/all"
           }
         }
       },
@@ -195,8 +195,8 @@
             "title": "",
             "x": 72,
             "y": 18,
-            "x_mobile": 73,
-            "y_mobile": 39
+            "x_mobile": 6,
+            "y_mobile": 12
           }
         },
         "hotspot_CNNKpP": {
@@ -227,6 +227,7 @@
         },
         "hotspot_CXaqi8": {
           "type": "hotspot",
+          "disabled": true,
           "settings": {
             "product": "cresson",
             "image": "shopify://shop_images/735645c8c300e0803f94417f35bd5fb6.png",
@@ -249,7 +250,7 @@
         "image": "shopify://shop_images/cresson.jpg",
         "position": "center-top",
         "image_mobile": "shopify://shop_images/cresson.jpg",
-        "position_mobile": "right"
+        "position_mobile": "right-top"
       }
     },
     "dropdowns_TeGxJ7": {

@@ -87,10 +87,7 @@
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=rsujilyzhudhzkchvo6atg" async="true"></script>
-  <!--Gem_Page_Header_Script-->
-{% render 'gem-app-header-scripts' %}
-<!--End_Gem_Page_Header_Script-->
-</head>
+  </head>
 
   <body class="template-{{ template }}"
     style="
@@ -114,10 +111,10 @@
     <div class="page-overlay fixed below-nav right-0 bottom-0 left-0 bg-black/20 z-50 invisible opacity-0 transition-visibility"></div>
 
     <div class="fixed w-screen top-0 z-[35] headroom {% if template.name == 'index' %}overlay-header{% endif %}" x-data="{ openMenu: false }" :data-menu-open="openMenu" data-headroom>
-      {% sections 'header-group' %}
+      <div style="display:none"> {% sections 'header-group' %} </div>
     </div>
 
-    {% section 'mobile-menu' %}
+    <div style="display:none"> {% section 'mobile-menu' %} </div>
 
     {% if template != 'cart' %}
       {% section 'cart-drawer' %}
@@ -166,35 +163,5 @@
         });
       </script>
     {% endif %}
-  <!--Gem_Page_Footer_Script-->
-  {%- liquid
-    assign gpTemplateSuffix = template.suffix
-    assign arrSplitSuffix = gpTemplateSuffix | split: '-'
-    if gpTemplateSuffix contains 'gem-' and gpTemplateSuffix contains '-template' and arrSplitSuffix.size == 3
-      assign isV6GpTemplate = true
-    endif
-    assign gpShopMeta = shop.metafields.gempages
-    if gpShopMeta
-      if gpShopMeta['productV6-default'] == 'true' and request.page_type == 'product'
-        assign isProductDefault = true
-      endif
-      if gpShopMeta['collectionV6-default'] == 'true' and request.page_type == 'collection'
-        assign isCollectionDefault = true
-      endif
-      if gpShopMeta['indexV6-default'] == 'true' and request.page_type == 'index'
-        assign isIndexDefault = true
-      endif
-      if isProductDefault or isCollectionDefault or isIndexDefault or isPreviewV6
-        assign isV6GpTemplate = true
-      endif
-    endif
-  %}
-  {% if isV6GpTemplate %}
-    {% render 'gem-app-footer-scripts', GEM_FOOTER_SCRIPT: GEM_FOOTER_SCRIPT %}
-  {% endif %}
-<!--End_Gem_Page_Footer_Script-->
-
-
-
-</body>
+  </body>
 </html>
