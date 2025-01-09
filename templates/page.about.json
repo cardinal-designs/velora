@@ -85,6 +85,7 @@
             "heading": "bestsellers",
             "title": "Custom",
             "image": "shopify://shop_images/Screenshot_2024-08-28_at_4.45.49_PM.png",
+            "button_text": "Learn More",
             "link": "shopify://pages/custom"
           }
         },
@@ -96,6 +97,7 @@
             "heading": "bestsellers",
             "title": "Best Sellers",
             "image": "shopify://shop_images/Screenshot_2024-08-28_at_3.58.56_PM.png",
+            "button_text": "",
             "link": ""
           }
         }
