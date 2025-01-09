@@ -10,7 +10,7 @@
                         <div class="rte max-w-custom w-full mt-25 ml-auto [&_p:first-of-type]:indent-8 text-oracle-14 whitespace-pre-wrap [&_p]:mb-10 lg:text-oracle-18 xl:mt-[45px]" style="--width: min(503px, 73%);">{{ section.settings.text }}</div>
                     {% endif %}
                 </div>
-                {% form 'contact', id: 'ContactForm', class: 'scroll-mt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]' %}
+                {% form 'contact', id: 'ContactForm', class: 'scroll-mt-[calc(var(--nav-height)_+_var(--announcement-bar-height))]', style: 'scroll-padding-top: 100px;' %}
                     {% if form.posted_successfully? %}
                         <div class="mt-10 mb-20 text-oracle-18" tabindex="-1">{{ 'templates.contact.form.post_success' | t }}</div>
                     {% endif %}
