@@ -18,7 +18,7 @@
     {% if product_card_product.featured_image != blank %}
       {{ product_card_product.featured_image | image_url: width: 700 | image_tag: width: product_card_product.featured_image.width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full object-cover inset relative', data-first-image: '' }}
       {% if product_card_product.images[1] != blank %}
-        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'w-full h-full inset object-cover opacity-0 transition-opacity duration-[600ms] ease-in-out group-hover/image:md:opacity-100', data-hover-image: '' }}
+        {{ product_card_product.images[1] | image_url: width: 700 | image_tag: width: product_card_product.images[1].width, sizes: '700x', widths: '200, 300, 400, 500, 700, 900', class: 'hidden md:block w-full h-full inset object-cover opacity-0 transition-opacity duration-[600ms] ease-in-out group-hover/image:md:opacity-100', data-hover-image: '' }}
       {% endif %}
     {% else %}
       <div class="w-full h-full bg-brown"> </div>
@@ -27,8 +27,8 @@
     {% render 'loading-spinner', include_overlay: true, use_logo: true %}
     </div>
 
-    <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue rounded-[40px] scale-[200%] group-hover/card:md:scale-100 transition-transform" class="absolute w-full h-full"> </div>
-    <div class="top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_10px)] h-[calc(100%_+_10px)] border-[10px] border-blue scale-[200%] group-hover/card:md:scale-100 transition-transform" class="absolute w-full h-full"> </div>
+    <div class="hidden md:block top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_30px)] h-[calc(100%_+_30px)] border-[30px] border-blue rounded-[40px] scale-[200%] group-hover/card:md:scale-100 transition-transform" class="absolute w-full h-full"> </div>
+    <div class="hidden md:block top-half left-half -translate-x-half -translate-y-half absolute w-[calc(100%_+_10px)] h-[calc(100%_+_10px)] border-[10px] border-blue scale-[200%] group-hover/card:md:scale-100 transition-transform" class="absolute w-full h-full"> </div>
 
     <a class="absolute top-0 left-0 w-full h-full" href="{{ product_card_product.url }}"> </a>
   </div>
