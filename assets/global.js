@@ -715,11 +715,13 @@ var VariantRadios = class extends VariantSelects {
   updateOptions() {
     const fieldsets = Array.from(this.querySelectorAll('fieldset'));
     this.options = fieldsets.map((fieldset) => {
-      return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
+      const checked_option = Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked)
+      const value = checked_option ? checked_option.value : null
+      return value ;
     });
 
     fieldsets.forEach( (f, index) => {
-      f.querySelector("legend span:nth-of-type(2)").textContent = this.options[index]
+      f.querySelector("legend span:nth-of-type(2)") ? f.querySelector("legend span:nth-of-type(2)").textContent = this.options[index] : ''
     })
   }
 }
