@@ -47,12 +47,22 @@ function swiperInit() {
               slidesPerView: 'auto',
               spaceBetween: 20,
               mousewheel: {
-                enabled: true,
-                releaseOnEdges: false,
-                forceToAxis: true,
+                enabled: false
               },
               freeMode: {
-                enabled: true
+                enabled: false
+              },
+              breakpoints: {
+                768: {
+                  mousewheel: {
+                    enabled: true,
+                    releaseOnEdges: false,
+                    forceToAxis: true,
+                  },
+                  freeMode: {
+                    enabled: true
+                  },
+                }
               }
           }
           if(s.classList.contains("swiper-initialized")) return
