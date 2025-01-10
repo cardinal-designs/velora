@@ -377,7 +377,7 @@
   }
 
   /* after transition */
-  .headroom--unpinned {
+  .headroom--unpinned:not(.headroom--top) {
     @apply -translate-y-[var(--announcement-bar-height)]
   }
 
