@@ -50,6 +50,7 @@ function swiperInit() {
               mousewheel: {
                 enabled: false
               },
+              // cssMode: true,
               freeMode: {
                 enabled: false
               },
