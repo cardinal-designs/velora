@@ -46,6 +46,7 @@ function swiperInit() {
           options = {
               slidesPerView: 'auto',
               spaceBetween: 20,
+              preventClicksPropagation: true,
               mousewheel: {
                 enabled: false
               },
