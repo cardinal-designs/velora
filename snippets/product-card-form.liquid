@@ -12,7 +12,7 @@
       {%- assign swatch_file_extension = 'png' -%}
       
       {% unless _p.has_only_default_variant %}
-        <variant-radios class="no-js-hidden {% unless container == 'product-card' %}lg:grid grid-cols-12 {% endunless %}" data-section="{{ section.id }}" data-url="{{ _p.url }}" data-update-url="{{ update_url | default: false }}">
+        <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ _p.url }}" data-update-url="{{ update_url | default: false }}">
           {% for option in _p.options_with_values %}
             {% liquid
               assign downcased_option = option.name | downcase
