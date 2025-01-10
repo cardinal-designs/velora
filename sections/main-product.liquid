@@ -23,9 +23,9 @@
         {% endif %}
 
         <div class="flex flex-row justify-center items-center gap-[26px] mb-10 lg:mb-[17px]">
-          <p id="price-{{ section.id }}" class="price flex items-center gap-5 text-pangram-16">
+          <p class="price flex items-center gap-5 text-pangram-16">
             {{ product.selected_or_first_available_variant.price | money }}
-            {% if product.compare_at_price > product.price %}
+            {% if product.selected_or_first_available_variant.compare_at_price > product.price %}
               <span class="strike-through opacity-50">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
             {% endif %}
           </p>
