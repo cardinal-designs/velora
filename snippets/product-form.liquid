@@ -1,26 +1,26 @@
 {% liquid
-  assign current_variant = product.selected_or_first_available_variant
+  assign current_variant = _p.selected_or_first_available_variant
   assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
   assign swatch_file_extension = 'png'
 %}
 
 <product-form class="product-form w-full">
   {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
-    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <input type="hidden" name="id" value="{{ _p.selected_or_first_available_variant.id }}">
 
     {%- assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase -%}
     {%- assign swatch_file_extension = 'png' -%}
     
-    {% unless product.has_only_default_variant %}
-      <variant-radios class="no-js-hidden {% unless container == 'product-card' %}lg:grid grid-cols-12 {% endunless %}" data-section="{{ section.id }}" data-url="{{ product.url }}" data-update-url="{{ update_url | default: false }}">
-        {% for option in product.options_with_values %}
+    {% unless _p.has_only_default_variant %}
+      <variant-radios class="no-js-hidden {% unless container == 'product-card' %}lg:grid grid-cols-12 {% endunless %}" data-section="{{ section.id }}" data-url="{{ _p.url }}" data-update-url="{{ update_url | default: false }}">
+        {% for option in _p.options_with_values %}
           {% liquid
             assign downcased_option = option.name | downcase
 
-            assign variants_available_arr = product.variants | map: 'available'
-            assign variants_option1_arr = product.variants | map: 'option1'
-            assign variants_option2_arr = product.variants | map: 'option2'
-            assign variants_option3_arr = product.variants | map: 'option3'
+            assign variants_available_arr = _p.variants | map: 'available'
+            assign variants_option1_arr = _p.variants | map: 'option1'
+            assign variants_option2_arr = _p.variants | map: 'option2'
+            assign variants_option3_arr = _p.variants | map: 'option3'
 
             assign option_name = option.name | downcase
             assign is_color = false
@@ -57,11 +57,11 @@
                                   assign option_disabled = false
                                 endif
                               when 2
-                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                if option1_name == _p.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
                                   assign option_disabled = false
                                 endif
                               when 3
-                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                if option1_name == _p.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == _p.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
                                   assign option_disabled = false
                                 endif
                             endcase
@@ -86,7 +86,7 @@
                               %}
 
                             <label 
-                              aria-label="{{ product.title }} - {{ value }}"
+                              aria-label="{{ _p.title }} - {{ value }}"
                               class="swatch group-[.smallView]/grid:w-[17px] peer-checked:active-swatch"                     
                               style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% else %}background-color: {{ value | handleize }};{% endif %}" 
                               for="{{ product_form_id}}-{{ option.position }}-{{ forloop.index0 }}">
@@ -137,11 +137,11 @@
                                       assign option_disabled = false
                                     endif
                                   when 2
-                                    if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                    if option1_name == _p.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
                                       assign option_disabled = false
                                     endif
                                   when 3
-                                    if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                    if option1_name == _p.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == _p.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
                                       assign option_disabled = false
                                     endif
                                 endcase
@@ -185,7 +185,7 @@
             </label>
             <quantity-input class="quantity h-full grid grid-cols-3 text-center w-full max-w-[58px] lg:max-w-[66px]">
               <button class="quantity-button flex justify-center items-center no-js-hidden" name="minus" type="button">
-                <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: _p.title | escape }}</span>
                 {% comment %} {% render 'icon' icon: 'minus' %} {% endcomment %}-
               </button>
               <input class="quantity-input text-oracle-16 bg-[var(--background)] text-center"
@@ -197,7 +197,7 @@
                   form="{{ product_form_id }}"
                 >
               <button class="quantity-button flex justify-center items-center no-js-hidden" name="plus" type="button">
-                <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: _p.title | escape }}</span>
                 {% comment %} {% render 'icon' icon: 'plus' %} {% endcomment %}+
               </button>
             </quantity-input>
@@ -205,7 +205,7 @@
         </div>
 
         <script type="application/json">
-          {{ product.variants | json }}
+          {{ _p.variants | json }}
         </script>
 
         <section class="hidden">{{ options_app }}</section>
@@ -213,13 +213,13 @@
     {% endunless %}
 
     <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-      <div class="{% if product.has_only_default_variant %} hidden{% endif %}">
+      <div class="{% if _p.has_only_default_variant %} hidden{% endif %}">
         <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
         <div class="select">
           <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
-            {% for variant in product.variants %}
+            {% for variant in _p.variants %}
               <option
-                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                {% if variant == _p.selected_or_first_available_variant %}selected="selected"{% endif %}
                 {% if variant.available == false %}disabled{% endif %}
                 value="{{ variant.id }}"
               >
@@ -245,10 +245,10 @@
         type="submit"
         name="add"
         class="product-form-submit w-full button button--large max-w-none"
-        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+        {% if _p.selected_or_first_available_variant.available == false %}disabled{% endif %}
       >
         <span>
-          {% if product.selected_or_first_available_variant.available %}
+          {% if _p.selected_or_first_available_variant.available %}
             {{ 'products.product.add_to_cart' | t }}
           {% else %}
             {{ 'products.product.sold_out' | t }}

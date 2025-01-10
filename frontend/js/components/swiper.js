@@ -46,13 +46,13 @@ function swiperInit() {
           options = {
               slidesPerView: 'auto',
               spaceBetween: 20,
+              preventClicks: true,
               preventClicksPropagation: true,
               mousewheel: {
                 enabled: false
               },
-              // cssMode: true,
               freeMode: {
-                enabled: false
+                enabled: true
               },
               breakpoints: {
                 768: {
@@ -60,10 +60,7 @@ function swiperInit() {
                     enabled: true,
                     releaseOnEdges: false,
                     forceToAxis: true,
-                  },
-                  freeMode: {
-                    enabled: true
-                  },
+                  }
                 }
               }
           }

@@ -133,7 +133,7 @@
           {%- endcase -%}
         {%- endfor -%}
 
-        {% render 'product-form' product: product, product_form_id: product_form_id, show_custom_inquiry: section.settings.custom_inquiry, options_app: infinite_options  %}
+        {% render 'product-form' _p: product, product_form_id: product_form_id, show_custom_inquiry: section.settings.custom_inquiry, options_app: infinite_options  %}
 
         {% assign text_blocks = section.blocks | where: 'type', 'text' %}
 
