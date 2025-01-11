@@ -78,19 +78,22 @@
 
     <!-- Microsoft Clarify -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "mf5qaewaza");
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "pruej0cay3");
+    </script>
+
+    <!-- Microsoft UET -->
+    <script>
+      (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187174220", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
     </script>
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=rsujilyzhudhzkchvo6atg" async="true"></script>
-  <!--Gem_Page_Header_Script-->
-{% render 'gem-app-header-scripts' %}
-<!--End_Gem_Page_Header_Script-->
-</head>
+
+  </head>
 
   <body class="template-{{ template }}"
     style="
@@ -166,35 +169,6 @@
         });
       </script>
     {% endif %}
-  <!--Gem_Page_Footer_Script-->
-  {%- liquid
-    assign gpTemplateSuffix = template.suffix
-    assign arrSplitSuffix = gpTemplateSuffix | split: '-'
-    if gpTemplateSuffix contains 'gem-' and gpTemplateSuffix contains '-template' and arrSplitSuffix.size == 3
-      assign isV6GpTemplate = true
-    endif
-    assign gpShopMeta = shop.metafields.gempages
-    if gpShopMeta
-      if gpShopMeta['productV6-default'] == 'true' and request.page_type == 'product'
-        assign isProductDefault = true
-      endif
-      if gpShopMeta['collectionV6-default'] == 'true' and request.page_type == 'collection'
-        assign isCollectionDefault = true
-      endif
-      if gpShopMeta['indexV6-default'] == 'true' and request.page_type == 'index'
-        assign isIndexDefault = true
-      endif
-      if isProductDefault or isCollectionDefault or isIndexDefault or isPreviewV6
-        assign isV6GpTemplate = true
-      endif
-    endif
-  %}
-  {% if isV6GpTemplate %}
-    {% render 'gem-app-footer-scripts', GEM_FOOTER_SCRIPT: GEM_FOOTER_SCRIPT %}
-  {% endif %}
-<!--End_Gem_Page_Footer_Script-->
-
-
-
-</body>
+  </body>
+  
 </html>
