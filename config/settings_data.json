@@ -125,6 +125,11 @@
         "type": "shopify://apps/simprosys-google-shopping-feed/blocks/core_settings_block/1f0b859e-9fa6-4007-97e8-4513aff5ff3b",
         "disabled": false,
         "settings": {}
+      },
+      "558381514691908246": {
+        "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
