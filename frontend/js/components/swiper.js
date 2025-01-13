@@ -29,12 +29,13 @@ function swiperInit() {
           options = {
               slidesPerView: 1,
               spaceBetween: 0,
+              initialSlide: s.querySelector('[data-initial-slide="true"]') ? s.querySelector('[data-initial-slide="true"]').getAttribute("data-media-index") : 0,
               navigation: {
                 nextEl: `.swiper-button-next-${s.dataset.sectionId}`,
                 prevEl: `.swiper-button-prev-${s.dataset.sectionId}`,
               },
               on: {
-                slideChange: function() {
+                slideChange: function(swiper) {
                     s.querySelector(`[data-active-slide="${s.dataset.sectionId}"]`).innerText = ( swiper.realIndex + 1 )
                 }
               }
@@ -51,9 +52,16 @@ function swiperInit() {
               mousewheel: {
                 enabled: false
               },
-              freeMode: true,
+              freeMode: {
+                enabled: false,
+                sticky: false,
+              },
               breakpoints: {
                 768: {
+                  freeMode: {
+                    enabled: true,
+                    sticky: false,
+                  },
                   mousewheel: {
                     enabled: true,
                     releaseOnEdges: false,

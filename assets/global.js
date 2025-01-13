@@ -728,6 +728,55 @@ var VariantRadios = class extends VariantSelects {
 
 customElements.define('variant-radios', VariantRadios);
 
+
+var ProductSwatches = class extends HTMLElement {
+  constructor() {
+
+    super();
+    this.form = this.querySelector("form")
+    this.productCard = this.closest('[data-product-card]')
+    this.imageWrapper = this.productCard.querySelector("[data-image]")
+
+    this.addEventListener('change', this.onSwatchChange);
+  }
+
+  onSwatchChange(event) {
+
+    this.imageWrapper.classList.add("loading")
+
+    let fetchUrl = new URL(`${this.dataset.url}`, window.shopUrl);
+    let fetchParams = new URLSearchParams(fetchUrl.search);
+    fetchParams.append('variant', `${event.target.value}`);
+    fetchParams.append('section_id', `product-card-content`);
+
+    fetch(`${fetchUrl.href}${fetchUrl.search == '' ? '?' : ''}${fetchParams.toString()}`)
+    .then((response) => response.text())
+    .then((responseText) => {
+      const html = new DOMParser().parseFromString(responseText, 'text/html')
+
+      if(!html.querySelector('[data-image]')) return
+
+      const elementToReplace = this.imageWrapper.querySelector(`img`)
+      this.imageWrapper.insertBefore(html.querySelector(`img`), elementToReplace)
+
+      this.productCard.querySelectorAll("a[href]").forEach( a => {
+        a.setAttribute("href", event.target.dataset.variantUrl )
+      })
+
+      this.imageWrapper.querySelector(`img`).addEventListener("load", () => {
+        this.imageWrapper.classList.remove("loading"); 
+        elementToReplace.remove()
+      },
+      {once: true}
+    )
+
+    });
+
+  }
+}
+
+customElements.define('product-swatches', ProductSwatches);
+
 var DropdownItem = class extends HTMLElement {
   constructor() {
     super();

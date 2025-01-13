@@ -57,7 +57,65 @@
     {% unless no_product_form %}
       <div class="mt-[22px]">
         {% assign product_form_id = 'product-form-' | append: section_id | append: '-' | append: product_card_product.id %}
-        {% render 'product-card-form' _p: product_card_product, product_form_id: product_form_id  %}
+        
+        {% liquid
+          assign _p = product_card_product
+          assign current_variant = _p.selected_or_first_available_variant
+          assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
+          assign swatch_file_extension = 'png'
+      
+          assign swatches = _p.options_by_name['Color'].values
+          assign option_name = "Color"
+          assign option_position = _p.options_by_name['Color'].position
+      
+          if swatches == blank
+            assign swatches = _p.options_by_name['Finish'].values
+            assign option_name = "Finish"
+            assign option_position = _p.options_by_name['Finish'].position
+          endif
+      
+          
+      %}
+      
+        <form id="{{ product_form_id }}">
+          <product-swatches data-section="{{ section.id }}" data-url="{{ _p.url }}" data-update-url="{{ update_url | default: false }}">
+            <div class="flex flex-row flex-wrap gap-20 p-5">
+              {% for swatch in swatches %}
+                  {% liquid
+                    assign value = swatch
+                    assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+                    assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+                    assign color_swatch_fallback = value | split: ' ' | last | handle
+                    assign color_count = color_count | plus: 1
+                  %}
+      
+                  <div>
+                    <input type="radio"
+                      class="visually-hidden peer"
+                      id="{{ product_form_id }}-{{ option_position }}-{{ forloop.index0 }}"
+                      name="{{ option_name }}"
+                      {% comment %} value="{{ value | escape }}" {% endcomment %}
+                       value={{ swatch.variant.id }}
+                      form="{{ product_form_id }}"
+                      data-variant-url="{{ swatch.variant.url }}"
+                      {% if value.selected %}checked{% endif %}
+                    >
+                    <label
+                      aria-label="{{ _p.title }} - {{ value }}"
+                      class="swatch group-[.smallView]/grid:w-[17px] peer-checked:active-swatch"                     
+                      style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% else %}background-color: {{ value | handleize }};{% endif %}" 
+                      for="{{ product_form_id}}-{{ option_position }}-{{ forloop.index0 }}"
+                      data-variant-id="{{ swatch.variant.id }}"
+                    >
+                      <div class="visually-hidden">{{ value }}</div>
+                    </label>
+                  </div>
+                
+              {% endfor %}
+            </div>
+          </product-swatches>
+        </form>
+
       </div>
     {% endunless %}
   </div>
