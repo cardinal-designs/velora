@@ -70,7 +70,9 @@
         <div data-cart-footer class="w-full p-20 sticky bottom-0 flex flex-col justify-start items-center">
           <div class="px-25 lg:px-[max(58px,4vw)] mb-15 flex justify-between items-center gap-20 w-full" id="cart-drawer-subtotal">
             <p class="text-pangram-12">Subtotal</p>
-            <p class="text-pangram-12">{{ cart.total_price | money_without_trailing_zeros }}</p>
+            <div class="flex flex-col justify-end items-end gap-5">
+              <p data-hulkapps-cart-total class="text-pangram-12">{{ cart.total_price | money_without_trailing_zeros }}</p>
+            </div>
           </div>
           <input class="cursor-pointer w-full button button--large max-w-[max(574px,40vw)] mx-auto hover:bg-blue hover:text-brown hover:border-blue" type="submit" name="checkout" value="Checkout">
           <!-- <button type="submit" class="w-full button button--large max-w-[max(574px,40vw)] mx-auto hover:bg-blue hover:text-brown hover:border-blue" name="checkout" form="cart">Checkout</button> -->
