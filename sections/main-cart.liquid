@@ -40,7 +40,9 @@
 
             <div class="flex justify-between items-center gap-20">
               <p class="text-m-h5 md:text-arizona-36">Total</p>
-              <p class="text-m-h5 md:text-arizona-36">{{ cart.total_price | money }}</p>
+              <div class="flex flex-col justify-end items-end gap-5">
+                <p data-hulkapps-cart-total class="text-m-h5 md:text-arizona-36">{{ cart.total_price | money }}</p>
+              </div>
             </div>
 
             <div class="mt-15">
