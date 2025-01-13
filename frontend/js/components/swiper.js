@@ -51,9 +51,7 @@ function swiperInit() {
               mousewheel: {
                 enabled: false
               },
-              freeMode: {
-                enabled: true
-              },
+              freeMode: true,
               breakpoints: {
                 768: {
                   mousewheel: {
