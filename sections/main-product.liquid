@@ -253,7 +253,7 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org/",
+    "@context": "http://schema.org",
     "@type": "Product",
     "name": {{ product.title | json }},
     "url": {{ shop.url | append: product.url | json }},
@@ -267,10 +267,7 @@
     {% if product.selected_or_first_available_variant.sku != blank %}
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
     {% endif %}
-    "brand": {
-      "@type": "Thing",
-      "name": {{ product.vendor | json }}
-    },
+    "brand": {{ product.vendor | json }},
     "offers": [
       {% for variant in product.variants %}
         {
