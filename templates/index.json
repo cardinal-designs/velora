@@ -29,7 +29,7 @@
         "full_fQ3hHp": {
           "type": "full",
           "settings": {
-            "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b.png",
+            "image": "shopify://shop_images/2c6a3b5c87b836043dfe097301cfad6b_d2263361-a250-4950-92fb-34fab50700ac.png",
             "content_position": "center_top",
             "mobile_content_position": "center",
             "text_color": "#F1ECE3",
@@ -81,7 +81,9 @@
             "overlay": true,
             "heading": "pendant-lights",
             "title": "Pendants",
-            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.53.37_PM.png"
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.53.37_PM.png",
+            "button_text": "",
+            "link": ""
           }
         },
         "block_DzCN46": {
@@ -91,7 +93,9 @@
             "overlay": true,
             "heading": "wall-sconces",
             "title": "Sconces",
-            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.33_PM.png"
+            "image": "shopify://shop_images/Screenshot_2024-05-29_at_1.52.33_PM.png",
+            "button_text": "",
+            "link": ""
           }
         }
       },
