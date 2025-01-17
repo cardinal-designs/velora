@@ -271,7 +271,6 @@
       "@type": "Brand",
       "name": {{ product.vendor | json }}
     },
-    "sku": {{ current_variant.sku | json }},
     "category": "",
     "offers": [
       {% for variant in product.variants %}
