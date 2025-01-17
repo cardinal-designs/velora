@@ -298,6 +298,11 @@
               "name": "US"
             },
             "returnFees": "https://schema.org/ReturnShippingFees",
+            "returnShippingFeesAmount": {
+              "@type": "MonetaryAmount",
+              "value": "10.00",
+              "currency": "{{ shop.currency | escape }}"
+            },
             "returnMethod": "ReturnByMail",
             "merchantReturnDays": 30
           },
