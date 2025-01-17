@@ -287,7 +287,11 @@
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "url": "{{ shop.url }}/pages/new-shipping-and-return-policies",
-            "returnPolicyCategory": "https://schema.org/ReturnableWithin30"
+            "returnPolicyCategory": "https://schema.org/Refund",
+            "applicableCountry": {
+              "@type": "Country",
+              "name": "US"
+            }
           },
           "shippingDetails": {
             "@type": "OfferShippingDetails",
