@@ -272,6 +272,11 @@
       "name": {{ product.vendor | json }}
     },
     "category": "",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{% if product.metafields.yotpo.reviews_average.size > 1 %}{{ product.metafields.yotpo.reviews_average }}{% else %}5{% endif %}",
+      "reviewCount": "{% if product.metafields.yotpo.reviews_count.size > 1 %}{{ product.metafields.yotpo.reviews_count }}{% else %}1{% endif %}"
+    },
     "offers": [
       {% for variant in product.variants %}
         {
