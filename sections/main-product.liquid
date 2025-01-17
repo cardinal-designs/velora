@@ -267,7 +267,10 @@
     {% if product.selected_or_first_available_variant.sku != blank %}
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
     {% endif %}
-    "brand": {{ product.vendor | json }},
+    "brand": {
+      "@type": "Brand",
+      "name": "{{ product.vendor | json }}"
+    },
     "sku": {{ current_variant.sku | json }},
     "category": "",
     "offers": [
