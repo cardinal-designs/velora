@@ -269,7 +269,7 @@
     {% endif %}
     "brand": {
       "@type": "Brand",
-      "name": "{{ product.vendor | json }}"
+      "name": {{ product.vendor | json }}
     },
     "sku": {{ current_variant.sku | json }},
     "category": "",
