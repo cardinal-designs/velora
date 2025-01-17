@@ -276,7 +276,7 @@
       "@type": "AggregateRating",
       "ratingValue": "{% if product.metafields.judgeme.reviews_average.size > 0 %}{{ product.metafields.judgeme.reviews_average }}{% else %}5{% endif %}",
       "reviewCount": "{% if product.metafields.judgeme.reviews_count.size > 0 %}{{ product.metafields.judgeme.reviews_count }}{% else %}1{% endif %}"
-    }
+    },
     "offers": [
       {% for variant in product.variants %}
         {
