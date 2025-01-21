@@ -293,22 +293,12 @@
             "@type": "MerchantReturnPolicy",
             "url": "{{ shop.url }}/pages/new-shipping-and-return-policies",
             "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "applicableCountry": [
-              { "@type": "Country", "name": "United Kingdom" },
-              { "@type": "Country", "name": "Switzerland" },
-              { "@type": "Country", "name": "Norway" },
-              { "@type": "Country", "name": "Netherlands" },
-              { "@type": "Country", "name": "Italy" },
-              { "@type": "Country", "name": "Ireland" },
-              { "@type": "Country", "name": "Hungary" },
-              { "@type": "Country", "name": "France" },
-              { "@type": "Country", "name": "United States" },
-              { "@type": "Country", "name": "Denmark" },
-              { "@type": "Country", "name": "Canada" },
-              { "@type": "Country", "name": "Belgium" },
-              { "@type": "Country", "name": "Austria" },
-              { "@type": "Country", "name": "Australia" }
-            ],
+            "applicableCountry": {
+              "@type": "Country",
+              "name": [
+                "GB", "CH", "NO", "NL", "IT", "IE", "HU", "FR", "US", "DK", "CA", "BE", "AT", "AU"
+              ]
+            },
             "returnFees": "https://schema.org/ReturnShippingFees",
             "returnShippingFeesAmount": {
               "@type": "MonetaryAmount",
@@ -342,7 +332,9 @@
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "US"
+              "addressCountry": [
+                "GB", "CH", "NO", "NL", "IT", "IE", "HU", "FR", "US", "DK", "CA", "BE", "AT", "AU"
+              ]
             }
           }
         }{% unless forloop.last %},{% endunless %}
