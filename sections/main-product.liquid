@@ -161,8 +161,8 @@
       <div class="bg-[var(--text)] text-[var(--background)] px-[4.5vw] pb-10 pt-5 lg:pt-[13px] lg:pb-[23px] sticky top-[var(--nav-height)] overflow-clip">
 
         {% if section.settings.title != blank %}
-          <div class="py-5 text-center lg:mb-[13px]">
-            <div class="animate-marquee xl:animate-none no-scrollbar xl:overflow-x-auto">
+          <div class="py-5 text-center lg:mb-[13px]" style="--gap: 0px;">
+            <div class="animate-marquee xl:animate-none no-scrollbar xl:overflow-x-auto gap-[var(--gap)]">
               <div class="mx-auto w-fit flex flex-row justify-center items-center gap-40 *:whitespace-nowrap">
                 <p class="text-pangram-10 lg:text-pangram-14 leading-[30px]">
                   {{ section.settings.title }}
