@@ -263,7 +263,7 @@
         {{ seo_media | img_url: media_size | prepend: "https:" | json }}
       ],
     {% endif %}
-    "description": {{ product.description | strip_html | json }},
+    "description": "{% if product.description != blank %}{{ product.description | strip_html | escape | truncatewords: 25 }}{% else %}{{ shop.name }}{% endif %}",
     {% if product.selected_or_first_available_variant.sku != blank %}
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
     {% endif %}
