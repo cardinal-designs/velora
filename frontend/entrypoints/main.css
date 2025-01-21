@@ -89,6 +89,10 @@
   }
 
   @layer components {
+    .prevent-interaction {
+      @apply absolute top-0 left-0 w-full h-full cursor-wait z-top
+    }
+
     .button {
         @apply font-oracle text-oracle-16 leading-[30px] text-center indent-0 transition-colors
         px-20 py-[4px]

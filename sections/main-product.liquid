@@ -178,7 +178,7 @@
           </div>
         {% endif %}
 
-        <div class="product-slider list-unstyled swiper !overflow-x-clip !overflow-y-clip" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
+        <div class="product-slider list-unstyled swiper !overflow-x-clip !overflow-y-clip pointer-events-none" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
           <div class="swiper-wrapper">
             {% for media in product.media %}
               {% if media.media_type == "image" %}

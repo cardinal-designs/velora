@@ -3,6 +3,11 @@ function swiperInit() {
   
     swipers.forEach(s => {
       let options, swiper;
+      const overlay = document.createElement("div")
+      overlay.classList.add("prevent-interaction")
+
+      s.appendChild(overlay)
+
       switch(s.dataset.swiper) {
         // Hero Section
         case 'hero':
@@ -29,6 +34,8 @@ function swiperInit() {
           options = {
               slidesPerView: 1,
               spaceBetween: 0,
+              preventClicks: true,
+              preventClicksPropagation: true,
               initialSlide: s.querySelector('[data-initial-slide="true"]') ? s.querySelector('[data-initial-slide="true"]').getAttribute("data-media-index") : 0,
               navigation: {
                 nextEl: `.swiper-button-next-${s.dataset.sectionId}`,
@@ -37,6 +44,10 @@ function swiperInit() {
               on: {
                 slideChange: function(swiper) {
                     s.querySelector(`[data-active-slide="${s.dataset.sectionId}"]`).innerText = ( swiper.realIndex + 1 )
+                },
+                init: function(swiper) {
+                  // console.log("swiper init")
+                  s.classList.remove("pointer-events-none")
                 }
               }
           }
@@ -145,6 +156,25 @@ function swiperInit() {
           break
       }
     })
+
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   const overlays = document.querySelectorAll(".swiper .prevent-interaction")
+      
+    //   if (!overlays) return
+    //   overlays.forEach( o => {
+    //     console.log("removed: ", o)
+    //     // o.remove()
+    //   })
+    // })
+
+    window.addEventListener("load", (event) => {
+      const overlays = document.querySelectorAll(".swiper .prevent-interaction")
+      
+      if (!overlays) return
+      overlays.forEach( o => {
+        o.remove()
+      })
+    });
   }
   
   export default swiperInit
