@@ -300,7 +300,7 @@
             "returnFees": "https://schema.org/ReturnShippingFees",
             "returnShippingFeesAmount": {
               "@type": "MonetaryAmount",
-              "value": "10.00",
+              "value": "varies depending on box sizes, etc. but is the responsibility of the customer.",
               "currency": "{{ shop.currency | escape }}"
             },
             "returnMethod": "ReturnByMail",
@@ -310,7 +310,7 @@
             "@type": "OfferShippingDetails",
             "shippingRate": {
               "@type": "MonetaryAmount",
-              "value": "10.00",
+              "value": "varies depending on box sizes, etc. but is the responsibility of the customer",
               "currency": "{{ shop.currency | escape }}"
             },
             "deliveryTime": {
@@ -330,7 +330,7 @@
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "Worldwide"
+              "addressCountry": "US"
             }
           }
         }{% unless forloop.last %},{% endunless %}
