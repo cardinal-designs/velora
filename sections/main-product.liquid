@@ -304,7 +304,7 @@
               "currency": "{{ shop.currency | escape }}"
             },
             "returnMethod": "ReturnByMail",
-            "merchantReturnDays": 30
+            "merchantReturnDays": 90
           },
           "shippingDetails": {
             "@type": "OfferShippingDetails",
@@ -318,19 +318,19 @@
               "handlingTime": {
                 "@type": "QuantitativeValue",
                 "minValue": 1,
-                "maxValue": 2,
+                "maxValue": 5,
                 "unitCode": "d"
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
                 "minValue": 3,
-                "maxValue": 7,
+                "maxValue": 5,
                 "unitCode": "d"
               }
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "US"
+              "addressCountry": "Worldwide"
             }
           }
         }{% unless forloop.last %},{% endunless %}
