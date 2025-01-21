@@ -161,8 +161,8 @@
       <div class="bg-[var(--text)] text-[var(--background)] px-[4.5vw] pb-10 pt-5 lg:pt-[13px] lg:pb-[23px] sticky top-[var(--nav-height)] overflow-clip">
 
         {% if section.settings.title != blank %}
-          <div class="py-5 text-center lg:mb-[13px]">
-            <div class="animate-marquee xl:animate-none no-scrollbar xl:overflow-x-auto">
+          <div class="py-5 text-center lg:mb-[13px]" style="--gap: 0px;">
+            <div class="animate-marquee xl:animate-none no-scrollbar xl:overflow-x-auto gap-[var(--gap)]">
               <div class="mx-auto w-fit flex flex-row justify-center items-center gap-40 *:whitespace-nowrap">
                 <p class="text-pangram-10 lg:text-pangram-14 leading-[30px]">
                   {{ section.settings.title }}
@@ -189,9 +189,15 @@
                 data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
                 {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
                 data-media-index="{{ forloop.index0 }}" 
-                data-media-id="{{ section.id }}-{{ media.id }}">
+                data-media-id="{{ section.id }}-{{ media.id }}"
+              >
                 {% assign sizes = '(min-width: 769px) 75vw, 100vw' %}
-                {{ media | image_url: width: 1000 | image_tag: preload: true, width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
+                {% if media.media_type == 'image' %}
+                  {{ media | image_url: width: 1000 | image_tag: width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center', loading: 'lazy' }}
+                  <div class="swiper-lazy-preloader"></div>
+                {% elsif media.media_type == "video" %}
+                  {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
+                {% endif %}
               </div>
             {% endfor %}
           </div>
