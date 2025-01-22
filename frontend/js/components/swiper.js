@@ -2,9 +2,9 @@ function swiperInit() {
     const swipers = document.querySelectorAll('[data-swiper]')
   
     swipers.forEach(s => {
-      let options, swiper;
-      const overlay = document.createElement("div")
-      overlay.classList.add("prevent-interaction")
+      // let options, swiper;
+      // const overlay = document.createElement("div")
+      // overlay.classList.add("prevent-interaction")
 
       s.appendChild(overlay)
 
@@ -167,14 +167,14 @@ function swiperInit() {
     //   })
     // })
 
-    window.addEventListener("load", (event) => {
-      const overlays = document.querySelectorAll(".swiper .prevent-interaction")
+    // window.addEventListener("load", (event) => {
+    //   const overlays = document.querySelectorAll(".swiper .prevent-interaction")
       
-      if (!overlays) return
-      overlays.forEach( o => {
-        o.remove()
-      })
-    });
+    //   if (!overlays) return
+    //   overlays.forEach( o => {
+    //     o.remove()
+    //   })
+    // });
   }
   
   export default swiperInit

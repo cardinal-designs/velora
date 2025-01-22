@@ -649,6 +649,7 @@ var VariantSelects = class extends HTMLElement {
           }
 
           document.querySelector(".product-slider").swiper.update()
+          document.querySelector(".product-slider").swiper.slideTo(0)
         }
       });
     }
