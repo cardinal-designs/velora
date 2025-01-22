@@ -150,6 +150,7 @@
         "color": "light",
         "heading": "Setup Your Trade Account",
         "text": "",
+        "type": "Trade",
         "disclaimer": "This site is protected by hCaptcha and the hCaptcha Privacy Policy and Terms of Service apply.",
         "image": "shopify://shop_images/8_carousel.jpg"
       }
