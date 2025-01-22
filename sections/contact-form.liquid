@@ -58,7 +58,7 @@
                         {% endif %}
                     </div>
 
-                    <input type="hidden" name="contact[form_type]" value="{{ section.settings.type | default: page.title }}" />
+                    <input class="hidden" type="text" name="contact[submission_type]" value="{{ section.settings.type | default: page.title }}" />
               
                     <div class="max-w-custom w-full mx-auto" style="--width: 560px;">
                         <button type="submit" class="button w-full py-15">Submit</button>
