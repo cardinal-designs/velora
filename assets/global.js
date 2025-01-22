@@ -538,7 +538,7 @@ var VariantSelects = class extends HTMLElement {
       this.toggleAddButton(true, '', true);
       this.setUnavailable();
     } else {
-      this.updateMedia();
+      // this.updateMedia();
       this.updateURL();
       this.updateVariantInput();
       this.renderProductInfo();
@@ -640,6 +640,16 @@ var VariantSelects = class extends HTMLElement {
 
         if (price) price.classList.remove('visibility-hidden');
         this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
+
+        if(document.querySelector(".product-slider") && html.querySelector(".product-slider")) {
+          document.querySelector(".product-slider .swiper-wrapper").innerHTML = html.querySelector(".product-slider .swiper-wrapper").innerHTML
+
+          if(document.querySelector("[data-swiper-pagination-count]") && html.querySelector("[data-swiper-pagination-count]")) {
+            document.querySelector("[data-swiper-pagination-count]").innerHTML = html.querySelector("[data-swiper-pagination-count]").innerHTML
+          }
+
+          document.querySelector(".product-slider").swiper.update()
+        }
       });
     }
   }

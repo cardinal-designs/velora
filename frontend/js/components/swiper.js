@@ -36,7 +36,7 @@ function swiperInit() {
               spaceBetween: 0,
               preventClicks: true,
               preventClicksPropagation: true,
-              initialSlide: s.querySelector('[data-initial-slide="true"]') ? s.querySelector('[data-initial-slide="true"]').getAttribute("data-media-index") : 0,
+              // initialSlide: s.querySelector('[data-initial-slide="true"]') ? s.querySelector('[data-initial-slide="true"]').getAttribute("data-media-index") : 0,
               navigation: {
                 nextEl: `.swiper-button-next-${s.dataset.sectionId}`,
                 prevEl: `.swiper-button-prev-${s.dataset.sectionId}`,
