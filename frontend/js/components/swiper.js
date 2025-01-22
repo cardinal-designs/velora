@@ -2,11 +2,10 @@ function swiperInit() {
     const swipers = document.querySelectorAll('[data-swiper]')
   
     swipers.forEach(s => {
-      // let options, swiper;
+      let options, swiper;
       // const overlay = document.createElement("div")
       // overlay.classList.add("prevent-interaction")
-
-      s.appendChild(overlay)
+      // s.appendChild(overlay)
 
       switch(s.dataset.swiper) {
         // Hero Section
