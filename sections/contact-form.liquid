@@ -57,6 +57,8 @@
                             <div class="mt-10 text-oracle-16 text-error">{{ form.errors | default_errors }}</div>
                         {% endif %}
                     </div>
+
+                    <input type="hidden" name="contact[form_type]" value="{{ section.settings.type | default: page.title }}" />
               
                     <div class="max-w-custom w-full mx-auto" style="--width: 560px;">
                         <button type="submit" class="button w-full py-15">Submit</button>
@@ -104,6 +106,12 @@
                 "type": "richtext",
                 "id": "text",
                 "label": "Text"
+            },
+            {
+              "type": "text",
+              "id": "type",
+              "label": "Form type",
+              "info": "This value is included with the form submission, not visible on the site."
             },
             {
                 "type": "inline_richtext",
