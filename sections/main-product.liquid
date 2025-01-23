@@ -194,6 +194,8 @@
               {% elsif image_variants != blank and variant_match == blank %}
                 {% assign skip = true %}
               {% endif %}
+            {% else %}
+              {% continue %}
             {% endif %}
 
             {% if skip == true %}
@@ -218,7 +220,7 @@
             {% endif %}
           {% endfor %}
           {% assign videos = product.media | where: 'media_type', 'video'  %}
-          {% for video in videos %}
+          {% for media in videos %}
             {% assign slides_count = slides_count | plus: 1 %}
               <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
                 style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
