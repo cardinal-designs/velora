@@ -3,10 +3,9 @@ function swiperInit() {
   
     swipers.forEach(s => {
       let options, swiper;
-      const overlay = document.createElement("div")
-      overlay.classList.add("prevent-interaction")
-
-      s.appendChild(overlay)
+      // const overlay = document.createElement("div")
+      // overlay.classList.add("prevent-interaction")
+      // s.appendChild(overlay)
 
       switch(s.dataset.swiper) {
         // Hero Section
@@ -36,7 +35,7 @@ function swiperInit() {
               spaceBetween: 0,
               preventClicks: true,
               preventClicksPropagation: true,
-              initialSlide: s.querySelector('[data-initial-slide="true"]') ? s.querySelector('[data-initial-slide="true"]').getAttribute("data-media-index") : 0,
+              // initialSlide: s.querySelector('[data-initial-slide="true"]') ? s.querySelector('[data-initial-slide="true"]').getAttribute("data-media-index") : 0,
               navigation: {
                 nextEl: `.swiper-button-next-${s.dataset.sectionId}`,
                 prevEl: `.swiper-button-prev-${s.dataset.sectionId}`,
@@ -167,14 +166,14 @@ function swiperInit() {
     //   })
     // })
 
-    window.addEventListener("load", (event) => {
-      const overlays = document.querySelectorAll(".swiper .prevent-interaction")
+    // window.addEventListener("load", (event) => {
+    //   const overlays = document.querySelectorAll(".swiper .prevent-interaction")
       
-      if (!overlays) return
-      overlays.forEach( o => {
-        o.remove()
-      })
-    });
+    //   if (!overlays) return
+    //   overlays.forEach( o => {
+    //     o.remove()
+    //   })
+    // });
   }
   
   export default swiperInit

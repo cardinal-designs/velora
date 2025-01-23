@@ -178,12 +178,28 @@
           </div>
         {% endif %}
 
-        <div class="product-slider list-unstyled swiper !overflow-x-clip !overflow-y-clip pointer-events-none" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
-          <div class="swiper-wrapper">
-            {% for media in product.media %}
-              {% if media.media_type == "image" %}
-                {% assign image_variants = product.images | where: 'src', media.src | first %}
+        {% capture variant_images %}
+          {% assign skip = true %}
+          {% assign slides_count = 0 %}
+          {% for media in product.media %}
+            {% assign image_variants = '' %}
+            {% if media.media_type == "image" %}
+              {% assign _image = product.images | where: 'src', media.src | first %}
+
+              {% assign image_variants = _image.variants | map: 'id' %}
+              {% assign variant_match = _image.variants | where: 'id', product.selected_or_first_available_variant.id | first %}   
+              
+              {% if image_variants != blank and variant_match != blank %}
+                {% assign skip = false %}
+              {% elsif image_variants != blank and variant_match == blank %}
+                {% assign skip = true %}
               {% endif %}
+            {% endif %}
+
+            {% if skip == true %}
+              {% continue %}
+            {% else %}
+              {% assign slides_count = slides_count | plus: 1 %}
               <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
                 style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
                 data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
@@ -199,10 +215,37 @@
                   {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
                 {% endif %}
               </div>
-            {% endfor %}
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+
+        <div class="product-slider list-unstyled swiper !overflow-x-clip !overflow-y-clip pointer-events-none" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
+          <div class="swiper-wrapper">
+            {{ variant_images }}
+            {% comment %} {% for media in product.media %} {% endcomment %}
+              {% comment %} {% if media.media_type == "image" %}
+                {% assign image_variants = product.images | where: 'src', media.src | first %}
+              {% endif %} {% endcomment %}
+              
+              {% comment %} <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
+                style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
+                data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
+                {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
+                data-media-index="{{ forloop.index0 }}" 
+                data-media-id="{{ section.id }}-{{ media.id }}"
+              >
+                {% assign sizes = '(min-width: 769px) 75vw, 100vw' %}
+                {% if media.media_type == 'image' %}
+                  {{ media | image_url: width: 1000 | image_tag: width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center', loading: 'lazy' }}
+                  <div class="swiper-lazy-preloader"></div>
+                {% elsif media.media_type == "video" %}
+                  {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
+                {% endif %}
+              </div> {% endcomment %}
+            {% comment %} {% endfor %} {% endcomment %}
           </div>
           <div class="mt-10 md:mt-[23px]">
-            {% render 'swiper-arrows', section_id: section.id, total_slides: product.media.size %}
+            {% render 'swiper-arrows', section_id: section.id, total_slides: slides_count %}
           </div>
         </div>
       </div>
