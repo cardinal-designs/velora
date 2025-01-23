@@ -178,12 +178,27 @@
           </div>
         {% endif %}
 
+        {% liquid
+          assign selected_media = ''
+          assign lifestyle = product.media | where: 'alt', 'lifestyle'
+          assign videos = product.media | where: 'media_type', 'video' 
+          if lifestyle != blank
+            assign additional_media = lifestyle 
+          endif
+          if videos != blank and additional_media != blank
+            assign additional_media = additional_media | concat: videos
+          elsif videos != blank
+            assign additional_media = videos 
+          endif
+        %}
+        
+        
         {% capture variant_images %}
           {% assign skip = true %}
           {% assign slides_count = 0 %}
           {% for media in product.media %}
             {% assign image_variants = '' %}
-            {% if media.media_type == "image" %}
+            {% if media.media_type == "image" %}              
               {% assign _image = product.images | where: 'src', media.src | first %}
 
               {% assign image_variants = _image.variants | map: 'id' %}
@@ -194,11 +209,20 @@
               {% elsif image_variants != blank and variant_match == blank %}
                 {% assign skip = true %}
               {% endif %}
+            {% else %}
+              {% continue %}
             {% endif %}
 
             {% if skip == true %}
               {% continue %}
             {% else %}
+              
+              {% if selected_media == blank %}
+                {% assign selected_media = media.id %}
+              {% else %}
+                {% assign selected_media = selected_media | append: "," | append: media.id %}
+              {% endif %}
+              
               {% assign slides_count = slides_count | plus: 1 %}
               <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
                 style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
@@ -216,6 +240,33 @@
                 {% endif %}
               </div>
             {% endif %}
+          {% endfor %}
+          {% for media in additional_media %}
+            {% if selected_media contains media.id %}
+              {% continue %}
+            {% endif %}
+            {% if selected_media == blank %}
+              {% assign selected_media = media.id %}
+            {% else %}
+              {% assign selected_media = selected_media | append: "," | append: media.id %}
+            {% endif %}
+            
+            {% assign slides_count = slides_count | plus: 1 %}
+              <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
+                style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
+                data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
+                {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
+                data-media-index="{{ forloop.index0 }}" 
+                data-media-id="{{ section.id }}-{{ media.id }}"
+              >
+                {% assign sizes = '(min-width: 769px) 75vw, 100vw' %}
+                {% if media.media_type == 'image' %}
+                  {{ media | image_url: width: 1000 | image_tag: width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center', loading: 'lazy' }}
+                  <div class="swiper-lazy-preloader"></div>
+                {% elsif media.media_type == "video" %}
+                  {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
+                {% endif %}
+              </div>
           {% endfor %}
         {% endcapture %}
 
