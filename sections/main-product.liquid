@@ -204,9 +204,9 @@
             {% else %}
               
               {% if selected_media == blank %}
-                {% assign selected_media = media %}
+                {% assign selected_media = media.id %}
               {% else %}
-                {% assign selected_media = selected_media | concat: media %}
+                {% assign selected_media = selected_media | append: "," | append: media.id %}
               {% endif %}
               
               {% assign slides_count = slides_count | plus: 1 %}
@@ -229,10 +229,15 @@
           {% endfor %}
           {% assign lifestyle = product.media | where: 'alt', 'lifestyle'  %}
             {% for media in lifestyle %}
+
+              {% if selected_media contains media.id %}
+                {% continue %}
+              {% endif %}
+              
               {% if selected_media == blank %}
-                {% assign selected_media = media %}
+                {% assign selected_media = media.id %}
               {% else %}
-                {% assign selected_media = selected_media | concat: media %}
+                {% assign selected_media = selected_media | append: "," | append: media.id %}
               {% endif %}
               
               {% assign slides_count = slides_count | plus: 1 %}
@@ -255,10 +260,14 @@
           {% assign videos = product.media | where: 'media_type', 'video'  %}
           {% for media in videos %}
 
-            {% if selected_media == blank %}
-                {% assign selected_media = media %}
+            {% if selected_media contains media.id %}
+                {% continue %}
+              {% endif %}
+              
+              {% if selected_media == blank %}
+                {% assign selected_media = media.id %}
               {% else %}
-                {% assign selected_media = selected_media | concat: media %}
+                {% assign selected_media = selected_media | append: "," | append: media.id %}
               {% endif %}
 
             {% assign slides_count = slides_count | plus: 1 %}
@@ -280,33 +289,11 @@
           {% endfor %}
         {% endcapture %}
 
-        {% assign selected_media = selected_media | uniq %}
-        {{ selected_media }}
-
         <div class="product-slider list-unstyled swiper !overflow-x-clip !overflow-y-clip pointer-events-none" role="list" data-swiper="product-media" data-section-id="{{ section.id }}">
           <div class="swiper-wrapper">
-            {% comment %}
+
             {{ variant_images }}
-            {% endcomment %}
-            {% if selected_media != blank %}
-              {% for media in selected_media %}
-                <div class="swiper-slide [&:first-child>img]:!object-contain [&>img]:!object-contain {% if settings.product_image_bg != blank and settings.product_image_multiply == true and forloop.first %} [&>img:first-of-type]:mix-blend-multiply {% endif %} {% if settings.product_image_bg != blank and forloop.first %}[&>img]:scale-[70%]{% endif %}" 
-                style="{% if settings.product_image_bg != blank and forloop.first %}background-image: url({{ settings.product_image_bg | image_url: width: 1000 }}){% endif %}"
-                data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" 
-                {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %} 
-                data-media-index="{{ forloop.index0 }}" 
-                data-media-id="{{ section.id }}-{{ media.id }}"
-              >
-                {% assign sizes = '(min-width: 769px) 75vw, 100vw' %}
-                {% if media.media_type == 'image' %}
-                  {{ media | image_url: width: 1000 | image_tag: width: media.width, sizes: sizes, widths: '300, 400, 500, 600, 700, 800, 900, 1000, 1200', class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center', loading: 'lazy' }}
-                  <div class="swiper-lazy-preloader"></div>
-                {% elsif media.media_type == "video" %}
-                  {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'w-full aspect-[0.86/1] object-cover max-h-[800px] object-center' }}
-                {% endif %}
-              </div>
-              {% endfor %}
-            {% endif %}
+
             {% comment %} {% for media in product.media %} {% endcomment %}
               {% comment %} {% if media.media_type == "image" %}
                 {% assign image_variants = product.images | where: 'src', media.src | first %}
