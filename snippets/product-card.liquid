@@ -41,7 +41,7 @@
         </a>
         <p data-price class="lg:opacity-0 {% unless container == 'search' %} lg:group-hover/card:opacity-100 {% endunless %} transition-opacity price flex items-center gap-5 text-pangram-12 lg:text-pangram-14 whitespace-nowrap">
           {% if product_card_product.price_varies %}<span>from</span>{% endif %}
-          {{ product_card_product.price | money_without_trailing_zeros }}
+          {{ product_card_product.price_min | money_without_trailing_zeros }}
           {% if product_card_product.compare_at_price > product_card_product.price %}
             <span class="line-through opacity-50">{{ product_card_product.compare_at_price | money_without_trailing_zeros }}</span>
           {% endif %}
