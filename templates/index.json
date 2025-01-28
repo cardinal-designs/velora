@@ -200,7 +200,7 @@
             "title": "",
             "x": 72,
             "y": 18,
-            "x_mobile": 6,
+            "x_mobile": 35,
             "y_mobile": 12
           }
         },
@@ -254,8 +254,8 @@
         "color": "light",
         "image": "shopify://shop_images/cresson.jpg",
         "position": "center-top",
-        "image_mobile": "shopify://shop_images/cresson.jpg",
-        "position_mobile": "right-top"
+        "image_mobile": "shopify://shop_images/cresson_mobile.jpg",
+        "position_mobile": "left"
       }
     },
     "dropdowns_TeGxJ7": {
