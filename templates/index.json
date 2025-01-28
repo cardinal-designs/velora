@@ -200,8 +200,19 @@
             "title": "",
             "x": 72,
             "y": 18,
-            "x_mobile": 35,
-            "y_mobile": 12
+            "x_mobile": 64,
+            "y_mobile": 13
+          }
+        },
+        "hotspot_FACWhP": {
+          "type": "hotspot",
+          "settings": {
+            "product": "",
+            "title": "",
+            "x": 50,
+            "y": 50,
+            "x_mobile": 50,
+            "y_mobile": 50
           }
         },
         "hotspot_CNNKpP": {
@@ -246,6 +257,7 @@
       },
       "block_order": [
         "hotspot_LzwniG",
+        "hotspot_FACWhP",
         "hotspot_CNNKpP",
         "hotspot_hxNXk9",
         "hotspot_CXaqi8"
@@ -254,8 +266,8 @@
         "color": "light",
         "image": "shopify://shop_images/cresson.jpg",
         "position": "center-top",
-        "image_mobile": "shopify://shop_images/cresson_mobile.jpg",
-        "position_mobile": "left"
+        "image_mobile": "shopify://shop_images/cresson_mobile_cddbb942-35ae-4295-b9ff-793a414f664e.jpg",
+        "position_mobile": "center"
       }
     },
     "dropdowns_TeGxJ7": {
