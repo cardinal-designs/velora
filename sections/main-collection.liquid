@@ -95,6 +95,14 @@
   </div>
 </div>
 
+{% if section.settings.show_description == true and collection.description != blank %}
+  <div class="py-50">
+    <div class="page-width text-center [&_p]:text-oracle-14 [&_p]:lg:text-oracle-18 text-editor wysiwyg">
+      {{ collection.description }}
+    </div>
+  </div>
+{% endif %}
+
 {% schema %}
 {
   "name": "Collection",
@@ -116,6 +124,17 @@
     {
       "type": "paragraph",
       "content": "Add filter groups as blocks"
+    },
+    {
+      "type": "header",
+      "content": "Collection info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "info": "If present, render collection description below product grid",
+      "default": false
     },
     {
       "type": "header",
