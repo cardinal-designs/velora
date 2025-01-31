@@ -45,6 +45,7 @@
       "settings": {
         "heading": "Artisanal, bespoke, and detailed to perfection, our fixtures add meaning to your space, elevating simple functionality into something that lights up your favorite parts of living.",
         "image": "shopify://shop_images/44_carousel.jpg",
+        "show_description": true,
         "feature_color": "dark",
         "feature_title": "Find Your Fit",
         "feature_heading": "Statements to Staples",
