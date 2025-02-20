@@ -28,6 +28,42 @@
         "text_2": "Minor customizations typically do not affect the production timeline or cost. Moreover, we provide complimentary photos of a completed prototype for your approval upon request. This service is usually completed within 48 hours."
       }
     },
+    "image_text_jUmn8x": {
+      "type": "image-text",
+      "blocks": {
+        "image_eEq63R": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/test3.jpg",
+            "button_label": "",
+            "button_link": "",
+            "scroll_to": ""
+          }
+        },
+        "text_t9FbMg": {
+          "type": "text",
+          "settings": {
+            "title": "Personalize your lighting",
+            "title_r": "",
+            "heading": "Pricing For Standard Customizations",
+            "text": "At Velora, we understand that your lighting should be as unique as you are. That's why we don't mass produce our pieces. Instead, we offer streamlined customization options, so it's simple to find the perfect fit for your style. We can customize any piece to suit your space, ensuring it reflects your personal design vision. Let us help you create lighting that is uniquely yours.",
+            "button_label": "",
+            "button_link": "",
+            "scroll_to": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_eEq63R",
+        "text_t9FbMg"
+      ],
+      "disabled": true,
+      "settings": {
+        "color": "dark",
+        "layout": "b",
+        "layout_mobile": "b"
+      }
+    },
     "image_text_JPXG8x": {
       "type": "image-text",
       "blocks": {
@@ -151,6 +187,7 @@
   "order": [
     "floating-text-images",
     "offset_text_cqKUha",
+    "image_text_jUmn8x",
     "image_text_JPXG8x",
     "faq_zUUXCU",
     "numbered_text_blocks_wM9t8w",
