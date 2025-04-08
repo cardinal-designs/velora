@@ -60,7 +60,7 @@
         {% else %}
           <div id="cart-drawer-items" class="w-full h-full px-25 lg:px-[max(58px,4vw)] flex flex-col overflow-y-scroll [&>div]:border-b [&>div]:border-[var(--text)] [&>div:first-of-type]:border-t">
             {% for item in cart.items %}
-              <div  data-hulkapps-lineitem class="px-[7px]">
+              <div class="px-[7px]">
                 {% render 'cart-item' item: item, idx: forloop.index %}
               </div>
             {% endfor %}

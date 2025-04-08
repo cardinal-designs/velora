@@ -24,7 +24,7 @@
           <div class="js-contents-main">
             {% if cart != empty %}
               {% for item in cart.items %}
-                <div  data-hulkapps-lineitem class="border-b-1 border-black">
+                <div class="border-b-1 border-black">
                   {% render 'cart-item' item: item, idx: forloop.index, is_cart: true %}
                 </div>
               {% endfor %}
