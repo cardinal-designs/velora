@@ -156,6 +156,31 @@
         });
       </script>
     {% endif %}
+
+    <script>
+      async function getData(discountCode) {
+        const url = `/checkout?discount=${discountCode}`;
+        try {
+          const response = await fetch(url);
+       
+      
+          // Remove the discount param from the URL without reloading
+          const currentUrl = new URL(window.location.href);
+          currentUrl.searchParams.delete('discount');
+          window.history.replaceState({}, '', currentUrl.toString());
+      
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const discountCode = urlParams.get('discount');
+      
+      if (discountCode) {
+        getData(discountCode);
+      }
+    </script>
   </body>
   
 </html>
