@@ -124,7 +124,7 @@
                           </svg>
                         </span>
                       </button>
-                      <div x-show="open" x-transition class="absolute top-[-1px] left-[-1px] w-[calc(100%_+_2px)] h-fit px-20 py-10 border border-brown rounded-[10px] bg-[var(--background)]">
+                      <div x-show="open" x-transition class="absolute top-[-1px] left-[-1px] w-[calc(100%_+_2px)] h-fit px-20 py-10 border border-brown rounded-[10px] bg-[var(--background)] z-[1]">
                         <div class="w-fit flex flex-col justify-end items-ends gap-10 pt-10">
                           {% for value in option.values %}
                             {% liquid
