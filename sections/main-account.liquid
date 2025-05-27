@@ -101,13 +101,15 @@
                                     class="text-oracle-14 lg:text-oracle-18 border-b-0 border-[var(--text)] block md:py-20 md:border-b-1 md:table-cell"
                                     headers="RowOrder ColumnTracking"
                                     role="cell"
-                                    data-label="Tracking Number"
+                                    data-label="Tracking Numbers"
                                     >
                                     <div class="py-5 flex flex-col justify-start items-start gap-[3px] md:p-0">
                                         <div class="text-pangram-10 leading-[30px] md:hidden">Tracking Number</div>
                                         <div class="text-oracle-14 lg:text-oracle-18">
-                                            {% for item in order.line_items %}
-                                              <a class="underline block" href="{{ item.fulfillment.tracking_url }}" target="_blank">{{ item.fulfillment.tracking_number }}</a>
+                                            {% for line_item in order.line_items %}
+                                                {% if line_item.fulfillment.tracking_number != blank %}
+                                                    <a href="{{ line_item.fulfillment.tracking_url }}">{{ line_item.fulfillment.tracking_number }}</a>
+                                                {% endif %}
                                             {% endfor %}
                                         </div>
                                     </div>
