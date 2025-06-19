@@ -2,6 +2,15 @@
 <html class="no-js group/html{% if settings.enable_animations %} enable-animations{% endif %}" lang="{{ request.locale.iso_code }}" data-editor-open="{{ request.design_mode }}">
   <head>
 
+    <script>
+    window.Shopify = window.Shopify || {theme: {id: {{ theme.id }}, role: '{{ theme.role }}' } };
+    window._template = {
+        directory: "{{ template.directory }}",
+        name: "{{ template.name }}",
+        suffix: "{{ template.suffix }}"
+    };
+  </script>
+  <script type="module" blocking="render" fetchpriority="high" src="https://cdn.intelligems.io/esm/4b553aec58d9/bundle.js" async></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
