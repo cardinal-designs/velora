@@ -135,6 +135,15 @@
         "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
         "disabled": false,
         "settings": {}
+      },
+      "13440586637131102011": {
+        "type": "shopify://apps/tinycookie/blocks/cookie-embed/b65baef5-7248-4353-8fd9-b676240311dc",
+        "disabled": false,
+        "settings": {
+          "custom_css": "",
+          "hide_in_theme_editor": false,
+          "hide_in_password_page": false
+        }
       }
     }
   },
