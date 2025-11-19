@@ -174,3 +174,9 @@
     }
 
 }
+
+a.spechsheet-download svg {
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+}
