@@ -74,7 +74,7 @@
 
                 {% if product.metafields.custom.technical_specifications != blank %}
                   <button @click.prevent="changeTab(2)" class="underline-when-active" :class="activeTab == 2 ? 'active' : ''">
-                    <span class="hidden lg:block">Technical Specifications</span>
+                    <span class="hidden lg:block">Technical Resources</span>
                     <span class="block lg:hidden">Tech Specs</span>
                   </button>
                 {% endif %}
@@ -104,6 +104,16 @@
               {% if product.metafields.custom.technical_specifications != blank %}
                 <div class="[&_p:not(:last-child)]:mb-10"  x-show="activeTab == 2">
                   {{ product.metafields.custom.technical_specifications | metafield_tag }}
+                  {% if product.metafields.custom.specsheet_file_url.value != blank %}
+                    <a
+                      href="{{ product.metafields.custom.specsheet_file_url.value }}"
+                      target="_blank"
+                      class="spechsheet-download"
+                    >
+                     {% render 'file-icon' %}
+                     <span>Download Spec Sheet</span>
+                    </a>
+                  {% endif %}
                 </div>
               {% endif %}
             </div>
