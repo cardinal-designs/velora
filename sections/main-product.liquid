@@ -443,6 +443,23 @@
   }
 </script>
 
+<style>
+  @media (min-width:1280px) and (max-width:1575px){
+    .xl\:animate-none {
+        animation: none;
+    }
+    .xl\:overflow-x-auto {
+        overflow-x: inherit;
+    }
+    .animate-marquee {
+      animation: marquee 20s linear infinite;
+    }
+    .xl\:hidden {
+        display: block;
+    }
+  }
+</style>
+
 {% schema %}
   {
     "name": "Product",
